@@ -1,0 +1,25 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="4.322" cy="16.39" r="1.1"/>
+  <circle cx="7.961" cy="18.257" r="1.1"/>
+  <circle cx="12" cy="18.9" r="1.1"/>
+  <circle cx="16.039" cy="18.257" r="1.1"/>
+  <circle cx="19.678" cy="16.39" r="1.1"/>
+  <path d="M12 20c-.2.8-.7 1.5-1.5 2"/>
+  <path d="M12 20c.2.8.7 1.5 1.5 2"/>
+  <circle cx="12" cy="10.3" r="4.2" fill="currentColor"/>
+  <path d="M12 3.5L12 2"/>
+  <path d="M16.371 5.091L17.335 3.942"/>
+  <path d="M7.629 5.091L6.665 3.942"/>
+  <path d="M18.697 9.119L20.174 8.859"/>
+  <path d="M5.303 9.119L3.826 8.859"/>
+</svg>
