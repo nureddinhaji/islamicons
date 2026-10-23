@@ -64,11 +64,13 @@ export const category_by_id = new Map(categories.map(category => [category.id, c
 // Arabic is usually typed with the article: «المسجد» has to find «مسجد».
 const without_article = word => (/^ال[\u0621-\u064A]{2}/.test(word) ? word.slice(2) : '')
 
-// One query word as matchers from best to loosest: the whole title, a whole tag or name, the start of one, the start
-// of a word inside one (after «ال» too), anywhere.
+// One query word as matchers from best to loosest: the whole title (after «ال» too), a whole tag or name, the start of
+// one, the start of a word inside one (after «ال» too), anywhere.
 function matchers(word) {
     const source = arabic_pattern(word)
     return {
+        // Titles carry the article («السجود») but tags must not, so «سجود» would otherwise rank a tag above the title.
+        title: RegExp(`^(?:ال)?(?:${source})$`, 'i'),
         whole: RegExp(`^(?:${source})$`, 'i'),
         start: RegExp(`^(?:${source})`, 'i'),
         word: RegExp(`(?:^|[\\s-])(?:ال)?(?:${source})`, 'i'),
@@ -78,7 +80,7 @@ function matchers(word) {
 
 function relevance(icon, m) {
     const fields = [...icon.titles, ...icon.tags, icon.name]
-    if (icon.titles.some(title => m.whole.test(title))) return 100
+    if (icon.titles.some(title => m.title.test(title))) return 100
     if (fields.some(field => m.whole.test(field))) return 90
     if (fields.some(field => m.start.test(field))) return 70
     if (fields.some(field => m.word.test(field))) return 50
