@@ -182,6 +182,28 @@ function sizes_row(inner, x, y, ink, background) {
 }
 const size_row_width = SIZES.reduce((sum, size) => sum + size + 16, -16)
 
+const PIXEL_SIZES = [24, 32]
+
+// Each pixel's coverage as a browser paints it, enlarged: a tip that renders lighter than a straight stroke beside it
+// shows here as it does on screen, which the smooth grid view hides.
+function pixel_view(inner, size, x, y, cell) {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="#000" color="#000" stroke-width="${stroke_at(size)}" stroke-linecap="round" stroke-linejoin="round">${frame_inner(inner, stroke_at(size))}</svg>`
+    const pixels = new Resvg(svg, {font: {loadSystemFonts: false}}).render().pixels
+    const span = size * cell
+    const lines = Array.from(
+        {length: size - 1},
+        (_, k) => `M${x + (k + 1) * cell} ${y}v${span}M${x} ${y + (k + 1) * cell}h${span}`,
+    )
+    let out = `<rect x="${x}" y="${y}" width="${span}" height="${span}" fill="#fff" stroke="#d4d4d8"/>`
+    out += `<path d="${lines.join('')}" stroke="#f0f0f2" stroke-width="0.5"/>`
+    for (let i = 0; i < size * size; i++) {
+        const coverage = pixels[i * 4 + 3]
+        if (coverage)
+            out += `<rect x="${x + (i % size) * cell}" y="${y + Math.floor(i / size) * cell}" width="${cell}" height="${cell}" fill="${INK}" fill-opacity="${(coverage / 255).toFixed(3)}"/>`
+    }
+    return out
+}
+
 const fixed = (value, digits = 2) => (value >= 0 ? '+' : '') + value.toFixed(digits)
 
 function metrics_lines(m, set) {
@@ -202,6 +224,8 @@ function build_sheet(icons, siblings, set) {
     const zoom = icons.length === 1 ? 16 : icons.length === 2 ? 12 : 8
     const column = Math.max(24 * zoom, size_row_width + 20)
     const gutter = 40
+    const cells = PIXEL_SIZES.map(size => Math.floor((column - 12) / 2 / size))
+    const pixel_block = 22 + Math.max(...PIXEL_SIZES.map((size, i) => size * cells[i])) + 24
     let body = ''
     const top = PAD + 20
     for (const [index, icon] of icons.entries()) {
@@ -216,8 +240,15 @@ function build_sheet(icons, siblings, set) {
         y += 92
         for (const [line_index, [line, fill]] of metrics_lines(icon.metrics, set).entries())
             body += text(x, y + line_index * 19, line, fill ? {fill} : undefined)
+        y += 5 * 19 + 10
+        body += text(x, y, `pixels at ${PIXEL_SIZES.join(' and ')} px`, {size: 12})
+        let px_x = x
+        for (const [i, size] of PIXEL_SIZES.entries()) {
+            body += pixel_view(icon.inner, size, px_x, y + 10, cells[i])
+            px_x += size * cells[i] + 12
+        }
     }
-    let y = top + 24 * zoom + 34 + 78 + 92 + 5 * 19 + 24
+    let y = top + 24 * zoom + 34 + 78 + 92 + 5 * 19 + 10 + pixel_block
     body += text(PAD, y, 'among the set, as shown', {size: 13, fill: INK, weight: 600})
     y += 18
     for (const icon of icons) {
