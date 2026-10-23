@@ -34,6 +34,18 @@
             {/each}
         </ul>
         <div class="flex items-center">
+            <Button
+                href={REPO_URL}
+                target="_blank"
+                rel="noopener"
+                variant="ghost"
+                size="icon"
+                aria-label="المستودع على GitHub"
+                title="المستودع على GitHub"
+                class="rounded-full text-muted-foreground"
+            >
+                <Icon id="github" class="size-4.5" />
+            </Button>
             <!-- target="_top" so navgo leaves the other language to the browser: it is a new document. -->
             <Button
                 href={switch_href}
@@ -61,7 +73,7 @@
 </header>
 
 <script>
-import {get_nav_links} from '~/lib/constants.svelte.js'
+import {get_nav_links, REPO_URL} from '~/lib/constants.svelte.js'
 import {href_in, locale, LOCALE_BADGES, LOCALE_NAMES, LOCALES} from '~/lib/locale.js'
 import Icon from '$icon'
 import {Button} from '$ui/button/index.js'

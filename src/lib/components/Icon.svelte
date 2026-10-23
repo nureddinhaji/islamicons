@@ -20,6 +20,7 @@
 // Interface glyphs from Tabler Icons (MIT, © Paweł Kuna); only these files are bundled.
 import adjustments from '@tabler/icons/outline/adjustments-horizontal.svg?raw'
 import book from '@tabler/icons/outline/book.svg?raw'
+import github from '@tabler/icons/outline/brand-github.svg?raw'
 import react from '@tabler/icons/outline/brand-react.svg?raw'
 import svelte from '@tabler/icons/outline/brand-svelte.svg?raw'
 import check from '@tabler/icons/outline/check.svg?raw'
@@ -56,6 +57,7 @@ const GLYPHS = Object.fromEntries(
         clock,
         copy,
         download,
+        github,
         image: photo,
         info: info_circle,
         'layout-grid': layout_grid,

@@ -758,3 +758,8 @@ msgstr "{0} for Islamic apps and websites, drawn to one set of rules, open sourc
 #: src/routes/Guide.svelte
 msgid "رموز واجهة هذا الموقع، كالبحث والنسخ والتنزيل، من مكتبة <0/>، ومكوّناتها، كالأزرار والحقول، من <1/>. وكلتاهما برخصة MIT، وليستا جزءاً من المكتبة."
 msgstr "The interface symbols on this site, such as search, copy and download, come from the <0/> library, and its components, such as buttons and fields, from <1/>. Both are under the MIT licence and are not part of this library."
+
+#: src/components/Header.svelte
+#: src/components/Header.svelte
+msgid "المستودع على GitHub"
+msgstr "GitHub repository"
