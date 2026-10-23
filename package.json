@@ -1,0 +1,54 @@
+{
+  "name": "islamicons",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open-source Islamic icons: one drawing standard, 24×24, stroke icons with currentColor.",
+  "license": "MIT",
+  "author": "Nureddin Haji",
+  "config": {
+    "name": "مكتبة الأيقونات الإسلامية"
+  },
+  "devDependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@fontsource/ibm-plex-sans-arabic": "^5.2.8",
+    "@mustafaj/oxfmt": "0.65.0-svelte.10",
+    "@mustafaj/oxlint": "1.80.0-svelte.11",
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
+    "@tabler/icons": "^3.49.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@wuchale/svelte": "0.21.4",
+    "bits-ui": "^2.19.0",
+    "cn": "^0.2.4",
+    "eslint-plugin-import-x": "^4.17.1",
+    "eslint-plugin-simple-import-sort": "^14.0.0",
+    "globals": "^17.12.0",
+    "lightningcss": "^1.33.0",
+    "mode-watcher": "^1.1.0",
+    "navgo": "^6.0.12",
+    "runed": "^0.37.1",
+    "svelte": "^5.57.0",
+    "tailwind-variants": "^3.2.2",
+    "tailwindcss": "^4.3.3",
+    "tw-animate-css": "^1.4.0",
+    "vite": "^8.2.2",
+    "vite-plugin-domain": "^2.0.6",
+    "wuchale": "0.26.7"
+  },
+  "scripts": {
+    "build": "node scripts/check-icons.js && vite build",
+    "check:icons": "node scripts/check-icons.js",
+    "dev": "vite dev",
+    "format": "oxfmt -c .oxfmtrc.json src ./*.js",
+    "format:check": "oxfmt --check -c .oxfmtrc.json src ./*.js",
+    "lint": "oxlint -c oxlint.config.js .",
+    "lint:fix": "oxlint --fix -c oxlint.config.js .",
+    "preview:readme": "node scripts/readme-preview.js",
+    "test": "node --test scripts/*.test.js"
+  },
+  "browserslist": [
+    "> 0.25%",
+    "not dead",
+    "Safari >= 15"
+  ],
+  "type": "module"
+}

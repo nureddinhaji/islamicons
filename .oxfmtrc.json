@@ -1,0 +1,32 @@
+{
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 4,
+  "printWidth": 120,
+  "quoteProps": "as-needed",
+  "bracketSpacing": false,
+  "arrowParens": "avoid",
+  "sortPackageJson": false,
+  "sortTailwindcss": {
+    "functions": ["cn", "clsx", "tv"],
+    "stylesheet": "src/css/tailwind.css"
+  },
+  "svelte": {
+    "sortOrder": "options-markup-scripts-styles",
+    "indentScriptAndStyle": false
+  },
+  "ignorePatterns": [
+    "/*",
+    "!/src",
+    "/src/locales/**/*",
+    "!/*.js",
+    "/src/lib/components/ui/**/*",
+    "/src/lib/utils.ts"
+  ],
+  "overrides": [
+    {
+      "files": ["*.html", "*.css"],
+      "options": {"tabWidth": 2}
+    }
+  ]
+}

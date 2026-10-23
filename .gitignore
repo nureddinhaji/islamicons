@@ -1,0 +1,13 @@
+node_modules
+.DS_Store
+
+/dist
+
+src/locales/.wuchale
+src/locales/*.js
+
+*.local
+*.local.*
+
+.vscode/settings.json
+tmp/

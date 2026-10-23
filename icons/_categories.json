@@ -1,0 +1,204 @@
+[
+  {
+    "id": "sacred-names",
+    "title": "الله ورسوله ﷺ",
+    "title_en": "Allah and His Messenger ﷺ",
+    "icon": "allah",
+    "icons": [
+      "allah",
+      "muhammad",
+      "salawat"
+    ]
+  },
+  {
+    "id": "quran",
+    "title": "القرآن الكريم",
+    "title_en": "Quran",
+    "icon": "quran",
+    "icons": [
+      "quran",
+      "quran-ornate",
+      "quran-ornate-simple",
+      "quran-crescent",
+      "rehal",
+      "ayah",
+      "ayah-book",
+      "end-of-ayah",
+      "ornate-parenthesis-right",
+      "ornate-parenthesis-left",
+      "rub-el-hizb",
+      "tilawa",
+      "tajweed",
+      "tafsir",
+      "hifz",
+      "hifz-brain",
+      "asbab-al-nuzul",
+      "ahkam",
+      "gharib"
+    ]
+  },
+  {
+    "id": "knowledge",
+    "title": "السنة والعلم",
+    "title_en": "Sunnah and knowledge",
+    "icon": "islamic-library",
+    "icons": [
+      "hadith",
+      "hadith-book",
+      "hadith-books",
+      "dictionary",
+      "dictionary-tabs",
+      "islamic-library",
+      "islamic-library-upright",
+      "books",
+      "books-stack"
+    ]
+  },
+  {
+    "id": "worship",
+    "title": "العبادات",
+    "title_en": "Worship",
+    "icon": "prayer-mat",
+    "icons": [
+      "adhan",
+      "adhan-off",
+      "wudu",
+      "prayer-mat",
+      "prayer-mat-rolled",
+      "takbir",
+      "qiyam",
+      "ruku",
+      "sujud",
+      "sujud-detailed",
+      "tashahhud",
+      "tawhid",
+      "tawhid-side",
+      "dua",
+      "dua-palms",
+      "dua-sitting",
+      "adhkar-morning",
+      "adhkar-evening",
+      "prayer-beads",
+      "tasbih-counter",
+      "khutbah",
+      "halal",
+      "haram"
+    ]
+  },
+  {
+    "id": "direction",
+    "title": "المواقيت والقبلة",
+    "title_en": "Prayer times and qibla",
+    "icon": "qibla-compass",
+    "icons": [
+      "prayer-times",
+      "prayer-times-mihrab",
+      "fajr",
+      "sunrise",
+      "dhuhr",
+      "asr",
+      "maghrib",
+      "isha",
+      "qibla-compass",
+      "qibla-arrow",
+      "map-pin-kaaba",
+      "map-pin-mosque"
+    ]
+  },
+  {
+    "id": "charity",
+    "title": "الزكاة والصدقة",
+    "title_en": "Zakat and sadaqah",
+    "icon": "zakat",
+    "icons": [
+      "zakat",
+      "hand-giving",
+      "sadaqah-box",
+      "sadaqah-box-note",
+      "udhiyah"
+    ]
+  },
+  {
+    "id": "calendar",
+    "title": "رمضان والتقويم",
+    "title_en": "Ramadan and calendar",
+    "icon": "star-and-crescent",
+    "icons": [
+      "crescent",
+      "star-and-crescent",
+      "hijri-calendar",
+      "ramadan",
+      "lantern",
+      "iftar",
+      "food-off",
+      "drink-off"
+    ]
+  },
+  {
+    "id": "hajj",
+    "title": "الحج والعمرة",
+    "title_en": "Hajj and umrah",
+    "icon": "kaaba",
+    "icons": [
+      "kaaba",
+      "ihram",
+      "ihram-filled",
+      "ihram-wide",
+      "ihram-wide-filled",
+      "tawaf",
+      "sai",
+      "zamzam",
+      "mina-tents",
+      "arafat",
+      "jamarat"
+    ]
+  },
+  {
+    "id": "architecture",
+    "title": "العمارة",
+    "title_en": "Architecture",
+    "icon": "mosque",
+    "icons": [
+      "mosque",
+      "mosque-minaret-right",
+      "mosque-minaret-left",
+      "dome",
+      "minaret",
+      "mihrab",
+      "dome-of-the-rock"
+    ]
+  },
+  {
+    "id": "family",
+    "title": "الأسرة والمجتمع",
+    "title_en": "Family and community",
+    "icon": "family",
+    "icons": [
+      "family",
+      "user-beard",
+      "user-beard-filled",
+      "user-beard-wide",
+      "user-beard-wide-filled",
+      "user-hijab",
+      "hijab",
+      "niqab",
+      "handshake"
+    ]
+  },
+  {
+    "id": "reading",
+    "title": "أدوات القراءة",
+    "title_en": "Reading tools",
+    "icon": "font-size",
+    "icons": [
+      "font-size",
+      "font-size-arrows",
+      "font-increase",
+      "font-increase-arrow",
+      "font-decrease",
+      "font-decrease-arrow",
+      "diacritics",
+      "diacritics-off"
+    ]
+  }
+]

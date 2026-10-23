@@ -1,0 +1,38 @@
+pre-commit:
+  commands:
+    oxlint:
+      glob: "*.{js,ts,svelte}"
+      run: pnpm exec oxlint --no-error-on-unmatched-pattern --fix -c oxlint.config.js {staged_files}
+      stage_fixed: true
+
+    oxfmt:
+      glob: '*.{js,ts,svelte,html,css}'
+      run: pnpm exec oxfmt --no-error-on-unmatched-pattern -c .oxfmtrc.json {staged_files}
+      stage_fixed: true
+
+    check-eof-newline:
+      file_types: text
+      run: '! rg -lU "[^\n]\z" {staged_files}'
+
+    check-trailing-ws:
+      file_types: text
+      run: '! rg "\s+$" {staged_files}'
+
+    check-icons:
+      glob: '{icons/*.{svg,json},src/*.{svelte,js},src/**/*.{svelte,js}}'
+      run: node scripts/check-icons.js
+
+    test:
+      glob: '{scripts/*.js,src/lib/icon-file.js,src/lib/frame.js,src/lib/arabic.js,src/lib/locale.js,src/lib/format.js}'
+      run: pnpm test
+
+    check-camel-case:
+      glob: '*.{js,svelte}'
+      run: '! rg "\b(?:let|const)[ \t]+[a-z][a-z0-9]*[A-Z][A-Za-z0-9_]*" {staged_files}'
+
+post-merge:
+  commands:
+    install-client-deps:
+      files: git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD
+      glob: pnpm-lock.yaml
+      run: pnpm install

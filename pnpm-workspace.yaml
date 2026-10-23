@@ -1,0 +1,12 @@
+allowBuilds:
+  '@tailwindcss/oxide': true
+  esbuild: true
+  oxc-resolver: true
+  unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@mustafaj/oxfmt-binding-darwin-arm64@0.65.0-svelte.10'
+  - '@mustafaj/oxfmt-binding-linux-x64-gnu@0.65.0-svelte.10'
+  - '@mustafaj/oxfmt@0.65.0-svelte.10'
+  - '@mustafaj/oxlint-binding-darwin-arm64@1.80.0-svelte.11'
+  - '@mustafaj/oxlint-binding-linux-x64-gnu@1.80.0-svelte.11'
+  - '@mustafaj/oxlint@1.80.0-svelte.11'

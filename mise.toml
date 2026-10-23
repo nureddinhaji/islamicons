@@ -1,0 +1,15 @@
+[tools]
+node = '24'
+pnpm = '12'
+lefthook = 'latest'
+
+[tasks.dev]
+alias = 'default'
+run = 'pnpm --color run dev'
+
+[tasks.build]
+sources = ['package.json', '*.js', 'icons/**/*', 'public/**/*', 'src/**/*']
+run = 'pnpm install --frozen-lockfile && pnpm build'
+
+[env]
+VITE_PORT = 5080

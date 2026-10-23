@@ -1,0 +1,760 @@
+msgid ""
+msgstr ""
+"Source-Language: ar\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2\n"
+"X-Plurals-Order: one, other\n"
+
+#: src/App.svelte
+msgid "الصفحة غير موجودة"
+msgstr "Page not found"
+
+#: src/App.svelte
+msgid "تخطَّ إلى المحتوى"
+msgstr "Skip to content"
+
+#: src/components/CodeBlock.svelte
+msgid "نسخ"
+msgstr "Copy"
+
+#: src/components/CodeBlock.svelte
+msgid "تعذّر النسخ، انسخ النص يدوياً."
+msgstr "Couldn't copy. Select the text and copy it yourself."
+
+#: src/components/Footer.svelte
+msgid "مفتوحة المصدر برخصة MIT"
+msgstr "Open source, under the MIT licence"
+
+#: src/components/Footer.svelte
+msgid "روابط الموقع"
+msgstr "Site links"
+
+#: src/components/Header.svelte
+msgid "التنقل الرئيسي"
+msgstr "Main navigation"
+
+#: src/components/Header.svelte
+msgid "مكتبة"
+msgstr "Library"
+
+#: src/components/Header.svelte
+msgid "الأيقونات الإسلامية"
+msgstr "Islamicons"
+
+#: src/components/LightSwitch.svelte
+msgid "تبديل الوضع الليلي"
+msgstr "Toggle dark mode"
+
+#: src/components/SheetContent.svelte
+msgid "إغلاق"
+msgstr "Close"
+
+#: src/lib/constants.svelte.js
+msgid "الأيقونات"
+msgstr "Icons"
+
+#: src/lib/constants.svelte.js
+#: src/routes/Guide.svelte
+msgid "دليل الاستخدام"
+msgstr "Guide"
+
+#: src/lib/customizer.svelte.js
+msgid "لون النص"
+msgstr "Text colour"
+
+#: src/lib/customizer.svelte.js
+msgid "أخضر"
+msgstr "Green"
+
+#: src/lib/customizer.svelte.js
+msgid "ذهبي"
+msgstr "Gold"
+
+#: src/lib/customizer.svelte.js
+msgid "أزرق"
+msgstr "Blue"
+
+#: src/lib/customizer.svelte.js
+msgid "عنّابي"
+msgstr "Burgundy"
+
+#. 0: DEFAULT_STROKE_WIDTH
+#: src/lib/snippets.svelte.js
+msgid ""
+"<button class=\"prayer-button\">\n"
+"  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"\n"
+"       fill=\"none\" stroke=\"currentColor\" stroke-width=\"{0}\"\n"
+"       stroke-linecap=\"round\" stroke-linejoin=\"round\" overflow=\"visible\" aria-hidden=\"true\">\n"
+"    <!-- … -->\n"
+"  </svg>\n"
+"  مواقيت الصلاة\n"
+"</button>\n"
+"\n"
+"<style>\n"
+"  /* الأيقونة تأخذ لون النص، فقاعدة واحدة تلوّنهما معاً */\n"
+"  .prayer-button { color: #1f6b55; }\n"
+"</style>"
+msgstr ""
+"<button class=\"prayer-button\">\n"
+"  <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"\n"
+"       fill=\"none\" stroke=\"currentColor\" stroke-width=\"{0}\"\n"
+"       stroke-linecap=\"round\" stroke-linejoin=\"round\" overflow=\"visible\" aria-hidden=\"true\">\n"
+"    <!-- … -->\n"
+"  </svg>\n"
+"  Prayer times\n"
+"</button>\n"
+"\n"
+"<style>\n"
+"  /* The icon takes the text colour, so one rule colours both */\n"
+"  .prayer-button { color: #1f6b55; }\n"
+"</style>"
+
+#: src/lib/snippets.svelte.js
+msgid ""
+"<h2 class=\"section-title\">\n"
+"  <svg aria-hidden=\"true\" …>…</svg>\n"
+"  المساجد القريبة\n"
+"</h2>\n"
+"\n"
+"<style>\n"
+"  .section-title { color: #a8741a; }\n"
+"  /* الحجم من CSS يغلب خاصيتَي width وheight */\n"
+"  .section-title svg { width: 2rem; height: 2rem; }\n"
+"</style>"
+msgstr ""
+"<h2 class=\"section-title\">\n"
+"  <svg aria-hidden=\"true\" …>…</svg>\n"
+"  Nearby mosques\n"
+"</h2>\n"
+"\n"
+"<style>\n"
+"  .section-title { color: #a8741a; }\n"
+"  /* A size from CSS overrides the width and height attributes */\n"
+"  .section-title svg { width: 2rem; height: 2rem; }\n"
+"</style>"
+
+#: src/lib/snippets.svelte.js
+msgid ""
+"<!-- بجوار نص يقول المعنى: أخفِها عن قارئ الشاشة -->\n"
+"<button>\n"
+"  <svg aria-hidden=\"true\" …>…</svg>\n"
+"  مواقيت الصلاة\n"
+"</button>\n"
+"\n"
+"<!-- زر بلا نص: الاسم على الزر، والأيقونة مخفية -->\n"
+"<button aria-label=\"اتجاه القبلة\">\n"
+"  <svg aria-hidden=\"true\" …>…</svg>\n"
+"</button>\n"
+"\n"
+"<!-- أيقونة تحمل المعنى وحدها -->\n"
+"<svg role=\"img\" aria-label=\"حلال\" …>…</svg>"
+msgstr ""
+"<!-- Beside text that says the meaning: hide it from the screen reader -->\n"
+"<button>\n"
+"  <svg aria-hidden=\"true\" …>…</svg>\n"
+"  Prayer times\n"
+"</button>\n"
+"\n"
+"<!-- A button with no text: the name goes on the button, and the icon is hidden -->\n"
+"<button aria-label=\"Qibla direction\">\n"
+"  <svg aria-hidden=\"true\" …>…</svg>\n"
+"</button>\n"
+"\n"
+"<!-- An icon that carries the meaning on its own -->\n"
+"<svg role=\"img\" aria-label=\"Halal\" …>…</svg>"
+
+#: src/routes/Guide.svelte
+msgid "البدء"
+msgstr "Getting started"
+
+#: src/routes/Guide.svelte
+#: src/routes/Guide.svelte
+msgid "نظرة عامة"
+msgstr "Overview"
+
+#: src/routes/Guide.svelte
+#: src/routes/Guide.svelte
+msgid "النسخ والتنزيل"
+msgstr "Copy and download"
+
+#: src/routes/Guide.svelte
+msgid "الحزم"
+msgstr "Packages"
+
+#: src/routes/Guide.svelte
+#: src/routes/Guide.svelte
+msgid "الخصائص"
+msgstr "Props"
+
+#: src/routes/Guide.svelte
+msgid "الاستعمال"
+msgstr "Usage"
+
+#: src/routes/Guide.svelte
+#: src/routes/Guide.svelte
+msgid "التنسيق"
+msgstr "Styling"
+
+#: src/routes/Guide.svelte
+#: src/routes/Guide.svelte
+msgid "أفضل الأحجام"
+msgstr "Best sizes"
+
+#: src/routes/Guide.svelte
+#: src/routes/Guide.svelte
+msgid "إمكانية الوصول"
+msgstr "Accessibility"
+
+#: src/routes/Guide.svelte
+#: src/routes/Guide.svelte
+msgid "الألوان والأجزاء المصمتة"
+msgstr "Colour and solid parts"
+
+#: src/routes/Guide.svelte
+msgid "الاتجاه"
+msgstr "Direction"
+
+#: src/routes/Guide.svelte
+msgid "المكتبة"
+msgstr "Library"
+
+#: src/routes/Guide.svelte
+#: src/routes/Guide.svelte
+msgid "البحث والأسماء"
+msgstr "Search and names"
+
+#: src/routes/Guide.svelte
+#: src/routes/Guide.svelte
+msgid "معايير المكتبة"
+msgstr "Library standard"
+
+#: src/routes/Guide.svelte
+#: src/routes/Guide.svelte
+msgid "إضافة أيقونة"
+msgstr "Adding an icon"
+
+#: src/routes/Guide.svelte
+#: src/routes/Guide.svelte
+msgid "الرخصة"
+msgstr "Licence"
+
+#: src/routes/Guide.svelte
+msgid "شبكة ٢٤×٢٤ وخط بأطراف ووصلات مستديرة، في ملف SVG قياسي."
+msgstr "A 24×24 grid and a line with round caps and joins, in a standard SVG file."
+
+#: src/routes/Guide.svelte
+msgid "لون واحد هو لون النص من حولها، يشمل الخطوط والأجزاء المصمتة."
+msgstr "One colour, the colour of the text around it, covering the strokes and the solid parts."
+
+#: src/routes/Guide.svelte
+msgid "عنوان عربي وعنوان إنجليزي وكلمات بحث بالعربية والإنجليزية لكل أيقونة."
+msgstr "An Arabic title, an English title, and Arabic and English search tags for every icon."
+
+#: src/routes/Guide.svelte
+msgid "رخصة MIT: مجانية للاستعمال الشخصي والتجاري."
+msgstr "MIT licence: free for personal and commercial use."
+
+#: src/routes/Guide.svelte
+msgid "العرض والارتفاع، رقماً بالبكسل أو أي قيمة CSS."
+msgstr "Width and height, a number of pixels or any CSS value."
+
+#: src/routes/Guide.svelte
+msgid "لون الخط والأجزاء المصمتة."
+msgstr "The colour of the stroke and the solid parts."
+
+#: src/routes/Guide.svelte
+msgid "سُمك الخط بالبكسل حين يكون حجم الأيقونة ٢٤. يُكبَّر الرسم أو يُصغَّر قليلاً على قدر الخط، فيبقى ملء اللوحة ولا يُقصّ طرف منه."
+msgstr "The stroke in pixels when the icon is 24. The drawing grows or shrinks a little with the stroke, so it keeps filling the box and no edge is clipped."
+
+#: src/routes/Guide.svelte
+msgid "يُبقي سُمك الخط بالبكسل ثابتاً مهما كبرت الأيقونة أو صغرت، بدل أن يتناسب مع حجمها."
+msgstr "Keeps the stroke at the same pixel width however large or small the icon is, instead of scaling with it."
+
+#: src/routes/Guide.svelte
+msgid "فئات CSS تُضاف إلى عنصر svg."
+msgstr "CSS classes added to the svg element."
+
+#: src/routes/Guide.svelte
+msgid "بقية الخصائص تمرّ إلى عنصر svg كما هي، مثل aria-label وrole وdata-*."
+msgstr "Other attributes are passed through to the svg element as they are, such as aria-label, role and data-*."
+
+#: src/routes/Guide.svelte
+msgid "الجذر"
+msgstr "Root"
+
+#: src/routes/Guide.svelte
+msgid "خصائص عنصر svg هي الخصائص القياسية بالضبط، كما في القالب أدناه."
+msgstr "The svg element's attributes are exactly the standard ones, as in the template below."
+
+#: src/routes/Guide.svelte
+msgid "الشبكة والحدود"
+msgstr "Grid and bounds"
+
+#: src/routes/Guide.svelte
+msgid "لوحة ٢٤×٢٤، وكل مسار بين ٢ و٢٢ من الجهات الأربع، فيبقى هامش بكسل حول الخط. تُقاس المنحنيات والأقواس على امتدادها لا عند أطرافها فقط."
+msgstr "A 24×24 box, and every path between 2 and 22 on all four sides, which leaves a one-pixel margin around the stroke. Curves and arcs are measured along their length, not only at their ends."
+
+#: src/routes/Guide.svelte
+msgid "الخط"
+msgstr "Stroke"
+
+#: src/routes/Guide.svelte
+msgid "سُمك ٢ في الرسم، بأطراف ووصلات مستديرة."
+msgstr "Drawn at stroke 2, with round caps and joins."
+
+#: src/routes/Guide.svelte
+msgid "العرض"
+msgstr "Display"
+
+#: src/routes/Guide.svelte
+msgid "تُعرض الأيقونة بخط ١٫٦، وتُكبَّر حول مركزها حتى تبلغ حافة الخط حدود اللوحة تماماً (١٫١٢ مرة عند هذا السُمك)، في ملف SVG قياسي لوحته 0 0 24 24، بجذر يحمل overflow=\"visible\" كي لا يقصّ المتصفح تلك الحافة."
+msgstr "Shown at stroke 1.6, and scaled about its centre until the stroke's edge meets the box exactly (1.12 times at this stroke), as a standard SVG whose box is 0 0 24 24, with overflow=\"visible\" on the root so the browser does not clip that edge."
+
+#: src/routes/Guide.svelte
+msgid "العناصر"
+msgstr "Elements"
+
+#: src/routes/Guide.svelte
+msgid "path وcircle وellipse وrect وline وpolyline وpolygon فقط، بخصائص الهندسة وحدها."
+msgstr "path, circle, ellipse, rect, line, polyline and polygon only, with geometry attributes alone."
+
+#: src/routes/Guide.svelte
+msgid "الأجزاء المصمتة"
+msgstr "Solid parts"
+
+#: src/routes/Guide.svelte
+msgid "تُملأ بـfill=\"currentColor\" وحده، ولا تُستعمل إلا حين تكون جزءاً من المعنى، مثل نجمة الهلال."
+msgstr "Filled with fill=\"currentColor\" alone, and used only when the fill is part of the meaning, such as the star of the crescent."
+
+#: src/routes/Guide.svelte
+msgid "الممنوع"
+msgstr "Not allowed"
+
+#: src/routes/Guide.svelte
+msgid "لا معرّفات ولا فئات ولا أنماط ولا تحويلات ولا أقنعة ولا مجموعات ولا نصوص، كي تعمل الأيقونة في أي صفحة ولا تتعارض نسختان منها. والملف هو جذر svg تتبعه أشكال مغلقة ذاتياً لا غير، بعلامات تنصيص مزدوجة وأرقام عشرية عادية، وما لا يستطيع الفحص قراءته يفشل، ويرفض الموقع تحميله."
+msgstr "No ids, classes, styles, transforms, masks, groups or text, so an icon works on any page and two copies never clash. The file is an svg root followed only by self-contained shapes, with double quotes and plain decimal numbers. Anything the checker cannot read fails, and the site refuses to load it."
+
+#: src/routes/Guide.svelte
+msgid "البيانات"
+msgstr "Metadata"
+
+#: src/routes/Guide.svelte
+msgid "ملف json فيه title وtitle_en وtags، بعنوان عربي وعنوان إنجليزي وكلمات بحث غير فارغة وغير مكررة ولا مسافة في طرفيها، وكلمات البحث لا تكرر الاسم ولا العنوان العربي ولا العنوان الإنجليزي ولا بعضها، وعنوان النسخة هو عنوان أصلها مع ما يميزها بين قوسين وعنوان الأصل بلا أقواس في اللغتين، والعناوين لا تتكرر، وfilled وoff آخر كلمة في الاسم، واسم الأيقونة في قائمة تصنيفها في _categories.json مرة واحدة، وكل أيقونة يسميها الموقع في src موجودة."
+msgstr "A json file with title, title_en and tags: an Arabic title, an English title, and search tags that are non-empty, not repeated, and have no space at either end. Tags do not repeat the name, the Arabic title, the English title, or each other. A variant's title is its base title plus what sets it apart, in parentheses, and the base title has no parentheses, in both languages. Titles are never repeated. filled and off are the last word of the name. The icon's name appears once in its category list in _categories.json. Every icon the site names under src exists."
+
+#: src/routes/Guide.svelte
+msgid "الاسم البرمجي"
+msgstr "Programmatic name"
+
+#: src/routes/Guide.svelte
+msgid "يسمّي معنى الأيقونة لا طريقة رسمها. علامات المصحف باسمها كما يكتبه Unicode (end-of-ayah وornate-parenthesis-left)، وما ليس مصطلحاً إسلامياً بالإنجليزية الواضحة (mosque وfont-size وdictionary). والنسخة تضيف بعد اسم أصلها كلمة لكل فرق (quran-ornate-simple)، وتأتي filled آخر كلمة، وoff للشطب على الرسم آخر كلمة كذلك (adhan-off)، ودبوس الخريطة map-pin يتبعه ما يدل عليه (map-pin-kaaba)، والاتجاهات كما في الرسم (left وright). والاسم الذي يبدأ باسم أيقونة أخرى تتبعه شَرطة نسخةٌ منها."
+msgstr "It names the icon's meaning, not how it is drawn. Quran marks use the name Unicode writes (end-of-ayah and ornate-parenthesis-left), and anything that is not an Islamic term uses plain English (mosque, font-size and dictionary). A variant adds a word for each difference after its base name (quran-ornate-simple). filled comes last, and off, for a slash across the drawing, comes last too (adhan-off). A map pin is map-pin followed by what it marks (map-pin-kaaba), and directions are as drawn (left and right). A name that starts with another icon's name, followed by a hyphen, is a variant of it."
+
+#: src/routes/Guide.svelte
+msgid "التهجئة"
+msgstr "Spelling"
+
+#: src/routes/Guide.svelte
+msgid "يُكتب المصطلح الإسلامي بالحروف اللاتينية كما يكتبه أول مصدر يذكره: واجهات المطوّرين (Aladhan وadhan-js وQuran.com)، ثم قاموس Merriam-Webster، ثم عنوان ويكيبيديا الإنجليزية (dhuhr وtawhid وtilawa وsalawat). وتذهب بقية التهجئات إلى كلمات البحث."
+msgstr "An Islamic term is written in Latin letters as the first source that mentions it writes it: developer interfaces (Aladhan, adhan-js and Quran.com), then the Merriam-Webster dictionary, then the English Wikipedia title (dhuhr, tawhid, tilawa and salawat). Other spellings go into the search tags."
+
+#: src/routes/Guide.svelte
+msgid "العنوان العربي"
+msgstr "Arabic title"
+
+#: src/routes/Guide.svelte
+msgid "قصير يتسع له مربّع الأيقونة. الأفعال والمناسك والأوقات والعلوم والفريد بـ«ال» (السجود، الفجر، الكعبة)، والأشياء والأشخاص بلا «ال» (مسجد، مصحف). وعنوان الأصل بلا أقواس، وعنوان النسخة هو عنوان أصلها وما يميّزها بين قوسين، وفرق ثانٍ بعد «،» (الإحرام (لحية عريضة، مُصمَت)). والعناوين لا تتكرر."
+msgstr "Short enough for the icon's square. Actions, rites, times, sciences and unique things take the definite article (السجود, الفجر, الكعبة), and objects and people do not (مسجد, مصحف). A base title has no parentheses. A variant's title is its base title plus what sets it apart, in parentheses, and a second difference comes after «،» (الإحرام (لحية عريضة، مُصمَت)). Titles are never repeated."
+
+#: src/routes/Guide.svelte
+msgid "العنوان الإنجليزي"
+msgstr "English title"
+
+#: src/components/icons/IconPanel.svelte
+#: src/routes/Guide.svelte
+msgid "كلمات البحث"
+msgstr "Search tags"
+
+#: src/routes/Guide.svelte
+msgid "لا تكرر ما يجده البحث أصلاً: الاسم والعنوان العربي والعنوان الإنجليزي وصورة «ال» والهمزة والتاء المربوطة والياء والتشكيل. لكل مفهوم عربي مقابله الإنجليزي وبالعكس، وكل تهجئة إنجليزية شائعة موجودة (salat وnamaz)، والكلمات الإنجليزية بأحرف صغيرة، والاسم القديم الذي يبحث عنه الناس يبقى كلمة بحث."
+msgstr "Do not repeat what search already finds: the name, the Arabic title, the English title, the forms of «ال», hamza, ta marbuta, ya and vowel marks. Every Arabic concept has its English counterpart and the other way round, and every common English spelling is there (salat and namaz). English tags are lowercase, and an old name people still search for stays a tag."
+
+#: src/routes/Guide.svelte
+msgid "الترتيب"
+msgstr "Order"
+
+#: src/routes/Guide.svelte
+msgid "داخل التصنيف بالترتيب الذي يلقاه المستخدم: أوقات الصلاة على مدار اليوم، وأركان الصلاة بترتيبها، ومناسك الحج كما تُؤدّى، والأصل قبل نسخه."
+msgstr "Within a category, in the order a person meets them: prayer times through the day, the parts of the prayer in their order, the rites of Hajj as they are performed, and a base icon before its variants."
+
+#: src/routes/Guide.svelte
+msgid "كل ما تحتاجه لتضع الأيقونات في مشروعك: نسخها وتنزيلها اليوم، والحزمتان المرتقبتان، والتنسيق وإمكانية الوصول، ثم القواعد التي تُرسم بها كل أيقونة وطريقة إضافة أيقونة جديدة."
+msgstr "Everything you need to put the icons in your project: copying and downloading them today, the two planned packages, styling and accessibility, then the rules every icon is drawn to and how to add a new one."
+
+#: src/routes/Guide.svelte
+#: src/routes/Guide.svelte
+msgid "محتويات الدليل"
+msgstr "Guide contents"
+
+#: src/routes/Guide.svelte
+msgid "محتويات الدليل <0/>"
+msgstr "Guide contents <0/>"
+
+#: src/routes/Guide.svelte
+msgid "<0>المتاح اليوم:</0> نسخ أي أيقونة أو تنزيلها من <1>صفحة الأيقونات</1>. <2>المرتقب:</2> حزمتا Svelte وReact، ولم تُنشرا بعد، والأمثلة الخاصة بهما في هذا الدليل تصف واجهتهما المرتقبة."
+msgstr "<0>Available today:</0> copy or download any icon from the <1>icons page</1>. <2>Coming later:</2> Svelte and React packages. They are not published yet, and the examples for them in this guide describe the interface they will have."
+
+#. 0: count_icons(icons.length)
+#: src/routes/Guide.svelte
+msgid "مكتبة الأيقونات الإسلامية مجموعة مفتوحة المصدر من {0} للمسجد والصلاة والقرآن والحج ورمضان وغيرها، رُسمت كلها بقواعد واحدة فتبدو كأنها من يد واحدة، وتعمل في أي صفحة ويب أو تطبيق يعرض SVG."
+msgstr "Islamicons is an open-source collection of {0} for the mosque, prayer, the Quran, Hajj, Ramadan and more. Drawn to one standard, they look like the work of one hand, and they work on any web page or app that shows SVG."
+
+#: src/routes/Guide.svelte
+msgid "افتح <0>صفحة الأيقونات</0>، وابحث عن الأيقونة أو تصفّح تصنيفاتها، ثم اضغط عليها لتفتح لوحتها."
+msgstr "Open the <0>icons page</0>, search for an icon or browse its categories, then press it to open its panel."
+
+#: src/routes/Guide.svelte
+msgid "اضبط من لوحة التخصيص ما تحتاجه: الحجم من ١٦ إلى ٦٤ بكسل، وسُمك الخط من ١ إلى ٣، واللون (لون النص أو لون تختاره)."
+msgstr "Set what you need in the customiser: size from 16 to 64 pixels, stroke from 1 to 3, and the colour (text colour, or a colour you choose)."
+
+#: src/routes/Guide.svelte
+msgid "اضغط «نسخ SVG» لتلصق الرمز في صفحتك، أو نزّل ملف SVG، أو صورة PNG بمقاس ٥١٢×٥١٢ وخلفية شفافة."
+msgstr "Press “Copy SVG” to paste the markup into your page, or download an SVG file, or a PNG image at 512×512 with a transparent background."
+
+#: src/routes/Guide.svelte
+msgid "السُمك محسوب في الرمز نفسه: يُكبَّر الرسم أو يُصغَّر قليلاً على قدر خطه حتى تبلغ حافته حدود اللوحة. فإن أردت سُمكاً آخر فاختره من لوحة التخصيص وانسخ الأيقونة من جديد، ولا تغيّر <0/> في الرمز المنسوخ، لأن الخط الأثقل يتجاوز حينها حدود اللوحة."
+msgstr "The stroke is baked into the markup itself: the drawing grows or shrinks a little with its stroke until its edge meets the box. If you want a different stroke, choose it in the customiser and copy the icon again. Do not change <0/> in the copied markup, because a heavier stroke then runs past the box."
+
+#: src/routes/Guide.svelte
+msgid "ولأن الحافة على حدود اللوحة يحمل الرمز <0/>، فأبقِها: المتصفح يقصّ ما يبلغ حدود عنصر svg، فإن وقعت الأيقونة بين بكسلين، كما في الأحجام الكسرية أو عند تكبير الصفحة، ذهب جزء من حافتها."
+msgstr "And because the edge sits on the box, the markup carries <0/>. Keep it: the browser clips whatever reaches the edge of an svg element. If the icon lands between two pixels, as with fractional sizes or when the page is zoomed, part of that edge disappears."
+
+#: src/routes/Guide.svelte
+msgid "إن تركت اللون على «لون النص» فالرمز يُرسم بـ<0/>، أي بلون النص الذي حوله، فيكفي أن تلوّن العنصر الحاوي:"
+msgstr "If you leave the colour on “Text colour”, the markup is drawn with <0/>, the colour of the text around it. Colouring the containing element is enough:"
+
+#: src/routes/Guide.svelte
+msgid "كل أيقونة مكوّن مستقل يحمل اسمها بصيغة PascalCase، فـ<0/> تصير <1/>. وستُبنى الحزمة بحيث لا يدخل في مشروعك إلا ما تستورده منها."
+msgstr "Each icon is its own component, named after it in PascalCase, so <0/> becomes <1/>. The package will be built so that only what you import from it enters your project."
+
+#: src/components/icons/IconPanel.svelte
+#: src/routes/Guide.svelte
+msgid "<0/> الحزمة قيد الإعداد، وهذا شكل استخدامها المرتقب."
+msgstr "<0/> The package is still being prepared, and this is how it will be used."
+
+#: src/routes/Guide.svelte
+msgid "الخاصية"
+msgstr "Prop"
+
+#: src/routes/Guide.svelte
+msgid "الافتراضي"
+msgstr "Default"
+
+#: src/routes/Guide.svelte
+msgid "الوصف"
+msgstr "Description"
+
+#: src/routes/Guide.svelte
+msgid "الخصائص نفسها في الحزمتين، وبالأسماء المألوفة في مكتبات الأيقونات، فلا تحتاج إلى تعلّم شيء جديد."
+msgstr "The props are the same in both packages, with the names familiar from icon libraries, so there is nothing new to learn."
+
+#: src/routes/Guide.svelte
+msgid "<0>الحجم:</0> غيّر <1/> و<2/>، أو اضبطهما من CSS فيغلبان الخاصيتين."
+msgstr "<0>Size:</0> change <1/> and <2/>, or set them from CSS, which overrides the attributes."
+
+#: src/routes/Guide.svelte
+msgid "<0>اللون:</0> اضبط <1/> على الأيقونة نفسها أو على أي عنصر يحتويها."
+msgstr "<0>Colour:</0> set <1/> on the icon itself, or on any element that contains it."
+
+#: src/routes/Guide.svelte
+msgid "لا تضبط <0/> على الأيقونة من CSS: الأيقونات خطوط، وملء العنصر يملأ أشكالها فتصير كتلاً."
+msgstr "Do not set <0/> on the icon from CSS: the icons are strokes, and filling the element fills their shapes, so they become blobs."
+
+#: src/routes/Guide.svelte
+msgid "لا تغيّر سُمك الخط بـ<0/> من CSS، للسبب المذكور في <1>النسخ والتنزيل</1>. استعمل لوحة التخصيص، أو خاصية <2/> في الحزمتين."
+msgstr "Do not change the stroke with <0/> from CSS, for the reason given in <1>Copy and download</1>. Use the customiser, or the <2/> prop in the two packages."
+
+#: src/routes/Guide.svelte
+msgid "الأيقونة عنصر <0/> عادي، فتنسّقها كما تنسّق أي عنصر:"
+msgstr "The icon is an ordinary <0/> element, so you style it as you would any element:"
+
+#: src/routes/Guide.svelte
+msgid "وفي Tailwind تكفي فئة للحجم وأخرى للون:"
+msgstr "In Tailwind, one class for the size and another for the colour is enough:"
+
+#: src/routes/Guide.svelte
+msgid "ما يجب تجنّبه"
+msgstr "What to avoid"
+
+#: src/routes/Guide.svelte
+msgid "أيقونة المسجد بأحجام مختلفة"
+msgstr "The mosque icon at different sizes"
+
+#: src/routes/Guide.svelte
+msgid "مقارنة سُمك الخط في الأحجام الصغيرة"
+msgstr "Comparing the stroke at small sizes"
+
+#: src/routes/Guide.svelte
+msgid "الأيقونات مرسومة على شبكة ٢٤ بخط ٢، وتُعرض بخط ١٫٦ مكبّرةً قليلاً حتى تملأ لوحتها، فتتسع الفراغات بين تفاصيلها الغنية وتتزن مع أيقونات واجهتك بالحجم نفسه. تظهر واضحة من ٢٠ بكسل فما فوق، وأبهى ما تكون من ٢٨ بكسل في البطاقات والعناوين."
+msgstr "The icons are drawn on a 24 grid at stroke 2, and shown at stroke 1.6, scaled up a little until they fill their box. The gaps between their fine details stay open, and they sit level with your interface icons at the same size. They stay clear from 20 pixels up, and they look their best from 28 pixels, in cards and headings."
+
+#: src/routes/Guide.svelte
+msgid "وإن احتجتها بحجم ١٦ بكسل، في زر صغير أو بجوار نص، فخفّف الخط إلى <0/> كي لا تتلاصق التفاصيل:"
+msgstr "If you need one at 16 pixels, in a small button or beside text, lighten the stroke to <0/> so the details do not run together:"
+
+#: src/routes/Guide.svelte
+msgid "<0>زينة بجوار نص:</0> أضف <1/>، لأن النص يقول المعنى."
+msgstr "<0>Decoration beside text:</0> add <1/>, because the text says the meaning."
+
+#: src/routes/Guide.svelte
+msgid "<0>زر أو رابط بلا نص:</0> ضع الاسم على الزر نفسه بـ<1/>، وأخفِ الأيقونة."
+msgstr "<0>A button or link with no text:</0> put the name on the button itself with <1/>, and hide the icon."
+
+#: src/routes/Guide.svelte
+msgid "<0>أيقونة تحمل المعنى وحدها:</0> أضف <1/> و<2/> بوصف قصير."
+msgstr "<0>An icon that carries the meaning on its own:</0> add <1/> and <2/> with a short description."
+
+#: src/routes/Guide.svelte
+msgid "قارئ الشاشة يحتاج أن يعرف: هل الأيقونة زينة بجوار كلام يقول معناها، أم هي المعنى نفسه؟"
+msgstr "A screen reader needs to know: is the icon decoration beside words that say its meaning, or is it the meaning itself?"
+
+#: src/routes/Guide.svelte
+msgid "ولا تجعل اللون وحده يحمل المعنى: إن دلّ لون الأيقونة على حالة، فاذكر الحالة بنص أيضاً."
+msgstr "And do not let colour carry the meaning alone. If an icon's colour signals a state, say the state in text as well."
+
+#: src/routes/Guide.svelte
+msgid "أمثلة على أيقونات فيها أجزاء مصمتة"
+msgstr "Examples of icons with solid parts"
+
+#: src/routes/Guide.svelte
+msgid "بعض الأيقونات فيها أجزاء مصمتة، مثل النجمة في <0>هلال ونجمة</0> أو النسخ <1>المُصمَتة</1> من أيقونات المستخدم. هذه الأجزاء تُملأ بـ<2/> أيضاً، فتتبع اللون نفسه الذي تختاره للخط، وإن اخترت لوناً قبل النسخ أو التنزيل أخذته معه."
+msgstr "Some icons have solid parts, such as the star in <0>Star and crescent</0> or the <1>filled</1> variants of the user icons. Those parts are filled with <2/> too, so they follow the same colour you choose for the stroke. If you choose a colour before copying or downloading, they take it with them."
+
+#: src/routes/Guide.svelte
+msgid "أمثلة على أيقونات لها نسختان"
+msgstr "Examples of icons that come in a pair"
+
+#: src/routes/Guide.svelte
+msgid "الاتجاه في الواجهات العربية"
+msgstr "Direction in Arabic interfaces"
+
+#: src/routes/Guide.svelte
+msgid "الأيقونات لا تنعكس تلقائياً في الصفحات ذات الاتجاه من اليمين إلى اليسار، لأن أغلبها رموز لا اتجاه لها: المسجد مسجد في كل لغة. أما ما له اتجاه فتجد له نسختين صريحتين، فاختر منهما ما يناسب سياقك."
+msgstr "Icons do not mirror themselves on right-to-left pages, because most of them are symbols with no direction: a mosque is a mosque in every language. Anything that does have a direction comes as two explicit icons, so you pick the one that fits your context."
+
+#: src/routes/Guide.svelte
+msgid "يتجاهل البحث التشكيل، ويساوي بين صور الهمزة، والتاء المربوطة والهاء، والألف المقصورة والياء."
+msgstr "Search ignores vowel marks, and treats the forms of hamza as the same, ta marbuta and ha as the same, and alif maqsura and ya as the same."
+
+#: src/routes/Guide.svelte
+msgid "يجد الكلمة مع «ال» وبدونها، فـ«المسجد» و«مسجد» سواء."
+msgstr "It finds a word with «ال» and without it, so «المسجد» and «مسجد» are the same."
+
+#: src/routes/Guide.svelte
+msgid "إن كتبت أكثر من كلمة فيجب أن تطابق الأيقونةُ كلَّ كلمة، وتظهر الأقرب أولاً."
+msgstr "If you type more than one word, the icon must match every word, and the closest comes first."
+
+#: src/routes/Guide.svelte
+msgid "<0>اسم برمجي</0> بالإنجليزية وبحروف صغيرة تفصلها شَرطة، وهو اسم ملفها: <1/>."
+msgstr "<0>A programmatic name</0> in English, lowercase, with hyphens between words. It is the file name: <1/>."
+
+#: src/routes/Guide.svelte
+msgid "<0>اسم المكوّن</0> في الحزمتين بصيغة PascalCase: <1/>."
+msgstr "<0>A component name</0> in the two packages, in PascalCase: <1/>."
+
+#: src/routes/Guide.svelte
+msgid "<0>عنوان عربي</0> يظهر في الموقع: سجادة صلاة (ملفوفة)."
+msgstr "<0>An Arabic title</0> shown on the site: سجادة صلاة (ملفوفة)."
+
+#: src/routes/Guide.svelte
+msgid "ابحث بالعربية أو بالإنجليزية من <0>صفحة الأيقونات</0>، أو اضغط <1/> لتنتقل إلى مربع البحث من أي مكان فيها."
+msgstr "Search in Arabic or English from the <0>icons page</0>, or press <1/> to jump to the search box from anywhere on it."
+
+#: src/routes/Guide.svelte
+msgid "لكل أيقونة أربعة أسماء:"
+msgstr "Each icon has four names:"
+
+#: src/routes/Guide.svelte
+msgid "هذه القواعد التي تُرسم بها كل أيقونة في المكتبة، وبها تتناسق فيما بينها وتعمل في أي مشروع. كل أيقونة ملفان في مجلد <0/> يحملان اسمها."
+msgstr "These are the rules every icon in the library is drawn to. They keep the icons consistent with each other and working in any project. Each icon is two files in the <0/> directory, both carrying its name."
+
+#: src/routes/Guide.svelte
+msgid "يتحقق الأمر <0/> من هذه القواعد كلها ويرفض كل أيقونة تخالفها، ويعمل تلقائياً قبل كل بناء للموقع."
+msgstr "The <0/> command checks every one of these rules and rejects any icon that breaks them. It runs automatically before every build of the site."
+
+#: src/routes/Guide.svelte
+msgid "ارسم الأيقونة على شبكة ٢٤ بخط ٢، واحفظها في <0/> بخصائص الجذر القياسية."
+msgstr "Draw the icon on a 24 grid at stroke 2, and save it in <0/> with the standard root attributes."
+
+#: src/routes/Guide.svelte
+msgid "أنشئ <0/> بعنوانها العربي وعنوانها الإنجليزي وكلمات البحث."
+msgstr "Create <0/> with its Arabic title, its English title and its search tags."
+
+#: src/routes/Guide.svelte
+msgid "أضف اسمها إلى قائمة تصنيفها في <0/>، في الموضع الذي يجب أن تظهر فيه."
+msgstr "Add its name to its category's list in <0/>, in the position where it should appear."
+
+#: src/routes/Guide.svelte
+msgid "شغّل الفحص، فإن مرّ ظهرت الأيقونة في الموقع عند البناء التالي دون أي تعديل في الشيفرة."
+msgstr "Run the check. If it passes, the icon appears on the site at the next build, with no change to the code."
+
+#: src/routes/Guide.svelte
+msgid "قواعد التسمية"
+msgstr "Naming rules"
+
+#: src/routes/Guide.svelte
+msgid "المكتبة مفتوحة المصدر برخصة MIT. يمكنك استعمال الأيقونات وتعديلها في مشاريعك الشخصية والتجارية مجاناً. والشرط الوحيد أن يبقى نص الرخصة مع نسخ المكتبة أو أجزاء كبيرة منها، في ملف التراخيص مثلاً، ولا يُشترط ذكرها في واجهة مشروعك."
+msgstr "The library is open source under the MIT licence. You can use the icons and change them in your personal and commercial projects for free. The only condition is that the licence text stays with copies of the library, or large parts of it, for example in a notices file. You do not have to show it in your project's interface."
+
+#: src/routes/Guide.svelte
+msgid "رموز واجهة هذا الموقع، كالبحث والنسخ والتنزيل، من مكتبة <0/> برخصة MIT، وليست جزءاً من المكتبة."
+msgstr "The interface symbols on this site, such as search, copy and download, come from the <0/> library under the MIT licence. They are not part of this library."
+
+#. 0: count; 1: query; 2: scope
+#: src/routes/Home.svelte
+msgid "{0} تطابق «{1}» في {2}"
+msgstr "{0} matching “{1}” in {2}"
+
+#. 0: count; 1: query
+#: src/routes/Home.svelte
+msgid "{0} تطابق «{1}»"
+msgstr "{0} matching “{1}”"
+
+#. 0: count; 1: scope
+#: src/routes/Home.svelte
+msgid "{0} في {1}"
+msgstr "{0} in {1}"
+
+#. 0: count
+#: src/routes/Home.svelte
+msgid "كل الأيقونات: {0}"
+msgstr "All icons: {0}"
+
+#: src/routes/Home.svelte
+msgid "ابحث بالعربية أو بالإنجليزية: مسجد، quran، رمضان…"
+msgstr "Search in Arabic or English: mosque, quran, Ramadan…"
+
+#: src/routes/Home.svelte
+msgid "ابحث في الأيقونات"
+msgstr "Search the icons"
+
+#: src/routes/Home.svelte
+msgid "مسح البحث"
+msgstr "Clear search"
+
+#: src/routes/Home.svelte
+msgid "<0/> تخصيص الحجم والسُمك واللون <1/>"
+msgstr "<0/> Customise size, stroke and colour <1/>"
+
+#: src/routes/Home.svelte
+msgid "لم نجد أيقونة بهذا الوصف"
+msgstr "No icon matches that"
+
+#: src/routes/Home.svelte
+msgid "جرّب كلمة أقرب، أو ابحث بالإنجليزية، أو تصفّح كل التصنيفات."
+msgstr "Try a closer word, search in Arabic, or browse every category."
+
+#: src/routes/Home.svelte
+msgid "<0/> عرض كل الأيقونات"
+msgstr "<0/> Show all icons"
+
+#: src/routes/NotFound.svelte
+msgid "ضلّت هذه الصفحة طريقها"
+msgstr "This page has lost its way"
+
+#: src/routes/NotFound.svelte
+msgid "الرابط غير صحيح أو نُقلت الصفحة. ارجع إلى الأيقونات وستجد ما تبحث عنه."
+msgstr "The link is wrong, or the page has moved. Go back to the icons and you will find what you are looking for."
+
+#: src/routes/NotFound.svelte
+msgid "<0/> تصفّح الأيقونات"
+msgstr "<0/> Browse the icons"
+
+#: src/components/home/Hero.svelte
+msgid "أيقونات مختارة"
+msgstr "Selected icons"
+
+#: src/components/icons/CategoryNav.svelte
+msgid "الكل"
+msgstr "All"
+
+#: src/components/icons/CategoryNav.svelte
+msgid "التصنيفات"
+msgstr "Categories"
+
+#: src/components/icons/Customizer.svelte
+msgid "التخصيص"
+msgstr "Customise"
+
+#: src/components/icons/Customizer.svelte
+msgid "<0/> استعادة"
+msgstr "<0/> Restore"
+
+#: src/components/icons/Customizer.svelte
+msgid "الحجم"
+msgstr "Size"
+
+#: src/components/icons/Customizer.svelte
+msgid "سُمك الخط"
+msgstr "Stroke"
+
+#: src/components/icons/Customizer.svelte
+#: src/components/icons/Customizer.svelte
+msgid "لون مخصّص"
+msgstr "Custom colour"
+
+#: src/components/icons/Customizer.svelte
+msgid "اللون"
+msgstr "Colour"
+
+#: src/components/icons/IconActions.svelte
+msgid "نسخ SVG"
+msgstr "Copy SVG"
+
+#: src/components/icons/IconActions.svelte
+msgid "<0/> تنزيل SVG"
+msgstr "<0/> Download SVG"
+
+#: src/components/icons/IconActions.svelte
+msgid "<0/> تنزيل PNG"
+msgstr "<0/> Download PNG"
+
+#: src/components/icons/IconActions.svelte
+msgid "تعذّر النسخ، انسخ الكود من تبويب SVG أدناه."
+msgstr "Couldn't copy. Copy the code from the SVG tab below."
+
+#: src/components/icons/IconActions.svelte
+msgid "تعذّر إنشاء صورة PNG، جرّب تنزيل SVG."
+msgstr "Couldn't make a PNG. Try downloading the SVG."
+
+#: src/components/icons/IconPanel.svelte
+msgid "من التصنيف نفسه"
+msgstr "From the same category"
+
+#: src/routes/Guide.svelte
+msgid "يبدأ بحرف كبير وبلا حروف عربية، وعلامة ﷺ مسموحة. ويُكتب المصطلح الإسلامي بتهجئة الاسم البرمجي مع حروفه الكبيرة وفاصلته العليا (Tawaf وDhuhr وTilawa وSa'i وAsbab al-Nuzul)، وما سواه إنجليزية واضحة (Mosque وPrayer mat). ويبقى المعنى الإنجليزي كلمة بحث (recitation وprostration). وعنوان الأصل بلا أقواس، وعنوان النسخة هو عنوان أصلها وما يميّزها بين قوسين، وفرق ثانٍ بعد فاصلة إنجليزية (Ihram (wide beard, filled))، ونسخة filled آخر ما بين قوسيها كلمة filled. والعناوين لا تتكرر."
+msgstr "It starts with a capital letter and has no Arabic letters; the ﷺ sign is allowed. An Islamic term keeps the programmatic name's spelling, with its capitals and apostrophe (Tawaf, Dhuhr, Tilawa, Sa'i and Asbab al-Nuzul), and everything else is plain English (Mosque and Prayer mat). The English meaning stays a search tag (recitation and prostration). A base title has no parentheses. A variant's title is its base title plus what sets it apart, in parentheses, and a second difference comes after an English comma (Ihram (wide beard, filled)). A filled variant ends its parentheses with the word filled. Titles are never repeated."
+
+#: src/routes/Guide.svelte
+msgid "<0>عنوان إنجليزي</0> يظهر في الموقع الإنجليزي ويجده البحث أيضاً: <1/>."
+msgstr "<0>An English title</0> shown on the English site, which search also finds: <1/>."
+
+#: src/components/home/Hero.svelte
+msgid "(قريباً)"
+msgstr "(coming soon)"
+
+#: src/components/home/Hero.svelte
+msgid "متوفرة على:"
+msgstr "Available for:"
+
+#: src/components/home/Hero.svelte
+msgid "<0>أيقونات إسلامية</0> مرسومة بإتقان"
+msgstr "<0>Islamic icons</0> drawn with care"
+
+#. 0: count_icons(icons.length)
+#: src/components/home/Hero.svelte
+msgid "{0} إسلامية بقواعد رسم واحدة، مفتوحة المصدر ومجانية. اختر أيقونة لتنسخ رمزها أو تنزّلها، بالحجم والسُمك واللون الذي تريد."
+msgstr "{0} for Islamic apps and websites, drawn to one set of rules, open source and free. Pick an icon to copy its code or download it, at the size, stroke and colour you want."

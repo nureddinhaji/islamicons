@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "esnext",
+    "types": ["svelte", "vite/client"],
+    "allowJs": true,
+    "checkJs": true,
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "paths": {
+      "$icon": ["./src/lib/components/Icon.svelte"],
+      "~/*": ["./src/*"],
+      "$lib/*": ["./src/lib/*"],
+      "$ui/*": ["./src/lib/components/ui/*"]
+    }
+  },
+  "include": ["src"]
+}

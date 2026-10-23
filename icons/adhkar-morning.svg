@@ -1,0 +1,35 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="3.1" r="1.1"/>
+  <circle cx="8.05" cy="4.158" r="1.1"/>
+  <circle cx="5.158" cy="7.05" r="1.1"/>
+  <circle cx="4.1" cy="11" r="1.1"/>
+  <circle cx="5.158" cy="14.95" r="1.1"/>
+  <circle cx="8.05" cy="17.842" r="1.1"/>
+  <circle cx="12" cy="18.9" r="1.1"/>
+  <circle cx="15.95" cy="17.842" r="1.1"/>
+  <circle cx="18.842" cy="14.95" r="1.1"/>
+  <circle cx="19.9" cy="11" r="1.1"/>
+  <circle cx="18.842" cy="7.05" r="1.1"/>
+  <circle cx="15.95" cy="4.158" r="1.1"/>
+  <path d="M12 20c-.2.8-.7 1.5-1.5 2"/>
+  <path d="M12 20c.2.8.7 1.5 1.5 2"/>
+  <circle cx="12" cy="11" r="2.2" fill="currentColor"/>
+  <path d="M16.1 11L16.5 11"/>
+  <path d="M14.899 8.101L15.182 7.818"/>
+  <path d="M12 6.9L12 6.5"/>
+  <path d="M9.101 8.101L8.818 7.818"/>
+  <path d="M7.9 11L7.5 11"/>
+  <path d="M9.101 13.899L8.818 14.182"/>
+  <path d="M12 15.1L12 15.5"/>
+  <path d="M14.899 13.899L15.182 14.182"/>
+</svg>

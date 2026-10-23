@@ -1,0 +1,247 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark, .dark *));
+/* shadcn wrappers style states bits-ui only emits as data-state. */
+@custom-variant data-active (&:is([data-active], [data-state='active']));
+@custom-variant data-open
+  (&:is([data-open], [data-state='open'], [data-state='instant-open'], [data-state='delayed-open']));
+@custom-variant data-closed (&:is([data-closed], [data-state='closed']));
+@custom-variant data-horizontal (&:is([data-horizontal], [data-orientation='horizontal']));
+@custom-variant data-vertical (&:is([data-vertical], [data-orientation='vertical']));
+
+:root {
+  /* Warm paper, ink and a deep mosque green. */
+  --background: hsl(43 18% 96%);
+  --foreground: hsl(40 6% 10%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: var(--foreground);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: var(--foreground);
+  --muted: hsl(42 15% 92%);
+  --muted-foreground: hsl(38 6% 35%);
+  --border: hsl(42 17% 88%);
+  --input: hsl(41 12% 81%);
+  --primary: hsl(162 55% 27%);
+  --primary-strong: hsl(162 56% 19%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(42 15% 92%);
+  --secondary-foreground: var(--foreground);
+  --accent: hsl(42 15% 92%);
+  --accent-foreground: var(--foreground);
+  --destructive: hsl(0 70% 45%);
+  --gold: hsl(38 73% 38%);
+  --grid-line: hsl(42 14% 89%);
+  --ring: hsl(162 55% 27%);
+  --ring-focus: hsl(162 55% 27%);
+
+  --radius: 0.75rem;
+  --header-height: --spacing(15);
+
+  --leading-body: 1.7;
+}
+
+:root:lang(en) {
+  --leading-body: 1.6;
+}
+
+.dark {
+  --background: hsl(155 14% 6%);
+  --foreground: hsl(45 14% 92%);
+  --card: hsl(155 12% 9%);
+  --card-foreground: var(--foreground);
+  --popover: hsl(155 12% 10%);
+  --popover-foreground: var(--foreground);
+  --muted: hsl(155 10% 13%);
+  --muted-foreground: hsl(60 4% 66%);
+  --border: hsl(155 9% 17%);
+  --input: hsl(155 8% 24%);
+  --primary: hsl(160 45% 52%);
+  --primary-strong: hsl(160 45% 62%);
+  --primary-foreground: hsl(155 30% 6%);
+  --secondary: hsl(155 10% 13%);
+  --secondary-foreground: var(--foreground);
+  --accent: hsl(155 10% 13%);
+  --accent-foreground: var(--foreground);
+  --destructive: hsl(0 72% 62%);
+  --gold: hsl(40 62% 60%);
+  --grid-line: hsl(155 9% 15%);
+  --ring: hsl(160 45% 52%);
+  --ring-focus: hsl(160 45% 52%);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-gold: var(--gold);
+  --color-grid-line: var(--grid-line);
+  --color-ring: var(--ring);
+
+  --font-sans: 'IBM Plex Sans Arabic', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scrollbar-gutter: stable;
+    font-size: 19px;
+    @media (max-width: 992px) {
+      font-size: 18px;
+    }
+    @media (max-width: 768px) {
+      font-size: 17px;
+    }
+    @media (max-width: 576px) {
+      font-size: 15px;
+    }
+  }
+
+  body {
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-body);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    line-height: 1.3;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :where(
+    a[href],
+    button,
+    input,
+    textarea,
+    select,
+    summary,
+    [role='button'],
+    [role='slider'],
+    [tabindex]:not([tabindex='-1'])
+  ):focus-visible {
+    outline: 2px solid transparent;
+    --tw-ring-shadow: 0 0 0 2px var(--color-background), 0 0 0 4px var(--ring-focus);
+    box-shadow: var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-primary) 22%, transparent);
+  }
+
+  [id] {
+    scroll-margin-top: calc(var(--header-height) + 1.5rem);
+  }
+}
+
+/* Strokes are injected with pathLength="1", so one dash covers any path length. */
+@keyframes draw-stroke {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fill-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* The --draw-* variables let one drawing (the hero logo) set a calmer pace; icons keep these defaults. */
+.draw-icon :where([pathLength]) {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw-stroke var(--draw-duration, 0.9s) var(--draw-ease, var(--ease-out-quint)) forwards;
+  animation-delay: calc(var(--i, 0) * var(--draw-step, 110ms) + var(--draw-delay, 0ms));
+}
+
+.draw-icon :where([fill='currentColor']) {
+  opacity: 0;
+  animation: fill-in var(--draw-fill-duration, 0.5s) var(--draw-fill-ease, ease-out) forwards;
+  animation-delay: calc(var(--i, 0) * var(--draw-step, 110ms) + var(--draw-delay, 0ms));
+}
+
+/* A hero cell's new icon is drawn in the brand's green and dries to the text colour. */
+@keyframes fresh-ink {
+  from {
+    color: var(--color-primary);
+  }
+}
+
+.fresh-ink {
+  animation: fresh-ink 2.4s ease-in 0.3s backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draw-icon :where([pathLength], [fill='currentColor']) {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  [data-slot='sheet-content'],
+  [data-slot='sheet-overlay'] {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Registry buttons and tabs draw their ring at 50 % --ring (2.2:1); set here, not in components/ui (rule 19). */
+:is([data-slot='button'], [data-slot='tabs-trigger']):focus-visible {
+  --tw-ring-color: var(--ring);
+}
+
+/* Button and Tabs.Content ship outline-none, which beats the base High Contrast outline. */
+[data-slot='button']:focus-visible,
+[data-slot='tabs-content']:focus-visible {
+  outline: 2px solid transparent;
+}

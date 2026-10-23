@@ -1,0 +1,22 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4.35 17.74V4.35a0.96 0.96 0 0 1 0.96 -0.96h13.4a0.96 0.96 0 0 1 0.96 0.96v10.53"/>
+  <path d="M6.26 2.19V3.39"/>
+  <path d="M9.13 2.19V3.39"/>
+  <path d="M12 2.19V3.39"/>
+  <path d="M14.87 2.19V3.39"/>
+  <path d="M17.74 2.19V3.39"/>
+  <path d="M7.69 14.87v-4.78c0 -1.53 1.91 -2.68 4.31 -4.4c2.39 1.72 4.31 2.87 4.31 4.4v4.78"/>
+  <path d="M11.04 14.87v-1.91a0.96 0.96 0 0 1 1.91 0V14.87"/>
+  <path d="M6.45 14.87h13.87a1.67 2.87 0 0 1 0 5.74H6.45"/>
+  <ellipse cx="6.45" cy="17.74" rx="2.11" ry="2.87"/>
+</svg>
