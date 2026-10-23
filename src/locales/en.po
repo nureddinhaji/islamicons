@@ -609,10 +609,6 @@ msgstr "Naming rules"
 msgid "المكتبة مفتوحة المصدر برخصة MIT. يمكنك استعمال الأيقونات وتعديلها في مشاريعك الشخصية والتجارية مجاناً. والشرط الوحيد أن يبقى نص الرخصة مع نسخ المكتبة أو أجزاء كبيرة منها، في ملف التراخيص مثلاً، ولا يُشترط ذكرها في واجهة مشروعك."
 msgstr "The library is open source under the MIT licence. You can use the icons and change them in your personal and commercial projects for free. The only condition is that the licence text stays with copies of the library, or large parts of it, for example in a notices file. You do not have to show it in your project's interface."
 
-#: src/routes/Guide.svelte
-msgid "رموز واجهة هذا الموقع، كالبحث والنسخ والتنزيل، من مكتبة <0/> برخصة MIT، وليست جزءاً من المكتبة."
-msgstr "The interface symbols on this site, such as search, copy and download, come from the <0/> library under the MIT licence. They are not part of this library."
-
 #. 0: count; 1: query; 2: scope
 #: src/routes/Home.svelte
 msgid "{0} تطابق «{1}» في {2}"
@@ -758,3 +754,7 @@ msgstr "<0>Islamic icons</0> drawn with care"
 #: src/components/home/Hero.svelte
 msgid "{0} إسلامية بقواعد رسم واحدة، مفتوحة المصدر ومجانية. اختر أيقونة لتنسخ رمزها أو تنزّلها، بالحجم والسُمك واللون الذي تريد."
 msgstr "{0} for Islamic apps and websites, drawn to one set of rules, open source and free. Pick an icon to copy its code or download it, at the size, stroke and colour you want."
+
+#: src/routes/Guide.svelte
+msgid "رموز واجهة هذا الموقع، كالبحث والنسخ والتنزيل، من مكتبة <0/>، ومكوّناتها، كالأزرار والحقول، من <1/>. وكلتاهما برخصة MIT، وليستا جزءاً من المكتبة."
+msgstr "The interface symbols on this site, such as search, copy and download, come from the <0/> library, and its components, such as buttons and fields, from <1/>. Both are under the MIT licence and are not part of this library."

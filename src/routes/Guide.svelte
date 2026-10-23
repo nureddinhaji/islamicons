@@ -359,8 +359,10 @@
                 </p>
                 <p class="text-sm text-muted-foreground">
                     رموز واجهة هذا الموقع، كالبحث والنسخ والتنزيل، من مكتبة
-                    <a href="https://tabler.io/icons" class="underline underline-offset-4">Tabler Icons</a> برخصة MIT، وليست
-                    جزءاً من المكتبة.
+                    <a href="https://tabler.io/icons" class="underline underline-offset-4">Tabler Icons</a>، ومكوّناتها،
+                    كالأزرار والحقول، من
+                    <a href="https://shadcn-svelte.com" class="underline underline-offset-4">shadcn-svelte</a>. وكلتاهما
+                    برخصة MIT، وليستا جزءاً من المكتبة.
                 </p>
             </section>
         </article>

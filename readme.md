@@ -57,8 +57,11 @@
 MIT، © 2026 Nureddin Haji. مجانية للاستعمال الشخصي والتجاري، والشرط الوحيد أن يبقى نص الرخصة مع نسخ المكتبة أو أجزاء
 كبيرة منها. انظر `LICENSE`.
 
-رموز واجهة الموقع، كالبحث والنسخ والتنزيل، من [Tabler Icons](https://tabler.io/icons) برخصة MIT، © Paweł Kuna، وليست
-جزءاً من المكتبة.
+وتستعمل واجهة الموقع رموزاً وشيفرة من مشروعين آخرين برخصة MIT، وليست جزءاً من المكتبة:
+
+- رموز الواجهة، كالبحث والنسخ والتنزيل: [Tabler Icons](https://tabler.io/icons)، © Paweł Kuna.
+- مكونات الواجهة، كالأزرار والحقول واللوحة الجانبية: [shadcn-svelte](https://shadcn-svelte.com)، © Hunter Johnston
+  وCokaKoala وshadcn، ونص رخصتها في [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 
 </div>
 
@@ -103,5 +106,8 @@ New icons and fixes are welcome. The drawing standard, the naming rules and how 
 MIT, © 2026 Nureddin Haji. Free for personal and commercial use; keep the license text with copies of the library or
 substantial parts of it. See `LICENSE`.
 
-The site's interface glyphs (search, copy, download and the like) are from [Tabler Icons](https://tabler.io/icons), MIT,
-© Paweł Kuna; they are not part of the library.
+The site's interface uses glyphs and code from two other MIT-licensed projects; they are not part of the library:
+
+- Interface glyphs (search, copy, download and the like): [Tabler Icons](https://tabler.io/icons), © Paweł Kuna.
+- Interface components (buttons, inputs, the side sheet): [shadcn-svelte](https://shadcn-svelte.com), © Hunter Johnston,
+  CokaKoala and shadcn. Its license text is in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
