@@ -262,7 +262,7 @@ for (const icon of icons) {
     const m = icon.metrics
     console.log(
         `${icon.label}: ink ${(m.ink * 100).toFixed(1)}%, centre ${fixed(m.centre[0])},${fixed(m.centre[1])}, ` +
-            `reach ${m.bounds.map(v => v.toFixed(1)).join(' ')}, tightest gap ${m.tightest.toFixed(2)}, touching ${m.touching}`,
+            `reach ${m.bounds.map(v => v.toFixed(1)).join(' ')}, tightest gap ${Number.isFinite(m.tightest) ? m.tightest.toFixed(2) : 'none'}, touching ${m.touching}`,
     )
 }
 console.log(`set median: ink ${(set.ink * 100).toFixed(1)}%, tightest gap ${set.tightest.toFixed(2)}`)
