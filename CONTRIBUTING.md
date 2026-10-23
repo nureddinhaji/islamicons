@@ -112,6 +112,7 @@ Node 24 وpnpm 12، مثبّتان في `mise.toml`. شغّل الأوامر ع�
 pnpm dev            # خادم التطوير (VITE_PORT من mise.toml)
 pnpm build          # فحص الأيقونات، ثم بناء الإنتاج في dist/
 pnpm check:icons    # معايير الرسم على icons/
+pnpm sheet mosque   # صفحة مراجعة: الشبكة والأحجام المعروضة والقياسات، في tmp/sheets/
 pnpm test           # اختبارات الفحص
 pnpm lint           # oxlint
 pnpm format:check   # oxfmt
@@ -134,6 +135,8 @@ pnpm format:check
 
 </div>
 
+وإن أضفت أيقونة أو غيّرت رسمها، فأرفق بالطلب صفحة مراجعتها من `pnpm sheet <name>`، أو `pnpm sheet <old> <new>` للمقارنة
+بين نسختين.
 وإن غيّرت أيقونة من أيقونات صورة المعاينة في الصفحة الأولى، فأعد توليدها بـ`pnpm preview:readme`.
 
 </div>
@@ -245,6 +248,7 @@ activated.
 pnpm dev            # dev server (VITE_PORT from mise.toml)
 pnpm build          # icon check, then production build into dist/
 pnpm check:icons    # the drawing standard, over icons/
+pnpm sheet mosque   # review sheet: grid, shown sizes, measurements, into tmp/sheets/
 pnpm test           # regression tests of the check
 pnpm lint           # oxlint
 pnpm format:check   # oxfmt
@@ -261,4 +265,6 @@ pnpm lint
 pnpm format:check
 ```
 
+If you added an icon or changed a drawing, attach its review sheet from `pnpm sheet <name>` (or `pnpm sheet <old> <new>`
+to compare two versions).
 If you changed an icon shown in the readme's preview sheet, regenerate it with `pnpm preview:readme`.

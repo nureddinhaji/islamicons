@@ -13,6 +13,7 @@
     "@fontsource/ibm-plex-sans-arabic": "^5.2.8",
     "@mustafaj/oxfmt": "0.65.0-svelte.10",
     "@mustafaj/oxlint": "1.80.0-svelte.11",
+    "@resvg/resvg-js": "2.6.2",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@tabler/icons": "^3.49.0",
     "@tailwindcss/vite": "^4.3.3",
@@ -43,6 +44,7 @@
     "lint": "oxlint -c oxlint.config.js .",
     "lint:fix": "oxlint --fix -c oxlint.config.js .",
     "preview:readme": "node scripts/readme-preview.js",
+    "sheet": "node scripts/sheet.js",
     "test": "node --test scripts/*.test.js"
   },
   "browserslist": [
