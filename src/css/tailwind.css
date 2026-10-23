@@ -210,6 +210,14 @@
   animation-delay: calc(var(--i, 0) * var(--draw-step, 110ms) + var(--draw-delay, 0ms));
 }
 
+/* An icon's solid parts are stroked too; on its own, the fill-in above would replace their stroke's drawing. */
+.draw-icon :where([pathLength][fill='currentColor']) {
+  animation:
+    draw-stroke var(--draw-duration, 0.9s) var(--draw-ease, var(--ease-out-quint)) forwards,
+    fill-in var(--draw-fill-duration, 0.5s) var(--draw-fill-ease, ease-out) forwards;
+  animation-delay: calc(var(--i, 0) * var(--draw-step, 110ms) + var(--draw-delay, 0ms));
+}
+
 /* A hero cell's new icon is drawn in the brand's green and dries to the text colour. */
 @keyframes fresh-ink {
   from {
