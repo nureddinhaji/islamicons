@@ -27,9 +27,15 @@ const FONT = 'Noto Sans, DejaVu Sans, Helvetica, Arial, sans-serif'
 function parse_args(argv) {
     const options = {inputs: [], siblings: DEFAULT_SIBLINGS, out: null}
     for (let i = 0; i < argv.length; i++) {
-        if (argv[i] === '--with') options.siblings = argv[++i].split(',').filter(Boolean)
-        else if (argv[i] === '--out') options.out = argv[++i]
-        else options.inputs.push(argv[i])
+        const arg = argv[i]
+        if (arg !== '--with' && arg !== '--out') {
+            options.inputs.push(arg)
+            continue
+        }
+        const value = argv[++i]
+        if (!value || value.startsWith('--')) return null
+        if (arg === '--with') options.siblings = value.split(',').filter(Boolean)
+        else options.out = value
     }
     return options
 }
@@ -111,7 +117,8 @@ function measure({elements, inner}) {
     const unit = value => value / MEASURE
     return {
         ink: ink / mask.length,
-        centre: [unit(sx / ink) - 12, unit(sy / ink) - 12],
+        // pixel i covers i..i+1, so its centre is i + 0.5
+        centre: [unit(sx / ink + 0.5) - 12, unit(sy / ink + 0.5) - 12],
         // the ink box less half the drawn stroke: where the paths themselves reach
         bounds: [unit(x0) + 1, unit(y0) + 1, unit(x1 + 1) - 1, unit(y1 + 1) - 1],
         tightest,
@@ -204,7 +211,11 @@ function pixel_view(inner, size, x, y, cell) {
     return out
 }
 
-const fixed = (value, digits = 2) => (value >= 0 ? '+' : '') + value.toFixed(digits)
+const fixed = (value, digits = 2) => {
+    // `|| 0` turns a rounded -0 into 0, so a centred icon prints +0.00
+    const rounded = Number(value.toFixed(digits)) || 0
+    return (rounded >= 0 ? '+' : '') + rounded.toFixed(digits)
+}
 
 function metrics_lines(m, set) {
     const [bx0, by0, bx1, by1] = m.bounds.map(v => v.toFixed(1))
@@ -269,7 +280,7 @@ function build_sheet(icons, siblings, set) {
 }
 
 const options = parse_args(process.argv.slice(2))
-if (!options.inputs.length) {
+if (!options?.inputs.length) {
     console.error('usage: pnpm sheet <name|file.svg>... [--with a,b,c] [--out file.png]')
     process.exit(1)
 }
