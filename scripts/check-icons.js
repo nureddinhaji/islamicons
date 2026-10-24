@@ -252,7 +252,7 @@ for (const name of names) {
 }
 
 // Names that start with another icon's name without being its variant.
-const NOT_VARIANTS = new Set(['dome-of-the-rock'])
+const NOT_VARIANTS = new Set(['dome-of-the-rock', 'tazkiyah-of-the-heart'])
 
 const parent_of = name =>
     NOT_VARIANTS.has(name)
