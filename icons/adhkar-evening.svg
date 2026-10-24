@@ -10,17 +10,15 @@
   stroke-linejoin="round"
 >
   <circle cx="12" cy="3.1" r="1.1"/>
-  <circle cx="8.05" cy="4.158" r="1.1"/>
-  <circle cx="5.158" cy="7.05" r="1.1"/>
-  <circle cx="4.1" cy="11" r="1.1"/>
-  <circle cx="5.158" cy="14.95" r="1.1"/>
-  <circle cx="8.05" cy="17.842" r="1.1"/>
+  <circle cx="7.356" cy="4.609" r="1.1"/>
+  <circle cx="4.487" cy="8.559" r="1.1"/>
+  <circle cx="4.487" cy="13.441" r="1.1"/>
+  <circle cx="7.356" cy="17.391" r="1.1"/>
   <circle cx="12" cy="18.9" r="1.1"/>
-  <circle cx="15.95" cy="17.842" r="1.1"/>
-  <circle cx="18.842" cy="14.95" r="1.1"/>
-  <circle cx="19.9" cy="11" r="1.1"/>
-  <circle cx="18.842" cy="7.05" r="1.1"/>
-  <circle cx="15.95" cy="4.158" r="1.1"/>
+  <circle cx="16.644" cy="17.391" r="1.1"/>
+  <circle cx="19.513" cy="13.441" r="1.1"/>
+  <circle cx="19.513" cy="8.559" r="1.1"/>
+  <circle cx="16.644" cy="4.609" r="1.1"/>
   <path d="M12 20c-.2.8-.7 1.5-1.5 2"/>
   <path d="M12 20c.2.8.7 1.5 1.5 2"/>
   <path d="M12.626 7.32A4.179 4.179 0 1 0 16.053 12.877A3.343 3.343 0 0 1 12.626 7.32Z" fill="currentColor"/>
