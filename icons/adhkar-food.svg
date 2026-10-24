@@ -1,0 +1,28 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="3.1" r="1.1"/>
+  <circle cx="7.356" cy="4.609" r="1.1"/>
+  <circle cx="4.487" cy="8.559" r="1.1"/>
+  <circle cx="4.487" cy="13.441" r="1.1"/>
+  <circle cx="7.356" cy="17.391" r="1.1"/>
+  <circle cx="12" cy="18.9" r="1.1"/>
+  <circle cx="16.644" cy="17.391" r="1.1"/>
+  <circle cx="19.513" cy="13.441" r="1.1"/>
+  <circle cx="19.513" cy="8.559" r="1.1"/>
+  <circle cx="16.644" cy="4.609" r="1.1"/>
+  <path d="M12 20c-.2.8-.7 1.5-1.5 2"/>
+  <path d="M12 20c.2.8.7 1.5 1.5 2"/>
+  <path d="M8.1 12H15.9A4.369 4.369 0 0 1 13.3 14.202V14.9H10.7V14.202A4.369 4.369 0 0 1 8.1 12Z" fill="currentColor"/>
+  <path d="M9.3 9.4C9.606 8.8 8.994 8.2 9.3 7.6"/>
+  <path d="M12 9.4C12.442 8.533 11.558 7.667 12 6.8"/>
+  <path d="M14.7 9.4C15.006 8.8 14.394 8.2 14.7 7.6"/>
+</svg>
