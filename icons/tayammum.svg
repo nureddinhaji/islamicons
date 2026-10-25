@@ -1,0 +1,23 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2.45 13.5h3v8H2.45"/>
+  <path d="M5.45 20.5h9.5l6-5a1.8 1.8 0 0 0-2.4-2.7L15.4 15.15"/>
+  <path d="M5.45 14.5h2.5c1.2 0 2-.8 3.5-.8h2a1.8 1.8 0 0 1 0 3.6H10.45"/>
+  <circle cx="12.5" cy="2.75" r="0.25" fill="currentColor"/>
+  <circle cx="11" cy="5.35" r="0.25" fill="currentColor"/>
+  <circle cx="14" cy="5.35" r="0.25" fill="currentColor"/>
+  <circle cx="9.5" cy="7.95" r="0.25" fill="currentColor"/>
+  <circle cx="12.5" cy="7.95" r="0.25" fill="currentColor"/>
+  <circle cx="15.5" cy="7.95" r="0.25" fill="currentColor"/>
+  <circle cx="11" cy="10.55" r="0.25" fill="currentColor"/>
+  <circle cx="14" cy="10.55" r="0.25" fill="currentColor"/>
+</svg>
