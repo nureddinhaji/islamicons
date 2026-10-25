@@ -30,7 +30,9 @@ function static_heads() {
     return {
         name: 'static-heads',
         apply: 'build',
-        closeBundle() {
+        async closeBundle() {
+            // Imported here so the dev server does not load resvg.
+            const {og_image} = await import('./scripts/og-image.js')
             const template = readFileSync('dist/index.html', 'utf8')
             const origin = (process.env.SITE_ORIGIN ?? '').replace(/\/$/, '')
             const alternates_for = route =>
@@ -46,11 +48,23 @@ function static_heads() {
                     path: public_path(doc.language, doc.route),
                     origin,
                     alternates: alternates_for(doc.route),
+                    image: og_image(doc.language),
                 })
                 const dest = join('dist', doc.file)
                 mkdirSync(dirname(dest), {recursive: true})
                 writeFileSync(dest, html)
             }
+        },
+    }
+}
+
+function og_images() {
+    return {
+        name: 'og-images',
+        apply: 'build',
+        async generateBundle() {
+            const {og_assets} = await import('./scripts/og-image.js')
+            for (const asset of og_assets()) this.emitFile({type: 'asset', ...asset})
         },
     }
 }
@@ -88,6 +102,7 @@ export default defineConfig({
         tailwindcss(),
         wuchale(),
         static_heads(),
+        og_images(),
         svelte({
             onwarn(warning, handler) {
                 const IGNORED_WARNINGS = ['a11y_click_events_have_key_events', 'a11y_no_static_element_interactions']

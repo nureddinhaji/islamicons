@@ -48,8 +48,12 @@ test('SITE_ORIGIN adds absolute canonical and alternate links', () => {
             {language: 'ar', path: '/'},
             {language: 'en', path: '/en'},
         ],
+        image: {path: '/og-ar.png', alt: 'وصف الصورة', width: 1200, height: 630},
     })
     assert.match(html, /rel="canonical" data-static-head href="https:\/\/example.test\/"/)
+    assert.match(html, /property="og:image" data-static-head content="https:\/\/example.test\/og-ar.png"/)
+    assert.match(html, /og:image:width" data-static-head content="1200"/)
+    assert.match(html, /og:image:alt" data-static-head content="وصف الصورة"/)
     assert.match(html, /hreflang="en" href="https:\/\/example.test\/en"/)
     assert.match(html, /hreflang="x-default" href="https:\/\/example.test\/"/)
 })

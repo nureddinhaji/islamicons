@@ -113,6 +113,7 @@ pnpm dev            # خادم التطوير (VITE_PORT من mise.toml)
 pnpm build          # فحص الأيقونات، ثم بناء الإنتاج في dist/
 pnpm check:icons    # معايير الرسم على icons/
 pnpm sheet mosque   # صفحة مراجعة: الشبكة والأحجام المعروضة والقياسات، في tmp/sheets/
+pnpm og             # صورتا معاينة الرابط (og:image)، في tmp/og/؛ والبناء يولّدهما في dist/ تلقائياً
 pnpm test           # اختبارات الفحص
 pnpm lint           # oxlint
 pnpm format:check   # oxfmt
@@ -249,6 +250,7 @@ pnpm dev            # dev server (VITE_PORT from mise.toml)
 pnpm build          # icon check, then production build into dist/
 pnpm check:icons    # the drawing standard, over icons/
 pnpm sheet mosque   # review sheet: grid, shown sizes, measurements, into tmp/sheets/
+pnpm og             # the link-preview images (og:image), into tmp/og/; the build writes them into dist/ itself
 pnpm test           # regression tests of the check
 pnpm lint           # oxlint
 pnpm format:check   # oxfmt
