@@ -7,6 +7,7 @@ const template = `<html dir="rtl" lang="ar">
 <head>
 <meta name="description" content="old">
 <meta name="application-name" content="old">
+<meta name="apple-mobile-web-app-title" content="old">
 <meta property="og:site_name" content="old">
 <meta property="og:locale" content="ar_AR">
 <meta property="og:title" content="old">
@@ -20,6 +21,7 @@ test('a static head carries the page language', () => {
     const html = stamp_head(template, {
         language: 'en',
         name: 'Islamicons',
+        short_name: 'Islamicons',
         title: 'Guide | Islamicons',
         description: 'How to use Islamicons',
         path: '/en/guide',
@@ -33,6 +35,7 @@ test('a static head carries the page language', () => {
     assert.match(html, /<title>Guide \| Islamicons<\/title>/)
     assert.match(html, /name="description" content="How to use Islamicons"/)
     assert.match(html, /og:locale" content="en_GB"/)
+    assert.match(html, /name="apple-mobile-web-app-title" content="Islamicons"/)
     assert.doesNotMatch(html, /data-static-head/)
 })
 
@@ -40,6 +43,7 @@ test('SITE_ORIGIN adds absolute canonical and alternate links', () => {
     const html = stamp_head(template, {
         language: 'ar',
         name: 'مكتبة',
+        short_name: 'مكتبة',
         title: 'مكتبة',
         description: 'وصف',
         path: '/',

@@ -2,11 +2,14 @@
 export const SITE = {
     ar: {
         name: 'مكتبة الأيقونات الإسلامية',
+        // The label under the home-screen icon, where iOS cuts the full name short.
+        short_name: 'أيقونات إسلامية',
         description:
             'أيقونات إسلامية مفتوحة المصدر ومجانية، مرسومة بعناية على شبكة ٢٤×٢٤ بخط واحد متّسق. انسخها SVG أو نزّلها بالحجم واللون الذي تريد.',
     },
     en: {
         name: 'Islamicons',
+        short_name: 'Islamicons',
         description:
             'Free, open-source Islamic icons, carefully drawn on a 24×24 grid with one consistent line. Copy them as SVG or download them at the size and colour you want.',
     },

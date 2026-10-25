@@ -21,12 +21,13 @@ export function public_url(origin, path) {
     return `${origin}${path}`
 }
 
-export function stamp_head(html, {language, name, title, description, path, origin, alternates, image}) {
+export function stamp_head(html, {language, name, short_name, title, description, path, origin, alternates, image}) {
     const canonical = public_url(origin, path)
     let out = html.replace(/<html[^>]*>/, `<html dir="${LOCALE_DIR[language]}" lang="${language}">`)
     out = out.replace(/<title>[^<]*<\/title>/, `<title>${escape_text(title)}</title>`)
     out = set_meta(out, 'description', description)
     out = set_meta(out, 'application-name', name)
+    out = set_meta(out, 'apple-mobile-web-app-title', short_name)
     out = set_meta(out, 'og:site_name', name)
     out = set_meta(out, 'og:locale', OG_LOCALE[language])
     out = set_meta(out, 'og:title', title)

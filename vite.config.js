@@ -43,6 +43,7 @@ function static_heads() {
                 const html = stamp_head(template, {
                     language: doc.language,
                     name: site.name,
+                    short_name: site.short_name,
                     title: page?.title ? `${page.title} | ${site.name}` : site.name,
                     description: page?.description ?? site.description,
                     path: public_path(doc.language, doc.route),
@@ -58,13 +59,17 @@ function static_heads() {
     }
 }
 
-function og_images() {
+// The PNGs drawn at build: the link previews and the home-screen icon.
+function build_images() {
     return {
-        name: 'og-images',
+        name: 'build-images',
         apply: 'build',
         async generateBundle() {
-            const {og_assets} = await import('./scripts/og-image.js')
-            for (const asset of og_assets()) this.emitFile({type: 'asset', ...asset})
+            const [{og_assets}, {touch_icon_asset}] = await Promise.all([
+                import('./scripts/og-image.js'),
+                import('./scripts/touch-icon.js'),
+            ])
+            for (const asset of [...og_assets(), touch_icon_asset()]) this.emitFile({type: 'asset', ...asset})
         },
     }
 }
@@ -102,7 +107,7 @@ export default defineConfig({
         tailwindcss(),
         wuchale(),
         static_heads(),
-        og_images(),
+        build_images(),
         svelte({
             onwarn(warning, handler) {
                 const IGNORED_WARNINGS = ['a11y_click_events_have_key_events', 'a11y_no_static_element_interactions']
