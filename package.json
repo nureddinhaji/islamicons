@@ -46,6 +46,7 @@
     "lint": "oxlint -c oxlint.config.js .",
     "lint:fix": "oxlint --fix -c oxlint.config.js .",
     "og": "node scripts/og-image.js",
+    "pack:packages": "rm -rf release && pnpm --filter './packages/*' exec pnpm pack --pack-destination ../../release",
     "preview:readme": "node scripts/readme-preview.js",
     "sheet": "node scripts/sheet.js",
     "test": "node --test scripts/*.test.js",

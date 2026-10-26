@@ -1,0 +1,72 @@
+name: release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+# One release at a time, never cancelled halfway: two tags pushed together publish in turn.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  # Installs, builds and tests; never holds the OIDC permission.
+  pack:
+    runs-on: ubuntu-latest
+    outputs:
+      dist_tag: ${{ steps.version.outputs.dist_tag }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Tag must be on main
+        run: git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+      - uses: jdx/mise-action@v5
+      - run: pnpm install --frozen-lockfile
+      - id: version
+        env:
+          TAG: ${{ github.ref_name }}
+        run: node scripts/release-version.js "$TAG" >> "$GITHUB_OUTPUT"
+      - run: pnpm check:icons && pnpm test && pnpm lint && pnpm format:check
+      - run: pnpm build:packages && pnpm test:packages && pnpm check:packages
+      - run: pnpm pack:packages
+      - uses: actions/upload-artifact@v7
+        with:
+          name: tarballs
+          path: release/*.tgz
+          if-no-files-found: error
+
+  # Runs no project code: publishes the tarballs tested above, after the author approves the `npm` environment.
+  publish:
+    needs: pack
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: tarballs
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - name: npm must support trusted publishing (11.5.1 or later)
+        run: |
+          npm --version
+          node -e "const [a, b, c] = process.argv[1].split('.').map(Number); process.exit(a > 11 || (a === 11 && (b > 5 || (b === 5 && c >= 1))) ? 0 : 1)" "$(npm --version)"
+      - name: Publish, skipping versions already on npm
+        env:
+          DIST_TAG: ${{ needs.pack.outputs.dist_tag }}
+        run: |
+          for file in *.tgz; do
+            spec=$(tar -xOzf "$file" package/package.json | node -p "const p = JSON.parse(require('fs').readFileSync(0)); p.name + '@' + p.version")
+            if npm view "$spec" version >/dev/null 2>&1; then echo "$spec is already published"; continue; fi
+            npm publish "$file" --access public --tag "$DIST_TAG"
+          done
