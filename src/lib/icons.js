@@ -1,6 +1,6 @@
 import category_list from '../../icons/_categories.json' with {type: 'json'}
 import {arabic_pattern} from './arabic.js'
-import {DEFAULT_STROKE_WIDTH, frame_inner} from './frame.js'
+import {DEFAULT_STROKE_WIDTH, frame_inner, svg_document} from './frame.js'
 import {icon_inner} from './icon-file.js'
 import {locale} from './locale.js'
 
@@ -119,12 +119,7 @@ export function framed_inner(icon, stroke_width = DEFAULT_STROKE_WIDTH) {
 }
 
 export function to_svg(icon, {size = 24, stroke_width = DEFAULT_STROKE_WIDTH, color = 'currentColor'} = {}) {
-    // A standalone file has no text colour for fill="currentColor" to inherit, so solid parts take the chosen colour.
-    const framed = framed_inner(icon, stroke_width)
-    const filled = color === 'currentColor' ? framed : framed.replaceAll('fill="currentColor"', `fill="${color}"`)
-    const body = filled.replace(/></g, '>\n  <')
-    // The stroke meets the box edge, and browsers clip an inline <svg> there, shaving it at fractional sizes.
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="${stroke_width}" stroke-linecap="round" stroke-linejoin="round" overflow="visible">\n  ${body}\n</svg>`
+    return svg_document(framed_inner(icon, stroke_width), {size, stroke_width, color})
 }
 
 // Animation hook: pathLength lets one dash cover every stroke; --i staggers the elements.
