@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "esnext",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": false,
+    "verbatimModuleSyntax": true,
+    "types": []
+  },
+  "include": ["types.tsx", "../dist/**/*.d.ts"]
+}

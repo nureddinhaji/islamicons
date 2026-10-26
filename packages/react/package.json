@@ -1,0 +1,59 @@
+{
+  "name": "@islamicons/react",
+  "version": "0.0.0",
+  "description": "Open-source Islamic icons as React components: one component per icon, tree-shakeable, typed, server-component safe.",
+  "license": "MIT",
+  "author": "Nureddin Haji",
+  "homepage": "https://islamicons.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nureddinhaji/islamicons.git",
+    "directory": "packages/react"
+  },
+  "bugs": "https://github.com/nureddinhaji/islamicons/issues",
+  "keywords": [
+    "icons",
+    "svg",
+    "react",
+    "islamic",
+    "muslim",
+    "arabic",
+    "rtl",
+    "islamicons"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./icons/*": {
+      "types": "./dist/icons/*.d.ts",
+      "default": "./dist/icons/*.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js && tsc -p test && tsc -p test/tsconfig.nodenext.json",
+    "check": "publint --strict && attw --pack . --profile esm-only"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@types/react": "^19.3.0",
+    "publint": "^0.3.25",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "typescript": "~6.0.3",
+    "vite": "^8.2.2"
+  }
+}

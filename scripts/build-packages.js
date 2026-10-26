@@ -9,6 +9,7 @@ import {icon_inner, read_icon, to_pascal_case} from '../src/lib/icon-file.js'
 const root = fileURLToPath(new URL('..', import.meta.url))
 const icons_dir = path.join(root, 'icons')
 const out = path.resolve(process.argv[2] || path.join(root, 'packages'))
+const react_sources = path.join(root, 'packages', 'react', 'src')
 
 const read_json = file => JSON.parse(readFileSync(path.join(icons_dir, file), 'utf8'))
 const categories = read_json('_categories.json')
@@ -23,7 +24,8 @@ function read_package_icon(name) {
     const category = category_of.get(name)
     if (!category) throw new Error(`${name}: not listed in _categories.json`)
     const {title, title_en, tags} = read_json(`${name}.json`)
-    return {name, component: to_pascal_case(name), framed, file, meta: {title, title_en, category, tags}}
+    const nodes = elements.map(({tag, attrs}) => [tag, {...attrs}])
+    return {name, component: to_pascal_case(name), framed, file, nodes, meta: {title, title_en, category, tags}}
 }
 
 // Emptied first, so a removed or renamed icon never lingers in a package.
@@ -45,13 +47,18 @@ function write_svg_package(icons, dir) {
 const preview = icon =>
     Buffer.from(icon.file.replace('<svg ', '<svg style="background:#fff;border-radius:2px" ')).toString('base64')
 
+// The editor hover for each component, in both packages: titles, the icon's page on the site, and a preview.
+const hover_lines = icon => [
+    `${icon.meta.title} (${icon.meta.title_en}): https://islamicons.org/?icon=${icon.name}`,
+    '',
+    `![${icon.meta.title_en}](data:image/svg+xml;base64,${preview(icon)})`,
+]
+
 const svelte_component = icon => `<svelte:options namespace="svg" />
 
 <!--
 @component
-${icon.meta.title} (${icon.meta.title_en}): https://islamicons.org/?icon=${icon.name}
-
-![${icon.meta.title_en}](data:image/svg+xml;base64,${preview(icon)})
+${hover_lines(icon).join('\n')}
 -->
 {#snippet shapes()}${icon.framed}{/snippet}
 
@@ -76,6 +83,47 @@ function write_svelte_sources(icons, dir) {
     copyFileSync(path.join(root, 'LICENSE'), path.join(dir, 'LICENSE'))
 }
 
+const react_component = icon => `import {createElement} from 'react'
+
+import Icon from '../Icon.js'
+
+const NODES = ${JSON.stringify(icon.nodes)}
+
+export default function ${icon.component}(props) {
+    return createElement(Icon, {...props, name: '${icon.name}', nodes: NODES})
+}
+`
+
+const react_types = icon => `import type {ReactElement} from 'react'
+
+import type {IconProps} from '../types.js'
+
+/**
+${hover_lines(icon)
+    .map(line => ` *${line && ` ${line}`}`)
+    .join('\n')}
+ */
+declare function ${icon.component}(props: IconProps): ReactElement
+export default ${icon.component}
+`
+
+// React ships what is written here plus the hand-written Icon.js and types.d.ts, copied beside it: no build step.
+function write_react_package(icons, dir) {
+    const dist = fresh_dir(path.join(dir, 'dist'))
+    mkdirSync(path.join(dist, 'icons'))
+    for (const icon of icons) {
+        writeFileSync(path.join(dist, 'icons', `${icon.name}.js`), react_component(icon))
+        writeFileSync(path.join(dist, 'icons', `${icon.name}.d.ts`), react_types(icon))
+    }
+    const exports = icons.map(icon => `export {default as ${icon.component}} from './icons/${icon.name}.js'`)
+    const type_exports = [...exports, "export type {IconProps} from './types.js'"]
+    writeFileSync(path.join(dist, 'index.js'), `${exports.join('\n')}\n`)
+    writeFileSync(path.join(dist, 'index.d.ts'), `${type_exports.join('\n')}\n`)
+    // From the repo, not from `dir`: a run into another directory (the tests) has no sources there.
+    for (const file of ['Icon.js', 'types.d.ts']) copyFileSync(path.join(react_sources, file), path.join(dist, file))
+    copyFileSync(path.join(root, 'LICENSE'), path.join(dir, 'LICENSE'))
+}
+
 const names = readdirSync(icons_dir)
     .filter(file => file.endsWith('.svg'))
     .map(file => file.slice(0, -'.svg'.length))
@@ -83,4 +131,5 @@ const names = readdirSync(icons_dir)
 const icons = names.map(read_package_icon)
 write_svg_package(icons, path.join(out, 'svg'))
 write_svelte_sources(icons, path.join(out, 'svelte'))
+write_react_package(icons, path.join(out, 'react'))
 console.log(`${icons.length} icons written to ${path.relative(process.cwd(), out) || '.'}`)

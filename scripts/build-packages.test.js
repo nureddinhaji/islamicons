@@ -33,6 +33,7 @@ const first = path.join(temp, 'first')
 for (const [folder, file] of [
     ['svg/icons', 'stale.svg'],
     ['svelte/src/icons', 'stale.svelte'],
+    ['react/dist/icons', 'stale.js'],
 ]) {
     mkdirSync(path.join(first, folder), {recursive: true})
     writeFileSync(path.join(first, folder, file), 'stale')
@@ -41,6 +42,7 @@ generate(first)
 const svg_package = path.join(first, 'svg')
 const files_dir = path.join(svg_package, 'icons')
 const svelte_src = path.join(first, 'svelte', 'src')
+const react_dist = path.join(first, 'react', 'dist')
 
 test('every icon has exactly one file, and a stale file is gone', () => {
     assert.deepEqual(readdirSync(files_dir).sort(), names.map(name => `${name}.svg`).sort())
@@ -58,6 +60,40 @@ test('each component draws its framed shapes and names itself', () => {
         assert.ok(source.includes(`{#snippet shapes()}${frame_inner(art)}{/snippet}`), name)
         assert.ok(source.includes(`<Icon {...props} name="${name}" {shapes} />`), name)
     }
+})
+
+test('every icon has one React module and its types, and a stale file is gone', () => {
+    const files = readdirSync(path.join(react_dist, 'icons')).sort()
+    assert.deepEqual(files, names.flatMap(name => [`${name}.d.ts`, `${name}.js`]).sort())
+})
+
+test('each React module carries the shapes of its package file', () => {
+    for (const name of names) {
+        const source = readFileSync(path.join(react_dist, 'icons', `${name}.js`), 'utf8')
+        const nodes = JSON.parse(/^const NODES = (.+)$/m.exec(source)[1])
+        const file = read_icon(readFileSync(path.join(files_dir, `${name}.svg`), 'utf8'))
+        assert.deepEqual(
+            nodes,
+            file.elements.map(({tag, attrs}) => [tag, {...attrs}]),
+            name,
+        )
+        assert.match(source, new RegExp(`^export default function ${to_pascal_case(name)}\\(props\\)`, 'm'), name)
+        assert.ok(source.includes(`name: '${name}', nodes: NODES`), name)
+    }
+})
+
+test('React ships the hand-written component and types unchanged, and both barrels list every icon', () => {
+    for (const file of ['Icon.js', 'types.d.ts'])
+        assert.equal(
+            readFileSync(path.join(react_dist, file), 'utf8'),
+            readFileSync(path.join(root, 'packages', 'react', 'src', file), 'utf8'),
+        )
+    const expected = names.map(name => `export {default as ${to_pascal_case(name)}} from './icons/${name}.js'`)
+    assert.equal(readFileSync(path.join(react_dist, 'index.js'), 'utf8'), `${expected.join('\n')}\n`)
+    assert.equal(
+        readFileSync(path.join(react_dist, 'index.d.ts'), 'utf8'),
+        `${[...expected, "export type {IconProps} from './types.js'"].join('\n')}\n`,
+    )
 })
 
 test('the barrel exports every icon once, under its PascalCase name', () => {
