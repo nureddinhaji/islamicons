@@ -88,6 +88,16 @@ test('an icon is decorative unless something names it', () => {
     assert.match(with_children, /<title>مسجد<\/title><\/svg>$/)
 })
 
+test('a prop passed as undefined or null counts as not passed', () => {
+    for (const unset of [undefined, null]) {
+        const hidden = root_of(markup(Mosque, {'aria-hidden': unset, 'aria-label': unset, role: unset}))
+        assert.equal(hidden['aria-hidden'], 'true', String(unset))
+        assert.equal(hidden.role, undefined, String(unset))
+        assert.equal(root_of(markup(Mosque, {'aria-label': 'مسجد', role: unset})).role, 'img', String(unset))
+        assert.equal(root_of(markup(Mosque, {width: unset})).width, '24', String(unset))
+    }
+})
+
 test('the default stroke draws the file as it is', () => {
     for (const props of [{strokeWidth: DEFAULT_STROKE_WIDTH}, {absoluteStrokeWidth: true, size: 24}]) {
         const html = markup(Mosque, props)

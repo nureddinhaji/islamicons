@@ -13,7 +13,7 @@
     {style}
     role={labelled_by_text ? 'img' : undefined}
     aria-hidden={decorative ? 'true' : undefined}
-    {...rest}
+    {...given}
 >
     {#if ratio === 1}
         {@render shapes()}
@@ -36,8 +36,7 @@ const DEFAULT_STROKE_WIDTH = 1.6
 const frame_scale = stroke_width => 1.2 - stroke_width / 20
 // (1.6 * 24) / 24 is 1.6000000000000003 in floating point; 4 decimals, as frame.js writes coordinates.
 const round = value => Math.round(value * 10000) / 10000
-// A prop passed as undefined renders nothing, so it names nothing either.
-const names_itself = ([key, value]) => value != null && (key === 'role' || key === 'title' || key.startsWith('aria-'))
+const names_itself = key => key === 'role' || key === 'title' || key.startsWith('aria-')
 
 /** @type {IconFrameProps} */
 let {
@@ -64,8 +63,17 @@ const offset = $derived(12 - 12 * ratio)
 const style = $derived(
     color === 'currentColor' ? user_style : [user_style, `color: ${color}`].filter(Boolean).join('; '),
 )
-const decorative = $derived(!children && !Object.entries(rest).some(names_itself))
+// A prop passed as undefined or null renders nothing, so it neither names the icon nor overrides what is worked out
+// here. Reflect.ownKeys, not Object.entries: attachments ({@attach}) travel under symbol keys.
+const given = $derived(
+    Object.fromEntries(
+        Reflect.ownKeys(rest)
+            .filter(key => rest[key] != null)
+            .map(key => [key, rest[key]]),
+    ),
+)
+const decorative = $derived(!children && !Object.keys(given).some(names_itself))
 const labelled_by_text = $derived(
-    !('role' in rest) && Boolean(rest['aria-label'] || rest['aria-labelledby'] || rest.title),
+    !('role' in given) && Boolean(given['aria-label'] || given['aria-labelledby'] || given.title),
 )
 </script>
