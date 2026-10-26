@@ -68,5 +68,6 @@ jobs:
           for file in *.tgz; do
             spec=$(tar -xOzf "$file" package/package.json | node -p "const p = JSON.parse(require('fs').readFileSync(0)); p.name + '@' + p.version")
             if npm view "$spec" version >/dev/null 2>&1; then echo "$spec is already published"; continue; fi
-            npm publish "$file" --access public --tag "$DIST_TAG"
+            # `./` keeps it a file: npm reads a path with a slash and no `./` as a GitHub `owner/repo`.
+            npm publish "./$file" --access public --tag "$DIST_TAG"
           done
