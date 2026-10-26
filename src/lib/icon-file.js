@@ -1,6 +1,9 @@
 // The one reader of icon files, shared by the site and scripts/check-icons.js so both read every file the same way.
 import {parse_path} from './frame.js'
 
+// One rule for the site's usage snippets and the packages' exports, so the import a visitor copies always exists.
+export const to_pascal_case = name => name.replace(/(^|-)(\w)/g, (_, _sep, char) => char.toUpperCase())
+
 // Null-prototype so a parsed name such as `constructor` or `toString` can never hit Object.prototype.
 export const ROOT_ATTRS = {
     __proto__: null,

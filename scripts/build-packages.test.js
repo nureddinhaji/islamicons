@@ -7,7 +7,7 @@ import {after, test} from 'node:test'
 import {fileURLToPath} from 'node:url'
 
 import {frame_inner, svg_document} from '../src/lib/frame.js'
-import {icon_inner, read_icon} from '../src/lib/icon-file.js'
+import {icon_inner, read_icon, to_pascal_case} from '../src/lib/icon-file.js'
 
 const generator = fileURLToPath(new URL('./build-packages.js', import.meta.url))
 const root = fileURLToPath(new URL('..', import.meta.url))
@@ -25,18 +25,53 @@ after(() => rmSync(temp, {recursive: true, force: true}))
 function generate(dir) {
     const result = spawnSync(process.execPath, [generator, dir], {encoding: 'utf8'})
     assert.equal(result.status, 0, result.stderr)
-    return path.join(dir, 'svg')
+    return dir
 }
 
-// Planted before the first run: the generator must empty the folder, not only add to it.
+// Planted before the first run: the generator must empty its folders, not only add to them.
 const first = path.join(temp, 'first')
-mkdirSync(path.join(first, 'svg', 'icons'), {recursive: true})
-writeFileSync(path.join(first, 'svg', 'icons', 'stale.svg'), '<svg/>')
-const svg_package = generate(first)
+for (const [folder, file] of [
+    ['svg/icons', 'stale.svg'],
+    ['svelte/src/icons', 'stale.svelte'],
+]) {
+    mkdirSync(path.join(first, folder), {recursive: true})
+    writeFileSync(path.join(first, folder, file), 'stale')
+}
+generate(first)
+const svg_package = path.join(first, 'svg')
 const files_dir = path.join(svg_package, 'icons')
+const svelte_src = path.join(first, 'svelte', 'src')
 
 test('every icon has exactly one file, and a stale file is gone', () => {
     assert.deepEqual(readdirSync(files_dir).sort(), names.map(name => `${name}.svg`).sort())
+})
+
+test('every icon has exactly one Svelte component, and a stale one is gone', () => {
+    const files = readdirSync(path.join(svelte_src, 'icons')).sort()
+    assert.deepEqual(files, names.map(name => `${name}.svelte`).sort())
+})
+
+test('each component draws its framed shapes and names itself', () => {
+    for (const name of names) {
+        const art = icon_inner(readFileSync(path.join(icons_dir, `${name}.svg`), 'utf8'), name)
+        const source = readFileSync(path.join(svelte_src, 'icons', `${name}.svelte`), 'utf8')
+        assert.ok(source.includes(`{#snippet shapes()}${frame_inner(art)}{/snippet}`), name)
+        assert.ok(source.includes(`<Icon {...props} name="${name}" {shapes} />`), name)
+    }
+})
+
+test('the barrel exports every icon once, under its PascalCase name', () => {
+    const barrel = readFileSync(path.join(svelte_src, 'index.js'), 'utf8')
+    const exports = [...barrel.matchAll(/^export \{default as (\w+)\} from '\.\/icons\/([a-z0-9-]+)\.svelte'$/gm)]
+    assert.deepEqual(
+        exports.map(([, , name]) => name),
+        names,
+    )
+    const components = exports.map(([, component]) => component)
+    assert.equal(new Set(components).size, names.length)
+    for (const [index, name] of names.entries()) assert.equal(components[index], to_pascal_case(name))
+    assert.equal(to_pascal_case('prayer-mat-rolled'), 'PrayerMatRolled')
+    assert.match(barrel, /^\/\*\* @typedef \{import\('\.\/types\.js'\)\.IconProps\} IconProps \*\/$/m)
 })
 
 test('each file is the site writer output for its own source', () => {
@@ -78,9 +113,9 @@ test('the licence travels with the package', () => {
 test('two runs write identical bytes', () => {
     const second = generate(path.join(temp, 'second'))
     const listing = dir => readdirSync(dir, {recursive: true}).sort()
-    assert.deepEqual(listing(second), listing(svg_package))
-    for (const entry of listing(svg_package)) {
-        const file = path.join(svg_package, entry)
+    assert.deepEqual(listing(second), listing(first))
+    for (const entry of listing(first)) {
+        const file = path.join(first, entry)
         if (statSync(file).isFile()) assert.ok(readFileSync(file).equals(readFileSync(path.join(second, entry))), entry)
     }
 })

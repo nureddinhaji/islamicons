@@ -1,0 +1,62 @@
+{
+  "name": "@islamicons/svelte",
+  "version": "0.0.0",
+  "description": "Open-source Islamic icons as Svelte 5 components: one component per icon, tree-shakeable, with typed props.",
+  "license": "MIT",
+  "author": "Nureddin Haji",
+  "homepage": "https://islamicons.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nureddinhaji/islamicons.git",
+    "directory": "packages/svelte"
+  },
+  "bugs": "https://github.com/nureddinhaji/islamicons/issues",
+  "keywords": [
+    "icons",
+    "svg",
+    "svelte",
+    "svelte5",
+    "islamic",
+    "muslim",
+    "arabic",
+    "rtl",
+    "islamicons"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./icons/*": {
+      "types": "./dist/icons/*.svelte.d.ts",
+      "svelte": "./dist/icons/*.svelte",
+      "default": "./dist/icons/*.svelte"
+    },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "svelte": "^5.16.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "package": "svelte-package --input src",
+    "test": "node --import ./test/svelte-hooks.js --test test/*.test.js && tsc -p test",
+    "check": "publint --strict"
+  },
+  "devDependencies": {
+    "@sveltejs/package": "^3.0.1",
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
+    "publint": "^0.3.25",
+    "svelte": "^5.57.0",
+    "typescript": "~6.0.3",
+    "vite": "^8.2.2"
+  }
+}

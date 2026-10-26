@@ -1,7 +1,7 @@
 import category_list from '../../icons/_categories.json' with {type: 'json'}
 import {arabic_pattern} from './arabic.js'
 import {DEFAULT_STROKE_WIDTH, frame_inner, svg_document} from './frame.js'
-import {icon_inner} from './icon-file.js'
+import {icon_inner, to_pascal_case} from './icon-file.js'
 import {locale} from './locale.js'
 
 const svg_files = import.meta.glob('/icons/*.svg', {query: '?raw', import: 'default', eager: true})
@@ -12,8 +12,6 @@ const file_name = file_path =>
         .split('/')
         .pop()
         .replace(/\.\w+$/, '')
-
-export const to_pascal_case = name => name.replace(/(^|-)(\w)/g, (_, _sep, char) => char.toUpperCase())
 
 const metas = Object.fromEntries(Object.entries(meta_files).map(([file_path, meta]) => [file_name(file_path), meta]))
 

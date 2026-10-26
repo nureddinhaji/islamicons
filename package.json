@@ -37,7 +37,7 @@
   },
   "scripts": {
     "build": "node scripts/check-icons.js && vite build",
-    "build:packages": "node scripts/check-icons.js && node scripts/build-packages.js",
+    "build:packages": "node scripts/check-icons.js && node scripts/build-packages.js && pnpm --filter @islamicons/svelte run package",
     "check:icons": "node scripts/check-icons.js",
     "check:packages": "pnpm --filter './packages/*' --if-present run check",
     "dev": "vite dev",

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "esnext",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": false,
+    "verbatimModuleSyntax": true,
+    "types": []
+  },
+  "include": ["types.ts", "../dist/**/*.d.ts"]
+}
