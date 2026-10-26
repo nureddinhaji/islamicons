@@ -11,8 +11,11 @@ export default {
     plugins: ['unicorn', 'typescript', 'oxc', 'import'],
     categories: {correctness: 'error'},
     ignorePatterns: [
-        ...'node_modules,dist,public,src/lib/components/ui,src/locales'.split(',').map(path => path + '/**/*'),
+        ...'node_modules,dist,public,src/lib/components/ui,src/locales,packages/*/dist,packages/svelte/src/icons'
+            .split(',')
+            .map(path => path + '/**/*'),
         'src/lib/utils.ts',
+        'packages/svelte/src/index.js',
     ],
     overrides: [
         {
@@ -20,7 +23,7 @@ export default {
             globals: shared_globals,
         },
         {
-            files: ['oxlint.config.js', 'vite.config.js', 'scripts/**/*.js'],
+            files: ['oxlint.config.js', 'vite.config.js', 'scripts/**/*.js', 'packages/*/test/**/*'],
             globals: {...globals.es2021, ...globals.node},
         },
         {

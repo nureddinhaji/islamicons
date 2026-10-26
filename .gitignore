@@ -11,3 +11,13 @@ src/locales/*.js
 
 .vscode/settings.json
 tmp/
+
+/packages/*/dist
+/packages/*/LICENSE
+/packages/svg/icons
+/packages/svg/icons.json
+/packages/svelte/src/icons
+/packages/svelte/src/index.js
+/packages/svelte/.svelte-kit
+/packages/*/test/.vite-entry-*
+/release

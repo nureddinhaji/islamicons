@@ -1,0 +1,43 @@
+{
+  "name": "@islamicons/svg",
+  "version": "0.0.0",
+  "description": "Open-source Islamic icons as ready-to-use SVG files: 24×24, stroke 1.6, currentColor, with Arabic and English metadata.",
+  "license": "MIT",
+  "author": "Nureddin Haji",
+  "homepage": "https://islamicons.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nureddinhaji/islamicons.git",
+    "directory": "packages/svg"
+  },
+  "bugs": "https://github.com/nureddinhaji/islamicons/issues",
+  "keywords": [
+    "icons",
+    "svg",
+    "islamic",
+    "muslim",
+    "arabic",
+    "rtl",
+    "islamicons"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "icons",
+    "icons.json"
+  ],
+  "exports": {
+    "./icons/*": "./icons/*",
+    "./icons.json": "./icons.json",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "check": "publint --strict"
+  },
+  "devDependencies": {
+    "publint": "^0.3.25"
+  }
+}

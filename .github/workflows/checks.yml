@@ -21,3 +21,6 @@ jobs:
       - run: pnpm test
       - run: pnpm lint
       - run: pnpm format:check
+      - run: pnpm build:packages
+      - run: pnpm test:packages
+      - run: pnpm check:packages

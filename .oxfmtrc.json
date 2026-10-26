@@ -21,7 +21,13 @@
     "/src/locales/**/*",
     "!/*.js",
     "/src/lib/components/ui/**/*",
-    "/src/lib/utils.ts"
+    "/src/lib/utils.ts",
+    "!/packages",
+    "/packages/**/*.json",
+    "/packages/*/dist",
+    "/packages/svelte/src/icons",
+    "/packages/svelte/src/index.js",
+    "/packages/svg/icons"
   ],
   "overrides": [
     {

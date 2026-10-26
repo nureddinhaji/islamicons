@@ -37,16 +37,19 @@
   },
   "scripts": {
     "build": "node scripts/check-icons.js && vite build",
+    "build:packages": "node scripts/check-icons.js && node scripts/build-packages.js",
     "check:icons": "node scripts/check-icons.js",
+    "check:packages": "pnpm --filter './packages/*' --if-present run check",
     "dev": "vite dev",
-    "format": "oxfmt -c .oxfmtrc.json src ./*.js",
-    "format:check": "oxfmt --check -c .oxfmtrc.json src ./*.js",
+    "format": "oxfmt -c .oxfmtrc.json src packages ./*.js",
+    "format:check": "oxfmt --check -c .oxfmtrc.json src packages ./*.js",
     "lint": "oxlint -c oxlint.config.js .",
     "lint:fix": "oxlint --fix -c oxlint.config.js .",
     "og": "node scripts/og-image.js",
     "preview:readme": "node scripts/readme-preview.js",
     "sheet": "node scripts/sheet.js",
-    "test": "node --test scripts/*.test.js"
+    "test": "node --test scripts/*.test.js",
+    "test:packages": "pnpm --filter './packages/*' --if-present run test"
   },
   "browserslist": [
     "> 0.25%",
