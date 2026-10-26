@@ -16,8 +16,8 @@
 
 ### الاستعمال
 
-اختر أيقونة من الموقع (يُنشر قريباً)، واضبط حجمها وسُمكها ولونها، ثم انسخ رمز SVG أو نزّله، أو نزّلها صورة PNG. والموقع
-بالعربية والإنجليزية.
+اختر أيقونة من موقع [islamicons.org](https://islamicons.org)، واضبط حجمها وسُمكها ولونها، ثم انسخ رمز SVG أو نزّله، أو
+نزّلها صورة PNG. والموقع بالعربية والإنجليزية.
 
 <div dir="ltr">
 
@@ -72,8 +72,8 @@ hand. Every icon is a plain SVG that works in any web page or app.
 
 ### Usage
 
-Pick an icon on the site (coming soon), set its size, stroke and colour, then copy or download the SVG, or download it
-as a PNG. The site is in Arabic and English.
+Pick an icon on [islamicons.org](https://islamicons.org/en), set its size, stroke and colour, then copy or download the
+SVG, or download it as a PNG. The site is in Arabic and English.
 
 ```html
 <button>
