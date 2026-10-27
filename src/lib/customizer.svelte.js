@@ -17,6 +17,9 @@ export const get_color_swatches = () => [
 // pixels at 24 px, not v1's stroke 2 or v2's frame-stroke 1.5.
 export const customizer = new PersistedState('islamicons:customizer:v3', {...CUSTOMIZER_DEFAULTS})
 
+// Picked once in the guide, every install command follows it.
+export const package_manager = new PersistedState('islamicons:package-manager', 'pnpm')
+
 export function reset_customizer() {
     customizer.current = {...CUSTOMIZER_DEFAULTS}
 }

@@ -2,8 +2,8 @@
     <header class="flex max-w-3xl flex-col gap-3">
         <h1 class="text-4xl">دليل الاستخدام</h1>
         <p class="text-lg text-muted-foreground">
-            كل ما تحتاجه لتضع الأيقونات في مشروعك: نسخها وتنزيلها اليوم، والحزمتان المرتقبتان، والتنسيق وإمكانية الوصول،
-            ثم القواعد التي تُرسم بها كل أيقونة وطريقة إضافة أيقونة جديدة.
+            كل ما تحتاجه لتضع الأيقونات في مشروعك: نسخها وتنزيلها، وحزم SVG وSvelte وReact، والتنسيق وإمكانية الوصول، ثم
+            القواعد التي تُرسم بها كل أيقونة وطريقة إضافة أيقونة جديدة.
         </p>
     </header>
 
@@ -40,17 +40,16 @@
                         </li>
                     {/each}
                 </ul>
-                <div class="flex gap-3 rounded-xl bg-gold/10 p-4">
-                    <Icon id="clock" class="mt-1 size-4.5 shrink-0 text-gold" />
-                    <p>
-                        <span class="font-semibold">المتاح اليوم:</span> نسخ أي أيقونة أو تنزيلها من
-                        <a href={href_in('/')} class="font-medium text-primary underline underline-offset-4"
-                            >صفحة الأيقونات</a
-                        >.
-                        <span class="font-semibold">المرتقب:</span> حزمتا Svelte وReact، ولم تُنشرا بعد، والأمثلة الخاصة بهما
-                        في هذا الدليل تصف واجهتهما المرتقبة.
-                    </p>
-                </div>
+                <h3 class="text-lg">أربع طرق لتضعها في مشروعك</h3>
+                <ul class="flex flex-col gap-2">
+                    {#each WAYS as way (way.id)}
+                        <li>
+                            <a href="#{way.id}" class="font-semibold text-primary underline underline-offset-4"
+                                >{way.title}</a
+                            >: {way.text}
+                        </li>
+                    {/each}
+                </ul>
             </section>
 
             <section id="svg" class="flex flex-col gap-5">
@@ -92,25 +91,60 @@
                 </div>
             </section>
 
+            <section id="svg-package" class="flex flex-col gap-5">
+                <h2 class="text-2xl">ملفات SVG</h2>
+                <p>
+                    الأيقونات كلها ملفات جاهزة في حزمة واحدة، هي نفسها التي تنزّلها من الموقع بحجم ٢٤ وبالسُمك واللون
+                    الافتراضيين، ومعها بياناتها: العنوانان العربي والإنجليزي، والتصنيف، وكلمات البحث.
+                </p>
+                <InstallCommand name={SVG_PACKAGE} />
+                <ul class="flex flex-col gap-2">
+                    <li>
+                        <code dir="ltr" class="font-mono">{SVG_PACKAGE}/icons/mosque.svg</code>: ملف لكل أيقونة باسمها
+                        البرمجي.
+                    </li>
+                    <li>
+                        <code dir="ltr" class="font-mono">{SVG_PACKAGE}/icons.json</code>: بيانات الأيقونات كلها،
+                        والتصنيفات بترتيب عرضها.
+                    </li>
+                </ul>
+                <p>
+                    وإن عرضت الملف في عنصر <code dir="ltr" class="font-mono">&lt;img&gt;</code> فسيُرسم بالأسود، لأن الصورة لا
+                    ترث لون الصفحة. ضع رمزه في الصفحة نفسها ليأخذ لون النص من حوله.
+                </p>
+            </section>
+
             {#each PACKAGES as pkg (pkg.id)}
                 <section id={pkg.id} class="flex flex-col gap-5">
-                    <h2 class="text-2xl" dir="auto">{pkg.label}</h2>
+                    <h2 class="text-2xl">{pkg.label}</h2>
                     <p>
                         كل أيقونة مكوّن مستقل يحمل اسمها بصيغة PascalCase، فـ<code dir="ltr" class="font-mono"
                             >prayer-beads</code
                         >
-                        تصير <code dir="ltr" class="font-mono">PrayerBeads</code>. وستُبنى الحزمة بحيث لا يدخل في مشروعك
-                        إلا ما تستورده منها.
+                        تصير <code dir="ltr" class="font-mono">PrayerBeads</code>. ولا يدخل في مشروعك إلا ما تستورده منها.
                     </p>
-                    <p class="flex items-center gap-1.5 text-sm text-muted-foreground">
-                        <Icon id="clock" class="size-4 text-gold" />
-                        الحزمة قيد الإعداد، وهذا شكل استخدامها المرتقب.
-                    </p>
-                    <CodeBlock code={install_command(pkg.id)} caption="terminal" copy={false} />
+                    <InstallCommand name={pkg.name} />
                     <CodeBlock
                         code={pkg.id === 'svelte' ? svelte_props_example : react_props_example}
                         caption={pkg.id === 'svelte' ? 'App.svelte' : 'Toolbar.jsx'}
                     />
+                    <p>
+                        ويمكنك أن تستورد كل أيقونة من ملفها، فلا يقرأ خادم التطوير الحزمة كلها، ويبقى سريعاً حين تكثر
+                        الأيقونات في مشروعك:
+                    </p>
+                    <CodeBlock
+                        code={deep_import_example(pkg.id)}
+                        caption={pkg.id === 'svelte' ? 'App.svelte' : 'Toolbar.jsx'}
+                    />
+                    {#if pkg.id === 'react'}
+                        <p>
+                            لا تستعمل المكوّنات أي hook، فتعمل في React Server Components دون
+                            <code dir="ltr" class="font-mono">"use client"</code>، والأيقونة التي تُرسم فيها لا يصل منها
+                            إلى المتصفح أي JavaScript. أما
+                            <code dir="ltr" class="font-mono">ref</code> فيصل إلى عنصر svg في React 19، ولا يمرّره React 18
+                            إلى المكوّن.
+                        </p>
+                    {/if}
                 </section>
             {/each}
 
@@ -162,6 +196,12 @@
                 <CodeBlock code={get_css_styling_example()} caption="CSS" />
                 <p>وفي Tailwind تكفي فئة للحجم وأخرى للون:</p>
                 <CodeBlock code={tailwind_styling_example} caption="Tailwind" />
+                <p>
+                    ويضع مكوّنا Svelte وReact على كل أيقونة الفئتين <code dir="ltr" class="font-mono">islamicon</code>
+                    و<code dir="ltr" class="font-mono">islamicon-&lt;name&gt;</code>، فتنسّق الأيقونات كلها بقاعدة واحدة،
+                    أو أيقونة بعينها باسمها:
+                </p>
+                <CodeBlock code={islamicon_class_example} caption="CSS" />
                 <h3 class="text-lg">ما يجب تجنّبه</h3>
                 <ul class="flex flex-col gap-2">
                     <li>
@@ -229,6 +269,12 @@
                     </li>
                 </ul>
                 <CodeBlock code={get_a11y_example()} caption="index.html" />
+                <p>
+                    ومكوّنا Svelte وReact يفعلان ذلك وحدهما: تُخفى الأيقونة عن قارئ الشاشة افتراضياً، فإن أعطيتها
+                    <code dir="ltr" class="font-mono">aria-label</code> أو
+                    <code dir="ltr" class="font-mono">title</code>
+                    صارت <code dir="ltr" class="font-mono">role="img"</code> يقرؤها قارئ الشاشة.
+                </p>
                 <p>ولا تجعل اللون وحده يحمل المعنى: إن دلّ لون الأيقونة على حالة، فاذكر الحالة بنص أيضاً.</p>
             </section>
 
@@ -393,19 +439,21 @@
 
 <script>
 import CodeBlock from '~/components/CodeBlock.svelte'
+import InstallCommand from '~/components/InstallCommand.svelte'
 import IslamIcon from '~/components/IslamIcon.svelte'
-import {PACKAGES} from '~/lib/constants.svelte.js'
+import {PACKAGES, SVG_PACKAGE} from '~/lib/constants.svelte.js'
 import {count_icons} from '~/lib/format.js'
 import {icon_named, icons} from '~/lib/icons.js'
 import {href_in} from '~/lib/locale.js'
 import {
     check_command,
+    deep_import_example,
     get_a11y_example,
     get_css_styling_example,
     get_html_example,
     icon_meta_example,
     icon_svg_template,
-    install_command,
+    islamicon_class_example,
     react_props_example,
     svelte_props_example,
     tailwind_styling_example,
@@ -422,7 +470,11 @@ const CONTENTS = [
     },
     {
         title: 'الحزم',
-        items: [...PACKAGES.map(pkg => ({id: pkg.id, title: pkg.label})), {id: 'props', title: 'الخصائص'}],
+        items: [
+            {id: 'svg-package', title: 'ملفات SVG'},
+            ...PACKAGES.map(pkg => ({id: pkg.id, title: pkg.label})),
+            {id: 'props', title: 'الخصائص'},
+        ],
     },
     {
         title: 'الاستعمال',
@@ -452,6 +504,17 @@ const FEATURES = [
     'رخصة MIT: مجانية للاستعمال الشخصي والتجاري.',
 ]
 
+const WAYS = [
+    {id: 'svg', title: 'من الموقع', text: 'اختر الأيقونة واضبطها، ثم انسخ رمزها أو نزّلها SVG أو PNG، بلا تثبيت.'},
+    {id: 'svg-package', title: 'ملفات SVG', text: 'الأيقونات كلها ملفات جاهزة مع بياناتها، في حزمة واحدة.'},
+    {id: 'svelte', title: 'Svelte', text: 'مكوّن Svelte 5 لكل أيقونة، بخصائص للحجم والسُمك واللون.'},
+    {
+        id: 'react',
+        title: 'React',
+        text: 'مكوّن لكل أيقونة بالخصائص نفسها، لـReact 18 و19، ويعمل في Server Components أيضاً.',
+    },
+]
+
 const PROPS = [
     {name: 'size', default: '24', text: 'العرض والارتفاع، رقماً بالبكسل أو أي قيمة CSS.'},
     {name: 'color', default: 'currentColor', text: 'لون الخط والأجزاء المصمتة.'},
@@ -463,7 +526,7 @@ const PROPS = [
     {
         name: 'absoluteStrokeWidth',
         default: 'false',
-        text: 'يُبقي سُمك الخط بالبكسل ثابتاً مهما كبرت الأيقونة أو صغرت، بدل أن يتناسب مع حجمها.',
+        text: 'يُبقي سُمك الخط بالبكسل ثابتاً مهما كبرت الأيقونة أو صغرت، بدل أن يتناسب مع حجمها. يحتاج قيمة رقمية لـsize.',
     },
     {name: 'class / className', default: '—', text: 'فئات CSS تُضاف إلى عنصر svg.'},
     {

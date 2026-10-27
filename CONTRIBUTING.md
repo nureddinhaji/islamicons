@@ -67,8 +67,8 @@
 
 ### تُرسم بسُمك ٢ وتُعرض بسُمك ١٫٦
 
-الرسم بسُمك ٢ وغني بالتفاصيل. وكل ما تعرضه المكتبة أو تصدّره (الموقع، ورمز SVG المنسوخ، والتنزيلات، والحزمتان
-المرتقبتان) يعرضه ملفَّ SVG قياسياً ٢٤×٢٤ بسُمك ١٫٦، مكبَّراً حول مركزه حتى تلامس حافة الخط حدود اللوحة تماماً:
+الرسم بسُمك ٢ وغني بالتفاصيل. وكل ما تعرضه المكتبة أو تصدّره (الموقع، ورمز SVG المنسوخ، والتنزيلات، والحزم
+الثلاث) يعرضه ملفَّ SVG قياسياً ٢٤×٢٤ بسُمك ١٫٦، مكبَّراً حول مركزه حتى تلامس حافة الخط حدود اللوحة تماماً:
 
 <div dir="ltr">
 
@@ -79,10 +79,11 @@ scale = 1.2 − strokeWidth / 20        (1.12 at 1.6; art within 2–22, so 12 �
 </div>
 
 يفعل ذلك `src/lib/frame.js` دون DOM، بالدالة `frame_inner(inner, strokeWidth)`، فيتشارك الموقع و`scripts/check-icons.js`
-والحزمتان تنفيذاً واحداً.
+و`scripts/build-packages.js`، الذي يكتب ملفات الحزم، تنفيذاً واحداً. ومكوّنا Svelte وReact يعيدان المعادلة أعلاه
+بسطر واحد حين يتغير السُمك، ويحرس اختبارٌ تطابقهما.
 
 - الخط الأخف يرسم الأيقونة أكبر قليلاً، والأثقل أصغر قليلاً، فتملأ لوحتها دائماً.
-- ولأن الحبر يلامس حدود اللوحة، يحمل كل رسم وكل تصدير `overflow="visible"`، وكذلك المكوّنات المرتقبة. وبدونها يقصّ Chrome
+- ولأن الحبر يلامس حدود اللوحة، يحمل كل رسم وكل تصدير `overflow="visible"`، وكذلك المكوّنات. وبدونها يقصّ Chrome
   وFirefox جزءاً ظاهراً من الحافة في أغلب الأيقونات كلما وقعت حدود اللوحة بين بكسلين.
 - مقيساً على المجموعة كلها، يتسع أضيق فراغ بين العناصر المتمايزة من وسيط ٠٫١٥ بكسل في الرسم إلى ٠٫٨١ بكسل في العرض،
   فتُقرأ الأيقونات بوضوح من ٢٠ بكسل، وأبهى ما تكون من ٢٨ بكسل. وفي حجم ١٦ بكسل استعمل سُمك ١٫٤.
@@ -93,7 +94,7 @@ scale = 1.2 − strokeWidth / 20        (1.12 at 1.6; art within 2–22, so 12 �
 ### بنية المشروع
 
 - `icons/<name>.svg`: الرسم الأصل بسُمك ٢، وهو المرجع. والملفات الجاهزة للاستعمال (سُمك ١٫٦، داخل الإطار، مع
-  `overflow="visible"`) تأتي من الموقع، ولاحقاً من الحزمتين.
+  `overflow="visible"`) تأتي من الموقع ومن الحزم.
 - `icons/<name>.json`: العنوان العربي `title`، والإنجليزي `title_en`، وكلمات البحث `tags` بالعربية والإنجليزية.
 - `icons/_categories.json`: التصنيفات بترتيب العرض: المعرّف، والعنوان العربي `title`، والإنجليزي `title_en`، والأيقونة
   التي تمثّله، وقائمة `icons` بترتيب العرض، وملاحظة اختيارية `note` تظهر في لوحة الأيقونة ومعها `note_en`. وهو المكان
@@ -101,6 +102,8 @@ scale = 1.2 − strokeWidth / 20        (1.12 at 1.6; art within 2–22, so 12 �
 - `src/lib/frame.js`: إطار العرض، وهو هندسة خالصة. و`src/lib/icon-file.js`: القارئ الوحيد لملفات الأيقونات.
   و`scripts/check-icons.js`: المعايير في صورة فحص.
 - `src/`: الموقع (Svelte 5 وnavgo وTailwind 4 وbits-ui). ويحمّل `src/lib/icons.js` مجلد `icons/` عند البناء.
+- `packages/`: الحزم المنشورة على npm، `svg` و`svelte` و`react`. يكتب `scripts/build-packages.js` أيقوناتها من `icons/`،
+  ولا يُكتب يدوياً إلا المكوّن المشترك وأنواعه وملف `readme.md` واختباراتها.
 
 ### التطوير
 
@@ -117,6 +120,9 @@ pnpm og             # صورتا معاينة الرابط (og:image)، في tmp
 pnpm test           # اختبارات الفحص
 pnpm lint           # oxlint
 pnpm format:check   # oxfmt
+pnpm build:packages # فحص الأيقونات، ثم توليد الحزم في packages/
+pnpm test:packages  # اختبارات الحزم (بعد build:packages)
+pnpm check:packages # publint وattw على الحزم
 ```
 
 </div>
@@ -132,6 +138,9 @@ pnpm check:icons
 pnpm test
 pnpm lint
 pnpm format:check
+pnpm build:packages
+pnpm test:packages
+pnpm check:packages
 ```
 
 </div>
@@ -209,7 +218,7 @@ Naming, so the set reads as one. `pnpm check:icons` enforces the title, order an
 ### Drawn at 2, shown at 1.6
 
 The art is drawn at stroke 2 and is rich in detail. Everything the library shows or exports — the site, copied SVG,
-downloads, the planned packages — renders it as a standard 24×24 SVG at stroke 1.6, with the art scaled about the
+downloads, the three packages — renders it as a standard 24×24 SVG at stroke 1.6, with the art scaled about the
 centre so the outer edge of the stroke meets the box edge exactly:
 
 ```
@@ -217,11 +226,12 @@ scale = 1.2 − strokeWidth / 20        (1.12 at 1.6; art within 2–22, so 12 �
 ```
 
 `src/lib/frame.js` does this without a DOM (`frame_inner(inner, strokeWidth)`), so the site, `scripts/check-icons.js`
-and the packages share one implementation.
+and `scripts/build-packages.js`, which writes the packages' files, share one implementation. The Svelte and React
+components repeat the formula above in one line for a changed stroke, and a test keeps them in step.
 
 - A lighter line draws the art slightly larger and a heavier one slightly smaller, so the icon always fills its box.
-- Because the ink meets the box edge, every rendered and exported icon carries `overflow="visible"` (the planned
-  components will too). Without it, Chrome and Firefox shave a visible part of the edge on most icons whenever the box
+- Because the ink meets the box edge, every rendered and exported icon carries `overflow="visible"`, the
+  components included. Without it, Chrome and Firefox shave a visible part of the edge on most icons whenever the box
   edge falls between pixels.
 - Measured over the set, the tightest gap between distinct elements grows from a median 0.15 px as drawn to 0.81 px as
   shown, so the icons read clearly from 20 px and look their best from 28 px. At 16 px use stroke 1.4.
@@ -231,7 +241,7 @@ and the packages share one implementation.
 
 ### Layout
 
-- `icons/<name>.svg` — the master drawing at stroke 2, the source of truth. Ready-to-use files (stroke 1.6, framed, `overflow="visible"`) come from the site, and later from the packages.
+- `icons/<name>.svg` — the master drawing at stroke 2, the source of truth. Ready-to-use files (stroke 1.6, framed, `overflow="visible"`) come from the site and from the packages.
 - `icons/<name>.json` — Arabic `title`, English `title_en`, and search `tags` (Arabic and English).
 - `icons/_categories.json` — the categories in display order: id, Arabic `title`, English `title_en`, the icon that
   represents it, and its `icons` in display order, and an optional `note` shown in the icon panel, with
@@ -239,6 +249,8 @@ and the packages share one implementation.
 - `src/lib/frame.js` — the presentation frame (pure geometry). `src/lib/icon-file.js` — the one reader of icon files.
   `scripts/check-icons.js` — the standard, as a check.
 - `src/` — the site (Svelte 5, navgo, Tailwind 4, bits-ui). `src/lib/icons.js` loads `icons/` at build time.
+- `packages/` — the packages published on npm: `svg`, `svelte` and `react`. `scripts/build-packages.js` writes their
+  icons from `icons/`; only the shared component, its types, the `readme.md` and the tests are written by hand.
 
 ### Development
 
@@ -254,6 +266,9 @@ pnpm og             # the link-preview images (og:image), into tmp/og/; the buil
 pnpm test           # regression tests of the check
 pnpm lint           # oxlint
 pnpm format:check   # oxfmt
+pnpm build:packages # icon check, then generate the packages into packages/
+pnpm test:packages  # the packages' tests (after build:packages)
+pnpm check:packages # publint and attw over the packages
 ```
 
 ### Before you open a pull request
@@ -265,6 +280,9 @@ pnpm check:icons
 pnpm test
 pnpm lint
 pnpm format:check
+pnpm build:packages
+pnpm test:packages
+pnpm check:packages
 ```
 
 If you added an icon or changed a drawing, attach its review sheet from `pnpm sheet <name>` (or `pnpm sheet <old> <new>`

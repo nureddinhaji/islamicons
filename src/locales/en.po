@@ -270,10 +270,6 @@ msgid "سُمك الخط بالبكسل حين يكون حجم الأيقونة 
 msgstr "The stroke in pixels when the icon is 24. The drawing grows or shrinks a little with the stroke, so it keeps filling the box and no edge is clipped."
 
 #: src/routes/Guide.svelte
-msgid "يُبقي سُمك الخط بالبكسل ثابتاً مهما كبرت الأيقونة أو صغرت، بدل أن يتناسب مع حجمها."
-msgstr "Keeps the stroke at the same pixel width however large or small the icon is, instead of scaling with it."
-
-#: src/routes/Guide.svelte
 msgid "فئات CSS تُضاف إلى عنصر svg."
 msgstr "CSS classes added to the svg element."
 
@@ -391,10 +387,6 @@ msgid "داخل التصنيف بالترتيب الذي يلقاه المستخ
 msgstr "Within a category, in the order a person meets them: prayer times through the day, the parts of the prayer in their order, the rites of Hajj as they are performed, and a base icon before its variants."
 
 #: src/routes/Guide.svelte
-msgid "كل ما تحتاجه لتضع الأيقونات في مشروعك: نسخها وتنزيلها اليوم، والحزمتان المرتقبتان، والتنسيق وإمكانية الوصول، ثم القواعد التي تُرسم بها كل أيقونة وطريقة إضافة أيقونة جديدة."
-msgstr "Everything you need to put the icons in your project: copying and downloading them today, the two planned packages, styling and accessibility, then the rules every icon is drawn to and how to add a new one."
-
-#: src/routes/Guide.svelte
 #: src/routes/Guide.svelte
 msgid "محتويات الدليل"
 msgstr "Guide contents"
@@ -402,10 +394,6 @@ msgstr "Guide contents"
 #: src/routes/Guide.svelte
 msgid "محتويات الدليل <0/>"
 msgstr "Guide contents <0/>"
-
-#: src/routes/Guide.svelte
-msgid "<0>المتاح اليوم:</0> نسخ أي أيقونة أو تنزيلها من <1>صفحة الأيقونات</1>. <2>المرتقب:</2> حزمتا Svelte وReact، ولم تُنشرا بعد، والأمثلة الخاصة بهما في هذا الدليل تصف واجهتهما المرتقبة."
-msgstr "<0>Available today:</0> copy or download any icon from the <1>icons page</1>. <2>Coming later:</2> Svelte and React packages. They are not published yet, and the examples for them in this guide describe the interface they will have."
 
 #. 0: count_icons(icons.length)
 #: src/routes/Guide.svelte
@@ -435,15 +423,6 @@ msgstr "And because the edge sits on the box, the markup carries <0/>. Keep it: 
 #: src/routes/Guide.svelte
 msgid "إن تركت اللون على «لون النص» فالرمز يُرسم بـ<0/>، أي بلون النص الذي حوله، فيكفي أن تلوّن العنصر الحاوي:"
 msgstr "If you leave the colour on “Text colour”, the markup is drawn with <0/>, the colour of the text around it. Colouring the containing element is enough:"
-
-#: src/routes/Guide.svelte
-msgid "كل أيقونة مكوّن مستقل يحمل اسمها بصيغة PascalCase، فـ<0/> تصير <1/>. وستُبنى الحزمة بحيث لا يدخل في مشروعك إلا ما تستورده منها."
-msgstr "Each icon is its own component, named after it in PascalCase, so <0/> becomes <1/>. The package will be built so that only what you import from it enters your project."
-
-#: src/components/icons/IconPanel.svelte
-#: src/routes/Guide.svelte
-msgid "<0/> الحزمة قيد الإعداد، وهذا شكل استخدامها المرتقب."
-msgstr "<0/> The package is still being prepared, and this is how it will be used."
 
 #: src/routes/Guide.svelte
 msgid "الخاصية"
@@ -739,10 +718,6 @@ msgid "<0>عنوان إنجليزي</0> يظهر في الموقع الإنجل�
 msgstr "<0>An English title</0> shown on the English site, which search also finds: <1/>."
 
 #: src/components/home/Hero.svelte
-msgid "(قريباً)"
-msgstr "(coming soon)"
-
-#: src/components/home/Hero.svelte
 msgid "متوفرة على:"
 msgstr "Available for:"
 
@@ -763,3 +738,85 @@ msgstr "The interface symbols on this site, such as search, copy and download, c
 #: src/components/Header.svelte
 msgid "المستودع على GitHub"
 msgstr "GitHub repository"
+
+#: src/routes/Guide.svelte
+msgid "كل ما تحتاجه لتضع الأيقونات في مشروعك: نسخها وتنزيلها، وحزم SVG وSvelte وReact، والتنسيق وإمكانية الوصول، ثم القواعد التي تُرسم بها كل أيقونة وطريقة إضافة أيقونة جديدة."
+msgstr "Everything you need to put the icons in your project: copying and downloading them, the SVG, Svelte and React packages, styling and accessibility, then the rules every icon is drawn to and how to add a new one."
+
+#: src/routes/Guide.svelte
+msgid "أربع طرق لتضعها في مشروعك"
+msgstr "Four ways into your project"
+
+#: src/routes/Guide.svelte
+msgid "<0/>: ملف لكل أيقونة باسمها البرمجي."
+msgstr "<0/>: one file per icon, named by its id."
+
+#: src/routes/Guide.svelte
+msgid "<0/>: بيانات الأيقونات كلها، والتصنيفات بترتيب عرضها."
+msgstr "<0/>: the data of every icon, and the categories in display order."
+
+#: src/routes/Guide.svelte
+#: src/routes/Guide.svelte
+#: src/routes/Guide.svelte
+msgid "ملفات SVG"
+msgstr "SVG files"
+
+#: src/routes/Guide.svelte
+msgid "وإن عرضت الملف في عنصر <0/> فسيُرسم بالأسود، لأن الصورة لا ترث لون الصفحة. ضع رمزه في الصفحة نفسها ليأخذ لون النص من حوله."
+msgstr "In an <0/> element the file draws in black, because an image does not inherit the page's colour. Put its markup in the page itself to take the colour of the text around it."
+
+#: src/routes/Guide.svelte
+msgid "كل أيقونة مكوّن مستقل يحمل اسمها بصيغة PascalCase، فـ<0/> تصير <1/>. ولا يدخل في مشروعك إلا ما تستورده منها."
+msgstr "Every icon is its own component, named after it in PascalCase: <0/> becomes <1/>. Only what you import reaches your project."
+
+#: src/routes/Guide.svelte
+msgid "ويمكنك أن تستورد كل أيقونة من ملفها، فلا يقرأ خادم التطوير الحزمة كلها، ويبقى سريعاً حين تكثر الأيقونات في مشروعك:"
+msgstr "You can also import each icon from its own file, so the dev server does not read the whole package and stays fast when a project uses many icons:"
+
+#: src/routes/Guide.svelte
+msgid "ويضع مكوّنا Svelte وReact على كل أيقونة الفئتين <0/> و<1/>، فتنسّق الأيقونات كلها بقاعدة واحدة، أو أيقونة بعينها باسمها:"
+msgstr "The Svelte and React components also put the classes <0/> and <1/> on every icon, so one rule styles them all, or one icon by its name:"
+
+#: src/routes/Guide.svelte
+msgid "ومكوّنا Svelte وReact يفعلان ذلك وحدهما: تُخفى الأيقونة عن قارئ الشاشة افتراضياً، فإن أعطيتها <0/> أو <1/> صارت <2/> يقرؤها قارئ الشاشة."
+msgstr "The Svelte and React components do this on their own: an icon is hidden from screen readers by default, and once you give it an <0/> or a <1/> it becomes <2/>, which screen readers announce."
+
+#: src/routes/Guide.svelte
+msgid "يُبقي سُمك الخط بالبكسل ثابتاً مهما كبرت الأيقونة أو صغرت، بدل أن يتناسب مع حجمها. يحتاج قيمة رقمية لـsize."
+msgstr "Keeps the stroke the same number of pixels however large or small the icon is, instead of scaling with its size. Needs a numeric size."
+
+#: src/components/InstallCommand.svelte
+msgid "مدير الحزم"
+msgstr "Package manager"
+
+#: src/routes/Guide.svelte
+msgid "من الموقع"
+msgstr "From the site"
+
+#: src/routes/Guide.svelte
+msgid "اختر الأيقونة واضبطها، ثم انسخ رمزها أو نزّلها SVG أو PNG، بلا تثبيت."
+msgstr "Pick the icon and set it up, then copy its markup or download it as SVG or PNG, with nothing to install."
+
+#: src/components/icons/IconPanel.svelte
+msgid "تثبيت الحزمة وخصائصها"
+msgstr "Installing the package, and its props"
+
+#: src/routes/Guide.svelte
+msgid "الأيقونات كلها ملفات جاهزة مع بياناتها، في حزمة واحدة."
+msgstr "Every icon as a ready-made file, with its data, in one package."
+
+#: src/routes/Guide.svelte
+msgid "مكوّن Svelte 5 لكل أيقونة، بخصائص للحجم والسُمك واللون."
+msgstr "A Svelte 5 component for every icon, with props for size, stroke and colour."
+
+#: src/routes/Guide.svelte
+msgid "مكوّن لكل أيقونة بالخصائص نفسها، لـReact 18 و19، ويعمل في Server Components أيضاً."
+msgstr "A component for every icon with the same props, for React 18 and 19, and it works in Server Components too."
+
+#: src/routes/Guide.svelte
+msgid "الأيقونات كلها ملفات جاهزة في حزمة واحدة، هي نفسها التي تنزّلها من الموقع بحجم ٢٤ وبالسُمك واللون الافتراضيين، ومعها بياناتها: العنوانان العربي والإنجليزي، والتصنيف، وكلمات البحث."
+msgstr "Every icon as a ready-made file in one package: the same files you download from the site at size 24 with the default stroke and colour, together with their data, meaning the Arabic and English titles, the category and the search tags."
+
+#: src/routes/Guide.svelte
+msgid "لا تستعمل المكوّنات أي hook، فتعمل في React Server Components دون <0/>، والأيقونة التي تُرسم فيها لا يصل منها إلى المتصفح أي JavaScript. أما <1/> فيصل إلى عنصر svg في React 19، ولا يمرّره React 18 إلى المكوّن."
+msgstr "The components use no hooks, so they work in React Server Components without <0/>, and an icon rendered there sends no JavaScript to the browser. <1/> reaches the svg element in React 19; React 18 does not pass it to the component."

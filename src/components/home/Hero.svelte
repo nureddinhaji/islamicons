@@ -15,9 +15,6 @@
                     >
                         <Icon id={target.id} class="size-5" />
                         {target.label}
-                        {#if target.soon}
-                            <span class="font-normal text-muted-foreground">(قريباً)</span>
-                        {/if}
                     </a>
                 {/each}
             </p>
@@ -140,8 +137,7 @@ const featured = [
     'qibla-compass',
 ].map(icon_named)
 
-// SVG works today; every package is still unpublished (see PACKAGES), so each is marked as coming.
-const TARGETS = [{id: 'svg', label: 'SVG'}, ...PACKAGES.map(pkg => ({id: pkg.id, label: pkg.label, soon: true}))]
+const TARGETS = [{id: 'svg', label: 'SVG'}, ...PACKAGES]
 
 // Base icons only (variant titles carry parentheses), and never the sacred names in a game of swaps.
 const REEL = icons.filter(icon => icon.category !== 'sacred-names' && !icon.titles[0].includes('('))

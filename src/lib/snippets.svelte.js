@@ -25,7 +25,24 @@ export function Example() {
     return <${component}${component_props(options)} />
 }`
 
-export const install_command = id => `pnpm add ${package_name(id)}`
+export const PACKAGE_MANAGERS = ['pnpm', 'npm', 'yarn', 'bun']
+const ADD_COMMANDS = {pnpm: 'pnpm add', npm: 'npm install', yarn: 'yarn add', bun: 'bun add'}
+
+export const install_command = (manager, name) => `${ADD_COMMANDS[manager]} ${name}`
+
+const deep_import = id => `import Mosque from '${package_name(id)}/icons/mosque'`
+
+export const deep_import_example = id =>
+    id === 'svelte'
+        ? `<script>
+    ${deep_import(id)}
+</script>
+
+<Mosque />`
+        : deep_import(id)
+
+export const islamicon_class_example = `.islamicon { color: #1f6b55; }
+.islamicon-kaaba { color: #a8741a; }`
 
 export const svelte_props_example = `<script>
     import {Mosque, Kaaba, Quran} from '${package_name('svelte')}'

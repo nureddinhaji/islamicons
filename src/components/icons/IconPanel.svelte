@@ -52,8 +52,11 @@
                     {#each [{id: 'svelte', code: svelte_usage(shown.component, options)}, {id: 'react', code: react_usage(shown.component, options)}] as tab (tab.id)}
                         <Tabs.Content value={tab.id} class="flex flex-col gap-2">
                             <p class="flex items-center gap-1.5 text-sm text-muted-foreground">
-                                <Icon id="clock" class="size-4 text-gold" />
-                                الحزمة قيد الإعداد، وهذا شكل استخدامها المرتقب.
+                                <Icon id="book-open" class="size-4" />
+                                <a
+                                    href={href_in(`/guide#${tab.id}`)}
+                                    class="underline underline-offset-4 hover:text-foreground">تثبيت الحزمة وخصائصها</a
+                                >
                             </p>
                             {#key shown.name}
                                 <CodeBlock code={tab.code} caption={PACKAGES.find(pkg => pkg.id === tab.id).name} />

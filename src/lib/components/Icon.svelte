@@ -25,7 +25,6 @@ import react from '@tabler/icons/outline/brand-react.svg?raw'
 import svelte from '@tabler/icons/outline/brand-svelte.svg?raw'
 import check from '@tabler/icons/outline/check.svg?raw'
 import chevron_down from '@tabler/icons/outline/chevron-down.svg?raw'
-import clock from '@tabler/icons/outline/clock.svg?raw'
 import copy from '@tabler/icons/outline/copy.svg?raw'
 import download from '@tabler/icons/outline/download.svg?raw'
 import file_svg from '@tabler/icons/outline/file-type-svg.svg?raw'
@@ -54,7 +53,6 @@ const GLYPHS = Object.fromEntries(
         'book-open': book,
         check,
         'chevron-down': chevron_down,
-        clock,
         copy,
         download,
         github,

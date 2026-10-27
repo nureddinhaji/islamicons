@@ -37,15 +37,30 @@
 
 ### الحزم
 
-حزمتا &#x2066;`@islamicons/svelte`&#x2069; و&#x2066;`@islamicons/react`&#x2069; قيد الإعداد، وكل أيقونة فيهما مكوّن يحمل اسمها:
+| الحزمة | ما فيها |
+| --- | --- |
+| [&#x2066;`@islamicons/svg`&#x2069;](https://www.npmjs.com/package/@islamicons/svg) | ملفات SVG جاهزة، وبيانات الأيقونات بالعربية والإنجليزية |
+| [&#x2066;`@islamicons/svelte`&#x2069;](https://www.npmjs.com/package/@islamicons/svelte) | مكوّن Svelte 5 لكل أيقونة |
+| [&#x2066;`@islamicons/react`&#x2069;](https://www.npmjs.com/package/@islamicons/react) | مكوّن React لكل أيقونة، يعمل في Server Components أيضاً |
 
 <div dir="ltr">
 
+```sh
+pnpm add @islamicons/svelte
+```
+
 ```svelte
+<script>
+    import {Mosque} from '@islamicons/svelte'
+</script>
+
 <Mosque size={32} />
 ```
 
 </div>
+
+وكل أيقونة مكوّن يحمل اسمها بصيغة PascalCase. الخصائص وأمثلة React وطرق التثبيت الأخرى في
+[دليل الاستخدام](https://islamicons.org/guide#react).
 
 ### المساهمة
 
@@ -90,11 +105,24 @@ SVG, or download it as a PNG. The site is in Arabic and English.
 
 ### Packages
 
-`@islamicons/svelte` and `@islamicons/react` are in preparation. Each icon is a component named after it:
+| Package | What it holds |
+| --- | --- |
+| [`@islamicons/svg`](https://www.npmjs.com/package/@islamicons/svg) | Ready-to-use SVG files, and each icon's Arabic and English metadata |
+| [`@islamicons/svelte`](https://www.npmjs.com/package/@islamicons/svelte) | A Svelte 5 component for every icon |
+| [`@islamicons/react`](https://www.npmjs.com/package/@islamicons/react) | A React component for every icon, Server Components included |
 
-```svelte
-<Mosque size={32} />
+```sh
+pnpm add @islamicons/react
 ```
+
+```jsx
+import {Mosque} from '@islamicons/react'
+
+export const Nav = () => <Mosque size={32} />
+```
+
+Each icon is a component named after it in PascalCase. Props, Svelte examples and other install commands are in
+[the guide](https://islamicons.org/en/guide#svelte).
 
 ### Contributing
 

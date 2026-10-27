@@ -5,7 +5,8 @@ export const get_nav_links = () => [
 
 export const REPO_URL = 'https://github.com/nureddinhaji/islamicons'
 
-// The packages are not published yet; the guide and the icon panel mark them as coming soon.
+export const SVG_PACKAGE = '@islamicons/svg'
+
 export const PACKAGES = [
     {id: 'svelte', label: 'Svelte', name: '@islamicons/svelte'},
     {id: 'react', label: 'React', name: '@islamicons/react'},
