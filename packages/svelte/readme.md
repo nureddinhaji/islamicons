@@ -51,7 +51,7 @@ import Mosque from '@islamicons/svelte/icons/mosque'
 | ------------------------------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | &#x2066;`size`&#x2069;                | &#x2066;`24`&#x2069;           | العرض والارتفاع، رقماً بالبكسل أو أي قيمة CSS.                                                                                               |
 | &#x2066;`color`&#x2069;               | &#x2066;`currentColor`&#x2069; | لون الخط والأجزاء المصمتة.                                                                                                                   |
-| &#x2066;`strokeWidth`&#x2069;         | &#x2066;`1.6`&#x2069;          | سُمك الخط بالبكسل حين يكون حجم الأيقونة ٢٤. يُكبَّر الرسم أو يُصغَّر قليلاً على قدر الخط، فيبقى ملء اللوحة.                                  |
+| &#x2066;`strokeWidth`&#x2069;         | &#x2066;`1.5`&#x2069;          | سُمك الخط بالبكسل حين يكون حجم الأيقونة ٢٤. يُكبَّر الرسم أو يُصغَّر قليلاً على قدر الخط، فيبقى على بُعد وحدة من حدود اللوحة.                |
 | &#x2066;`absoluteStrokeWidth`&#x2069; | &#x2066;`false`&#x2069;        | يُبقي سُمك الخط بالبكسل ثابتاً مهما كبرت الأيقونة أو صغرت. يحتاج قيمة رقمية لـ&#x2066;`size`&#x2069;.                                        |
 | &#x2066;`class`&#x2069;               |                                | فئات CSS تُضاف إلى عنصر &#x2066;`svg`&#x2069;.                                                                                               |
 | &#x2066;`...`&#x2069;                 |                                | بقية الخصائص تمرّ إلى عنصر &#x2066;`svg`&#x2069; كما هي، مثل &#x2066;`aria-label`&#x2069; و&#x2066;`role`&#x2069; و&#x2066;`data-*`&#x2069;. |
@@ -59,7 +59,7 @@ import Mosque from '@islamicons/svelte/icons/mosque'
 - **إمكانية الوصول:** الأيقونة مخفية عن قارئ الشاشة افتراضياً (&#x2066;`aria-hidden="true"`&#x2069;)، لأن النص بجوارها يقول معناها في
   الغالب. فإن أعطيتها &#x2066;`aria-label`&#x2069; أو &#x2066;`title`&#x2069; صارت &#x2066;`role="img"`&#x2069; يقرؤها قارئ الشاشة.
 - **فئة مشتركة:** على كل أيقونة الفئتان &#x2066;`islamicon`&#x2069; و&#x2066;`islamicon-<name>`&#x2069;، فتنسّق الأيقونات كلها من CSS بقاعدة واحدة.
-- **الحافة:** يحمل العنصر &#x2066;`overflow="visible"`&#x2069;، لأن حافة الخط تبلغ حدود اللوحة. لا تُزله.
+- **الحافة:** يترك الرسم هامشاً داخل لوحته بأي سُمك، فلا يقصّ المتصفح حافته في الأحجام المعتادة، حتى الكسرية منها وعند تكبير الصفحة.
 
 دليل الاستخدام كاملاً: [islamicons.org/guide](https://islamicons.org/guide).
 
@@ -100,20 +100,21 @@ import Mosque from '@islamicons/svelte/icons/mosque'
 
 ### Props
 
-| Prop                  | Default        | Description                                                                                            |
-| --------------------- | -------------- | ------------------------------------------------------------------------------------------------------ |
-| `size`                | `24`           | Width and height: a number of pixels or any CSS length.                                                |
-| `color`               | `currentColor` | Colour of the strokes and the solid parts.                                                             |
-| `strokeWidth`         | `1.6`          | Stroke width in pixels at size 24. The drawing grows or shrinks slightly with it, so it fills its box. |
-| `absoluteStrokeWidth` | `false`        | Keeps the stroke the same number of pixels at any size. Needs a numeric `size`.                        |
-| `class`               |                | CSS classes added to the `svg` element.                                                                |
-| `...`                 |                | Every other prop reaches the `svg` element as is, such as `aria-label`, `role` and `data-*`.           |
+| Prop                  | Default        | Description                                                                                                 |
+| --------------------- | -------------- | ----------------------------------------------------------------------------------------------------------- |
+| `size`                | `24`           | Width and height: a number of pixels or any CSS length.                                                     |
+| `color`               | `currentColor` | Colour of the strokes and the solid parts.                                                                  |
+| `strokeWidth`         | `1.5`          | Stroke width in pixels at size 24. The drawing grows or shrinks slightly with it, keeping a unit of margin. |
+| `absoluteStrokeWidth` | `false`        | Keeps the stroke the same number of pixels at any size. Needs a numeric `size`.                             |
+| `class`               |                | CSS classes added to the `svg` element.                                                                     |
+| `...`                 |                | Every other prop reaches the `svg` element as is, such as `aria-label`, `role` and `data-*`.                |
 
 - **Accessibility:** icons are hidden from screen readers by default (`aria-hidden="true"`), because the text beside
   them usually says what they mean. Give one an `aria-label` or a `title` and it becomes `role="img"`, which screen
   readers announce.
 - **A shared class:** every icon carries `islamicon` and `islamicon-<name>`, so one CSS rule can style them all.
-- **Edge:** the element carries `overflow="visible"` because the stroke reaches the edge of the box. Keep it.
+- **Edge:** at any stroke the drawing keeps a margin inside its box, so browsers do not shave its edge at the usual
+  sizes, fractional ones and page zoom included.
 
 The full guide: [islamicons.org/en/guide](https://islamicons.org/en/guide).
 

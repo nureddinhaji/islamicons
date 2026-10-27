@@ -122,7 +122,7 @@ test('the default stroke draws the file as it is', () => {
     for (const props of [{strokeWidth: DEFAULT_STROKE_WIDTH}, {absoluteStrokeWidth: true, size: 24}]) {
         const html = markup(Mosque, props)
         assert.doesNotMatch(html, /<g/)
-        assert.equal(root_of(html)['stroke-width'], '1.6')
+        assert.equal(root_of(html)['stroke-width'], '1.5')
     }
 })
 
@@ -138,8 +138,8 @@ test('another stroke rescales the shapes about the centre, as the site does', ()
 })
 
 test('an absolute stroke keeps its pixels at any size', () => {
-    assert.equal(root_of(markup(Mosque, {absoluteStrokeWidth: true, size: 48}))['stroke-width'], '0.8')
-    assert.equal(root_of(markup(Mosque, {absoluteStrokeWidth: true, size: '2rem'}))['stroke-width'], '1.6')
+    assert.equal(root_of(markup(Mosque, {absoluteStrokeWidth: true, size: 48}))['stroke-width'], '0.75')
+    assert.equal(root_of(markup(Mosque, {absoluteStrokeWidth: true, size: '2rem'}))['stroke-width'], '1.5')
 })
 
 test('no hooks and no client directive, so Server Components can render the icons', () => {

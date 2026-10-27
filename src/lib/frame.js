@@ -1,7 +1,7 @@
 // Pure geometry for the presentation frame: no DOM, so the site, scripts/check-icons.js and future packages share it.
 
-// Pixels at 24 px: 80 % of the drawn 2, because the art is dense and a lighter line opens the gaps between its details
-export const DEFAULT_STROKE_WIDTH = 1.6
+// Pixels at 24 px: 75 % of the drawn 2, because the art is dense and a lighter line opens the gaps between its details
+export const DEFAULT_STROKE_WIDTH = 1.5
 
 const CENTRE = 12
 const PARAM_COUNTS = {m: 2, l: 2, h: 1, v: 1, c: 6, s: 4, q: 4, t: 2, a: 7, z: 0}
@@ -9,9 +9,8 @@ const NUMBER = /^[\s,]*(-?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?)/
 const ARC_FLAG = /^[\s,]*([01])/
 const COMMAND = /^[\s,]*([MmLlHhVvCcSsQqTtAaZz])/
 
-// The art keeps every path within 2–22; scaled by s about the centre with a t-wide stroke, its outer edge
-// sits at s·10 + t/2, which is the box edge (12) when s = 1.2 − t/20.
-export const frame_scale = (stroke_width = DEFAULT_STROKE_WIDTH) => 1.2 - stroke_width / 20
+// Art in 2–22 scaled by s with stroke t reaches s·10 + t/2 = 11, a unit clear of the edge a clipping <svg> shaves.
+export const frame_scale = (stroke_width = DEFAULT_STROKE_WIDTH) => 1.1 - stroke_width / 20
 
 export function parse_path(d) {
     const segments = []
@@ -139,6 +138,6 @@ export function svg_document(framed, {size = 24, stroke_width = DEFAULT_STROKE_W
     // A standalone file has no text colour for fill="currentColor" to inherit, so solid parts take the chosen colour.
     const filled = color === 'currentColor' ? framed : framed.replaceAll('fill="currentColor"', `fill="${color}"`)
     const body = filled.replace(/></g, '>\n  <')
-    // The stroke meets the box edge, and browsers clip an inline <svg> there, shaving it at fractional sizes.
+    // The frame leaves a unit of margin; overflow="visible" still saves the edge of a stroke raised later in CSS.
     return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="${stroke_width}" stroke-linecap="round" stroke-linejoin="round" overflow="visible">\n  ${body}\n</svg>`
 }

@@ -31,9 +31,9 @@
 </script>
 
 <script>
-// Mirrors src/lib/frame.js: shapes arrive framed for 1.6, and another stroke rescales them about the centre.
-const DEFAULT_STROKE_WIDTH = 1.6
-const frame_scale = stroke_width => 1.2 - stroke_width / 20
+// Mirrors src/lib/frame.js: shapes arrive framed for 1.5, and another stroke rescales them about the centre.
+const DEFAULT_STROKE_WIDTH = 1.5
+const frame_scale = stroke_width => 1.1 - stroke_width / 20
 // (1.6 * 24) / 24 is 1.6000000000000003 in floating point; 4 decimals, as frame.js writes coordinates.
 const round = value => Math.round(value * 10000) / 10000
 const names_itself = key => key === 'role' || key === 'title' || key.startsWith('aria-')

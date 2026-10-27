@@ -65,15 +65,15 @@
   و`off` آخر كلمة في الاسم. واسم الأيقونة في قائمة تصنيفها في `_categories.json` مرة واحدة، وقوائمه لا تسمّي إلا أيقونات
   موجودة وتضمّ الأيقونة التي تمثّل كل تصنيف. وكل أيقونة يسمّيها الموقع في `src/` موجودة.
 
-### تُرسم بسُمك ٢ وتُعرض بسُمك ١٫٦
+### تُرسم بسُمك ٢ وتُعرض بسُمك ١٫٥
 
 الرسم بسُمك ٢ وغني بالتفاصيل. وكل ما تعرضه المكتبة أو تصدّره (الموقع، ورمز SVG المنسوخ، والتنزيلات، والحزم
-الثلاث) يعرضه ملفَّ SVG قياسياً ٢٤×٢٤ بسُمك ١٫٦، مكبَّراً حول مركزه حتى تلامس حافة الخط حدود اللوحة تماماً:
+الثلاث) يعرضه ملفَّ SVG قياسياً ٢٤×٢٤ بسُمك ١٫٥، مكبَّراً حول مركزه حتى تقف حافة الخط على بُعد وحدة من حدود اللوحة:
 
 <div dir="ltr">
 
 ```
-scale = 1.2 − strokeWidth / 20        (1.12 at 1.6; art within 2–22, so 12 − 10·scale = strokeWidth / 2)
+scale = 1.1 − strokeWidth / 20        (1.025 at 1.5; art within 2–22, so 12 − 10·scale = 1 + strokeWidth / 2)
 ```
 
 </div>
@@ -82,18 +82,22 @@ scale = 1.2 − strokeWidth / 20        (1.12 at 1.6; art within 2–22, so 12 �
 و`scripts/build-packages.js`، الذي يكتب ملفات الحزم، تنفيذاً واحداً. ومكوّنا Svelte وReact يعيدان المعادلة أعلاه
 بسطر واحد حين يتغير السُمك، ويحرس اختبارٌ تطابقهما.
 
-- الخط الأخف يرسم الأيقونة أكبر قليلاً، والأثقل أصغر قليلاً، فتملأ لوحتها دائماً.
-- ولأن الحبر يلامس حدود اللوحة، يحمل كل رسم وكل تصدير `overflow="visible"`، وكذلك المكوّنات. وبدونها يقصّ Chrome
-  وFirefox جزءاً ظاهراً من الحافة في أغلب الأيقونات كلما وقعت حدود اللوحة بين بكسلين.
-- مقيساً على المجموعة كلها، يتسع أضيق فراغ بين العناصر المتمايزة من وسيط ٠٫١٥ بكسل في الرسم إلى ٠٫٨١ بكسل في العرض،
-  فتُقرأ الأيقونات بوضوح من ٢٠ بكسل، وأبهى ما تكون من ٢٨ بكسل. وفي حجم ١٦ بكسل استعمل سُمك ١٫٤.
+- الخط الأخف يرسم الأيقونة أكبر قليلاً، والأثقل أصغر قليلاً، فيبقى الحبر دائماً بين ١ و٢٣. وعند سُمك ٢ يكون المقياس ١،
+  فيرسم الملف الرسم الأصل بلا تغيير.
+- وهذا الهامش هو ما يحفظ الحافة: المتصفح يقصّ عنصر svg عند حدود لوحته، وفي الأحجام الكسرية (تكبير الصفحة، وتحجيم
+  النظام، وأحجام rem) يقصّ Chrome وFirefox حتى بكسل كامل من الحافتين اليمنى والسفلى. ولا يُعتمد على `overflow="visible"`
+  لمنع ذلك، لأن Iconify يحذفها وأي قاعدة CSS تلغيها (`svg { overflow: hidden }` في Bootstrap 4 وnormalize.css 5). ومع
+  ذلك يحملها كل رسم وكل تصدير احتياطاً، فتسلم حافة الخط إن ثُقّل من CSS.
+- مقيساً على المجموعة كلها، يبلغ وسيطُ أضيق فراغ بين العناصر المتمايزة ٠٫٥١ بكسل في حجم ٢٤، والخط الأخف هو ما يفتحه:
+  بسُمك الرسم ٢ ينغلق نصف هذه الفراغات. فتُقرأ الأيقونات بوضوح من ٢٠ بكسل، وأبهى ما تكون من ٢٨ بكسل. وفي حجم ١٦ بكسل
+  استعمل سُمك ١٫٤.
 - الأقواس الممتدة على وترها بالضبط (أنصاف الدوائر) تُكتب بأنصاف أقطار أقل من نصف الوتر بشعرة، فيحسبها المتصفح نصف دائرة
   تامة، ولو قُرّبت إلى الأعلى لتسطّحت تسطحاً ظاهراً. وتحتفظ الإحداثيات بأربع خانات عشرية لأن ما يقارب نصف الدائرة يضخّم أثر
   التقريب.
 
 ### بنية المشروع
 
-- `icons/<name>.svg`: الرسم الأصل بسُمك ٢، وهو المرجع. والملفات الجاهزة للاستعمال (سُمك ١٫٦، داخل الإطار، مع
+- `icons/<name>.svg`: الرسم الأصل بسُمك ٢، وهو المرجع. والملفات الجاهزة للاستعمال (سُمك ١٫٥، داخل الإطار، مع
   `overflow="visible"`) تأتي من الموقع ومن الحزم.
 - `icons/<name>.json`: العنوان العربي `title`، والإنجليزي `title_en`، وكلمات البحث `tags` بالعربية والإنجليزية.
 - `icons/_categories.json`: التصنيفات بترتيب العرض: المعرّف، والعنوان العربي `title`، والإنجليزي `title_en`، والأيقونة
@@ -215,33 +219,37 @@ Naming, so the set reads as one. `pnpm check:icons` enforces the title, order an
   The icon is listed exactly once in its category in `_categories.json`, whose lists name only existing icons and
   include each category's own icon. Every icon the site names in `src/` exists.
 
-### Drawn at 2, shown at 1.6
+### Drawn at 2, shown at 1.5
 
 The art is drawn at stroke 2 and is rich in detail. Everything the library shows or exports — the site, copied SVG,
-downloads, the three packages — renders it as a standard 24×24 SVG at stroke 1.6, with the art scaled about the
-centre so the outer edge of the stroke meets the box edge exactly:
+downloads, the three packages — renders it as a standard 24×24 SVG at stroke 1.5, with the art scaled about the
+centre so the outer edge of the stroke stops one unit inside the box:
 
 ```
-scale = 1.2 − strokeWidth / 20        (1.12 at 1.6; art within 2–22, so 12 − 10·scale = strokeWidth / 2)
+scale = 1.1 − strokeWidth / 20        (1.025 at 1.5; art within 2–22, so 12 − 10·scale = 1 + strokeWidth / 2)
 ```
 
 `src/lib/frame.js` does this without a DOM (`frame_inner(inner, strokeWidth)`), so the site, `scripts/check-icons.js`
 and `scripts/build-packages.js`, which writes the packages' files, share one implementation. The Svelte and React
 components repeat the formula above in one line for a changed stroke, and a test keeps them in step.
 
-- A lighter line draws the art slightly larger and a heavier one slightly smaller, so the icon always fills its box.
-- Because the ink meets the box edge, every rendered and exported icon carries `overflow="visible"`, the
-  components included. Without it, Chrome and Firefox shave a visible part of the edge on most icons whenever the box
-  edge falls between pixels.
-- Measured over the set, the tightest gap between distinct elements grows from a median 0.15 px as drawn to 0.81 px as
-  shown, so the icons read clearly from 20 px and look their best from 28 px. At 16 px use stroke 1.4.
+- A lighter line draws the art slightly larger and a heavier one slightly smaller, so the ink always stays within 1–23.
+  At stroke 2 the scale is 1, so the file draws the master geometry unchanged.
+- The margin is what keeps the edge whole. Browsers clip an inline `<svg>` at its box, and at fractional sizes (page
+  zoom, OS scaling, rem sizes) Chrome and Firefox shave up to a device pixel off the right and bottom edges.
+  `overflow="visible"` cannot be relied on to prevent it: Iconify strips it, and any CSS rule overrides it
+  (`svg { overflow: hidden }` in Bootstrap 4 and normalize.css 5). Every rendered and exported icon still carries it,
+  so a stroke made heavier in CSS keeps its edge.
+- Measured over the set, the median tightest gap between distinct elements is 0.51 px at 24 px, and the lighter line
+  is what opens it: at the drawn stroke 2 half of those gaps close. So the icons read clearly from 20 px and look their
+  best from 28 px. At 16 px use stroke 1.4.
 - Arcs that span their chord exactly (semicircles) are written with radii a hair under the chord, so renderers resolve
   them to the exact semicircle; rounding them up would visibly flatten them. Coordinates keep 4 decimals because
   near-semicircles amplify rounding.
 
 ### Layout
 
-- `icons/<name>.svg` — the master drawing at stroke 2, the source of truth. Ready-to-use files (stroke 1.6, framed, `overflow="visible"`) come from the site and from the packages.
+- `icons/<name>.svg` — the master drawing at stroke 2, the source of truth. Ready-to-use files (stroke 1.5, framed, `overflow="visible"`) come from the site and from the packages.
 - `icons/<name>.json` — Arabic `title`, English `title_en`, and search `tags` (Arabic and English).
 - `icons/_categories.json` — the categories in display order: id, Arabic `title`, English `title_en`, the icon that
   represents it, and its `icons` in display order, and an optional `note` shown in the icon panel, with

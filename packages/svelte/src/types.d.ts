@@ -6,7 +6,7 @@ export interface IconProps extends Omit<SVGAttributes<SVGSVGElement>, 'color'> {
     size?: number | string
     /** Colour of the strokes and the solid parts. Default `currentColor`, the colour of the surrounding text. */
     color?: string
-    /** Stroke width in pixels at size 24; the drawing rescales slightly with it so it always fills its box. Default 1.6. */
+    /** Stroke width in pixels at size 24; the drawing rescales slightly with it to keep a unit of margin. Default 1.5. */
     strokeWidth?: number
     /** Keep the stroke the same number of pixels at any size, instead of scaling with the icon. Needs a numeric `size`. */
     absoluteStrokeWidth?: boolean

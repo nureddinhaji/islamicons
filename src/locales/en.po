@@ -266,10 +266,6 @@ msgid "لون الخط والأجزاء المصمتة."
 msgstr "The colour of the stroke and the solid parts."
 
 #: src/routes/Guide.svelte
-msgid "سُمك الخط بالبكسل حين يكون حجم الأيقونة ٢٤. يُكبَّر الرسم أو يُصغَّر قليلاً على قدر الخط، فيبقى ملء اللوحة ولا يُقصّ طرف منه."
-msgstr "The stroke in pixels when the icon is 24. The drawing grows or shrinks a little with the stroke, so it keeps filling the box and no edge is clipped."
-
-#: src/routes/Guide.svelte
 msgid "فئات CSS تُضاف إلى عنصر svg."
 msgstr "CSS classes added to the svg element."
 
@@ -304,10 +300,6 @@ msgstr "Drawn at stroke 2, with round caps and joins."
 #: src/routes/Guide.svelte
 msgid "العرض"
 msgstr "Display"
-
-#: src/routes/Guide.svelte
-msgid "تُعرض الأيقونة بخط ١٫٦، وتُكبَّر حول مركزها حتى تبلغ حافة الخط حدود اللوحة تماماً (١٫١٢ مرة عند هذا السُمك)، في ملف SVG قياسي لوحته 0 0 24 24، بجذر يحمل overflow=\"visible\" كي لا يقصّ المتصفح تلك الحافة."
-msgstr "Shown at stroke 1.6, and scaled about its centre until the stroke's edge meets the box exactly (1.12 times at this stroke), as a standard SVG whose box is 0 0 24 24, with overflow=\"visible\" on the root so the browser does not clip that edge."
 
 #: src/routes/Guide.svelte
 msgid "العناصر"
@@ -413,14 +405,6 @@ msgid "اضغط «نسخ SVG» لتلصق الرمز في صفحتك، أو نز
 msgstr "Press “Copy SVG” to paste the markup into your page, or download an SVG file, or a PNG image at 512×512 with a transparent background."
 
 #: src/routes/Guide.svelte
-msgid "السُمك محسوب في الرمز نفسه: يُكبَّر الرسم أو يُصغَّر قليلاً على قدر خطه حتى تبلغ حافته حدود اللوحة. فإن أردت سُمكاً آخر فاختره من لوحة التخصيص وانسخ الأيقونة من جديد، ولا تغيّر <0/> في الرمز المنسوخ، لأن الخط الأثقل يتجاوز حينها حدود اللوحة."
-msgstr "The stroke is baked into the markup itself: the drawing grows or shrinks a little with its stroke until its edge meets the box. If you want a different stroke, choose it in the customiser and copy the icon again. Do not change <0/> in the copied markup, because a heavier stroke then runs past the box."
-
-#: src/routes/Guide.svelte
-msgid "ولأن الحافة على حدود اللوحة يحمل الرمز <0/>، فأبقِها: المتصفح يقصّ ما يبلغ حدود عنصر svg، فإن وقعت الأيقونة بين بكسلين، كما في الأحجام الكسرية أو عند تكبير الصفحة، ذهب جزء من حافتها."
-msgstr "And because the edge sits on the box, the markup carries <0/>. Keep it: the browser clips whatever reaches the edge of an svg element. If the icon lands between two pixels, as with fractional sizes or when the page is zoomed, part of that edge disappears."
-
-#: src/routes/Guide.svelte
 msgid "إن تركت اللون على «لون النص» فالرمز يُرسم بـ<0/>، أي بلون النص الذي حوله، فيكفي أن تلوّن العنصر الحاوي:"
 msgstr "If you leave the colour on “Text colour”, the markup is drawn with <0/>, the colour of the text around it. Colouring the containing element is enough:"
 
@@ -475,10 +459,6 @@ msgstr "The mosque icon at different sizes"
 #: src/routes/Guide.svelte
 msgid "مقارنة سُمك الخط في الأحجام الصغيرة"
 msgstr "Comparing the stroke at small sizes"
-
-#: src/routes/Guide.svelte
-msgid "الأيقونات مرسومة على شبكة ٢٤ بخط ٢، وتُعرض بخط ١٫٦ مكبّرةً قليلاً حتى تملأ لوحتها، فتتسع الفراغات بين تفاصيلها الغنية وتتزن مع أيقونات واجهتك بالحجم نفسه. تظهر واضحة من ٢٠ بكسل فما فوق، وأبهى ما تكون من ٢٨ بكسل في البطاقات والعناوين."
-msgstr "The icons are drawn on a 24 grid at stroke 2, and shown at stroke 1.6, scaled up a little until they fill their box. The gaps between their fine details stay open, and they sit level with your interface icons at the same size. They stay clear from 20 pixels up, and they look their best from 28 pixels, in cards and headings."
 
 #: src/routes/Guide.svelte
 msgid "وإن احتجتها بحجم ١٦ بكسل، في زر صغير أو بجوار نص، فخفّف الخط إلى <0/> كي لا تتلاصق التفاصيل:"
@@ -820,3 +800,23 @@ msgstr "Every icon as a ready-made file in one package: the same files you downl
 #: src/routes/Guide.svelte
 msgid "لا تستعمل المكوّنات أي hook، فتعمل في React Server Components دون <0/>، والأيقونة التي تُرسم فيها لا يصل منها إلى المتصفح أي JavaScript. أما <1/> فيصل إلى عنصر svg في React 19، ولا يمرّره React 18 إلى المكوّن."
 msgstr "The components use no hooks, so they work in React Server Components without <0/>, and an icon rendered there sends no JavaScript to the browser. <1/> reaches the svg element in React 19; React 18 does not pass it to the component."
+
+#: src/routes/Guide.svelte
+msgid "السُمك محسوب في الرمز نفسه: يُكبَّر الرسم أو يُصغَّر قليلاً على قدر خطه، فتبقى حافته على بُعد وحدة من حدود اللوحة. فإن أردت سُمكاً آخر فاختره من لوحة التخصيص وانسخ الأيقونة من جديد، ولا تغيّر <0/> في الرمز المنسوخ، لأن الخط الأثقل يأكل حينها هذا الهامش."
+msgstr "The stroke is baked into the markup itself: the drawing grows or shrinks a little with its stroke, so its edge stays one unit inside the box. If you want a different stroke, choose it in the customiser and copy the icon again. Do not change <0/> in the copied markup, because a heavier stroke then eats into that margin."
+
+#: src/routes/Guide.svelte
+msgid "وهذا الهامش هو ما يحفظ الحافة: المتصفح يقصّ ما يبلغ حدود عنصر svg، فلو بلغتها الأيقونة لذهب جزء من حافتها في الأحجام الكسرية أو عند تكبير الصفحة. ويحمل الرمز أيضاً <0/> احتياطاً."
+msgstr "That margin is what keeps the edge whole: the browser clips whatever reaches the edge of an svg element, so an icon that touched it would lose part of its edge at fractional sizes or when the page is zoomed. The markup also carries <0/> as a safeguard."
+
+#: src/routes/Guide.svelte
+msgid "الأيقونات مرسومة على شبكة ٢٤ بخط ٢، وتُعرض بخط ١٫٥ أخف منه، فتتسع الفراغات بين تفاصيلها الغنية، ويبقى حولها هامش يجعلها تتزن مع أيقونات واجهتك بالحجم نفسه. تظهر واضحة من ٢٠ بكسل فما فوق، وأبهى ما تكون من ٢٨ بكسل في البطاقات والعناوين."
+msgstr "The icons are drawn on a 24 grid at stroke 2, and shown at a lighter stroke of 1.5, so the gaps between their fine details open up, and the margin left around them lets them sit level with your interface icons at the same size. They stay clear from 20 pixels up, and they look their best from 28 pixels, in cards and headings."
+
+#: src/routes/Guide.svelte
+msgid "سُمك الخط بالبكسل حين يكون حجم الأيقونة ٢٤. يُكبَّر الرسم أو يُصغَّر قليلاً على قدر الخط، فيبقى على بُعد وحدة من حدود اللوحة ولا يُقصّ طرف منه."
+msgstr "The stroke in pixels when the icon is 24. The drawing grows or shrinks a little with the stroke, so it stays one unit inside the box and no edge is clipped."
+
+#: src/routes/Guide.svelte
+msgid "تُعرض الأيقونة بخط ١٫٥ في ملف SVG قياسي لوحته 0 0 24 24، وتُكبَّر حول مركزها حتى تقف حافة الخط على بُعد وحدة من حدود اللوحة (١٫٠٢٥ مرة عند هذا السُمك) فلا يقصّها المتصفح، ويحمل جذرها overflow=\"visible\" احتياطاً."
+msgstr "Shown at stroke 1.5 as a standard SVG whose box is 0 0 24 24, and scaled about its centre until the stroke's edge stops one unit inside the box (1.025 times at this stroke), so the browser does not clip it, with overflow=\"visible\" on the root as a safeguard."

@@ -31,7 +31,7 @@
 </div>
 
 - **اللون:** تأخذ الأيقونة لون النص حولها (&#x2066;`currentColor`&#x2069;)، فيكفي أن تلوّن العنصر الذي يحتويها.
-- **الحافة:** أبقِ &#x2066;`overflow="visible"`&#x2069; في الرمز المنسوخ، فحافة الخط تبلغ حدود اللوحة، وبدونها يقصّ المتصفح جزءاً منها.
+- **الحافة:** يترك الرسم هامشاً داخل لوحته بأي سُمك تختاره، فلا يقصّ المتصفح حافته في الأحجام المعتادة، حتى الكسرية منها وعند تكبير الصفحة.
 - **إمكانية الوصول:** أضف &#x2066;`aria-hidden="true"`&#x2069; إن كان بجوار الأيقونة نص يقول معناها، وإلا فأعطها &#x2066;`role="img"`&#x2069;
   و&#x2066;`aria-label`&#x2069;.
 
@@ -98,8 +98,8 @@ SVG, or download it as a PNG. The site is in Arabic and English.
 ```
 
 - **Colour:** the icon takes the colour of the text around it (`currentColor`), so colouring its container is enough.
-- **Edge:** keep `overflow="visible"` in the copied code. The stroke reaches the box edge, and without it the browser
-  clips part of it.
+- **Edge:** at whatever stroke you pick, the drawing keeps a margin inside its box, so browsers do not shave its edge at
+  the usual sizes, fractional ones and page zoom included.
 - **Accessibility:** add `aria-hidden="true"` when text beside the icon says what it means; otherwise give it
   `role="img"` and an `aria-label`.
 

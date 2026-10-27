@@ -76,16 +76,15 @@
                     <Icon id="sliders-horizontal" class="mt-1 size-4.5 shrink-0 text-muted-foreground" />
                     <div class="flex flex-col gap-2">
                         <p>
-                            السُمك محسوب في الرمز نفسه: يُكبَّر الرسم أو يُصغَّر قليلاً على قدر خطه حتى تبلغ حافته حدود اللوحة.
-                            فإن أردت سُمكاً آخر فاختره من لوحة التخصيص وانسخ الأيقونة من جديد، ولا تغيّر
-                            <code dir="ltr" class="font-mono">stroke-width</code> في الرمز المنسوخ، لأن الخط الأثقل يتجاوز حينها
-                            حدود اللوحة.
+                            السُمك محسوب في الرمز نفسه: يُكبَّر الرسم أو يُصغَّر قليلاً على قدر خطه، فتبقى حافته على بُعد وحدة من
+                            حدود اللوحة. فإن أردت سُمكاً آخر فاختره من لوحة التخصيص وانسخ الأيقونة من جديد، ولا تغيّر
+                            <code dir="ltr" class="font-mono">stroke-width</code> في الرمز المنسوخ، لأن الخط الأثقل يأكل حينها
+                            هذا الهامش.
                         </p>
                         <p>
-                            ولأن الحافة على حدود اللوحة يحمل الرمز
-                            <code dir="ltr" class="font-mono">overflow="visible"</code>، فأبقِها: المتصفح يقصّ ما يبلغ
-                            حدود عنصر svg، فإن وقعت الأيقونة بين بكسلين، كما في الأحجام الكسرية أو عند تكبير الصفحة، ذهب
-                            جزء من حافتها.
+                            وهذا الهامش هو ما يحفظ الحافة: المتصفح يقصّ ما يبلغ حدود عنصر svg، فلو بلغتها الأيقونة لذهب
+                            جزء من حافتها في الأحجام الكسرية أو عند تكبير الصفحة. ويحمل الرمز أيضاً
+                            <code dir="ltr" class="font-mono">overflow="visible"</code> احتياطاً.
                         </p>
                     </div>
                 </div>
@@ -219,9 +218,9 @@
             <section id="sizes" class="flex flex-col gap-5">
                 <h2 class="text-2xl">أفضل الأحجام</h2>
                 <p>
-                    الأيقونات مرسومة على شبكة ٢٤ بخط ٢، وتُعرض بخط ١٫٦ مكبّرةً قليلاً حتى تملأ لوحتها، فتتسع الفراغات بين
-                    تفاصيلها الغنية وتتزن مع أيقونات واجهتك بالحجم نفسه. تظهر واضحة من ٢٠ بكسل فما فوق، وأبهى ما تكون من
-                    ٢٨ بكسل في البطاقات والعناوين.
+                    الأيقونات مرسومة على شبكة ٢٤ بخط ٢، وتُعرض بخط ١٫٥ أخف منه، فتتسع الفراغات بين تفاصيلها الغنية، ويبقى
+                    حولها هامش يجعلها تتزن مع أيقونات واجهتك بالحجم نفسه. تظهر واضحة من ٢٠ بكسل فما فوق، وأبهى ما تكون
+                    من ٢٨ بكسل في البطاقات والعناوين.
                 </p>
                 <ul class="flex flex-wrap items-end gap-x-8 gap-y-6" aria-label="أيقونة المسجد بأحجام مختلفة">
                     {#each SIZE_DEMO as demo (demo.size)}
@@ -443,6 +442,7 @@ import InstallCommand from '~/components/InstallCommand.svelte'
 import IslamIcon from '~/components/IslamIcon.svelte'
 import {PACKAGES, SVG_PACKAGE} from '~/lib/constants.svelte.js'
 import {count_icons} from '~/lib/format.js'
+import {DEFAULT_STROKE_WIDTH} from '~/lib/frame.js'
 import {icon_named, icons} from '~/lib/icons.js'
 import {href_in} from '~/lib/locale.js'
 import {
@@ -520,8 +520,8 @@ const PROPS = [
     {name: 'color', default: 'currentColor', text: 'لون الخط والأجزاء المصمتة.'},
     {
         name: 'strokeWidth',
-        default: '1.6',
-        text: 'سُمك الخط بالبكسل حين يكون حجم الأيقونة ٢٤. يُكبَّر الرسم أو يُصغَّر قليلاً على قدر الخط، فيبقى ملء اللوحة ولا يُقصّ طرف منه.',
+        default: '1.5',
+        text: 'سُمك الخط بالبكسل حين يكون حجم الأيقونة ٢٤. يُكبَّر الرسم أو يُصغَّر قليلاً على قدر الخط، فيبقى على بُعد وحدة من حدود اللوحة ولا يُقصّ طرف منه.',
     },
     {
         name: 'absoluteStrokeWidth',
@@ -545,7 +545,7 @@ const RULES = [
     {title: 'الخط', text: 'سُمك ٢ في الرسم، بأطراف ووصلات مستديرة.'},
     {
         title: 'العرض',
-        text: 'تُعرض الأيقونة بخط ١٫٦، وتُكبَّر حول مركزها حتى تبلغ حافة الخط حدود اللوحة تماماً (١٫١٢ مرة عند هذا السُمك)، في ملف SVG قياسي لوحته 0 0 24 24، بجذر يحمل overflow="visible" كي لا يقصّ المتصفح تلك الحافة.',
+        text: 'تُعرض الأيقونة بخط ١٫٥ في ملف SVG قياسي لوحته 0 0 24 24، وتُكبَّر حول مركزها حتى تقف حافة الخط على بُعد وحدة من حدود اللوحة (١٫٠٢٥ مرة عند هذا السُمك) فلا يقصّها المتصفح، ويحمل جذرها overflow="visible" احتياطاً.',
     },
     {
         title: 'العناصر',
@@ -595,9 +595,9 @@ const NAMING = [
 const SIZE_DEMO_ICON = icon_named('mosque')
 const SIZE_DEMO = [16, 20, 24, 32, 48].map(size => ({size}))
 const SMALL_DEMO = [
-    {size: 16, stroke_width: 1.6},
+    {size: 16, stroke_width: DEFAULT_STROKE_WIDTH},
     {size: 16, stroke_width: 1.4},
-    {size: 20, stroke_width: 1.6},
+    {size: 20, stroke_width: DEFAULT_STROKE_WIDTH},
     {size: 20, stroke_width: 1.4},
 ]
 

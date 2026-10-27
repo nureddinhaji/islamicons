@@ -13,9 +13,8 @@ export const get_color_swatches = () => [
 ]
 
 // A per-viewer convenience: the grid keeps the size, stroke and colour picked last time.
-// The key carries a version because PersistedState stores the defaults on a first visit (runed), and v3's stroke is
-// pixels at 24 px, not v1's stroke 2 or v2's frame-stroke 1.5.
-export const customizer = new PersistedState('islamicons:customizer:v3', {...CUSTOMIZER_DEFAULTS})
+// Versioned because PersistedState stores the defaults on a first visit (runed): bump it when a default changes.
+export const customizer = new PersistedState('islamicons:customizer:v4', {...CUSTOMIZER_DEFAULTS})
 
 // Picked once in the guide, every install command follows it.
 export const package_manager = new PersistedState('islamicons:package-manager', 'pnpm')

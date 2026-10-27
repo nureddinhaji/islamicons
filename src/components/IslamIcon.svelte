@@ -24,7 +24,7 @@ import {framed_inner, to_drawable} from '~/lib/icons.js'
 
 // Colour goes through CSS `color` so filled parts (fill="currentColor") follow it along with the strokes.
 // `framed={false}` shows the art as drawn on the 24 grid (the keyline view).
-// The frame puts the stroke's outer edge on the box edge, which a clipping <svg> shaves whenever it lands between pixels.
+// overflow-visible as on the shipped root; the frame's one-unit margin already keeps the ink off the clipped edge.
 let {
     icon,
     size = 24,
