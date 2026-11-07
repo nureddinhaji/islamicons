@@ -15,5 +15,7 @@
     "تلاوة",
     "قراءة",
     "مصحف"
-  ]
+  ],
+  "about": "قارئ القرآن هو من يتلو القرآن الكريم، ويستعمل اللفظ أيضا للتعريف بأصحاب التلاوات المسجلة. يشير الرمز إلى القارئ، بينما تشير «التلاوة» إلى فعل القراءة. يمكن استخدامه لاختيار قارئ في مشغل للقرآن، أو لصفحة تضم تسجيلات قارئ في مكتبة صوتية، أو لأسماء القراء في جدول مجلس للتلاوة.",
+  "about_en": "A qari is a person who recites the Quran; the term also identifies reciters of recorded Quran audio. This icon represents the reciter, while Tilawa represents recitation. It can select a reciter in a Quran player, open a reciter’s recordings in an audio library, or list reciters in a recitation gathering’s schedule."
 }

@@ -14,5 +14,7 @@
     "خطة قراءة",
     "قرآن",
     "مصحف"
-  ]
+  ],
+  "about": "الختمة إتمام قراءة القرآن الكريم من أوله إلى آخره. وهي تصف دورة قراءة كاملة، أما الورد اليومي فهو المقدار الذي يختاره القارئ لكل يوم. يمكن استخدام الرمز لإنشاء خطة ختمة في تطبيق للقرآن، أو لعرض نسبة إنجازها في متابع للقراءة، أو لتسجيل تاريخ إتمام الختمة في سجل شخصي للقراءة.",
+  "about_en": "A khatm is a complete reading of the Quran from beginning to end. It describes the whole reading cycle, while a daily wird is the portion chosen for one day. The icon can create a Quran completion plan, show progress through a full reading in a tracker, or record a completion date in a personal reading log."
 }

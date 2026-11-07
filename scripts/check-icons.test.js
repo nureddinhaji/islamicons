@@ -157,7 +157,7 @@ const about_meta = JSON.parse(readFileSync(path.join(icons_dir, 'mosque.json'), 
 const good_about = {about: 'م'.repeat(200), about_en: 'a'.repeat(200)}
 
 for (const [name, fields] of Object.entries({
-    absent: {},
+    absent: {about: undefined, about_en: undefined},
     bilingual: good_about,
     honorific: {...good_about, about_en: `${'a'.repeat(200)} ﷺ ﷺ`},
     'lower boundary': {about: 'م'.repeat(150), about_en: 'a'.repeat(150)},

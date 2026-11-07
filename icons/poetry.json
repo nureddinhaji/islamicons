@@ -24,5 +24,7 @@
     "لفافة",
     "manuscript",
     "مخطوط"
-  ]
+  ],
+  "about": "الشعر العربي التقليدي نظم يقوم على الوزن، وغالبا ما تلتزم أبياته قافية واحدة. والبيت وحدة من القصيدة، أما الديوان فيجمع قصائد الشاعر أو مختارات من الشعر. يمكن استخدام الرمز لنص قصيدة في مكتبة أدبية، أو لفهرس دواوين في تطبيق للكتب، أو لدرس عن الوزن والقافية في منصة لتعلم العربية.",
+  "about_en": "Traditional Arabic poetry uses meter and often a shared rhyme. A bayt is a verse of a poem, while a diwan collects a poet’s works or a selection of poems. The icon can open a poem in a literary library, label a diwan index in a book app, or mark a lesson on meter and rhyme on an Arabic learning platform."
 }

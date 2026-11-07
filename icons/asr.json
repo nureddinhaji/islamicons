@@ -10,5 +10,7 @@
     "صلاة",
     "salat",
     "namaz"
-  ]
+  ],
+  "about": "العصر صلاة من الصلوات الخمس تأتي بعد الظهر وقبل المغرب في ترتيب اليوم. ويتغير موعدها مع المكان والتاريخ، فلا يدل الرمز على ساعة ثابتة. يمكن استخدامه لصف العصر في جدول مواقيت الصلاة، أو لخيارات التذكير بها في تطبيق إسلامي، أو لعرض موعد إقامتها بجوار بقية الصلوات في صفحة مسجد.",
+  "about_en": "Asr is the afternoon prayer, following Dhuhr and preceding Maghrib among the five daily prayers. Its time changes with place and date; the icon does not specify a fixed hour. It can label Asr in a prayer timetable, open its reminder options in an Islamic app, or show its iqamah time on a mosque page."
 }

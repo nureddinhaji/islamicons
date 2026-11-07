@@ -8,5 +8,7 @@
     "قراءة",
     "tajwid",
     "quran"
-  ]
+  ],
+  "about": "التجويد علم يعنى بأداء حروف القرآن الكريم من مخارجها وإعطائها صفاتها وما يتعلق بتلاوتها. فهو يضبط كيفية الأداء، أما «التلاوة» فتشير إلى فعل القراءة نفسه. يمكن استخدام الرمز لقسم دروس التجويد في تطبيق لتعليم القرآن، أو لتمرين على مخارج الحروف، أو لشرح علامات التجويد في تطبيق لقراءة المصحف.",
+  "about_en": "Tajweed concerns the correct pronunciation of Quranic letters and the rules governing their recitation. It governs how the Quran is recited, while Tilawa represents the act of reciting. The icon can open tajweed lessons in a Quran learning app, label a letter articulation exercise, or explain tajweed notation in a Quran reading screen."
 }

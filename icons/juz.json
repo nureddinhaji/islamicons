@@ -14,5 +14,7 @@
     "mushaf",
     "مصحف",
     "koran"
-  ]
+  ],
+  "about": "الجزء واحد من ثلاثين قسما للقرآن الكريم، ويضم حزبين. ويساعد هذا التقسيم على تنظيم القراءة، ولا يلزم أن توافق بداية الجزء بداية سورة أو نهايته نهايتها. يمكن استخدام الرمز لاختيار جزء في فهرس تطبيق للقرآن، أو لتوزيع الأجزاء في مخطط للختمة، أو لعرض تقدم الطالب بحسب الأجزاء في منصة للتحفيظ.",
+  "about_en": "A juz is one of thirty divisions of the Quran and contains two hizbs. These reading divisions need not begin or end at surah boundaries. The icon can select a juz in a Quran app’s index, assign portions in a Quran completion planner, or display a student’s progress by juz in a memorization platform."
 }

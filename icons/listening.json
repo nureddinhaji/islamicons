@@ -24,5 +24,7 @@
     "تلاوة",
     "قرآن",
     "مصحف"
-  ]
+  ],
+  "about": "الاستماع إلى القرآن هو متابعة تلاوته بالصوت، سواء صاحبها عرض النص أم اقتصر المستخدم على السماع. يشير الرمز إلى الاستماع، أما «قارئ القرآن» فيناسب الشخص الذي يتلو. يمكن استخدام رمز الاستماع لفتح مشغل تلاوة في تطبيق قرآن، أو لاختيار تسجيل صوتي في صفحة سورة، أو لقائمة دروس الاستماع في منصة لتعليم التلاوة.",
+  "about_en": "Listening to the Quran means following its recitation in audio, with or without the written text on screen. Qari represents the person reciting. The Listening icon can open a recitation player in a Quran app, select an audio recording on a surah page, or label listening lessons on a recitation learning platform."
 }

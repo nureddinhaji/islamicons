@@ -9,5 +9,7 @@
     "صدقة",
     "zakah",
     "charity"
-  ]
+  ],
+  "about": "الزكاة حق في المال يؤدى لمستحقيه وفق شروط ومصارف بينها الشرع. وهي من أركان الإسلام، وتختلف عن صدقة التطوع. يمكن استخدام الرمز لحاسبة الزكاة في تطبيق مالي إسلامي، أو لخيار دفع الزكاة في موقع جمعية، أو لتقرير توزيع أموال الزكاة في لوحة متابعة للمتبرعين.",
+  "about_en": "Zakat is an obligatory form of giving with defined conditions and eligible recipients. It is a pillar of Islam, distinct from voluntary donations. The icon can open a zakat calculator in an Islamic finance app, label a zakat payment option on a charity website, or mark a zakat distribution report in a donor dashboard."
 }

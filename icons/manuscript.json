@@ -17,5 +17,7 @@
     "heritage",
     "book",
     "كتاب"
-  ]
+  ],
+  "about": "المخطوط نسخة كتبت باليد، وتختلف عن الطبعة التي تنتج بالطباعة. وقد تعرض النسخة اليوم في صور رقمية، فيبقى الأصل مخطوطا وإن قرئت صوره على الشاشة. يمكن استخدام الرمز لسجل مخطوط في فهرس مكتبة، أو لفتح صوره في عارض رقمي، أو للمقارنة بين نسخ كتاب في منصة لدراسة التراث وتحقيق النصوص.",
+  "about_en": "A manuscript is a copy written by hand, distinct from a printed edition. Digital scans let readers study the handwritten original on screen. The icon can open a manuscript catalogue record, launch a scan viewer, or compare copies of a work on a platform for studying and editing heritage texts."
 }

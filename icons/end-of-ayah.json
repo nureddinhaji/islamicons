@@ -11,5 +11,7 @@
     "نهاية الآية",
     "۝",
     "ayah marker"
-  ]
+  ],
+  "about": "علامة نهاية الآية تفصل بين الآيات في كتابة المصحف، وقد يكتب داخلها رقم الآية. وهي غير علامات الوقف التي ترشد القارئ إلى مواضع الوقف والوصل. يمكن استخدام الرمز لفاصل الآيات في تطبيق لقراءة المصحف، أو لإطار رقم الآية في بطاقة اقتباس، أو لدرس يعرف بعلامات المصحف في تطبيق لتعليم القراءة.",
+  "about_en": "An end-of-ayah marker separates verses in a written Quran and may contain the verse number. It differs from a pause mark used to guide recitation. The icon can separate verses in a Quran reader, frame a verse number on a quotation card, or label a lesson on Quran notation in a reading app."
 }

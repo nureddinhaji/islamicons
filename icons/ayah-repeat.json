@@ -24,5 +24,7 @@
     "حفظ",
     "quran",
     "قرآن"
-  ]
+  ],
+  "about": "تكرار الآية هو إعادة تلاوة آية محددة أو تشغيل تسجيلها مرات متتابعة للمراجعة والتعلم. يجمع هذا الرمز علامة الآية مع سهمي الإعادة، أما رمز «آية» فيناسب الآية نفسها. يمكن استخدامه لزر تكرار في مشغل قرآن، أو لاختيار عدد مرات الإعادة في أداة للحفظ، أو لتمرين يستمع فيه الطالب إلى الآية ثم يرددها في منصة تعليمية.",
+  "about_en": "Ayah repetition means reciting a selected Quranic verse again or replaying its recording for review and learning. Choose Ayah for the verse itself without the repeat function. It can label a repeat button in a Quran player, set replay counts in a memorization tool, or open a listen-and-repeat exercise on a learning platform."
 }

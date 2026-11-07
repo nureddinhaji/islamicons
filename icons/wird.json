@@ -19,5 +19,7 @@
     "تقويم",
     "آية",
     "قرآن"
-  ]
+  ],
+  "about": "الورد اليومي في قراءة القرآن مقدار يخصصه القارئ لنفسه كل يوم. وقد يحدده بآيات أو صفحات أو أجزاء، ولا يدل الاسم على مقدار ثابت لجميع القراء. يمكن استخدام الرمز لضبط مقدار القراءة في مخطط يومي للقرآن، أو لتذكير بموعدها في تطبيق إسلامي، أو لتسجيل إتمام قراءة اليوم في متابع للعادات.",
+  "about_en": "A daily Quran wird is a portion a reader sets aside to read each day. It may be measured in verses, pages, or juz divisions; the term does not prescribe one amount for everyone. The icon can set a daily reading target in a Quran planner, schedule a reading reminder, or log the day’s reading in a habit tracker."
 }

@@ -12,5 +12,7 @@
     "sharah",
     "turath",
     "تراث"
-  ]
+  ],
+  "about": "الشرح كتاب أو كلام يبين ألفاظ متن ومعانيه وما يحتاج إلى تفصيل فيه. أما النص الأصل فيناسبه رمز «المتن»، والتعليقات على الشرح يناسبها رمز «الحاشية». يمكن استخدام الرمز لعرض الشرح بجوار المتن في برنامج لقراءة كتب التراث، أو لاختيار شرح من شروح كتاب في مكتبة رقمية، أو لسلسلة دروس تشرح متنا في منصة تعليمية.",
+  "about_en": "A sharh is a commentary that explains a base text’s words and meanings in greater detail. For the base text itself, use Matn; Hashiya suits glosses written on a commentary. The icon can show commentary beside a matn in an app for reading classical works, select among a work’s commentaries in a digital library, or label lessons explaining a matn on a learning platform."
 }

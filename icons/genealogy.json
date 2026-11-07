@@ -17,5 +17,7 @@
     "أجداد",
     "tribes",
     "قبائل"
-  ]
+  ],
+  "about": "الأنساب صلات القرابة التي تربط الأشخاص بآبائهم وأجدادهم وأسرهم. وهي تختلف عن «الإسناد» في الحديث، الذي يتتبع نقل الرواية بين الرواة لا القرابة بينهم. يمكن استخدام الرمز لشجرة عائلة في تطبيق للأنساب، أو لروابط القرابة في موسوعة للتراجم، أو لفهرس كتب الأنساب في مكتبة تراثية رقمية.",
+  "about_en": "Genealogy traces family relationships and descent through parents and ancestors. It differs from Isnad, which follows hadith transmission rather than kinship. The icon can open a family tree in a genealogy app, show family links in a biography database, or index genealogy works in a digital heritage library."
 }

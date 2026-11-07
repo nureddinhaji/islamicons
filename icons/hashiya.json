@@ -16,5 +16,7 @@
     "manuscript",
     "مخطوط",
     "hashiyah"
-  ]
+  ],
+  "about": "الحاشية تعليقات توضع على متن أو شرح لتوضيح مواضع منه أو مناقشتها، وقد تستقل في كتاب. أما حواشي المحقق أسفل الصفحة فيناسبها رمز «الحاشية (سفلية)». يمكن استخدام الرمز لعرض الحواشي بجوار الشرح في برنامج لقراءة الكتب، أو لاختيار حاشية على كتاب في مكتبة رقمية، أو لربط تعليق بموضعه في أداة لدراسة النصوص.",
+  "about_en": "A hashiya is a set of glosses on a text or commentary, explaining or discussing particular passages; it may form a separate work. For page footnotes, such as an editor’s notes, use Hashiya (footnote). The icon can show glosses beside a commentary in a book-reading app, select a hashiya in a digital library, or link a gloss to its passage in a study tool."
 }

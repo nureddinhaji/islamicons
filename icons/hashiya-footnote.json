@@ -14,5 +14,7 @@
     "tahqiq",
     "تحقيق",
     "hashiyah"
-  ]
+  ],
+  "about": "الحاشية السفلية تعليق يوضع أسفل الصفحة لشرح لفظ أو توثيق مصدر أو بيان اختلاف بين نسخ النص. أما «الحاشية» فتناسب العمل العلمي الذي يعلق على متن أو شرح. يمكن استخدام الرمز لفتح تعليقات المحقق في برنامج لقراءة كتب التراث، أو لإضافة حاشية في محرر نصوص، أو للانتقال من علامة الإحالة إلى تعليقها في مكتبة رقمية.",
+  "about_en": "A footnote is a note at the bottom of a page that explains a word, cites a source, or records a difference between copies of the text. Choose Hashiya for a work of glosses on a text or commentary. The icon can open the editor’s notes in an app for reading classical works, add a footnote in a text editor, or link a reference mark to its note in a digital library."
 }

@@ -15,5 +15,7 @@
     "تدبر",
     "quran",
     "قرآن"
-  ]
+  ],
+  "about": "معنى الآية هو ما تدل عليه ألفاظها في سياقها من القرآن الكريم. يشير هذا الرمز إلى شرح المعنى، أما «آية (ترجمة)» فتناسب نقله إلى لغة أخرى. يمكن استخدامه لزر يعرض شرحا مختصرا أسفل الآية في تطبيق لقراءة المصحف، أو لبطاقة مراجعة معنى آية في تطبيق تعليمي، أو لحقل الشرح في محرر لمحتوى قرآني.",
+  "about_en": "An ayah’s meaning is what the words of a Quranic verse convey in context. This icon suits an explanation; Ayah (translation) suits a rendering in another language. It can reveal a brief explanation beneath a verse in a Quran reading screen, label a verse comprehension card in a learning app, or mark an explanation field in a Quran content editor."
 }

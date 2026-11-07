@@ -9,5 +9,7 @@
     "تبرع",
     "sadaqah",
     "sadaqa"
-  ]
+  ],
+  "about": "صندوق الصدقة وعاء تجمع فيه التبرعات المالية، وقد يوضع في مسجد أو مقر جمعية أو مكان آخر مخصص للجمع. يمثل الرمز جمع الصدقات، دون أن يحدد مصرفها. يمكن استخدامه لموقع صندوق في دليل مرافق، أو لحملة جمع تبرعات في تطبيق جمعية، أو لسجل إفراغ الصناديق وحصر مبالغها في لوحة إدارية.",
+  "about_en": "A sadaqah box collects monetary donations, for example at a mosque or charity office. It represents collecting donations without specifying how they are spent. The icon can mark a box’s location in a facility guide, label a collection campaign in a charity app, or open a box-emptying and cash-count record in an admin dashboard."
 }

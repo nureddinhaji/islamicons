@@ -6,5 +6,7 @@
     "not halal",
     "محرم",
     "ممنوع"
-  ]
+  ],
+  "about": "الحرام ما نهى الشرع عنه نهيا جازما، ويستعمل اللفظ في الأفعال والأطعمة وغيرها. وهو مصطلح شرعي، لا علامة منع عامة في واجهة تطبيق أو مكان. يمكن استخدام الرمز لمدخل مصطلح الحرام في معجم فقهي، أو لقسم تعليمي يميز الأحكام في تطبيق إسلامي، أو لعرض حكم موثق بمصدره في صفحة استعلام عن طعام أو معاملة.",
+  "about_en": "Haram means forbidden in Islamic law and can describe actions, foods, and other matters. It is a legal term, not a generic no-entry or disabled-control sign. The icon can open a haram entry in a fiqh glossary, label a ruling category in a learning app, or show a sourced ruling on a food or transaction enquiry page."
 }

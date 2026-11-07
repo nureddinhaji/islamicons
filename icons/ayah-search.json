@@ -18,5 +18,7 @@
     "قرآن",
     "aya",
     "quran"
-  ]
+  ],
+  "about": "البحث عن آية هو الوصول إلى آية قرآنية بكلمات منها أو بمرجعها من اسم السورة ورقم الآية. يركز هذا الرمز على الآية المطلوبة، أما «مصحف (بحث)» فيناسب مدخل البحث في المصحف كله. يمكن استخدامه لحقل بحث عن آية في تطبيق قرآن، أو لإدراج آية بمرجعها في محرر نصوص، أو لاختيار آية ضمن تمرين تعليمي.",
+  "about_en": "An ayah search locates a Quranic verse by words from it or by its surah and verse reference. Quran (search) suits an entry point for searching the whole Quran. The icon can label a verse lookup in a Quran app, insert a referenced verse in a text editor, or select an ayah for a learning exercise."
 }

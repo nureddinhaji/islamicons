@@ -7,5 +7,7 @@
     "aya",
     "آيات",
     "quran"
-  ]
+  ],
+  "about": "الآية مقطع من القرآن الكريم له موضع ورقم في سورته. أما شرح معناها أو ترجمتها فيناسبهما «آية (معنى)» و«آية (ترجمة)». يمكن استخدام الرمز لبطاقة آية في تطبيق للقرآن، أو لحقل اختيار الآية عند إنشاء رابط لموضع في المصحف، أو لمرجع الآية بجانب اقتباس قرآني في موقع تعليمي.",
+  "about_en": "An ayah is a verse of the Quran, identified by its position and number within a surah. For a verse’s explanation or translation, choose Ayah (meaning) or Ayah (translation). The icon can label a verse card in a Quran app, a verse selector for sharing a passage, or a Quran citation on an educational site."
 }

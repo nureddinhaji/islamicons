@@ -11,5 +11,7 @@
     "أول الليل",
     "وقت العشاء",
     "مواقيت"
-  ]
+  ],
+  "about": "ثلث الليل الأول هو القسم الأول عند تقسيم مدة الليل إلى ثلاثة أقسام متساوية. يتغير طوله مع تغير طول الليل، ولا يعني عددا ثابتا من الساعات. يمكن استخدام الرمز لعرض الثلث الأول في حاسبة لأقسام الليل، أو لمقارنة أثلاث الليل في درس عن المواقيت، أو لتحديد هذه الفترة في جدول ليلي داخل تطبيق إسلامي.",
+  "about_en": "The first third of the night is the first of three equal parts of the night. Its length changes with the night rather than lasting a fixed number of hours. The icon can show this period in a night calculator, compare the thirds in a lesson on timekeeping, or mark the period in an Islamic app’s night schedule."
 }

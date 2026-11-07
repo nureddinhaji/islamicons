@@ -18,5 +18,7 @@
     "فاصل",
     "quran",
     "koran"
-  ]
+  ],
+  "about": "علامة موضع القراءة في المصحف تحفظ المكان الذي يريد القارئ العودة إليه في تلاوته. قد يكون آخر موضع قرأه أو موضعا اختاره للمراجعة، ولا يعني إتمام ختمة. يمكن استخدام الرمز لزر حفظ الموضع في تطبيق قرآن، أو لبطاقة متابعة القراءة من آخر آية، أو لقائمة مواضع محفوظة في حساب القارئ على موقع قرآني.",
+  "about_en": "A Quran bookmark saves a place the reader wants to return to, such as the last verse read or a passage for review. It records a reading position rather than a completed khatm. The icon can save a place in a Quran app, label a resume-reading card, or open a reader’s saved passages on a Quran website."
 }

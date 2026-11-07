@@ -164,7 +164,7 @@ for (const language of ['ar', 'en']) {
     })
 
     test(`an icon without about text keeps the body and template description in ${language}`, () => {
-        const html = page(mosque, language)
+        const html = page({...mosque, about: '', about_en: ''}, language)
         const title = language === 'en' ? mosque.title_en : mosque.title
         const category = language === 'en' ? mosque.category.title_en : mosque.category.title
         const expected = icon_page_meta(title, category, language).description

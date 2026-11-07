@@ -16,5 +16,7 @@
     "ضمة",
     "fatha",
     "فتحة"
-  ]
+  ],
+  "about": "النحو علم يبحث في تركيب الجملة العربية وأحوال أواخر الكلمات من إعراب وبناء. وهو غير الصرف الذي يدرس أبنية الكلمات وتصريفها. يمكن استخدام الرمز لتمرين إعراب في تطبيق لتعلم العربية، أو لمسار دروس النحو في منصة تعليمية، أو لعرض وظيفة الكلمة في الجملة داخل أداة لقراءة النصوص العربية.",
+  "about_en": "Arabic grammar, or nahw, studies sentence structure and how words function within it, including case endings. Sarf studies word patterns and morphology. The icon can open a parsing exercise in an Arabic learning app, label a nahw course on a learning platform, or show a word’s sentence role in an Arabic reading tool."
 }

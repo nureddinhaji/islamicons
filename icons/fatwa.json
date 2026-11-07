@@ -17,5 +17,7 @@
     "fatawa",
     "فتاوى",
     "fatwah"
-  ]
+  ],
+  "about": "الفتوى جواب علمي عن سؤال يتعلق بحكم شرعي، يبين فيه المفتي ما يظهر له من الحكم. أما مجموعات الفتاوى في الكتب وقواعد البيانات فيناسبها رمز «الفتاوى». يمكن استخدام الرمز لصفحة سؤال وجواب في موقع إفتاء، أو لزر إرسال سؤال إلى المفتي، أو لعرض نص الجواب واسم المفتي ومصدره في تطبيق للفتاوى.",
+  "about_en": "A fatwa is a scholarly answer to a question about an Islamic ruling, given by a mufti. For collections of fatwas in books or archives, use Fatwas. The icon can open a question-and-answer page on a fatwa site, send a new question to a mufti, or label an answer with its mufti and source in a fatwa app."
 }

@@ -10,5 +10,7 @@
     "qibla",
     "اتجاه",
     "الكعبة"
-  ]
+  ],
+  "about": "بوصلة القبلة أداة تساعد على معرفة جهة الكعبة من موقع المستخدم. أما «اتجاه القبلة» فيناسب الإشارة إلى الجهة وحدها دون أداة البوصلة. يمكن استخدام الرمز لفتح بوصلة في تطبيق إسلامي، أو لمدخل أداة تحديد القبلة في موقع للمسافرين، أو لدرس يشرح قراءة اتجاه القبلة على البوصلة.",
+  "about_en": "A qibla compass helps locate the direction of the Kaaba from the user’s location. Choose Qibla direction for a direction indicator without a compass. The icon can open a compass in an Islamic app, label a qibla tool on a travel website, or mark a lesson on reading the qibla bearing on a compass."
 }

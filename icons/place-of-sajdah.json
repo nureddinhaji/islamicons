@@ -12,5 +12,7 @@
     "سجدة",
     "مصحف",
     "تلاوة"
-  ]
+  ],
+  "about": "علامة السجدة في المصحف تدل على موضع سجود التلاوة المرتبط بآية من القرآن الكريم. أما «علامة نهاية الآية» فتناسب العلامة التي تفصل بين الآيات وقد تحمل أرقامها. يمكن استخدام الرمز لتمييز مواضع السجدة في تطبيق لقراءة المصحف، أو لفهرس آيات السجدة في تطبيق للقرآن، أو لدرس عن علامات المصحف في موقع تعليمي.",
+  "about_en": "A sajdah mark in a mushaf identifies a place associated with prostration during Quran recitation. Choose End of ayah for the mark that separates verses and may hold their numbers. The icon can highlight sajdah locations in a Quran reading screen, open an index of sajdah verses, or label a lesson on mushaf notation."
 }

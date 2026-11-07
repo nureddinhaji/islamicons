@@ -6,5 +6,7 @@
     "قاموس",
     "لغة",
     "mujam"
-  ]
+  ],
+  "about": "المعجم مرجع يجمع الألفاظ ويشرح معانيها واستعمالاتها. وقد ترتب المعاجم العربية الكلمات بحسب جذورها، فيبحث فيها عن الكلمة بجذرها لا بحروفها كما تكتب. يمكن استخدام الرمز لمعنى كلمة في برنامج لقراءة الكتب العربية، أو لحقل بحث بالجذر في معجم رقمي، أو لفئة المعاجم في مكتبة لتعلم العربية والعلوم الإسلامية.",
+  "about_en": "A dictionary is a reference that explains words and their usage. Some Arabic dictionaries arrange entries by root, so a word is looked up by its root rather than its written form. The icon can open a word’s meaning in an Arabic book-reading app, mark a root lookup in a digital lexicon, or label dictionaries in an Arabic learning library."
 }

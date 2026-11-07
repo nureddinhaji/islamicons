@@ -15,5 +15,7 @@
     "مخطوط",
     "turath",
     "تراث"
-  ]
+  ],
+  "about": "المتن هو النص الأصل الذي يتناوله الشرح، وقد يكون مختصرا تعليميا في علم من العلوم. ويطلق المتن في علم الحديث على نص الرواية في مقابل الإسناد. يمكن استخدام الرمز لفتح النص الأساسي بجوار شرحه في برنامج لقراءة الكتب، أو لفهرس المتون في مكتبة إسلامية، أو لتحديد المتن المقرر في دورة على منصة لطلب العلم.",
+  "about_en": "A matn is a base text studied or explained in a commentary, often a concise teaching text. In hadith studies, matn also means the transmitted text as distinct from the isnad. The icon can open a base text beside its commentary in a book-reading app, index matn works in an Islamic library, or label a course’s assigned text."
 }

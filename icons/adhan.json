@@ -12,5 +12,7 @@
     "نداء",
     "مئذنة",
     "athan"
-  ]
+  ],
+  "about": "الأذان نداء بألفاظ مخصوصة يُعلَم به دخول وقت الصلاة. وهو يختلف عن الإقامة التي تكون عند بدء الصلاة؛ أما «الأذان (صامت)» فيناسب خيار كتم الصوت. يمكن استخدام الرمز لتفعيل صوت الأذان في تطبيق للمواقيت، أو لتسجيلات المؤذنين في مكتبة صوتية، أو لدرس عن الأذان في منصة لتعليم الصلاة.",
+  "about_en": "The adhan is the call, in set wording, announcing that the time for prayer has begun. It differs from the iqamah given when prayer is about to begin; choose Adhan (muted) for a mute option. The icon can enable adhan audio in a prayer-times app, open muezzin recordings in an audio library, or label an adhan lesson on a prayer learning site."
 }

@@ -8,5 +8,7 @@
     "إظهار",
     "tashkeel",
     "vowels"
-  ]
+  ],
+  "about": "التشكيل علامات تضاف إلى الحروف العربية لبيان النطق، مثل الفتحة والضمة والكسرة والسكون والشدة. أما «التشكيل (مخفي)» فيناسب حالة إخفاء هذه العلامات في واجهة القراءة. يمكن استخدام رمز التشكيل لإظهار الحركات في تطبيق لقراءة الكتب، أو لتمرين ضبط الكلمات في تطبيق لتعلم العربية، أو لاختيار عرض النص المشكول في منصة تعليمية.",
+  "about_en": "Arabic diacritics are marks added to letters to indicate pronunciation, including short vowels, sukun, and shadda. Diacritics (hidden) suits the state with these marks hidden. The icon can show vowel marks in a book reader, open a word-vocalization exercise in an Arabic app, or select vocalized text on a learning platform."
 }

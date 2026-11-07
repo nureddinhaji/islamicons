@@ -15,5 +15,7 @@
     "mushaf",
     "مصحف",
     "koran"
-  ]
+  ],
+  "about": "السورة قسم من القرآن الكريم يضم آيات، ولها اسم وموضع في ترتيب المصحف. وتختلف السورة عن الجزء، فالجزء مقدار للقراءة قد يبدأ أو ينتهي في أثناء سورة. يمكن استخدام الرمز لفهرس السور في تطبيق للقرآن، أو لاختيار سورة في مشغل للتلاوات، أو لعنوان درس عن سورة في منصة لتعليم القرآن.",
+  "about_en": "A surah is a chapter of the Quran, made up of verses called ayat. Surahs differ from juz divisions, which split the Quran into reading portions and may cross chapter boundaries. The icon can open a surah index in a Quran app, select a chapter in a recitation player, or label a surah lesson on a Quran learning site."
 }

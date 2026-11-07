@@ -13,5 +13,7 @@
     "إمساكية",
     "شهر",
     "هلال"
-  ]
+  ],
+  "about": "التقويم الهجري تقويم قمري تتكون سنته من اثني عشر شهرا، ومنها رمضان وذو الحجة. وتتحرك تواريخه بالنسبة إلى التقويم الميلادي، فلا يوافق الشهر الهجري فصلا ثابتا كل عام. يمكن استخدام الرمز لاختيار تاريخ هجري في نموذج، أو لعرض المناسبات في تطبيق إسلامي، أو للتبديل بين التاريخين في أداة لتحويل التواريخ.",
+  "about_en": "The Hijri calendar is a lunar calendar with twelve months, including Ramadan and Dhu al-Hijjah. Its dates shift relative to the Gregorian calendar, so a month falls in different seasons over the years. The icon can open a Hijri date picker, show occasions in an Islamic calendar app, or switch calendars in a date conversion tool."
 }

@@ -10,5 +10,7 @@
     "لغة",
     "rare words",
     "quran"
-  ]
+  ],
+  "about": "غريب القرآن علم يشرح ألفاظ القرآن الكريم التي قد يخفى معناها على القارئ. والغريب هنا وصف للفظ يقل تداوله أو يحتاج معناه إلى بيان لغوي. يمكن استخدام الرمز لعرض معنى الكلمة عند لمسها في تطبيق لقراءة المصحف، أو لفهرس مفردات القرآن في معجم رقمي، أو لبطاقات تعلم الألفاظ في تطبيق تعليمي.",
+  "about_en": "Gharib al-Quran explains Quranic words whose meanings may be unfamiliar to a reader. Here gharib describes a word that is less common or needs linguistic explanation. The icon can reveal a word’s meaning in a Quran reading screen, open a vocabulary index in a digital lexicon, or label Quran vocabulary flashcards in a learning app."
 }

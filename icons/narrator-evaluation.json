@@ -33,5 +33,7 @@
     "scale",
     "حديث",
     "hadith"
-  ]
+  ],
+  "about": "الجرح والتعديل علم يبحث في رواة الحديث من جهة عدالتهم وضبطهم، وينقل أحكام أهل العلم فيهم. وهو جانب من نقد الحديث، ولا يكفي وحده للحكم على صحة كل رواية. يمكن استخدام الرمز لعرض أقوال النقاد في صفحة راو ضمن موسوعة للحديث، أو لفهرس كتب الرجال في مكتبة رقمية، أو لدرس في نقد الأسانيد بمنصة تعليمية.",
+  "about_en": "Narrator evaluation (al-jarh wa al-ta’dil) assesses the integrity and accuracy of hadith transmitters. It is one part of hadith criticism, not a complete test of a report’s authenticity. The icon can show critics’ assessments on a narrator’s profile, index narrator reference works in a digital library, or label a hadith criticism lesson."
 }

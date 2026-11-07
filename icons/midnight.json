@@ -11,5 +11,7 @@
     "ليل",
     "وقت العشاء",
     "مواقيت"
-  ]
+  ],
+  "about": "منتصف الليل في جدول المواقيت هو النقطة التي تقسم مدة الليل المعتمدة في الجدول إلى نصفين متساويين. لذلك قد يختلف عن الساعة الثانية عشرة ليلا في التوقيت المدني. يمكن استخدام الرمز لنتيجة حساب منتصف الليل في تطبيق إسلامي، أو لمقارنته بالتوقيت المدني في أداة تعليمية، أو لعرضه في جدول يبين أقسام الليل.",
+  "about_en": "Midnight in a prayer timetable marks the halfway point of the night as defined by that timetable. It can differ from twelve o’clock at night on a civil clock. The icon can label a calculated midpoint in an Islamic app, compare it with civil midnight in a learning tool, or show it on a schedule of the night’s divisions."
 }

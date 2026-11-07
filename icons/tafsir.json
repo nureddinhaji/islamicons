@@ -9,5 +9,7 @@
     "tafseer",
     "commentary",
     "quran"
-  ]
+  ],
+  "about": "التفسير علم يشرح معاني القرآن الكريم ويبين ما تدل عليه آياته. وهو أوسع من ترجمة المعاني إلى لغة أخرى، وقد يتناول اللغة والسياق وأسباب النزول. يمكن استخدام الرمز لفتح تفسير الآية بجوار نصها في تطبيق للقرآن، أو لقسم كتب التفسير في مكتبة رقمية، أو لسلسلة دروس في موقع لتعليم القرآن.",
+  "about_en": "Tafsir explains the meanings of the Quran and what its verses convey. It can discuss language, context, and occasions of revelation, going beyond translation into another language. The icon can open commentary beside a verse in a Quran app, mark tafsir books in a digital library, or label a Quran commentary lesson series."
 }

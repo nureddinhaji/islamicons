@@ -20,5 +20,7 @@
     "quran",
     "قرآن",
     "koran"
-  ]
+  ],
+  "about": "ترجمة معاني الآية تنقل ما يفهم من معناها إلى لغة أخرى، ولا تحل محل النص القرآني العربي. أما «آية (معنى)» فتناسب شرح المعنى من دون الإشارة إلى تغيير اللغة. يمكن استخدام الرمز لاختيار لغة الترجمة في تطبيق للقرآن، أو لإظهارها بجوار الآية في موقع تعليمي، أو لمقارنة ترجمات المعاني في أداة للدراسة.",
+  "about_en": "A translation of an ayah renders the meaning of a Quranic verse in another language; it does not replace the Arabic Quranic text. Choose Ayah (meaning) for an explanation without a language change. The icon can select a translation language in a Quran app, show a translation beside a verse, or compare translations in a study tool."
 }

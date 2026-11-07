@@ -18,5 +18,7 @@
     "quran",
     "مصحف",
     "koran"
-  ]
+  ],
+  "about": "البحث في المصحف يتيح الوصول إلى مواضع الكلمات والعبارات في نص القرآن. يشير هذا الرمز إلى أداة البحث العامة، أما «آية (بحث)» فتناسب طلب آية بعينها أو اختيارها. يمكن استخدامه لمدخل البحث في تطبيق مصحف، أو لصفحة نتائج تعرض الآيات المطابقة في موقع قرآني، أو للبحث في النص أثناء القراءة في برنامج للقراءة الرقمية.",
+  "about_en": "Quran search finds occurrences of words and phrases in the Quran’s text. This icon suits the general search tool; Ayah (search) can identify a lookup or selection of a particular verse. It can open search in a Quran app, label matching-verse results on a Quran website, or start a text search within a digital reading app."
 }

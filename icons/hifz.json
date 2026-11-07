@@ -10,5 +10,7 @@
     "memorize",
     "حفظ القرآن",
     "quran"
-  ]
+  ],
+  "about": "حفظ القرآن هو استظهار آياته والقدرة على تلاوتها من الذاكرة. وترافقه عادة مراجعة ما سبق حفظه لتثبيته مع الحفظ الجديد. يمكن استخدام الرمز لتحديد مقدار الحفظ الجديد في تطبيق للتحفيظ، أو لجدول المراجعة في منصة لحلقات القرآن، أو لتسجيل نتيجة تسميع الطالب في لوحة المعلم.",
+  "about_en": "Hifz means memorizing the Quran so it can be recited from memory. Reviewing previously learned passages helps retain them alongside new memorization. The icon can set a new memorization target in a hifz app, open a review schedule on a Quran class platform, or record a student’s recitation assessment in a teacher’s dashboard."
 }
