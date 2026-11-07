@@ -49,6 +49,18 @@ export const related_icons = (catalog, icon) =>
 const link = (href, text, attrs = '') => `<a href="${escape_attr(href)}"${attrs}>${escape_text(text)}</a>`
 const code_block = code => `<pre dir="ltr"><code>${escape_text(code)}</code></pre>`
 
+// `route` is this page's internal path, so the language link lands on the same page in the other language.
+function site_nav(language, route) {
+    const other = OTHER[language]
+    return [
+        '<header><nav>',
+        link(public_path(language, '/'), SITE[language].name),
+        link(public_path(language, '/guide'), LABELS[language].guide),
+        link(public_path(other, route), LABELS[language].other_page, ` hreflang="${other}" lang="${other}"`),
+        '</nav></header>',
+    ].join('\n')
+}
+
 export function icon_page_body(icon, language, related) {
     const labels = LABELS[language]
     const other = OTHER[language]
@@ -67,11 +79,7 @@ export function icon_page_body(icon, language, related) {
     )
     return [
         '<div data-static-body>',
-        '<header><nav>',
-        link(href('/'), SITE[language].name),
-        link(href('/guide'), labels.guide),
-        link(public_path(other, icon_route(icon.name)), labels.other_page, ` hreflang="${other}" lang="${other}"`),
-        '</nav></header>',
+        site_nav(language, icon_route(icon.name)),
         '<main><article>',
         `<h1>${escape_text(title)}</h1>`,
         `<p lang="${other}" dir="${DIR[other]}">${escape_text(icon_title(icon, other))}</p>`,
@@ -94,6 +102,41 @@ export function icon_page_body(icon, language, related) {
         '</article></main>',
         '</div>',
     ].join('\n')
+}
+
+// Text links only: 217 inline drawings would weigh more than the app that replaces them.
+export function home_body(language, catalog) {
+    const site = SITE[language]
+    const href = route => public_path(language, route)
+    const groups = Map.groupBy(catalog, icon => icon.category.id)
+    const sections = [...groups.values()].map(icons =>
+        [
+            `<section><h2>${escape_text(category_title(icons[0], language))}</h2>`,
+            `<ul>${icons.map(icon => `<li>${link(href(icon_route(icon.name)), icon_title(icon, language))}</li>`).join('')}</ul>`,
+            '</section>',
+        ].join('\n'),
+    )
+    return [
+        '<div data-static-body>',
+        site_nav(language, '/'),
+        '<main>',
+        `<h1>${escape_text(site.name)}</h1>`,
+        `<p>${escape_text(site.description)}</p>`,
+        ...sections,
+        '</main>',
+        '</div>',
+    ].join('\n')
+}
+
+// No SearchAction: Google retired the sitelinks search box it fed.
+export function website_object(language, origin) {
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: SITE[language].name,
+        url: public_url(origin, public_path(language, '/')),
+        inLanguage: language,
+    }
 }
 
 // Google Images reads these fields for its "Licensable" badge.

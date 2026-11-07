@@ -4,7 +4,7 @@ import {test} from 'node:test'
 
 import {REPO_URL} from '../src/lib/constants.svelte.js'
 import {read_catalog} from './icon-catalog.js'
-import {icon_page_html, related_icons} from './static-pages.js'
+import {home_body, icon_page_html, related_icons, website_object} from './static-pages.js'
 
 const ORIGIN = 'https://example.test'
 const COPYRIGHT = readFileSync(new URL('../LICENSE', import.meta.url), 'utf8').split('\n')[2]
@@ -103,4 +103,39 @@ test('without an origin the page keeps its body but carries no absolute links or
     const html = page(mosque, 'ar', '')
     assert.match(html, /<div data-static-body>/)
     assert.doesNotMatch(html, /canonical|hreflang="x-default"|ld\+json/)
+})
+
+test('the home body links every icon once, in its own language, under its category', () => {
+    for (const [language, prefix] of [
+        ['ar', '/icons/'],
+        ['en', '/en/icons/'],
+    ]) {
+        const html = home_body(language, catalog)
+        const linked = [...html.matchAll(/href="([^"]+)"/g)]
+            .map(match => match[1])
+            .filter(href => href.includes('/icons/'))
+        assert.equal(linked.length, catalog.length)
+        assert.equal(new Set(linked).size, catalog.length)
+        for (const href of linked) {
+            assert.ok(href.startsWith(prefix), href)
+            assert.ok(names.has(href.slice(prefix.length)), href)
+        }
+        assert.equal(html.match(/<h2>/g).length, new Set(catalog.map(icon => icon.category.id)).size)
+        assert.match(html, /^<div data-static-body>\n<header><nav>[\s\S]*<\/nav><\/header>\n<main>\n<h1>/)
+    }
+    assert.match(home_body('en', catalog), /<h2>Quran<\/h2>/)
+    assert.match(home_body('en', catalog), /href="\/en\/guide"/)
+    assert.match(home_body('en', catalog), /<a href="\/" hreflang="ar" lang="ar">/)
+    assert.match(home_body('ar', catalog), /<a href="\/en" hreflang="en" lang="en">/)
+})
+
+test('the WebSite JSON-LD names the home page of its language', () => {
+    assert.deepEqual(website_object('en', ORIGIN), {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Islamicons',
+        url: `${ORIGIN}/en`,
+        inLanguage: 'en',
+    })
+    assert.equal(website_object('ar', ORIGIN).url, `${ORIGIN}/`)
 })

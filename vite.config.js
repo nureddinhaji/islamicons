@@ -10,7 +10,7 @@ import {wuchale} from 'wuchale/vite'
 import {read_catalog} from './scripts/icon-catalog.js'
 import {robots_txt, sitemap_xml} from './scripts/sitemap.js'
 import {alternates_for, public_path, stamp_head} from './scripts/static-head.js'
-import {icon_page_html, icon_route, related_icons} from './scripts/static-pages.js'
+import {home_body, icon_page_html, icon_route, related_icons, website_object} from './scripts/static-pages.js'
 import {NOT_FOUND, page_title, PAGES, SITE} from './src/lib/site.js'
 import tsconfig from './tsconfig.json' with {type: 'json'}
 
@@ -59,6 +59,10 @@ function static_heads() {
                     origin,
                     alternates: alternates_for(doc.route),
                     image: og_image(doc.language),
+                    ...(doc.route === '/' && {
+                        body: home_body(doc.language, catalog),
+                        json_ld: website_object(doc.language, origin),
+                    }),
                 })
                 write_dist(doc.file, html)
             }
