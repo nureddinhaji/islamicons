@@ -42,7 +42,7 @@ function static_heads() {
         apply: 'build',
         async closeBundle() {
             // Imported here so the dev server does not load resvg.
-            const {og_image} = await import('./scripts/og-image.js')
+            const {icon_og_image, og_image} = await import('./scripts/og-image.js')
             const template = readFileSync('dist/index.html', 'utf8')
             const origin = (process.env.SITE_ORIGIN ?? '').replace(/\/$/, '')
             const catalog = read_catalog()
@@ -82,7 +82,8 @@ function static_heads() {
             for (const icon of catalog) {
                 const related = related_icons(catalog, icon)
                 for (const language of ['ar', 'en']) {
-                    const html = icon_page_html(template, {icon, language, related, origin, image: og_image(language)})
+                    const image = icon_og_image(icon, language)
+                    const html = icon_page_html(template, {icon, language, related, origin, image})
                     write_dist(`${public_path(language, icon_route(icon.name)).slice(1)}.html`, html)
                 }
                 write_dist(`svg/${icon.name}.svg`, icon.framed_svg)
@@ -107,17 +108,20 @@ function static_heads() {
     }
 }
 
-// The PNGs drawn at build: the link previews and the home-screen icon.
+// The PNGs drawn at build: the link previews (the site's and each icon's) and the home-screen icon.
 function build_images() {
     return {
         name: 'build-images',
         apply: 'build',
         async generateBundle() {
-            const [{og_assets}, {touch_icon_asset}] = await Promise.all([
+            const [{icon_og_assets, og_assets}, {touch_icon_asset}] = await Promise.all([
                 import('./scripts/og-image.js'),
                 import('./scripts/touch-icon.js'),
             ])
-            for (const asset of [...og_assets(), touch_icon_asset()]) this.emitFile({type: 'asset', ...asset})
+            // Pages name their card only with an absolute og:image, so without SITE_ORIGIN the 434 renders would go unused.
+            const icon_cards = process.env.SITE_ORIGIN ? icon_og_assets(read_catalog()) : []
+            const assets = [...og_assets(), ...icon_cards, touch_icon_asset()]
+            for (const asset of assets) this.emitFile({type: 'asset', ...asset})
         },
     }
 }

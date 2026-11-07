@@ -5,6 +5,7 @@ import {PACKAGES, REPO_URL} from '../src/lib/constants.svelte.js'
 import {svg_document} from '../src/lib/frame.js'
 import {icon_page_meta, page_title, SITE} from '../src/lib/site.js'
 import {install_command, react_usage, svelte_usage} from '../src/lib/snippets.svelte.js'
+import {category_title, icon_title} from './icon-catalog.js'
 import {alternates_for, escape_attr, escape_text, public_path, public_url, stamp_head} from './static-head.js'
 
 const OTHER = {ar: 'en', en: 'ar'}
@@ -39,8 +40,6 @@ const LABELS = {
     },
 }
 
-const icon_title = (icon, language) => (language === 'en' ? icon.title_en : icon.title)
-const category_title = (icon, language) => (language === 'en' ? icon.category.title_en : icon.category.title)
 export const icon_route = name => `/icons/${name}`
 
 export const related_icons = (catalog, icon) =>
