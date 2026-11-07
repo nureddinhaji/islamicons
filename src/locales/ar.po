@@ -361,7 +361,7 @@ msgstr "قصير يتسع له مربّع الأيقونة. الأفعال وا�
 msgid "العنوان الإنجليزي"
 msgstr "العنوان الإنجليزي"
 
-#: src/components/icons/IconPanel.svelte
+#: src/components/icons/IconDetails.svelte
 #: src/routes/Guide.svelte
 msgid "كلمات البحث"
 msgstr "كلمات البحث"
@@ -685,7 +685,7 @@ msgstr "تعذّر النسخ، انسخ الكود من تبويب SVG أدنا
 msgid "تعذّر إنشاء صورة PNG، جرّب تنزيل SVG."
 msgstr "تعذّر إنشاء صورة PNG، جرّب تنزيل SVG."
 
-#: src/components/icons/IconPanel.svelte
+#: src/components/icons/IconDetails.svelte
 msgid "من التصنيف نفسه"
 msgstr "من التصنيف نفسه"
 
@@ -777,7 +777,7 @@ msgstr "من الموقع"
 msgid "اختر الأيقونة واضبطها، ثم انسخ رمزها أو نزّلها SVG أو PNG، بلا تثبيت."
 msgstr "اختر الأيقونة واضبطها، ثم انسخ رمزها أو نزّلها SVG أو PNG، بلا تثبيت."
 
-#: src/components/icons/IconPanel.svelte
+#: src/components/icons/IconDetails.svelte
 msgid "تثبيت الحزمة وخصائصها"
 msgstr "تثبيت الحزمة وخصائصها"
 
@@ -820,3 +820,7 @@ msgstr "سُمك الخط بالبكسل حين يكون حجم الأيقونة
 #: src/routes/Guide.svelte
 msgid "تُعرض الأيقونة بخط ١٫٥ في ملف SVG قياسي لوحته 0 0 24 24، وتُكبَّر حول مركزها حتى تقف حافة الخط على بُعد وحدة من حدود اللوحة (١٫٠٢٥ مرة عند هذا السُمك) فلا يقصّها المتصفح، ويحمل جذرها overflow=\"visible\" احتياطاً."
 msgstr "تُعرض الأيقونة بخط ١٫٥ في ملف SVG قياسي لوحته 0 0 24 24، وتُكبَّر حول مركزها حتى تقف حافة الخط على بُعد وحدة من حدود اللوحة (١٫٠٢٥ مرة عند هذا السُمك) فلا يقصّها المتصفح، ويحمل جذرها overflow=\"visible\" احتياطاً."
+
+#: src/components/icons/IconPanel.svelte
+msgid "صفحة الأيقونة"
+msgstr "صفحة الأيقونة"

@@ -7,8 +7,10 @@ import {defineConfig} from 'vite'
 import domain from 'vite-plugin-domain'
 import {wuchale} from 'wuchale/vite'
 
+import {read_catalog} from './scripts/icon-catalog.js'
 import {robots_txt, sitemap_xml} from './scripts/sitemap.js'
-import {stamp_head} from './scripts/static-head.js'
+import {alternates_for, public_path, stamp_head} from './scripts/static-head.js'
+import {icon_page_html, icon_route, related_icons} from './scripts/static-pages.js'
 import {NOT_FOUND, page_title, PAGES, SITE} from './src/lib/site.js'
 import tsconfig from './tsconfig.json' with {type: 'json'}
 
@@ -27,11 +29,6 @@ const NOT_FOUND_DOCS = [
     {language: 'en', file: 'en/404.html'},
 ]
 
-function public_path(language, route) {
-    if (language === 'ar') return route
-    return route === '/' ? '/en' : `/en${route}`
-}
-
 function write_dist(file, content) {
     const dest = join('dist', file)
     mkdirSync(dirname(dest), {recursive: true})
@@ -48,8 +45,7 @@ function static_heads() {
             const {og_image} = await import('./scripts/og-image.js')
             const template = readFileSync('dist/index.html', 'utf8')
             const origin = (process.env.SITE_ORIGIN ?? '').replace(/\/$/, '')
-            const alternates_for = route =>
-                ['ar', 'en'].map(language => ({language, path: public_path(language, route)}))
+            const catalog = read_catalog()
             for (const doc of HEAD_DOCS) {
                 const site = SITE[doc.language]
                 const page = PAGES[doc.route]?.[doc.language]
@@ -78,14 +74,30 @@ function static_heads() {
                 })
                 write_dist(doc.file, html)
             }
+            // Cloudflare serves /icons/mosque from icons/mosque.html; /svg/ keeps a page and its image apart.
+            for (const icon of catalog) {
+                const related = related_icons(catalog, icon)
+                for (const language of ['ar', 'en']) {
+                    const html = icon_page_html(template, {icon, language, related, origin, image: og_image(language)})
+                    write_dist(`${public_path(language, icon_route(icon.name)).slice(1)}.html`, html)
+                }
+                write_dist(`svg/${icon.name}.svg`, icon.framed_svg)
+            }
             write_dist('robots.txt', robots_txt(origin))
             // Sitemap URLs must be absolute.
             if (origin) {
-                const entries = HEAD_DOCS.map(doc => ({
+                const pages = HEAD_DOCS.map(doc => ({
                     path: public_path(doc.language, doc.route),
                     alternates: alternates_for(doc.route),
                 }))
-                write_dist('sitemap.xml', sitemap_xml(origin, entries))
+                const icon_pages = catalog.flatMap(icon =>
+                    ['ar', 'en'].map(language => ({
+                        path: public_path(language, icon_route(icon.name)),
+                        alternates: alternates_for(icon_route(icon.name)),
+                        images: [`/svg/${icon.name}.svg`],
+                    })),
+                )
+                write_dist('sitemap.xml', sitemap_xml(origin, [...pages, ...icon_pages]))
             }
         },
     }

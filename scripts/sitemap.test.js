@@ -38,6 +38,21 @@ test('the sitemap escapes & in URLs', () => {
     assert.doesNotMatch(xml, /&(?!amp;)/)
 })
 
+test('an entry with images lists each as an image:image', () => {
+    const xml = sitemap_xml('https://example.test', [
+        {
+            path: '/icons/mosque',
+            alternates: alternates_for('/icons/mosque', '/en/icons/mosque'),
+            images: ['/svg/mosque.svg'],
+        },
+    ])
+    assert.match(xml, /xmlns:image="http:\/\/www.google.com\/schemas\/sitemap-image\/1.1"/)
+    assert.match(
+        xml,
+        /<image:image><image:loc>https:\/\/example.test\/svg\/mosque.svg<\/image:loc><\/image:image>\n<\/url>/,
+    )
+})
+
 test('robots.txt names the sitemap only when there is an origin', () => {
     assert.equal(robots_txt(''), 'User-agent: *\nAllow: /\n')
     assert.equal(

@@ -33,6 +33,19 @@ export const PAGES = {
 // Seo.svelte writes the same title in the browser.
 export const page_title = (title, language) => (title ? `${title} | ${SITE[language].name}` : SITE[language].name)
 
+// Takes names already in `language`: the build and the app hold differently shaped icon records.
+export function icon_page_meta(name, category_title, language) {
+    return language === 'ar'
+        ? {
+              title: `أيقونة ${name} بصيغة SVG`,
+              description: `أيقونة «${name}» من تصنيف ${category_title}، مجانية ومفتوحة المصدر: انسخها SVG أو نزّلها PNG، أو استعملها في React وSvelte.`,
+          }
+        : {
+              title: `${name} icon, free SVG`,
+              description: `The ${name} icon from ${category_title}, free and open source. Copy the SVG, download a PNG, or use it in React and Svelte.`,
+          }
+}
+
 export const NOT_FOUND = {
     ar: {title: 'الصفحة غير موجودة'},
     en: {title: 'Page not found'},
