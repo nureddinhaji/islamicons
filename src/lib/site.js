@@ -29,3 +29,11 @@ export const PAGES = {
         },
     },
 }
+
+// Seo.svelte writes the same title in the browser.
+export const page_title = (title, language) => (title ? `${title} | ${SITE[language].name}` : SITE[language].name)
+
+export const NOT_FOUND = {
+    ar: {title: 'الصفحة غير موجودة'},
+    en: {title: 'Page not found'},
+}

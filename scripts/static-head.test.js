@@ -61,3 +61,18 @@ test('SITE_ORIGIN adds absolute canonical and alternate links', () => {
     assert.match(html, /hreflang="en" href="https:\/\/example.test\/en"/)
     assert.match(html, /hreflang="x-default" href="https:\/\/example.test\/"/)
 })
+
+test('a noindex page gets the robots meta and no canonical, even with SITE_ORIGIN', () => {
+    const html = stamp_head(template, {
+        language: 'en',
+        name: 'Islamicons',
+        short_name: 'Islamicons',
+        title: 'Page not found | Islamicons',
+        description: 'Icons',
+        origin: 'https://example.test',
+        noindex: true,
+    })
+    assert.match(html, /<meta name="robots" data-static-head content="noindex">\n<\/head>/)
+    assert.match(html, /<title>Page not found \| Islamicons<\/title>/)
+    assert.doesNotMatch(html, /canonical|hreflang|og:url|og:image/)
+})

@@ -7,8 +7,9 @@ import {defineConfig} from 'vite'
 import domain from 'vite-plugin-domain'
 import {wuchale} from 'wuchale/vite'
 
+import {robots_txt, sitemap_xml} from './scripts/sitemap.js'
 import {stamp_head} from './scripts/static-head.js'
-import {PAGES, SITE} from './src/lib/site.js'
+import {NOT_FOUND, page_title, PAGES, SITE} from './src/lib/site.js'
 import tsconfig from './tsconfig.json' with {type: 'json'}
 
 const assets_dir = `assets-${new Date().toISOString().slice(2, 19).replace(/\D/g, '')}`
@@ -20,9 +21,21 @@ const HEAD_DOCS = [
     {language: 'en', route: '/guide', file: 'en/guide.html'},
 ]
 
+// Cloudflare answers an unmatched path with the nearest 404.html, so /en/... gets the English one.
+const NOT_FOUND_DOCS = [
+    {language: 'ar', file: '404.html'},
+    {language: 'en', file: 'en/404.html'},
+]
+
 function public_path(language, route) {
     if (language === 'ar') return route
     return route === '/' ? '/en' : `/en${route}`
+}
+
+function write_dist(file, content) {
+    const dest = join('dist', file)
+    mkdirSync(dirname(dest), {recursive: true})
+    writeFileSync(dest, content)
 }
 
 // Cloudflare serves /en from en.html. Canonical and alternate links are stamped only once SITE_ORIGIN is set.
@@ -44,16 +57,35 @@ function static_heads() {
                     language: doc.language,
                     name: site.name,
                     short_name: site.short_name,
-                    title: page?.title ? `${page.title} | ${site.name}` : site.name,
+                    title: page_title(page?.title, doc.language),
                     description: page?.description ?? site.description,
                     path: public_path(doc.language, doc.route),
                     origin,
                     alternates: alternates_for(doc.route),
                     image: og_image(doc.language),
                 })
-                const dest = join('dist', doc.file)
-                mkdirSync(dirname(dest), {recursive: true})
-                writeFileSync(dest, html)
+                write_dist(doc.file, html)
+            }
+            for (const doc of NOT_FOUND_DOCS) {
+                const site = SITE[doc.language]
+                const html = stamp_head(template, {
+                    language: doc.language,
+                    name: site.name,
+                    short_name: site.short_name,
+                    title: page_title(NOT_FOUND[doc.language].title, doc.language),
+                    description: site.description,
+                    noindex: true,
+                })
+                write_dist(doc.file, html)
+            }
+            write_dist('robots.txt', robots_txt(origin))
+            // Sitemap URLs must be absolute.
+            if (origin) {
+                const entries = HEAD_DOCS.map(doc => ({
+                    path: public_path(doc.language, doc.route),
+                    alternates: alternates_for(doc.route),
+                }))
+                write_dist('sitemap.xml', sitemap_xml(origin, entries))
             }
         },
     }
