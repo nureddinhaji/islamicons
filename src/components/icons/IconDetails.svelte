@@ -1,4 +1,7 @@
 <div class="flex flex-col gap-8">
+    {#if icon.about}
+        <p class="max-w-prose leading-relaxed">{icon.about}</p>
+    {/if}
     <div class="mx-auto w-full max-w-72 overflow-hidden rounded-2xl bg-card p-3">
         <KeylineCanvas
             {icon}

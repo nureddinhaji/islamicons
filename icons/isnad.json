@@ -17,5 +17,7 @@
     "hadith",
     "حديث",
     "isnaad"
-  ]
+  ],
+  "about": "الإسناد سلسلة الرواة الذين نقلوا الحديث بعضهم عن بعض. أما المتن فهو نص الحديث المنقول، ويبحث علم الحديث في كليهما. يمكن استخدام الرمز لعرض سلسلة الرواة إلى جانب المتن في تطبيق للأحاديث، أو لروابط التلقي في مخطط للرواة، أو لقسم دروس الإسناد في موقع لتعليم علوم الحديث.",
+  "about_en": "Isnad is a hadith’s chain of transmission through its narrators. The matn is the transmitted text itself; hadith scholarship examines both. The icon can open a narrator chain beside the text in a hadith app, mark transmission links in a narrator diagram, or label isnad lessons on a hadith studies site."
 }

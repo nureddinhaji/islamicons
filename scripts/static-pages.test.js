@@ -3,6 +3,7 @@ import {readFileSync} from 'node:fs'
 import {test} from 'node:test'
 
 import {REPO_URL} from '../src/lib/constants.svelte.js'
+import {icon_page_meta} from '../src/lib/site.js'
 import {read_catalog} from './icon-catalog.js'
 import {home_body, icon_page_html, related_icons, website_object} from './static-pages.js'
 
@@ -12,6 +13,7 @@ const IMAGE = {path: '/og-ar.png', alt: 'alt', width: 1200, height: 630}
 const template = `<html dir="rtl" lang="ar">
 <head>
 <meta name="description" content="old">
+<meta property="og:description" content="old">
 <meta property="og:title" content="old">
 <title>old</title>
 </head>
@@ -138,4 +140,66 @@ test('the WebSite JSON-LD names the home page of its language', () => {
         inLanguage: 'en',
     })
     assert.equal(website_object('ar', ORIGIN).url, `${ORIGIN}/`)
+})
+
+const decode_text = text => text.replaceAll('&quot;', '"').replaceAll('&lt;', '<').replaceAll('&amp;', '&')
+const description_meta = (html, tag) =>
+    decode_text(html.match(new RegExp(`<meta (?:name|property)="${tag}" content="([^"]*)"`))[1])
+const image_data = html =>
+    JSON.parse(html.match(/<script type="application\/ld\+json" data-static-head>(.*?)<\/script>/)[1])
+
+for (const language of ['ar', 'en']) {
+    test(`approved about text supplies the body, meta and JSON-LD in ${language}`, () => {
+        const icon = catalog.find(icon => icon.name === 'rehal')
+        const approved = JSON.parse(readFileSync(new URL('../icons/rehal.json', import.meta.url), 'utf8'))
+        const about = language === 'en' ? approved.about_en : approved.about
+        assert.ok(about)
+        const html = page(icon, language)
+        const paragraphs = [...html.matchAll(/<p(?:\s[^>]*)?>(.*?)<\/p>/g)].map(match => decode_text(match[1]))
+        assert.equal(paragraphs.filter(text => text === about).length, 1)
+        assert.equal(description_meta(html, 'description'), about)
+        assert.equal(description_meta(html, 'og:description'), about)
+        assert.equal(image_data(html).description, about)
+        assert.equal(image_data(html).inLanguage, language)
+    })
+
+    test(`an icon without about text keeps the body and template description in ${language}`, () => {
+        const html = page(mosque, language)
+        const title = language === 'en' ? mosque.title_en : mosque.title
+        const category = language === 'en' ? mosque.category.title_en : mosque.category.title
+        const expected = icon_page_meta(title, category, language).description
+        const paragraph_count = text => (text.match(/<p(?:\s[^>]*)?>/g) ?? []).length
+        const with_text = page({...mosque, about: 'x'.repeat(200), about_en: 'x'.repeat(200)}, language)
+        assert.equal(paragraph_count(with_text) - paragraph_count(html), 1)
+        assert.equal(description_meta(html, 'description'), expected)
+        assert.equal(description_meta(html, 'og:description'), expected)
+        assert.equal(image_data(html).description, expected)
+        assert.equal(image_data(html).inLanguage, language)
+    })
+}
+
+test('about text is escaped independently in the body, head and JSON-LD', () => {
+    const about = '</p><script>x</script> & "q"'
+    const html = page({...mosque, about, about_en: about}, 'ar')
+    assert.ok(html.includes('<p>&lt;/p>&lt;script>x&lt;/script> &amp; "q"</p>'))
+    assert.ok(html.includes('content="&lt;/p>&lt;script>x&lt;/script> &amp; &quot;q&quot;"'))
+    assert.doesNotMatch(html, /<script>x<\/script>/)
+    assert.equal(description_meta(html, 'description'), about)
+    assert.equal(description_meta(html, 'og:description'), about)
+    assert.equal(image_data(html).description, about)
+})
+
+test('dollar replacement patterns stay literal in the head, body and drawing', () => {
+    const title = "مسجد $& $' $`"
+    const about = "وصف $& $' $`"
+    const html = page({...mosque, title, about, about_en: about}, 'ar')
+    assert.equal(description_meta(html, 'description'), about)
+    assert.equal(description_meta(html, 'og:description'), about)
+    assert.equal(image_data(html).description, about)
+    assert.equal(html.match(/<body>/g)?.length, 1)
+    assert.equal(html.split(`<p>${about.replaceAll('&', '&amp;')}</p>`).length - 1, 1)
+    assert.ok(
+        html.includes(`<title>أيقونة ${title.replaceAll('&', '&amp;')} بصيغة SVG | مكتبة الأيقونات الإسلامية</title>`),
+    )
+    assert.ok(html.includes(`<svg role="img" aria-label="${title.replaceAll('&', '&amp;')}" `))
 })

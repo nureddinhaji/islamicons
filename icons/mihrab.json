@@ -7,5 +7,7 @@
     "قبلة",
     "arch",
     "prayer niche"
-  ]
+  ],
+  "about": "المحراب تجويف في جدار المسجد يدل المصلين على اتجاه القبلة. وهو يختلف عن المنبر الذي يقف عليه الخطيب لإلقاء الخطبة. يمكن استخدام الرمز لتحديد موضع القبلة في مخطط للمسجد على موقعه، أو لشرح أجزاء المسجد في تطبيق تعليمي، أو لصفحة المحاريب في دليل لعمارة المساجد.",
+  "about_en": "The mihrab is a niche in a mosque wall that indicates the direction of prayer. It differs from the minbar, the raised pulpit used for sermons. The icon can locate the qibla wall on a mosque website’s floor plan, label a mosque anatomy lesson in an educational app, or mark a mihrab page in a mosque architecture guide."
 }

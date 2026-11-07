@@ -153,6 +153,57 @@ for (const [name, [meta, reason]] of Object.entries(bad_meta))
         assert.ok(reported(result, result.victim, reason), result.stderr)
     })
 
+const about_meta = JSON.parse(readFileSync(path.join(icons_dir, 'mosque.json'), 'utf8'))
+const good_about = {about: 'م'.repeat(200), about_en: 'a'.repeat(200)}
+
+for (const [name, fields] of Object.entries({
+    absent: {},
+    bilingual: good_about,
+    honorific: {...good_about, about_en: `${'a'.repeat(200)} ﷺ ﷺ`},
+    'lower boundary': {about: 'م'.repeat(150), about_en: 'a'.repeat(150)},
+    'upper boundary with astral characters': {about: `م${'😀'.repeat(449)}`, about_en: '😀'.repeat(450)},
+}))
+    test(`check-icons accepts about text: ${name}`, () => {
+        const result = check_with({name: 'mosque', meta: {...about_meta, ...fields}})
+        assert.equal(result.status, 0, result.stderr)
+    })
+
+const bad_about = {
+    'Arabic only': [{about_en: undefined}, /about_en goes with about/],
+    'English only': [{about: undefined}, /about_en goes with about/],
+    'line feed': [{about: `م\n${'م'.repeat(200)}`}, /about must be one plain-text paragraph/],
+    'carriage return': [{about_en: `a\r${'a'.repeat(200)}`}, /about_en must be one plain-text paragraph/],
+    'line separator': [{about: `م\u2028${'م'.repeat(200)}`}, /about must be one plain-text paragraph/],
+    'paragraph separator': [{about_en: `a\u2029${'a'.repeat(200)}`}, /about_en must be one plain-text paragraph/],
+    markup: [{about_en: `<b>${'a'.repeat(200)}</b>`}, /about_en must be one plain-text paragraph/],
+    'closing angle bracket': [{about_en: `a>${'a'.repeat(200)}`}, /about_en must be one plain-text paragraph/],
+    'too short': [{about: 'م'.repeat(149)}, /about must be 150–450 code points/],
+    'too long': [{about_en: 'a'.repeat(451)}, /about_en must be 150–450 code points/],
+    'Arabic word in English': [{about_en: `${'a'.repeat(200)} مسجد`}, /about_en must not contain Arabic letters/],
+    'digits and punctuation': [{about: '١؞،؟'.repeat(50)}, /about needs Arabic letters/],
+    'combining marks only': [{about: 'َ'.repeat(200)}, /about needs Arabic letters/],
+    'unrelated extra key': [{note: 'x'}, /has an unexpected key note/],
+}
+for (const key of ['about', 'about_en'])
+    for (const [name, value] of Object.entries({null: null, number: 42, empty: '', untrimmed: ` ${good_about[key]}`}))
+        bad_about[`${key} ${name}`] = [{[key]: value}, new RegExp(`${key} must be a non-empty trimmed string`)]
+
+for (const [name, [fields, reason]] of Object.entries(bad_about))
+    test(`check-icons rejects about text: ${name}`, () => {
+        // JSON drops an undefined field, so {about: undefined} writes the file without that key.
+        const meta = {...about_meta, ...good_about, ...fields}
+        const result = check_with({name: 'mosque', meta})
+        assert.equal(result.status, 1, result.stdout)
+        assert.ok(reported(result, 'mosque', reason), result.stderr)
+    })
+
+test('bad tags do not hide invalid about text', () => {
+    const result = check_with({name: 'mosque', meta: {...about_meta, ...good_about, tags: null, about: null}})
+    assert.equal(result.status, 1, result.stdout)
+    assert.ok(reported(result, 'mosque', /metadata needs search tags/), result.stderr)
+    assert.ok(reported(result, 'mosque', /about must be a non-empty trimmed string/), result.stderr)
+})
+
 const bad_tags = {
     'tag equal to the id': [['mosque'], /tag "mosque": search already finds this/],
     'tag equal to the title': [['مسجد'], /tag "مسجد": search already finds this/],

@@ -30,6 +30,7 @@ export const icons = Object.entries(svg_files)
         return {
             name,
             title: locale === 'en' ? meta.title_en : meta.title,
+            about: (locale === 'en' ? meta.about_en : meta.about) ?? '',
             titles: [meta.title, meta.title_en],
             category,
             order,

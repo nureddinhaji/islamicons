@@ -14,5 +14,7 @@
     "charity",
     "تبرع",
     "donation"
-  ]
+  ],
+  "about": "الوقف تخصيص مال أو عقار مع إبقاء أصله وصرف منفعته في وجه محدد من الخير. وقد يدعم مسجدا أو تعليما أو غير ذلك من وجوه الخير. يمكن استخدام الرمز لخيار المساهمة في وقف ضمن نموذج تبرع يبين غرضه للمساهم، أو لصفحة مشاريع الأوقاف في موقع جمعية، أو لتقرير منافع الوقف في لوحة متابعة للمتبرعين.",
+  "about_en": "A waqf is an endowment that preserves an asset and directs its benefits to a specified charitable purpose. It may support a mosque, education, or other causes. The icon can label an endowment option on a donation form, a charity website’s waqf projects page, or a waqf benefits report in a donor dashboard."
 }

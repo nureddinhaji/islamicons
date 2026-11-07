@@ -5,7 +5,7 @@ import {PACKAGES, REPO_URL} from '../src/lib/constants.svelte.js'
 import {svg_document} from '../src/lib/frame.js'
 import {icon_page_meta, page_title, SITE} from '../src/lib/site.js'
 import {install_command, react_usage, svelte_usage} from '../src/lib/snippets.svelte.js'
-import {category_title, icon_title} from './icon-catalog.js'
+import {category_title, icon_about, icon_title} from './icon-catalog.js'
 import {alternates_for, escape_attr, escape_text, public_path, public_url, stamp_head} from './static-head.js'
 
 const OTHER = {ar: 'en', en: 'ar'}
@@ -64,6 +64,7 @@ export function icon_page_body(icon, language, related) {
     const labels = LABELS[language]
     const other = OTHER[language]
     const title = icon_title(icon, language)
+    const about = icon_about(icon, language)
     const href = route => public_path(language, route)
     const drawing = svg_document(icon.framed, {size: 96}).replace(
         '<svg ',
@@ -82,6 +83,7 @@ export function icon_page_body(icon, language, related) {
         '<main><article>',
         `<h1>${escape_text(title)}</h1>`,
         `<p lang="${other}" dir="${DIR[other]}">${escape_text(icon_title(icon, other))}</p>`,
+        ...(about ? [`<p>${escape_text(about)}</p>`] : []),
         drawing,
         '<dl>',
         `<dt>${labels.file}</dt><dd><code dir="ltr">${escape_text(icon.name)}</code></dd>`,
@@ -139,11 +141,13 @@ export function website_object(language, origin) {
 }
 
 // Google Images reads these fields for its "Licensable" badge.
-function image_object(icon, language, origin) {
+function image_object(icon, language, origin, description) {
     return {
         '@context': 'https://schema.org',
         '@type': 'ImageObject',
         name: icon_title(icon, language),
+        description,
+        inLanguage: language,
         contentUrl: public_url(origin, `/svg/${icon.name}.svg`),
         encodingFormat: 'image/svg+xml',
         license: `${REPO_URL}/blob/main/LICENSE`,
@@ -156,7 +160,12 @@ function image_object(icon, language, origin) {
 
 export function icon_page_html(template, {icon, language, related, origin, image}) {
     const site = SITE[language]
-    const meta = icon_page_meta(icon_title(icon, language), category_title(icon, language), language)
+    const meta = icon_page_meta(
+        icon_title(icon, language),
+        category_title(icon, language),
+        language,
+        icon_about(icon, language),
+    )
     const route = icon_route(icon.name)
     return stamp_head(template, {
         language,
@@ -169,6 +178,6 @@ export function icon_page_html(template, {icon, language, related, origin, image
         alternates: alternates_for(route),
         image,
         body: icon_page_body(icon, language, related),
-        json_ld: image_object(icon, language, origin),
+        json_ld: image_object(icon, language, origin, meta.description),
     })
 }

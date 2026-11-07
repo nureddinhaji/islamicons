@@ -163,9 +163,33 @@ const whole_match = (pattern_of, text) => new RegExp(`^(?:${arabic_pattern(patte
 // some lookalikes are one-way (typing أ finds ؤ, not the reverse), so both directions are needed
 const same_search = (a, b) => whole_match(a, b) || whole_match(b, a)
 
+// Script=Arabic alone also matches Arabic digits and punctuation such as ١ and ؞.
+const arabic_letter = /(?=\p{Script=Arabic})\p{Letter}/u
+
+function description_problems(meta) {
+    const found = []
+    if (('about' in meta) !== ('about_en' in meta)) found.push('about_en goes with about')
+    for (const key of ['about', 'about_en']) {
+        if (!(key in meta)) continue
+        const text = meta[key]
+        if (!is_clean_string(text)) {
+            found.push(`${key} must be a non-empty trimmed string`)
+            continue
+        }
+        if (/[\r\n\u2028\u2029<>]/.test(text)) found.push(`${key} must be one plain-text paragraph`)
+        const length = [...text].length
+        if (length < 150 || length > 450) found.push(`${key} must be 150–450 code points`)
+        if (key === 'about' && !arabic_letter.test(text)) found.push('about needs Arabic letters')
+        if (key === 'about_en' && arabic_letter.test(text.replaceAll('ﷺ', '')))
+            found.push('about_en must not contain Arabic letters except ﷺ')
+    }
+    return found
+}
+
 function meta_problems(name, meta) {
-    const found = key_problems(meta, ['title', 'title_en', 'tags'])
+    const found = key_problems(meta, ['title', 'title_en', 'tags'], ['about', 'about_en'])
     if (!is_object(meta)) return found
+    found.push(...description_problems(meta))
     if (!is_clean_string(meta.title) || !/[\u0600-\u06FF]/.test(meta.title))
         found.push('metadata needs an Arabic title, without leading or trailing spaces')
     if (!is_english_title(meta.title_en))

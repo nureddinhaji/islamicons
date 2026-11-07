@@ -32,7 +32,7 @@ const routes = [
 function route_meta_for(to) {
     if (to?.route?.[0] !== ICON_ROUTE) return PAGES[to?.route?.[0]]?.[locale] ?? {}
     const icon = icon_by_name.get(to.params.name)
-    return icon_page_meta(icon.title, category_by_id.get(icon.category).title, locale)
+    return icon_page_meta(icon.title, category_by_id.get(icon.category).title, locale, icon.about)
 }
 
 const props = $state({
