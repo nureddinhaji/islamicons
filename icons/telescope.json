@@ -1,0 +1,16 @@
+{
+  "title": "منظار فلكي",
+  "title_en": "Telescope",
+  "tags": [
+    "astronomy",
+    "observatory",
+    "stargazing",
+    "تلسكوب",
+    "مقراب",
+    "فلك",
+    "مرصد",
+    "رصد"
+  ],
+  "about": "المنظار الفلكي أداة تقرّب الأجرام البعيدة كالقمر والكواكب، وتستعملها المراصد ولجان تحري الهلال. ولرصد الهلال به عند دخول الشهر، استخدم «رؤية الهلال (منظار)». يمكن استخدام الرمز لقسم علم الفلك في منصة تعليمية، أو لصفحة مرصد فلكي، أو لأداة تعرض مواقع القمر في تطبيق للتقويم الهجري.",
+  "about_en": "A telescope brings distant objects such as the Moon and planets closer, and is used by observatories and moon sighting committees. For watching for the new crescent at the start of a month, choose Moon sighting (telescope). The icon can mark an astronomy section on a learning platform, an observatory's page, or a tool showing the Moon's position in a Hijri calendar app."
+}
