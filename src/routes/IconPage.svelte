@@ -10,6 +10,9 @@
             <h1 class="text-3xl">{icon.title}</h1>
             <p dir="ltr" class="self-start font-mono text-sm text-muted-foreground">{icon.name}</p>
         </header>
+        {#if icon.about}
+            <p class="max-w-prose leading-relaxed">{icon.about}</p>
+        {/if}
         <IconDetails {icon} heading="h2" />
     </div>
 {/if}

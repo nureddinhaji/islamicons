@@ -1,19 +1,12 @@
 <div class="flex flex-col gap-8">
-    {#if base || icon.about}
-        <div class="flex max-w-prose flex-col gap-3 leading-relaxed">
-            {#if base}
-                <p>
-                    نسخة من أيقونة <a
-                        href={href_in(`/icons/${base.name}`)}
-                        class={LINK_CLASS}
-                        onclick={event => select(event, base.name)}>{base.title}</a
-                    >: {icon.difference}.
-                </p>
-            {/if}
-            {#if icon.about}
-                <p>{icon.about}</p>
-            {/if}
-        </div>
+    {#if base}
+        <p class="max-w-prose leading-relaxed">
+            نسخة من أيقونة <a
+                href={href_in(`/icons/${base.name}`)}
+                class={LINK_CLASS}
+                onclick={event => select(event, base.name)}>{base.title}</a
+            >: {icon.difference}.
+        </p>
     {/if}
     <div class="mx-auto w-full max-w-72 overflow-hidden rounded-2xl bg-card p-3">
         <KeylineCanvas
