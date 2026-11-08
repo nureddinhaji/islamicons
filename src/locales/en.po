@@ -824,3 +824,12 @@ msgstr "Shown at stroke 1.5 as a standard SVG whose box is 0 0 24 24, and scaled
 #: src/components/icons/IconPanel.svelte
 msgid "صفحة الأيقونة"
 msgstr "Icon page"
+
+#. 0: icon.difference
+#: src/components/icons/IconDetails.svelte
+msgid "نسخة من أيقونة <0/>: {0}."
+msgstr "A version of the <0/> icon: {0}."
+
+#: src/components/icons/IconDetails.svelte
+msgid "نسخ أخرى"
+msgstr "Other versions"

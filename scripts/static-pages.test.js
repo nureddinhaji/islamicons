@@ -5,7 +5,7 @@ import {test} from 'node:test'
 import {REPO_URL} from '../src/lib/constants.svelte.js'
 import {icon_page_meta} from '../src/lib/site.js'
 import {read_catalog} from './icon-catalog.js'
-import {home_body, icon_page_html, related_icons, website_object} from './static-pages.js'
+import {family_icons, home_body, icon_page_html, related_icons, website_object} from './static-pages.js'
 
 const ORIGIN = 'https://example.test'
 const COPYRIGHT = readFileSync(new URL('../LICENSE', import.meta.url), 'utf8').split('\n')[2]
@@ -25,7 +25,14 @@ const names = new Set(catalog.map(icon => icon.name))
 const mosque = catalog.find(icon => icon.name === 'mosque')
 
 const page = (icon, language, origin = ORIGIN) =>
-    icon_page_html(template, {icon, language, related: related_icons(catalog, icon), origin, image: IMAGE})
+    icon_page_html(template, {
+        icon,
+        language,
+        related: related_icons(catalog, icon),
+        family: family_icons(catalog, icon),
+        origin,
+        image: IMAGE,
+    })
 
 const hrefs = (html, rel) =>
     Object.fromEntries(
@@ -81,7 +88,8 @@ test('the JSON-LD parses and names the icon file and its licence', () => {
 test('internal links stay in the page language and related links name real icons', () => {
     const ar = page(mosque, 'ar')
     const en = page(mosque, 'en')
-    const related = [...ar.matchAll(/href="\/icons\/([^"]+)"/g)].map(match => match[1])
+    const related_section = ar.split('<h2>من التصنيف نفسه</h2>')[1]
+    const related = [...related_section.matchAll(/href="\/icons\/([^"]+)"/g)].map(match => match[1])
     assert.ok(related.length > 0)
     for (const name of related) assert.ok(names.has(name), name)
     assert.ok(!related.includes('mosque'))
@@ -203,3 +211,53 @@ test('dollar replacement patterns stay literal in the head, body and drawing', (
     )
     assert.ok(html.includes(`<svg role="img" aria-label="${title.replaceAll('&', '&amp;')}" `))
 })
+
+for (const language of ['ar', 'en']) {
+    const english = language === 'en'
+    const prefix = english ? '/en' : ''
+    const versions = english ? 'Other versions' : 'نسخ أخرى'
+    const related_heading = english ? 'From the same category' : 'من التصنيف نفسه'
+    const minaret_left = catalog.find(icon => icon.name === 'mosque-minaret-left')
+
+    test(`a variant body links its root and states its difference in ${language}`, () => {
+        const html = page(minaret_left, language)
+        const sentence = english
+            ? '<p>A version of the <a href="/en/icons/mosque">Mosque</a> icon: left minaret.</p>'
+            : '<p>نسخة من أيقونة <a href="/icons/mosque">مسجد</a>: مئذنة يسرى.</p>'
+        assert.ok(html.includes(sentence))
+    })
+
+    test(`a variant without about text has a specific description in ${language}`, () => {
+        const html = page({...minaret_left, about: '', about_en: ''}, language)
+        const expected = english
+            ? 'A version of the Mosque icon (left minaret), free and open source. Copy the SVG, download a PNG, or use it in React and Svelte.'
+            : 'نسخة من أيقونة «مسجد» (مئذنة يسرى)، مجانية ومفتوحة المصدر: انسخها SVG أو نزّلها PNG، أو استعملها في React وSvelte.'
+        assert.equal(description_meta(html, 'description'), expected)
+        assert.equal(description_meta(html, 'og:description'), expected)
+        assert.equal(image_data(html).description, expected)
+    })
+
+    test(`a variant difference is escaped in the body in ${language}`, () => {
+        const html = page({...minaret_left, title: 'مسجد (<b>)', title_en: 'Mosque (<b>)'}, language)
+        const body = html.split('<body>')[1]
+        assert.doesNotMatch(body, /<b>/)
+        assert.ok(body.includes(english ? ' icon: &lt;b>.</p>' : '</a>: &lt;b>.</p>'))
+    })
+
+    test(`a base lists its family separately from related icons in ${language}`, () => {
+        const html = page(mosque, language)
+        const family = html.split(`<h2>${versions}</h2>`)[1]?.split(`<h2>${related_heading}</h2>`)[0]
+        assert.ok(family)
+        const related = html.split(`<h2>${related_heading}</h2>`)[1]
+        for (const name of ['mosque-minaret-left', 'mosque-minaret-right']) {
+            assert.ok(family.includes(`href="${prefix}/icons/${name}"`))
+            assert.ok(!related.includes(`href="${prefix}/icons/${name}"`))
+        }
+    })
+
+    test(`an icon without a family has no versions or variant sentence in ${language}`, () => {
+        const html = page(catalog.find(icon => icon.name === 'kaaba'), language)
+        assert.ok(!html.includes(`<h2>${versions}</h2>`))
+        assert.ok(!html.includes(english ? '<p>A version of the ' : '<p>نسخة من أيقونة '))
+    })
+}

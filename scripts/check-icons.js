@@ -4,6 +4,7 @@ import path from 'node:path'
 
 import {arabic_pattern} from '../src/lib/arabic.js'
 import {frame_inner, parse_path, walk_path} from '../src/lib/frame.js'
+import {parent_of} from '../src/lib/icon-family.js'
 import {read_icon, ROOT_ATTRS, to_inner} from '../src/lib/icon-file.js'
 
 const dir = process.argv[2] || 'icons'
@@ -275,21 +276,13 @@ for (const name of names) {
     if (is_object(meta) && is_clean_string(meta.title) && /[\u0600-\u06FF]/.test(meta.title)) metas.set(name, meta)
 }
 
-// Names that start with another icon's name without being its variant.
-const NOT_VARIANTS = new Set(['dome-of-the-rock', 'tazkiyah-of-the-heart'])
-
-const parent_of = name =>
-    NOT_VARIANTS.has(name)
-        ? undefined
-        : names.filter(other => name.startsWith(`${other}-`)).sort((a, b) => b.length - a.length)[0]
-
 function variant_problems(name, title, base_title, {comma, filled_end, quote, label = ''}) {
     const [open, close] = quote
     const prefix = label ? `${label}: ` : ''
     const found = []
     if (name.endsWith('-filled') !== title.endsWith(filled_end))
         found.push(`${prefix}-filled and ${open}(… ${filled_end}${close} go together`)
-    const parent = parent_of(name)
+    const parent = parent_of(name, names)
     if (!parent) return title.includes('(') ? [...found, `${prefix}a base title has no parentheses`] : found
     if (base_title === undefined) return found
     const head = base_title.endsWith(')') ? `${base_title.slice(0, -1)}${comma}` : `${base_title} (`
@@ -309,7 +302,7 @@ function title_problems(name) {
     const meta = metas.get(name)
     const found = []
     if (/-(filled|off)-/.test(name)) found.push('filled and off must be the last words of the name')
-    const parent = parent_of(name)
+    const parent = parent_of(name, names)
     const base = parent && metas.get(parent)
     found.push(...variant_problems(name, meta.title, base?.title, ARABIC_TITLE))
     if (is_english_title(meta.title_en) && (!parent || is_english_title(base?.title_en)))

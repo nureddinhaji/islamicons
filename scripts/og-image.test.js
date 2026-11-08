@@ -3,7 +3,7 @@ import {test} from 'node:test'
 
 import {read_catalog} from './icon-catalog.js'
 import {icon_og_assets, icon_og_image} from './og-image.js'
-import {icon_page_html, related_icons} from './static-pages.js'
+import {family_icons, icon_page_html, related_icons} from './static-pages.js'
 
 const catalog = read_catalog()
 const mosque = catalog.find(icon => icon.name === 'mosque')
@@ -36,6 +36,7 @@ test('an icon page stamps its own card as og:image', () => {
         icon: mosque,
         language: 'ar',
         related: related_icons(catalog, mosque),
+        family: family_icons(catalog, mosque),
         origin: 'https://example.test',
         image: icon_og_image(mosque, 'ar'),
     })

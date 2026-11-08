@@ -1,3 +1,5 @@
+import {variant_difference} from './icon-family.js'
+
 // Both languages are written here: a later build step reads this in node, where no translation runs.
 export const SITE = {
     ar: {
@@ -34,19 +36,20 @@ export const PAGES = {
 export const page_title = (title, language) => (title ? `${title} | ${SITE[language].name}` : SITE[language].name)
 
 // Takes names already in `language`: the build and the app hold differently shaped icon records.
-export function icon_page_meta(name, category_title, language, about = '') {
+export function icon_page_meta(name, category_title, language, about = '', base_title = '') {
+    const difference = base_title ? variant_difference(name, base_title) : ''
     return language === 'ar'
         ? {
               title: `أيقونة ${name} بصيغة SVG`,
               description:
                   about ||
-                  `أيقونة «${name}» من تصنيف ${category_title}، مجانية ومفتوحة المصدر: انسخها SVG أو نزّلها PNG، أو استعملها في React وSvelte.`,
+                  `${base_title ? `نسخة من أيقونة «${base_title}» (${difference})` : `أيقونة «${name}» من تصنيف ${category_title}`}، مجانية ومفتوحة المصدر: انسخها SVG أو نزّلها PNG، أو استعملها في React وSvelte.`,
           }
         : {
               title: `${name} icon, free SVG`,
               description:
                   about ||
-                  `The ${name} icon from ${category_title}, free and open source. Copy the SVG, download a PNG, or use it in React and Svelte.`,
+                  `${base_title ? `A version of the ${base_title} icon (${difference})` : `The ${name} icon from ${category_title}`}, free and open source. Copy the SVG, download a PNG, or use it in React and Svelte.`,
           }
 }
 

@@ -824,3 +824,12 @@ msgstr "تُعرض الأيقونة بخط ١٫٥ في ملف SVG قياسي ل�
 #: src/components/icons/IconPanel.svelte
 msgid "صفحة الأيقونة"
 msgstr "صفحة الأيقونة"
+
+#. 0: icon.difference
+#: src/components/icons/IconDetails.svelte
+msgid "نسخة من أيقونة <0/>: {0}."
+msgstr "نسخة من أيقونة <0/>: {0}."
+
+#: src/components/icons/IconDetails.svelte
+msgid "نسخ أخرى"
+msgstr "نسخ أخرى"

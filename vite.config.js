@@ -10,7 +10,14 @@ import {wuchale} from 'wuchale/vite'
 import {read_catalog} from './scripts/icon-catalog.js'
 import {robots_txt, sitemap_xml} from './scripts/sitemap.js'
 import {alternates_for, public_path, stamp_head} from './scripts/static-head.js'
-import {home_body, icon_page_html, icon_route, related_icons, website_object} from './scripts/static-pages.js'
+import {
+    family_icons,
+    home_body,
+    icon_page_html,
+    icon_route,
+    related_icons,
+    website_object,
+} from './scripts/static-pages.js'
 import {NOT_FOUND, page_title, PAGES, SITE} from './src/lib/site.js'
 import tsconfig from './tsconfig.json' with {type: 'json'}
 
@@ -80,10 +87,11 @@ function static_heads() {
             }
             // Cloudflare serves /icons/mosque from icons/mosque.html; /svg/ keeps a page and its image apart.
             for (const icon of catalog) {
+                const family = family_icons(catalog, icon)
                 const related = related_icons(catalog, icon)
                 for (const language of ['ar', 'en']) {
                     const image = icon_og_image(icon, language)
-                    const html = icon_page_html(template, {icon, language, related, origin, image})
+                    const html = icon_page_html(template, {icon, language, related, family, origin, image})
                     write_dist(`${public_path(language, icon_route(icon.name)).slice(1)}.html`, html)
                 }
                 write_dist(`svg/${icon.name}.svg`, icon.framed_svg)

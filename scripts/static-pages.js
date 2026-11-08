@@ -5,7 +5,7 @@ import {PACKAGES, REPO_URL} from '../src/lib/constants.svelte.js'
 import {svg_document} from '../src/lib/frame.js'
 import {icon_page_meta, page_title, SITE} from '../src/lib/site.js'
 import {install_command, react_usage, svelte_usage} from '../src/lib/snippets.svelte.js'
-import {category_title, icon_about, icon_title} from './icon-catalog.js'
+import {category_title, icon_about, icon_difference, icon_title} from './icon-catalog.js'
 import {alternates_for, escape_attr, escape_text, public_path, public_url, stamp_head} from './static-head.js'
 
 const OTHER = {ar: 'en', en: 'ar'}
@@ -25,6 +25,8 @@ const LABELS = {
         license: 'مجانية ومفتوحة المصدر برخصة',
         license_terms: 'شروط الاستعمال',
         related: 'من التصنيف نفسه',
+        versions: 'نسخ أخرى',
+        variant_of: (link, difference) => `نسخة من أيقونة ${link}: ${difference}.`,
         other_page: 'English',
     },
     en: {
@@ -36,14 +38,21 @@ const LABELS = {
         license: 'Free and open source under the',
         license_terms: 'terms of use',
         related: 'From the same category',
+        versions: 'Other versions',
+        variant_of: (link, difference) => `A version of the ${link} icon: ${difference}.`,
         other_page: 'العربية',
     },
 }
 
 export const icon_route = name => `/icons/${name}`
 
+const root = icon => icon.base || icon.name
+
+export const family_icons = (catalog, icon) =>
+    catalog.filter(item => root(item) === root(icon) && item.name !== icon.name)
+
 export const related_icons = (catalog, icon) =>
-    catalog.filter(item => item.category.id === icon.category.id && item.name !== icon.name)
+    catalog.filter(item => item.category.id === icon.category.id && root(item) !== root(icon))
 
 const link = (href, text, attrs = '') => `<a href="${escape_attr(href)}"${attrs}>${escape_text(text)}</a>`
 const code_block = code => `<pre dir="ltr"><code>${escape_text(code)}</code></pre>`
@@ -60,11 +69,12 @@ function site_nav(language, route) {
     ].join('\n')
 }
 
-export function icon_page_body(icon, language, related) {
+export function icon_page_body(icon, language, related, family) {
     const labels = LABELS[language]
     const other = OTHER[language]
     const title = icon_title(icon, language)
     const about = icon_about(icon, language)
+    const base = family.find(item => item.name === icon.base)
     const href = route => public_path(language, route)
     const drawing = svg_document(icon.framed, {size: 96}).replace(
         '<svg ',
@@ -83,6 +93,11 @@ export function icon_page_body(icon, language, related) {
         '<main><article>',
         `<h1>${escape_text(title)}</h1>`,
         `<p lang="${other}" dir="${DIR[other]}">${escape_text(icon_title(icon, other))}</p>`,
+        ...(base
+            ? [
+                  `<p>${labels.variant_of(link(href(icon_route(base.name)), icon_title(base, language)), escape_text(icon_difference(icon, base, language)))}</p>`,
+              ]
+            : []),
         ...(about ? [`<p>${escape_text(about)}</p>`] : []),
         drawing,
         '<dl>',
@@ -94,6 +109,12 @@ export function icon_page_body(icon, language, related) {
         `<h2>${labels.tags}</h2>`,
         `<ul>${icon.tags.map(tag => `<li dir="auto">${escape_text(tag)}</li>`).join('')}</ul>`,
         `<p>${labels.license} ${link(`${REPO_URL}/blob/main/LICENSE`, 'MIT')} (${link(`${href('/guide')}#license`, labels.license_terms)})</p>`,
+        ...(family.length
+            ? [
+                  `<h2>${labels.versions}</h2>`,
+                  `<ul>${family.map(item => `<li>${link(href(icon_route(item.name)), icon_title(item, language))}</li>`).join('')}</ul>`,
+              ]
+            : []),
         ...(related.length
             ? [
                   `<h2>${labels.related}</h2>`,
@@ -158,13 +179,15 @@ function image_object(icon, language, origin, description) {
     }
 }
 
-export function icon_page_html(template, {icon, language, related, origin, image}) {
+export function icon_page_html(template, {icon, language, related, family, origin, image}) {
     const site = SITE[language]
+    const base = family.find(item => item.name === icon.base)
     const meta = icon_page_meta(
         icon_title(icon, language),
         category_title(icon, language),
         language,
         icon_about(icon, language),
+        base ? icon_title(base, language) : '',
     )
     const route = icon_route(icon.name)
     return stamp_head(template, {
@@ -177,7 +200,7 @@ export function icon_page_html(template, {icon, language, related, origin, image
         origin,
         alternates: alternates_for(route),
         image,
-        body: icon_page_body(icon, language, related),
+        body: icon_page_body(icon, language, related, family),
         json_ld: image_object(icon, language, origin, meta.description),
     })
 }

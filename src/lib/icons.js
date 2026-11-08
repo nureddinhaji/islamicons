@@ -1,6 +1,7 @@
 import category_list from '../../icons/_categories.json' with {type: 'json'}
 import {arabic_pattern} from './arabic.js'
 import {DEFAULT_STROKE_WIDTH, frame_inner, svg_document} from './frame.js'
+import {base_of, variant_difference} from './icon-family.js'
 import {icon_inner, to_pascal_case} from './icon-file.js'
 import {locale} from './locale.js'
 
@@ -22,14 +23,22 @@ const placement = new Map(
     ),
 )
 
+const names = Object.keys(metas)
+const has_about = name => Boolean(metas[name].about)
+const title_of = name => (locale === 'en' ? metas[name].title_en : metas[name].title)
+
 export const icons = Object.entries(svg_files)
     .map(([file_path, raw]) => {
         const name = file_name(file_path)
         const meta = metas[name]
         const {category = '', order = Infinity} = placement.get(name) ?? {}
+        const title = title_of(name)
+        const base = base_of(name, names, has_about)
         return {
             name,
-            title: locale === 'en' ? meta.title_en : meta.title,
+            title,
+            base,
+            difference: base ? variant_difference(title, title_of(base)) : '',
             about: (locale === 'en' ? meta.about_en : meta.about) ?? '',
             titles: [meta.title, meta.title_en],
             category,
