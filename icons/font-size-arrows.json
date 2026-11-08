@@ -11,5 +11,7 @@
     "text size",
     "حجم الخط",
     "khatt"
-  ]
+  ],
+  "about": "تكبير وتصغير الخط بالسهمين مدخل لضبط حجم النص العربي بالزيادة والنقصان. يحل سهمان صاعد وهابط محل علامتي الجمع والطرح في «تكبير وتصغير الخط»، لتجميع التحكمين في مدخل واحد. يمكن استخدام أيقونة تكبير وتصغير الخط (سهمان) لفتح لوحة حجم النص، أو لقائمة إعدادات عرض المصحف.",
+  "about_en": "Font size arrows provide a two-direction control for Arabic text size. Up and down arrows replace the plus and minus in Font size, grouping both adjustments in one entry. The Font size (arrows) icon can open a text-size panel or label a Quran display settings menu."
 }

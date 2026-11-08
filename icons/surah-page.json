@@ -13,5 +13,7 @@
     "mushaf",
     "مصحف",
     "koran"
-  ]
+  ],
+  "about": "السورة وحدة مسماة في المصحف تتألف من آيات قرآنية. تضع هذه النسخة إطار العنوان والأسطر داخل صفحة بخلاف «سورة»، فتناسب عرض السور على هيئة صفحات. يمكن استخدام أيقونة سورة (صفحة) لمعاينة صفحة افتتاح السورة، أو لاختيار عرض الصفحات في فهرس سور مصور.",
+  "about_en": "A surah is a named unit of the mushaf containing Quranic verses. This version encloses the heading frame and lines in a page, unlike Surah, suiting page-based displays. The Surah (page) icon can preview a chapter’s opening page or select a page view in an illustrated surah index."
 }

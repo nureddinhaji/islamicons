@@ -10,5 +10,7 @@
     "text size",
     "حجم الخط",
     "khatt"
-  ]
+  ],
+  "about": "تصغير الخط بالسهم زر لتقليل حجم حروف النص العربي. يستبدل السهم الهابط علامة الطرح في «تصغير الخط»، ليناسب أدوات تعتمد الاتجاهات. يمكن استخدام أيقونة تصغير الخط (سهم) لزر تقليل حجم آيات العرض، أو لخفض حجم نص شرح عربي في شريط إعدادات القراءة.",
+  "about_en": "The decrease font arrow is a control for shrinking Arabic text. A downward arrow replaces the minus in Decrease font, suiting direction-based controls. The Decrease font (arrow) icon can shrink displayed verses or reduce Arabic commentary text on a reading settings bar."
 }

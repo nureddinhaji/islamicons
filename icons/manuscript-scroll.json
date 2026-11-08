@@ -14,5 +14,7 @@
     "turath",
     "تراث",
     "heritage"
-  ]
+  ],
+  "about": "المخطوط اللفافي نص مكتوب باليد على مادة تلف عند حفظها. تستبدل هذه النسخة كتاب «مخطوط» بلفافة ذات أسطر، لتناسب الوثائق المحفوظة بهذه الهيئة. يمكن استخدام أيقونة مخطوط (لفافة) لمرشح اللفائف في فهرس تراثي، أو لصورة وثيقة بديلة قبل تحميل صورتها الرقمية.",
+  "about_en": "A manuscript scroll carries handwritten text on material rolled for storage. This version replaces Manuscript’s bound book with a scroll and lines, suiting documents in that form. The Manuscript (scroll) icon can filter scrolls in a heritage catalogue or stand in for a document while its scan loads."
 }

@@ -13,5 +13,7 @@
     "أقرب مسجد",
     "nearest",
     "مساجد"
-  ]
+  ],
+  "about": "موقع المسجد هو موضعه الذي يقصده الزائر للوصول إليه. يضم دبوس الخريطة رسما لمسجد، فاختره لتحديد المكان بدلا من «مسجد» الذي يمثل المبنى عموما. يمكن استخدام أيقونة موقع المسجد لنتيجة أقرب مسجد في تطبيق سفر، أو لنقطة بدء مسار مشي إليه، أو لعنوان المسجد في بطاقة معلومات على الخريطة.",
+  "about_en": "A mosque location identifies where a visitor can find a mosque. The map pin encloses a mosque, suiting a place marker rather than the general building in Mosque. The mosque location icon can mark a nearby-mosque result in a travel app, start a walking route, or label the address on a map information card."
 }

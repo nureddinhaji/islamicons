@@ -27,5 +27,7 @@
     "إنصات",
     "تلاوة",
     "قرآن"
-  ]
+  ],
+  "about": "الاستماع إلى آية يتيح سماع تلاوة مقطع محدد من القرآن. تتوسط علامة الآية السماعتين بدلا من الكتاب في «الاستماع»، لتوضيح أن التشغيل يخص آية. يمكن استخدام أيقونة الاستماع (آية) لزر صوت بجوار الآية، أو لمعاينة تسجيلها في تمرين مطابقة النص بالصوت.",
+  "about_en": "Listening to an ayah lets a user hear a specific Quranic passage recited. An ayah marker sits between headphones instead of the book in Listening, suiting verse-level playback. The Listening (ayah) icon can label audio beside a verse or preview its recording in a text-and-audio matching exercise."
 }

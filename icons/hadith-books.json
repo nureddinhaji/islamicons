@@ -9,5 +9,7 @@
     "حديث",
     "sunnah",
     "السنة النبوية"
-  ]
+  ],
+  "about": "الحديث من مصادر نقل سنة النبي محمد ﷺ، وتجمع رواياته كتب متعددة. تظهر هذه النسخة علامة الحديث فوق مجلدين بدلا من فقاعة «الحديث النبوي»، لتناسب مجموعات المصادر. يمكن استخدام أيقونة الحديث النبوي (كتب) لحزمة كتب حديث، أو لتحديد مجموعة مصادر قبل البحث المشترك فيها.",
+  "about_en": "Hadith transmits the Sunnah of Prophet Muhammad ﷺ through reports collected in many books. This version shows the hadith mark above two volumes instead of Hadith’s speech bubble, suiting source collections. The Hadith (books) icon can label a book bundle or select sources for a combined search."
 }

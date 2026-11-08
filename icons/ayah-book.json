@@ -9,5 +9,7 @@
     "aya",
     "آيات",
     "quran"
-  ]
+  ],
+  "about": "الآية وحدة من النص القرآني يرجع إليها باسم السورة ورقمها. تضع هذه النسخة علامة الآية فوق مصحف مفتوح بدلا من الأسطر في «آية»، لتناسب القراءة في سياقها. يمكن استخدام أيقونة آية (مصحف مفتوح) لفتح الآية في صفحة المصحف، أو لعرض المقطع المحيط بها في نتيجة بحث.",
+  "about_en": "An ayah is a unit of Quranic text referenced by surah and verse number. This version puts its marker above an open book instead of the lines in Ayah, suiting reading in context. The Ayah (open Quran) icon can open a verse on a Quran page or show its surrounding passage in search results."
 }

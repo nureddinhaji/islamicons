@@ -12,5 +12,7 @@
     "kaaba",
     "qibla",
     "قبلة"
-  ]
+  ],
+  "about": "موقع الكعبة يحدد موضع البيت الحرام داخل المسجد الحرام بمكة. يحيط دبوس برسم الكعبة، فيناسب نقطة على الخريطة بدلا من «الكعبة» عند تمثيل المعلم وحده. يمكن استخدام أيقونة موقع الكعبة لوجهة في خريطة مكة، أو لبطاقة إحداثيات في دليل للعمرة، أو لتحديد المعلم في درس عن جغرافية الأماكن المقدسة.",
+  "about_en": "The Kaaba location marks the Sacred House within Mecca’s Sacred Mosque. A pin surrounds the Kaaba, suiting a map point rather than the landmark alone in Kaaba. The Kaaba location icon can mark a destination on a Mecca map, label coordinates in an Umrah guide, or locate the landmark in a sacred-place geography lesson."
 }

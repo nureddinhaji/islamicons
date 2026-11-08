@@ -10,5 +10,7 @@
     "text size",
     "حجم الخط",
     "khatt"
-  ]
+  ],
+  "about": "تصغير الخط يقلل حجم النص ليظهر منه مقدار أكبر في مساحة العرض. تحمل هذه النسخة كلمة «خط» وعلامة النقصان، فتلائم زر التقليل بدلا من مدخل «تكبير وتصغير الخط». يمكن استخدام أيقونة تصغير الخط لتقليل حجم الترجمة بجانب الآية، أو لتصغير الحواشي في عارض كتب، أو لضبط كثافة نص مقالة عربية.",
+  "about_en": "Decreasing font size makes text smaller so more fits in the available space. The Arabic word for font and a minus sign suit a reduction button rather than the Font size settings entry. The decrease font icon can shrink translation text beside a verse, reduce footnotes in a book viewer, or adjust the text density of an Arabic article."
 }

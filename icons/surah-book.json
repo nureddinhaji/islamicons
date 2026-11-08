@@ -9,5 +9,7 @@
     "قرآن",
     "mushaf",
     "koran"
-  ]
+  ],
+  "about": "السورة مجموعة آيات تشكل قسما مسمى من القرآن. يجمع هذا الرسم إطار عنوان السورة مع مصحف مفتوح بدلا من أسطر «سورة»، لربط الاختيار بفتح النص. يمكن استخدام أيقونة سورة (مصحف مفتوح) لزر قراءة السورة من فهرسها، أو لبطاقة متابعة سورة مفتوحة في تطبيق قرآن.",
+  "about_en": "A surah groups verses into a named section of the Quran. This drawing pairs a surah heading frame with an open book instead of the lines in Surah, linking selection to opening the text. The Surah (open Quran) icon can open a chapter from its index or label a card for continuing an open surah."
 }

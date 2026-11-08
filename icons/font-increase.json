@@ -10,5 +10,7 @@
     "text size",
     "حجم الخط",
     "khatt"
-  ]
+  ],
+  "about": "تكبير الخط يزيد حجم الحروف المعروضة لتصبح قراءتها أيسر. تجمع هذه النسخة بين كلمة «خط» وعلامة الزيادة، فاخترها لزر مستقل بدلا من التحكم العام في «تكبير وتصغير الخط». يمكن استخدام أيقونة تكبير الخط لزيادة حجم آية على شاشة التلاوة، أو لتكبير شرح كلمة، أو لرفع حجم النص في عارض كتب عربية.",
+  "about_en": "Increasing font size makes displayed letters larger for easier reading. The Arabic word for font and a plus sign suit a separate button rather than the general Font size control. The increase font icon can enlarge a verse on a recitation screen, increase a word explanation’s text size, or enlarge text in an Arabic book viewer."
 }

@@ -14,5 +14,7 @@
     "تلاوة",
     "quran",
     "koran"
-  ]
+  ],
+  "about": "المصحف المفتوح يعرض صفحات القرآن للقراءة والتلاوة. تظهر هذه النسخة صفحتين وأسطرا بدلا من الغلاف المغلق في «مصحف»، فتناسب حالة القراءة الجارية. يمكن استخدام أيقونة مصحف (مفتوح) لتبويب القراءة النشط، أو لزر العودة إلى الصفحات المفتوحة في تطبيق قرآن.",
+  "about_en": "An open Quran presents its pages for reading and recitation. Two pages with lines replace the closed cover in Quran, suiting reading in progress. The Quran (open) icon can mark an active reading tab or a button returning to the pages already open in a Quran app."
 }

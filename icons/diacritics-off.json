@@ -9,5 +9,7 @@
     "إخفاء",
     "tashkeel",
     "vowels"
-  ]
+  ],
+  "about": "إخفاء التشكيل يعرض النص العربي من دون علامات الحركات. يضيف هذا الرسم خطا مائلا فوق العلامات، فاختره لحالة الإخفاء بدلا من «التشكيل». يمكن استخدام أيقونة التشكيل المخفي لمفتاح إخفاء الحركات في تطبيق للكتب، أو لخيار نص غير مشكول في تمرين قراءة، أو لحفظ تفضيل العرض في إعدادات منصة لتعلم العربية.",
+  "about_en": "Hiding diacritics displays Arabic text without vowel marks. The slash across the marks suits the hidden state rather than Diacritics. The hidden diacritics icon can toggle marks off in a book app, select unvocalized text in a reading exercise, or save a display preference on an Arabic learning platform."
 }

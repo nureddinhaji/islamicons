@@ -17,5 +17,7 @@
     "mushaf",
     "مصحف",
     "koran"
-  ]
+  ],
+  "about": "الجزء تقسيم للقرآن يساعد على تعيين مقدار القراءة ومتابعته. ترسم هذه النسخة حلقة ذات جزء مصمت فوق مصحف مفتوح بدلا من القطاع في «جزء»، لتناسب واجهة تعتمد المؤشرات الحلقية. يمكن استخدام أيقونة جزء (حلقة) لبطاقة ورد بجزء، أو لاختيار جزء في مخطط قراءة ذي مؤشرات دائرية.",
+  "about_en": "A juz divides the Quran into portions for assigning and tracking reading. A ring with a filled segment above an open book replaces the sector in Juz, suiting interfaces built around ring indicators. The Juz (ring) icon can label a one-juz reading card or a portion selector in a planner with circular indicators."
 }

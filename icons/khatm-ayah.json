@@ -14,5 +14,7 @@
     "خطة قراءة",
     "quran",
     "قرآن"
-  ]
+  ],
+  "about": "الختمة دورة قراءة تستوعب جميع سور القرآن. تحيط هذه النسخة علامة الآية بحلقة مقطعة بدلا من الكتاب في «الختمة»، فتناسب شارات مراحل القراءة. يمكن استخدام أيقونة الختمة (علامة آية) لبطاقة مراحل خطة ختمة، أو لشارة دورة مكتملة في سجل القراءة.",
+  "about_en": "A khatm is a reading cycle covering all surahs of the Quran. A segmented ring surrounds an ayah marker instead of the book in Khatm, suiting reading milestone badges. The Khatm (ayah marker) icon can label a completion plan’s stages or badge a finished cycle in a reading log."
 }

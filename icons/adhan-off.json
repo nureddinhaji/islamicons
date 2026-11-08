@@ -10,5 +10,7 @@
     "صامت",
     "إيقاف الأذان",
     "silent mode"
-  ]
+  ],
+  "about": "الأذان الصامت إعداد يكتم صوت التنبيه بموعد الصلاة. تظهر المئذنة مشطوبة لتمييز حالة الكتم عن «الأذان» عند عرض إعدادات الصوت. يمكن استخدام أيقونة الأذان الصامت لحالة تنبيه مكتوم في جدول المواقيت، أو لخيار الصمت في إعدادات كل صلاة، أو لإيقاف الصوت مؤقتا من لوحة التنبيهات.",
+  "about_en": "Muted adhan is a setting that silences the prayer-time alert. The crossed-out minaret shows muting rather than Adhan when displaying audio settings. The muted adhan icon can mark a silenced timetable alert, select silence for an individual prayer, or temporarily mute audio from an alert panel."
 }

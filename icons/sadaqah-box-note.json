@@ -10,5 +10,7 @@
     "donation",
     "donate",
     "تبرعات"
-  ]
+  ],
+  "about": "صندوق الصدقة يجمع المال الذي يقدمه المتبرعون لأوجه الخير. تظهر هنا ورقة نقدية في فتحة الصندوق بدلا من قلب «صندوق صدقة»، لتوضيح الإيداع النقدي. يمكن استخدام أيقونة صندوق صدقة (ورقة نقدية) لخيار التبرع نقدا، أو لتسجيل إيداع في صندوق ضمن لوحة جمعية.",
+  "about_en": "A sadaqah box receives money given by donors for charitable purposes. A banknote in the slot replaces Sadaqah box’s heart to emphasize cash deposits. The Sadaqah box (banknote) icon can label a cash donation option or record a box deposit in a charity dashboard."
 }

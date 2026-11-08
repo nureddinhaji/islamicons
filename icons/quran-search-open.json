@@ -18,5 +18,7 @@
     "quran",
     "مصحف",
     "koran"
-  ]
+  ],
+  "about": "البحث القرآني يعين القارئ على إيجاد موضع نص داخل المصحف. تظهر هنا عدسة فوق كتاب مفتوح بدلا من غلاف «مصحف (بحث)»، لتناسب البحث أثناء القراءة. يمكن استخدام أيقونة مصحف (بحث، مفتوح) لأداة بحث في شريط القراءة، أو لفتح موضع نتيجة البحث على صفحة المصحف.",
+  "about_en": "Quran search helps a reader locate text within a Quran copy. A magnifier above an open book replaces the cover in Quran (search), suiting search during reading. The Quran (search, open) icon can label a search tool on a reading toolbar or open a result at its position on a Quran page."
 }

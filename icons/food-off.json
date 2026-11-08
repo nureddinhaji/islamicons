@@ -10,5 +10,7 @@
     "fast",
     "no food",
     "الصوم"
-  ]
+  ],
+  "about": "علامة ممنوع الأكل تبين أن تناول الطعام غير مسموح في مكان أو خلال نشاط محدد. ويمكن أن ترافق تذكيرا بالامتناع عن الأكل أثناء الصيام بحسب سياق الواجهة. يمكن استخدام أيقونة ممنوع الأكل لتعليمات قاعة في مركز إسلامي، أو لتذكير في متابع صيام، أو لدليل قواعد استخدام مكتبة.",
+  "about_en": "The no eating sign indicates that food may not be eaten in a specified place or activity. It can also accompany a reminder to abstain from food while fasting, depending on the interface. The no eating icon can label an Islamic centre’s room rules, a fasting tracker reminder, or a library use guide."
 }

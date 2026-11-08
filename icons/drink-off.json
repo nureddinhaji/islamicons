@@ -10,5 +10,7 @@
     "fast",
     "no water",
     "الصوم"
-  ]
+  ],
+  "about": "علامة ممنوع الشرب توضح منع تناول المشروبات في مكان أو أثناء نشاط معين. وقد تستعمل في واجهة صيام للتذكير بالامتناع عن الشرب خلال فترة الصوم. يمكن استخدام أيقونة ممنوع الشرب لتعليمات مساحة أجهزة في مركز تعليمي، أو لتنبيه في متابع صيام، أو لبطاقة قواعد قاعة مخطوطات.",
+  "about_en": "The no drinking sign indicates that drinks may not be consumed in a particular place or activity. A fasting interface may use it to recall abstaining from drink during a fast. The no drinking icon can label rules for a learning centre’s computer area, a fasting tracker alert, or a manuscript room’s rules card."
 }

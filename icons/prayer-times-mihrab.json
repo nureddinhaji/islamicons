@@ -11,5 +11,7 @@
     "موعد الصلاة",
     "salat",
     "namaz"
-  ]
+  ],
+  "about": "مواقيت الصلاة تحدد بداية وقت كل صلاة يومية بحسب الموقع واليوم. تدمج هذه النسخة عقربي الساعة داخل قوس محراب بدلا من ساعة «مواقيت الصلاة» المنفصلة، لتناسب شارة موحدة. يمكن استخدام أيقونة مواقيت الصلاة (محراب) لرأس جدول مسجد، أو لزر المواقيت في شريط ضيق.",
+  "about_en": "Prayer times locate the start of each daily prayer for a place and date. This version integrates clock hands into a mihrab arch instead of Prayer times’ separate clock, suiting a single badge. The Prayer times (mihrab) icon can head a mosque timetable or label a timetable button on a narrow bar."
 }

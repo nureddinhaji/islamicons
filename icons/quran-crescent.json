@@ -9,5 +9,7 @@
     "هلال",
     "quran",
     "koran"
-  ]
+  ],
+  "about": "المصحف نسخة مكتوبة تضم النص القرآني بسوره وآياته. تضع هذه النسخة هلالا على الغلاف بدلا من القوس في «مصحف»، لاختيار علامة زخرفية مختلفة. يمكن استخدام أيقونة مصحف (هلال) لصورة غلاف بديلة في فهرس مصاحف، أو لمدخل القراءة في واجهة تستخدم زخارف الأهلة.",
+  "about_en": "A mushaf holds the Quranic text arranged in surahs and verses. This version uses a crescent on the cover instead of the arch in Quran, offering another decorative motif. The Quran (crescent) icon can provide a cover image in an edition catalogue or open reading in an interface decorated with crescents."
 }

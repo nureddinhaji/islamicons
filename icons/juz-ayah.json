@@ -17,5 +17,7 @@
     "quran",
     "قرآن",
     "koran"
-  ]
+  ],
+  "about": "الجزء مقدار للقراءة يقسم القرآن إلى ثلاثين قسما. تضع هذه النسخة علامة آية داخل حلقة بدلا من الكتاب في «جزء»، فتناسب مؤشرات التقدم الدائرية. يمكن استخدام أيقونة جزء (علامة آية) لشارة الجزء الحالي في شاشة تلاوة، أو لبطاقة تقدم الأجزاء في لوحة طالب.",
+  "about_en": "A juz is a reading portion in the Quran’s thirty-part division. This version places an ayah marker inside a ring instead of the book in Juz, suiting circular progress displays. The Juz (ayah marker) icon can badge the current portion on a recitation screen or label a student’s juz progress card."
 }

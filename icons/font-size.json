@@ -9,5 +9,7 @@
     "text size",
     "حجم الخط",
     "khatt"
-  ]
+  ],
+  "about": "حجم الخط إعداد يتحكم في كبر الحروف المعروضة على الشاشة لتيسير القراءة. يناسب الرمز مدخل التحكم بالحجم في واجهة عربية، مع علامتي الزيادة والنقصان. يمكن استخدام أيقونة حجم الخط لفتح إعدادات القراءة في تطبيق قرآن، أو لضبط نص كتاب إلكتروني، أو لتفضيلات عرض المقالات في موقع تعليمي.",
+  "about_en": "Font size controls how large letters appear on screen to support reading. The plus and minus signs suit a size control in an Arabic interface. The font size icon can open reading settings in a Quran app, adjust text in an ebook, or set article display preferences on a learning site."
 }

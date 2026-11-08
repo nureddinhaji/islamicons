@@ -10,5 +10,7 @@
     "text size",
     "حجم الخط",
     "khatt"
-  ]
+  ],
+  "about": "تكبير الخط بالسهم زر يزيد حجم الحروف في واجهة عربية. تشير هذه النسخة إلى الزيادة بسهم صاعد بدلا من علامة الجمع في «تكبير الخط»، لتناسب أزرار الاتجاه. يمكن استخدام أيقونة تكبير الخط (سهم) لتكبير دعاء معروض، أو لتكبير نص كتاب عربي في أدوات القراءة.",
+  "about_en": "The increase font arrow offers a control for enlarging Arabic text. This version indicates growth with an upward arrow instead of the plus in Increase font, suiting directional buttons. The Increase font (arrow) icon can enlarge a displayed dua or enlarge an Arabic book’s text in reading controls."
 }

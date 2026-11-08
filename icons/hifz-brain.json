@@ -9,5 +9,7 @@
     "مراجعة",
     "memory",
     "quran"
-  ]
+  ],
+  "about": "الحفظ يتيح استرجاع النص القرآني وتلاوته دون النظر إلى المصحف. يستبدل هذا الرسم القلب في «الحفظ» بدماغ فوق الكتاب المفتوح، ليناسب تمارين الذاكرة. يمكن استخدام أيقونة الحفظ (دماغ) لاختبار استرجاع الآيات، أو لبطاقة مراجعة متباعدة في تطبيق للتحفيظ.",
+  "about_en": "Hifz enables recall and recitation of Quranic text without looking at a copy. A brain above an open book replaces the heart in Hifz, suiting memory exercises. The Hifz (brain) icon can start a verse recall test or label a spaced review card in a memorization app."
 }
