@@ -5,7 +5,9 @@
     "permissible",
     "food",
     "طعام",
-    "شهادة"
+    "شهادة",
+    "restaurant",
+    "مطعم"
   ],
   "about": "الحلال ما أباحه الشرع، ويستعمل اللفظ في الطعام وغيره من شؤون الحياة. وهو يقابل الحرام، ولا يقتصر معناه على اسم فئة غذائية. يمكن استخدام الرمز لبيانات شهادة الحلال في صفحة منتج، أو لمرشح مطاعم بحسب معلومات الحلال المتاحة في دليل، أو لمدخل مصطلح الحلال في تطبيق لتعليم المفاهيم الإسلامية.",
   "about_en": "Halal means permitted in Islamic law and applies to food and other areas of life. It contrasts with haram and is not only a food category. The icon can label halal certification details on a product page, filter restaurants by their listed halal information in a guide, or open a halal glossary entry in a learning app."

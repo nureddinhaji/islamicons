@@ -5,7 +5,13 @@
     "parents",
     "children",
     "عائلة",
-    "أطفال"
+    "أطفال",
+    "mother",
+    "father",
+    "kids",
+    "أم",
+    "أب",
+    "والدين"
   ],
   "about": "الأسرة مجموعة تربط أفرادها صلات القرابة والرعاية، ومنها الوالدان والأطفال. وتتناول منصات التربية الإسلامية شؤونها ضمن موضوعات التعلم والحياة اليومية. يمكن استخدام أيقونة الأسرة لملف عائلي في تطبيق تعليمي، أو لبرنامج أنشطة الوالدين والأطفال في مركز مجتمعي، أو لقسم موارد التربية في موقع عربي.",
   "about_en": "A family is a group connected by kinship and care, including parents and children. Islamic education platforms address family life within learning and everyday matters. The family icon can label a learning app’s family profile, a community centre’s parent-and-child programme, or parenting resources on an Arabic site."

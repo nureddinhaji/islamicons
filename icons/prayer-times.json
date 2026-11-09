@@ -11,7 +11,10 @@
     "timetable",
     "أوقات الصلاة",
     "salat",
-    "namaz"
+    "namaz",
+    "countdown",
+    "next prayer",
+    "عد تنازلي"
   ],
   "about": "مواقيت الصلاة أوقات دخول الصلوات الخمس، وتتغير بحسب المكان والتاريخ. وتختلف عن موعد الإقامة في المسجد، الذي قد يحدد منفصلا عن وقت دخول الصلاة. يمكن استخدام الرمز لجدول المواقيت في تطبيق إسلامي، أو لاختيار المدينة وطريقة الحساب في أداة للمواقيت، أو لعرض مواعيد الصلاة والإقامة في موقع مسجد.",
   "about_en": "Prayer times are the times when the five daily prayers begin, which change with location and date. They differ from a mosque’s iqama times, which may be listed separately. The icon can open a timetable in an Islamic app, select a city and calculation method in a prayer-times tool, or display prayer and iqama times on a mosque website."
