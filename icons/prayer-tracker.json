@@ -1,0 +1,28 @@
+{
+  "title": "متابعة الصلوات",
+  "title_en": "Prayer tracker",
+  "tags": [
+    "salah",
+    "salat",
+    "namaz",
+    "صلاة",
+    "الصلوات الخمس",
+    "five daily prayers",
+    "سجل الصلوات",
+    "prayer log",
+    "تقدم",
+    "progress",
+    "متتبع العادات",
+    "habit tracker",
+    "قضاء",
+    "qada",
+    "qadha",
+    "qaza",
+    "الصلوات الفائتة",
+    "missed prayers",
+    "محراب",
+    "mihrab"
+  ],
+  "about": "متابعة الصلوات تسجيل أداء الصلوات الخمس في اليوم، صلاةً بعد صلاة. وتحيط بالمحراب خمسة أقواس، لكل صلاة قوس، فتكتمل الدائرة باكتمال صلوات اليوم. أما «مواقيت الصلاة» فتناسب أوقات دخولها. يمكن استخدام الرمز لشاشة سجل الصلوات في تطبيق إسلامي، أو لعرض التقدم اليومي والأسبوعي، أو لقائمة الصلوات الفائتة التي تنتظر القضاء.",
+  "about_en": "A prayer tracker records whether each of the five daily prayers was performed. Five arcs surround a mihrab, one for each prayer, so the circle closes when the day’s prayers are complete. For when prayers begin, choose Prayer times. The icon can open a prayer log in an Islamic app, show daily or weekly progress, or list missed prayers awaiting qada."
+}
