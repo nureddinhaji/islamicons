@@ -1,0 +1,27 @@
+{
+  "title": "متابعة الصلوات (علامة صح)",
+  "title_en": "Prayer tracker (check)",
+  "tags": [
+    "salah",
+    "salat",
+    "namaz",
+    "صلاة",
+    "الصلوات الخمس",
+    "five daily prayers",
+    "سجل الصلوات",
+    "prayer log",
+    "tick",
+    "تم",
+    "done",
+    "محراب",
+    "mihrab",
+    "قضاء",
+    "qada",
+    "qadha",
+    "qaza",
+    "الصلوات الفائتة",
+    "missed prayers"
+  ],
+  "about": "متابعة الصلوات تسجيل أداء الصلوات الخمس في اليوم. تبني هذه النسخة المحراب نفسه من خمسة خطوط، لكل صلاة خط، وتضع في داخله علامة صح، بدلا من حلقة «متابعة الصلوات» حول المحراب. يمكن استخدام أيقونة متابعة الصلوات (علامة صح) لزر تسجيل الصلاة بعد أدائها، أو لشارة يوم اكتملت صلواته في تقويم تطبيق إسلامي.",
+  "about_en": "A prayer tracker records whether each of the five daily prayers was performed. This version builds the mihrab itself from five strokes, one for each prayer, with a tick inside, instead of Prayer tracker’s ring of arcs. The Prayer tracker (check) icon can mark a prayer as performed in an Islamic app or badge a completed day on a prayer calendar."
+}
