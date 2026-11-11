@@ -76,7 +76,7 @@ export function icon_page_body(icon, language, related, family) {
     const about = icon_about(icon, language)
     const base = family.find(item => item.name === icon.base)
     const href = route => public_path(language, route)
-    const drawing = svg_document(icon.framed, {size: 96}).replace(
+    const drawing = svg_document(icon.framed, icon.name, {size: 96}).replace(
         '<svg ',
         () => `<svg role="img" aria-label="${escape_attr(title)}" `,
     )

@@ -18,7 +18,7 @@ const category_of = new Map(categories.flatMap(category => category.icons.map(na
 function read_package_icon(name) {
     const art = icon_inner(readFileSync(path.join(icons_dir, `${name}.svg`), 'utf8'), name)
     const framed = frame_inner(art)
-    const file = `${svg_document(framed)}\n`
+    const file = `${svg_document(framed, name)}\n`
     const {elements, problems} = read_icon(file)
     if (problems.length || !elements.length) throw new Error(`${name}: ${problems[0] ?? 'framed file has no shapes'}`)
     const category = category_of.get(name)

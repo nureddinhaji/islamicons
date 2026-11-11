@@ -47,6 +47,7 @@ pnpm add @islamicons/svg
   &#x2066;`<img>`&#x2069; فتُرسم بالأسود، لأن الصورة لا ترث لون الصفحة.
 - **الحافة:** يترك الرسم هامش وحدة داخل لوحته، فلا يقصّ المتصفح حافته في الأحجام المعتادة، حتى الكسرية منها وعند تكبير الصفحة. فإن ثقّلت الخط من CSS
   فأبقِ &#x2066;`overflow="visible"`&#x2069; على العنصر &#x2066;`svg`&#x2069;، لأن الخط الأثقل يأكل من هذا الهامش.
+- **الفئة:** على كل ملف الفئتان &#x2066;`islamicon`&#x2069; و&#x2066;`islamicon-<name>`&#x2069; كما في مكوّنَي Svelte وReact، فتنسّق الأيقونات كلها من CSS بقاعدة واحدة.
 - **إمكانية الوصول:** أضف &#x2066;`aria-hidden="true"`&#x2069; إن كان بجوار الأيقونة نص يقول معناها، وإلا فأعطها &#x2066;`role="img"`&#x2069;
   و&#x2066;`aria-label`&#x2069;.
 
@@ -81,6 +82,7 @@ pnpm add @islamicons/svg
 - **Edge:** the drawing keeps a one-unit margin inside its box, so browsers do not shave its edge at the usual sizes,
   fractional ones and page zoom included. If you make the stroke heavier in CSS, keep `overflow="visible"` on the `svg` element: a heavier line
   eats into that margin.
+- **Class:** every file carries `islamicon` and `islamicon-<name>`, the same as the Svelte and React components, so one CSS rule can style them all.
 - **Accessibility:** add `aria-hidden="true"` when text beside the icon already says what it means; otherwise give it
   `role="img"` and an `aria-label`.
 

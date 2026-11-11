@@ -134,10 +134,14 @@ export function scale_inner(inner, scale) {
 export const frame_inner = (inner, stroke_width = DEFAULT_STROKE_WIDTH) => scale_inner(inner, frame_scale(stroke_width))
 
 // `framed` must already be framed at `stroke_width`: this writes that width on the root but never rescales the art.
-export function svg_document(framed, {size = 24, stroke_width = DEFAULT_STROKE_WIDTH, color = 'currentColor'} = {}) {
+export function svg_document(
+    framed,
+    name,
+    {size = 24, stroke_width = DEFAULT_STROKE_WIDTH, color = 'currentColor'} = {},
+) {
     // A standalone file has no text colour for fill="currentColor" to inherit, so solid parts take the chosen colour.
     const filled = color === 'currentColor' ? framed : framed.replaceAll('fill="currentColor"', `fill="${color}"`)
     const body = filled.replace(/></g, '>\n  <')
     // The frame leaves a unit of margin; overflow="visible" still saves the edge of a stroke raised later in CSS.
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="${stroke_width}" stroke-linecap="round" stroke-linejoin="round" overflow="visible">\n  ${body}\n</svg>`
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="${stroke_width}" stroke-linecap="round" stroke-linejoin="round" overflow="visible" class="islamicon islamicon-${name}">\n  ${body}\n</svg>`
 }

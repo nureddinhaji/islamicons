@@ -127,7 +127,7 @@ export function framed_inner(icon, stroke_width = DEFAULT_STROKE_WIDTH) {
 }
 
 export function to_svg(icon, {size = 24, stroke_width = DEFAULT_STROKE_WIDTH, color = 'currentColor'} = {}) {
-    return svg_document(framed_inner(icon, stroke_width), {size, stroke_width, color})
+    return svg_document(framed_inner(icon, stroke_width), icon.name, {size, stroke_width, color})
 }
 
 // Animation hook: pathLength lets one dash cover every stroke; --i staggers the elements.

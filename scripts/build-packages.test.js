@@ -113,8 +113,15 @@ test('the barrel exports every icon once, under its PascalCase name', () => {
 test('each file is the site writer output for its own source', () => {
     for (const name of names) {
         const art = icon_inner(readFileSync(path.join(icons_dir, `${name}.svg`), 'utf8'), name)
-        const expected = `${svg_document(frame_inner(art))}\n`
+        const expected = `${svg_document(frame_inner(art), name)}\n`
         assert.equal(readFileSync(path.join(files_dir, `${name}.svg`), 'utf8'), expected, name)
+    }
+})
+
+test('each file carries the same class the components set', () => {
+    for (const name of names) {
+        const {root} = read_icon(readFileSync(path.join(files_dir, `${name}.svg`), 'utf8'))
+        assert.equal(root.class, `islamicon islamicon-${name}`, name)
     }
 })
 

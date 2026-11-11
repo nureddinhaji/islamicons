@@ -37,7 +37,7 @@ export function read_catalog() {
                 category: {id, title, title_en},
                 art,
                 framed,
-                framed_svg: `${svg_document(framed)}\n`,
+                framed_svg: `${svg_document(framed, name)}\n`,
             }
         }),
     )

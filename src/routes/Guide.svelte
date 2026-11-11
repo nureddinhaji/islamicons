@@ -196,9 +196,9 @@
                 <p>وفي Tailwind تكفي فئة للحجم وأخرى للون:</p>
                 <CodeBlock code={tailwind_styling_example} caption="Tailwind" />
                 <p>
-                    ويضع مكوّنا Svelte وReact على كل أيقونة الفئتين <code dir="ltr" class="font-mono">islamicon</code>
-                    و<code dir="ltr" class="font-mono">islamicon-&lt;name&gt;</code>، فتنسّق الأيقونات كلها بقاعدة واحدة،
-                    أو أيقونة بعينها باسمها:
+                    وتحمل كل أيقونة الفئتين <code dir="ltr" class="font-mono">islamicon</code>
+                    و<code dir="ltr" class="font-mono">islamicon-&lt;name&gt;</code>، من الحزم الثلاث ومن النسخ والتنزيل
+                    في الموقع، فتنسّق الأيقونات كلها بقاعدة واحدة، أو أيقونة بعينها باسمها:
                 </p>
                 <CodeBlock code={islamicon_class_example} caption="CSS" />
                 <h3 class="text-lg">ما يجب تجنّبه</h3>

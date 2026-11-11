@@ -100,7 +100,8 @@ scale = 1.1 − strokeWidth / 20        (1.025 at 1.5; art within 2–22, so 12 
 ### بنية المشروع
 
 - `icons/<name>.svg`: الرسم الأصل بسُمك ٢، وهو المرجع. والملفات الجاهزة للاستعمال (سُمك ١٫٥، داخل الإطار، مع
-  `overflow="visible"`) تأتي من الموقع ومن الحزم.
+  `overflow="visible"` والفئتين `islamicon islamicon-<name>`) تأتي من الموقع ومن الحزم، ولا يُكتب شيء من ذلك في الملف
+  الأصل.
 - `icons/<name>.json`: العنوان العربي `title`، والإنجليزي `title_en`، وكلمات البحث `tags` بالعربية والإنجليزية.
 - `icons/_categories.json`: التصنيفات بترتيب العرض: المعرّف، والعنوان العربي `title`، والإنجليزي `title_en`، والأيقونة
   التي تمثّله، وقائمة `icons` بترتيب العرض، وملاحظة اختيارية `note` تظهر في لوحة الأيقونة ومعها `note_en`. وهو المكان
@@ -253,7 +254,7 @@ components repeat the formula above in one line for a changed stroke, and a test
 
 ### Layout
 
-- `icons/<name>.svg` — the master drawing at stroke 2, the source of truth. Ready-to-use files (stroke 1.5, framed, `overflow="visible"`) come from the site and from the packages.
+- `icons/<name>.svg` — the master drawing at stroke 2, the source of truth. Ready-to-use files (stroke 1.5, framed, `overflow="visible"`, `class="islamicon islamicon-<name>"`) come from the site and from the packages; none of that goes in the source.
 - `icons/<name>.json` — Arabic `title`, English `title_en`, and search `tags` (Arabic and English).
 - `icons/_categories.json` — the categories in display order: id, Arabic `title`, English `title_en`, the icon that
   represents it, and its `icons` in display order, and an optional `note` shown in the icon panel, with

@@ -33,11 +33,7 @@ test('every icon renders its package file, plus the class and aria-hidden', () =
         const name = names[index]
         const file = read_icon(readFileSync(new URL(`${name}.svg`, svg_dir), 'utf8'))
         assert.deepEqual(problems, [], name)
-        assert.deepEqual(
-            plain(root),
-            {...plain(file.root), class: `islamicon islamicon-${name}`, 'aria-hidden': 'true'},
-            name,
-        )
+        assert.deepEqual(plain(root), {...plain(file.root), 'aria-hidden': 'true'}, name)
         assert.deepEqual(shapes_of(elements), shapes_of(file.elements), name)
     }
 })

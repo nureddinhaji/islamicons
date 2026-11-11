@@ -15,8 +15,8 @@ test('the framed ink stops one unit inside the box at any stroke', () => {
 
 test('svg_document writes the standard file at the defaults', () => {
     assert.equal(
-        svg_document(FRAMED),
-        `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" overflow="visible">
+        svg_document(FRAMED, 'mosque'),
+        `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" overflow="visible" class="islamicon islamicon-mosque">
   <path d="M4 4h16"/>
   <circle cx="12" cy="12" r="2" fill="currentColor"/>
 </svg>`,
@@ -25,8 +25,8 @@ test('svg_document writes the standard file at the defaults', () => {
 
 test('svg_document gives solid parts the chosen colour', () => {
     assert.equal(
-        svg_document(FRAMED, {size: 32, stroke_width: 2, color: '#123456'}),
-        `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#123456" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" overflow="visible">
+        svg_document(FRAMED, 'mosque', {size: 32, stroke_width: 2, color: '#123456'}),
+        `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#123456" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" overflow="visible" class="islamicon islamicon-mosque">
   <path d="M4 4h16"/>
   <circle cx="12" cy="12" r="2" fill="#123456"/>
 </svg>`,

@@ -47,6 +47,10 @@ test('every icon in the catalogue has a framed file and both titles', () => {
     assert.ok(catalog.length > 200)
     for (const icon of catalog) {
         assert.match(icon.framed_svg, /^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" width="24"/)
+        assert.ok(
+            icon.framed_svg.split('\n')[0].endsWith(` class="islamicon islamicon-${icon.name}">`),
+            icon.name,
+        )
         assert.ok(icon.title && icon.title_en && icon.category.title && icon.category.title_en, icon.name)
     }
 })
@@ -56,6 +60,11 @@ test('an icon page holds its title as the h1, in each language', () => {
     assert.match(page(mosque, 'ar'), /<title>أيقونة مسجد بصيغة SVG \| مكتبة الأيقونات الإسلامية<\/title>/)
     assert.match(page(mosque, 'en'), /<h1>Mosque<\/h1>/)
     assert.match(page(mosque, 'en'), /<html dir="ltr" lang="en">/)
+})
+
+test('the page drawing carries the islamicon classes', () => {
+    const drawing = /<svg role="img"[^>]*>/.exec(page(mosque, 'ar'))[0]
+    assert.ok(drawing.endsWith(' class="islamicon islamicon-mosque">'))
 })
 
 test('the canonical is the page itself and the alternates are reciprocal', () => {

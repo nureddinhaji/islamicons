@@ -754,10 +754,6 @@ msgid "ويمكنك أن تستورد كل أيقونة من ملفها، فلا
 msgstr "You can also import each icon from its own file, so the dev server does not read the whole package and stays fast when a project uses many icons:"
 
 #: src/routes/Guide.svelte
-msgid "ويضع مكوّنا Svelte وReact على كل أيقونة الفئتين <0/> و<1/>، فتنسّق الأيقونات كلها بقاعدة واحدة، أو أيقونة بعينها باسمها:"
-msgstr "The Svelte and React components also put the classes <0/> and <1/> on every icon, so one rule styles them all, or one icon by its name:"
-
-#: src/routes/Guide.svelte
 msgid "ومكوّنا Svelte وReact يفعلان ذلك وحدهما: تُخفى الأيقونة عن قارئ الشاشة افتراضياً، فإن أعطيتها <0/> أو <1/> صارت <2/> يقرؤها قارئ الشاشة."
 msgstr "The Svelte and React components do this on their own: an icon is hidden from screen readers by default, and once you give it an <0/> or a <1/> it becomes <2/>, which screen readers announce."
 
@@ -833,3 +829,7 @@ msgstr "A version of the <0/> icon: {0}."
 #: src/components/icons/IconDetails.svelte
 msgid "نسخ أخرى"
 msgstr "Other versions"
+
+#: src/routes/Guide.svelte
+msgid "وتحمل كل أيقونة الفئتين <0/> و<1/>، من الحزم الثلاث ومن النسخ والتنزيل في الموقع، فتنسّق الأيقونات كلها بقاعدة واحدة، أو أيقونة بعينها باسمها:"
+msgstr "Every icon carries the classes <0/> and <1/>, whether it comes from the three packages or is copied or downloaded from the site, so one rule styles them all, or one icon by its name:"
