@@ -108,15 +108,25 @@
   },
   {
     "id": "worship",
-    "title": "العبادات",
-    "title_en": "Worship",
-    "icon": "prayer-mat",
+    "title": "الإسلام والإيمان",
+    "title_en": "Islam and iman",
+    "icon": "pillars-of-islam",
     "icons": [
       "pillars-of-islam",
       "pillars-of-iman",
       "pillars-of-iman-gem",
-      "adhan",
-      "adhan-off",
+      "tawhid",
+      "tawhid-side",
+      "tazkiyah",
+      "tazkiyah-of-the-heart"
+    ]
+  },
+  {
+    "id": "purity",
+    "title": "الطهارة",
+    "title_en": "Purification",
+    "icon": "wudu",
+    "icons": [
       "wudu",
       "wudu-hand",
       "wudu-hand-tap",
@@ -124,7 +134,17 @@
       "miswak",
       "ghusl",
       "tayammum",
-      "tayammum-ground",
+      "tayammum-ground"
+    ]
+  },
+  {
+    "id": "prayer",
+    "title": "الصلاة",
+    "title_en": "Prayer",
+    "icon": "prayer-mat",
+    "icons": [
+      "adhan",
+      "adhan-off",
       "prayer-mat",
       "prayer-mat-rolled",
       "iqama",
@@ -137,34 +157,7 @@
       "taslim",
       "prayer-tracker",
       "prayer-tracker-check",
-      "tawhid",
-      "tawhid-side",
-      "dua",
-      "dua-palms",
-      "dua-sitting",
-      "adhkar-morning",
-      "adhkar-morning-arc",
-      "adhkar-evening",
-      "adhkar-evening-arc",
-      "adhkar-sleep",
-      "adhkar-sleep-arc",
-      "adhkar-food",
-      "adhkar-food-arc",
-      "adhkar-drink",
-      "adhkar-drink-arc",
-      "ruqyah",
-      "ruqyah-book",
-      "prayer-beads",
-      "tasbih-counter",
-      "tazkiyah",
-      "tazkiyah-of-the-heart",
-      "khutbah",
-      "halal",
-      "haram",
-      "alcohol-off",
-      "alcohol-bottle-off",
-      "pork-off",
-      "pig-off"
+      "khutbah"
     ]
   },
   {
@@ -192,6 +185,31 @@
     ]
   },
   {
+    "id": "dhikr",
+    "title": "الذكر والدعاء",
+    "title_en": "Dhikr and dua",
+    "icon": "prayer-beads",
+    "icons": [
+      "dua",
+      "dua-palms",
+      "dua-sitting",
+      "adhkar-morning",
+      "adhkar-morning-arc",
+      "adhkar-evening",
+      "adhkar-evening-arc",
+      "adhkar-sleep",
+      "adhkar-sleep-arc",
+      "adhkar-food",
+      "adhkar-food-arc",
+      "adhkar-drink",
+      "adhkar-drink-arc",
+      "ruqyah",
+      "ruqyah-book",
+      "prayer-beads",
+      "tasbih-counter"
+    ]
+  },
+  {
     "id": "charity",
     "title": "الزكاة والصدقة",
     "title_en": "Zakat and sadaqah",
@@ -208,9 +226,7 @@
       "sadaqah-jariyah",
       "sadaqah-jariyah-sprout",
       "udhiyah",
-      "camel",
-      "riba",
-      "riba-off"
+      "camel"
     ]
   },
   {
@@ -273,6 +289,22 @@
       "halq-wide",
       "halq-wide-filled",
       "halq-razor"
+    ]
+  },
+  {
+    "id": "halal",
+    "title": "الحلال والحرام",
+    "title_en": "Halal and haram",
+    "icon": "halal",
+    "icons": [
+      "halal",
+      "haram",
+      "alcohol-off",
+      "alcohol-bottle-off",
+      "pork-off",
+      "pig-off",
+      "riba",
+      "riba-off"
     ]
   },
   {
