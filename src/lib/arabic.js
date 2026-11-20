@@ -8,8 +8,8 @@ const LETTER = /[ء-ي]/
 const REGEX_SPECIAL = /[|\\{}()[\]^$+*?.]/
 // Letters people write for one another; each string matches every letter in it, both ways.
 const INTERCHANGED = ['اأإآ', 'اى', 'يى', 'ةه', 'ةت']
-// One-way: a bare hamza or one on alef finds every seat, but a hamza typed on a seat finds only that seat.
-const HAMZA_SEATS = {ء: 'أإؤئ', أ: 'ءؤئ'}
+// One-way: a bare hamza or one on alef finds every seat, and a seat typed without its hamza finds it on that seat.
+const HAMZA_SEATS = {ء: 'أإؤئ', أ: 'ءؤئ', ي: 'ئ', و: 'ؤ'}
 
 function letter_pattern(letter) {
     const finds = new Set([

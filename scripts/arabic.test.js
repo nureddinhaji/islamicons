@@ -39,6 +39,14 @@ test('hamza seats are one-way: أ finds ؤ, ؤ does not find أ', () => {
     assert.ok(!finds('ؤ', 'أ'))
 })
 
+test('a seat typed without its hamza finds it, not the other way round', () => {
+    assert.ok(finds('ميذنة', 'مئذنة'))
+    assert.ok(finds('موذن', 'مؤذن'))
+    assert.ok(!finds('ئ', 'ي'))
+    assert.ok(!finds('ؤ', 'و'))
+    assert.ok(finds('ي', 'ى'))
+})
+
 test('regex specials are literal', () => {
     assert.ok(finds('c++', 'c++'))
     assert.ok(!finds('c++', 'cc'))

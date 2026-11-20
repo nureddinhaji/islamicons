@@ -35,3 +35,11 @@ test('icons tied on a whole tag keep the catalogue order', () => {
 test('duha ranks above sunrise for «ضحى»', () => {
     assert.deepEqual(names('ضحى').slice(0, 2), ['duha', 'sunrise'])
 })
+
+test('a seat typed without its hamza finds the icon', () => {
+    assert.equal(first('ميذنة'), 'minaret')
+    assert.equal(first('عايلة'), 'family')
+    assert.equal(first('موذن'), 'adhan')
+    assert.equal(first('بير'), 'zamzam')
+    assert.equal(first('سوال'), 'fatwa')
+})
