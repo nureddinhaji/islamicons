@@ -31,6 +31,9 @@ jobs:
         env:
           TAG: ${{ github.ref_name }}
         run: node scripts/release-version.js "$TAG" >> "$GITHUB_OUTPUT"
+      - env:
+          TAG: ${{ github.ref_name }}
+        run: node scripts/release-ids.js "$TAG"
       - run: pnpm check:icons && pnpm test && pnpm lint && pnpm format:check
       - run: pnpm build:packages && pnpm test:packages && pnpm check:packages
       - run: pnpm pack:packages
