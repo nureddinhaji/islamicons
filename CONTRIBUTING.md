@@ -23,7 +23,7 @@
   و`ornate-parenthesis-left`)، وما ليس مصطلحاً إسلامياً بالإنجليزية الواضحة (`mosque` و`font-size` و`dictionary`
   و`diacritics`). والنسخة تضيف بعد اسم أصلها كلمة لكل فرق (`quran-ornate-simple`)، وتأتي `filled` آخر كلمة، والشطب على
   الرسم `off` آخر كلمة كذلك (`adhan-off`)، ودبوس الخريطة `map-pin` يتبعه ما يدل عليه، والاتجاهات كما في الرسم (`left`
-  و`right`). والاسم الذي يبدأ باسم أيقونة أخرى تتبعه شَرطة نسخةٌ منها.
+  و`right`). والنسخة تذكر أصلها في `variant_of`، واسمها يبدأ باسم أصلها تتبعه شَرطة.
 - **التهجئة:** يُكتب المصطلح الإسلامي بالحروف اللاتينية كما يكتبه أول هذه المصادر: واجهات المطوّرين (Aladhan وadhan-js
   وQuran.com)، ثم مدخل قاموس Merriam-Webster، ثم عنوان ويكيبيديا الإنجليزية (`dhuhr` و`tawhid` و`tilawa` و`salawat`).
   وتذهب بقية التهجئات إلى كلمات البحث.
@@ -59,13 +59,13 @@
   نسختان منها.
 - **الحدود:** كل مسار بين ٢ و٢٢، أي هامش بكسل حول خط سُمكه ٢. وتُقاس المنحنيات والأقواس على امتدادها لا عند أطرافها
   فقط.
-- **البيانات:** ملف `.json` فيه `title` و`title_en` و`tags`، ومعها `about` و`about_en` معاً إن وُجدا: عنوان عربي،
-  وعنوان إنجليزي، وكلمات بحث غير فارغة وغير مكررة ولا مسافة في طرفيها، وبأحرف صغيرة في الإنجليزية، ولا تكرر الاسم ولا
-  أحد العنوانين ولا بعضها. والتعريف فقرة نصية واحدة بين ١٥٠ و٤٥٠ حرفاً في كل لغة، والنسخة التي تعيد رسم أصلها فقط بلا
-  تعريف فيعرضها الموقع نسخةً منه، وذات التعريف موضوع مستقل. وعنوان النسخة في كل لغة هو عنوان أصلها وما يميّزها بين
-  قوسين، وعنوان الأصل بلا أقواس، والعناوين لا تتكرر في كل لغة، و`filled` و`off` آخر كلمة في الاسم. واسم الأيقونة في
-  قائمة تصنيفها في `_categories.json` مرة واحدة، وقوائمه لا تسمّي إلا أيقونات موجودة وتضمّ الأيقونة التي تمثّل كل
-  تصنيف. وكل أيقونة وكل تصنيف يسمّيه الموقع في `src/` موجود.
+- **البيانات:** ملف `.json` فيه `title` و`title_en` و`tags`، ومعها `about` و`about_en` معاً إن وُجدا، و`variant_of` في
+  النسخة: عنوان عربي، وعنوان إنجليزي، وكلمات بحث غير فارغة وغير مكررة ولا مسافة في طرفيها، وبأحرف صغيرة في الإنجليزية،
+  ولا تكرر الاسم ولا أحد العنوانين ولا بعضها. والتعريف فقرة نصية واحدة بين ١٥٠ و٤٥٠ حرفاً في كل لغة، والنسخة التي تعيد
+  رسم أصلها فقط بلا تعريف فيعرضها الموقع نسخةً منه، وذات التعريف موضوع مستقل. وعنوان النسخة في كل لغة هو عنوان أصلها وما
+  يميّزها بين قوسين، وعنوان الأصل بلا أقواس، والعناوين لا تتكرر في كل لغة، و`filled` و`off` آخر كلمة في الاسم. واسم
+  الأيقونة في قائمة تصنيفها في `_categories.json` مرة واحدة، وقوائمه لا تسمّي إلا أيقونات موجودة وتضمّ الأيقونة التي
+  تمثّل كل تصنيف. وكل أيقونة وكل تصنيف يسمّيه الموقع في `src/` موجود.
 
 ### تُرسم بسُمك ٢ وتُعرض بسُمك ١٫٥
 
@@ -178,8 +178,8 @@ Naming, so the set reads as one. `pnpm check:icons` enforces the title, order an
   it (`end-of-ayah`, `ornate-parenthesis-left`); anything that is not an Islamic term is plain English (`mosque`,
   `font-size`, `dictionary`, `diacritics`). A variant adds one word per difference after its base
   (`quran-ornate-simple`), with `-filled` last; a slash across the drawing is `-off`, last (`adhan-off`); a map pin is
-  `map-pin-<what it marks>`; directions are the drawing's own (`left`/`right`). A name that starts with another
-  icon's name and a hyphen is that icon's variant.
+  `map-pin-<what it marks>`; directions are the drawing's own (`left`/`right`). A variant names its base in
+  `variant_of`, and its id starts with that id and a hyphen.
 - **Spelling:** an Islamic term is transliterated as the first of these sources spells it: developer APIs (Aladhan,
   adhan-js, Quran.com), the Merriam-Webster headword, the English Wikipedia title (`dhuhr`, `tawhid`, `tilawa`,
   `salawat`). Every other spelling goes in the tags.
@@ -215,13 +215,13 @@ Naming, so the set reads as one. `pnpm check:icons` enforces the title, order an
   never clash.
 - **Bounds:** every path stays within 2–22 — a 1 px margin around a 2 px stroke. Curves and arcs are measured along
   their length, not only at their end points.
-- **Metadata:** a `.json` with `title`, `title_en` and `tags`, plus `about` and `about_en` together if present — an
-  Arabic title, an English title, and tags that are trimmed, non-empty, unique, lowercase in English, and not
-  repeating the id, either title or each other. An about text is one plain paragraph of 150–450 characters in each
-  language. A variant that only redraws its base has none, and the site shows it as a version of that base; a variant
-  with its own about text is a separate subject. A variant's title, in each language, is its base title plus the
-  difference in parentheses, a base title has none, titles are unique in each language, and `filled`/`off` come last
-  in an id. The icon is listed exactly once in its category in `_categories.json`, whose lists name only existing
+- **Metadata:** a `.json` with `title`, `title_en` and `tags`, plus `about` and `about_en` together if present, and
+  `variant_of` on a variant — an Arabic title, an English title, and tags that are trimmed, non-empty, unique, lowercase
+  in English, and not repeating the id, either title or each other. An about text is one plain paragraph of 150–450
+  characters in each language. A variant that only redraws its base has none, and the site shows it as a version of that
+  base; a variant with its own about text is a separate subject. A variant's title, in each language, is its base title
+  plus the difference in parentheses, a base title has none, titles are unique in each language, and `filled`/`off` come
+  last in an id. The icon is listed exactly once in its category in `_categories.json`, whose lists name only existing
   icons and include each category's own icon. Every icon and category the site names in `src/` exists.
 
 ### Drawn at 2, shown at 1.5
