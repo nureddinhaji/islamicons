@@ -188,8 +188,8 @@ const real_icon = name => {
 }
 
 for (const [name, gap] of [
-    ['hifz', 0.088],
-    ['khutbah', 0.021],
+    ['hifz', 0.5],
+    ['khutbah', 0.551],
     ['ihram', 0.021],
     ['kaaba', 0.741],
     ['pillars-of-islam', 2.5],
