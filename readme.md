@@ -62,6 +62,8 @@ pnpm add @islamicons/svelte
 وكل أيقونة مكوّن يحمل اسمها بصيغة PascalCase. الخصائص وأمثلة React وطرق التثبيت الأخرى في
 [دليل الاستخدام](https://islamicons.org/guide#react).
 
+أسماء الأيقونات ومكوّناتها ومسارات ملفاتها ثابتة: لا يُحذف منها اسم ولا يتغيّر إلا في إصدار رئيسي جديد.
+
 ### المساهمة
 
 نرحّب بالأيقونات الجديدة والتصحيحات. معايير الرسم وقواعد التسمية وطريقة إضافة أيقونة في
@@ -123,6 +125,8 @@ export const Nav = () => <Mosque size={32} />
 
 Each icon is a component named after it in PascalCase. Props, Svelte examples and other install commands are in
 [the guide](https://islamicons.org/en/guide#svelte).
+
+Icon names, their component names and file paths are stable: none is removed or renamed except in a new major version.
 
 ### Contributing
 
