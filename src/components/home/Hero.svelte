@@ -109,7 +109,7 @@ import {prefersReducedMotion} from 'svelte/motion'
 
 import {PACKAGES} from '~/lib/constants.svelte.js'
 import {count_icons} from '~/lib/format.js'
-import {icon_named, icons} from '~/lib/icons.js'
+import {category_named, icon_named, icons} from '~/lib/icons.js'
 import {href_in} from '~/lib/locale.js'
 import Icon from '$icon'
 
@@ -140,7 +140,8 @@ const featured = [
 const TARGETS = [{id: 'svg', label: 'SVG'}, ...PACKAGES]
 
 // Base icons only (variant titles carry parentheses), and never the sacred names in a game of swaps.
-const REEL = icons.filter(icon => icon.category !== 'sacred-names' && !icon.titles[0].includes('('))
+const SACRED = category_named('sacred-names').id
+const REEL = icons.filter(icon => icon.category !== SACRED && !icon.titles[0].includes('('))
 
 // Steps from the centre cell: 0 for the centre, 1 for the edges, 2 for the corners.
 const ring = index => Math.abs((index % 3) - 1) + Math.abs(Math.floor(index / 3) - 1)

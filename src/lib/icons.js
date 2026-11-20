@@ -68,6 +68,13 @@ export const categories = category_list.map(({icons: _names, ...category}) => ({
 
 export const category_by_id = new Map(categories.map(category => [category.id, category]))
 
+// For ids written in the source; scripts/check-icons.js checks each one exists.
+export function category_named(id) {
+    const category = category_by_id.get(id)
+    if (!category) throw new Error(`No category named ${id}`)
+    return category
+}
+
 export function search_icons(query, category = '') {
     return rank_icons(category ? icons.filter(icon => icon.category === category) : icons, query)
 }

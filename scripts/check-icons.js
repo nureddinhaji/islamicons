@@ -330,7 +330,7 @@ if (shape_ok)
             report('_categories.json', `category ${category.id} is shown by ${category.icon}, which is not in its list`)
 
 const src_dir = process.argv[3] || 'src'
-// The site's own literal icon names: icon_named('x') and ['x', 'y'].map(icon_named).
+// The site's own literal names: icon_named('x'), ['x', 'y'].map(icon_named) and category_named('x').
 for (const file of readdirSync(src_dir, {recursive: true}).filter(file => /\.(svelte|js)$/.test(file))) {
     const text = readFileSync(path.join(src_dir, file), 'utf8')
     const named = [
@@ -341,6 +341,10 @@ for (const file of readdirSync(src_dir, {recursive: true}).filter(file => /\.(sv
     ]
     for (const name of named)
         if (!names.includes(name)) report(`src/${file}`, `names icon ${name}, which does not exist`)
+    if (shape_ok)
+        for (const [, id] of text.matchAll(/category_named\(\s*'([^']*)'\s*\)/g))
+            if (!categories.some(category => category.id === id))
+                report(`src/${file}`, `names category ${id}, which does not exist`)
     if (/icon_by_name\.get\(\s*'/.test(text)) report(`src/${file}`, "look up a written name with icon_named('…')")
 }
 

@@ -345,6 +345,11 @@ const bad_sources = {
         /look up a written name with icon_named/,
         'c\\.svelte',
     ],
+    'a literal category id': [
+        {'d.svelte': "category_named('no-such-category')"},
+        /names category no-such-category, which does not exist/,
+        'd\\.svelte',
+    ],
 }
 
 for (const [name, [src, reason, file]] of Object.entries(bad_sources))

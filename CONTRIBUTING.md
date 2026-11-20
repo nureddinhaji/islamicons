@@ -65,7 +65,7 @@
   تعريف فيعرضها الموقع نسخةً منه، وذات التعريف موضوع مستقل. وعنوان النسخة في كل لغة هو عنوان أصلها وما يميّزها بين
   قوسين، وعنوان الأصل بلا أقواس، والعناوين لا تتكرر في كل لغة، و`filled` و`off` آخر كلمة في الاسم. واسم الأيقونة في
   قائمة تصنيفها في `_categories.json` مرة واحدة، وقوائمه لا تسمّي إلا أيقونات موجودة وتضمّ الأيقونة التي تمثّل كل
-  تصنيف. وكل أيقونة يسمّيها الموقع في `src/` موجودة.
+  تصنيف. وكل أيقونة وكل تصنيف يسمّيه الموقع في `src/` موجود.
 
 ### تُرسم بسُمك ٢ وتُعرض بسُمك ١٫٥
 
@@ -222,7 +222,7 @@ Naming, so the set reads as one. `pnpm check:icons` enforces the title, order an
   with its own about text is a separate subject. A variant's title, in each language, is its base title plus the
   difference in parentheses, a base title has none, titles are unique in each language, and `filled`/`off` come last
   in an id. The icon is listed exactly once in its category in `_categories.json`, whose lists name only existing
-  icons and include each category's own icon. Every icon the site names in `src/` exists.
+  icons and include each category's own icon. Every icon and category the site names in `src/` exists.
 
 ### Drawn at 2, shown at 1.5
 
