@@ -91,7 +91,7 @@ scale = 1.1 − strokeWidth / 20        (1.025 at 1.5; art within 2–22, so 12 
   لمنع ذلك، لأن Iconify يحذفها وأي قاعدة CSS تلغيها (`svg { overflow: hidden }` في Bootstrap 4 وnormalize.css 5). ومع
   ذلك يحملها كل رسم وكل تصدير احتياطاً، فتسلم حافة الخط إن ثُقّل من CSS.
 - مقيساً على المجموعة كلها بـ`pnpm sheet --audit`، يبلغ وسيطُ أضيق فراغ بين العناصر المتمايزة ١٫٥٦ بكسل في حجم ٢٤
-  بالسُّمك المعروض ١٫٥، ونحو بكسل واحد بسُمك الرسم ٢، فالخط الأخف هو ما يفتحه: بسُمك ٢ يضيق أضيق فراغ عن نصف بكسل في ٦٢
+  بالسُّمك المعروض ١٫٥، ونحو بكسل واحد بسُمك الرسم ٢، فالخط الأخف هو ما يفتحه: بسُمك ٢ يضيق أضيق فراغ عن نصف بكسل في ٦٠
   أيقونة، وبسُمك ١٫٥ لا يضيق عنه في أي أيقونة. فتُقرأ الأيقونات بوضوح من ٢٠ بكسل، وأبهى ما تكون من ٢٨ بكسل. وفي حجم ١٦ بكسل
   استعمل سُمك ١٫٤.
 - الأقواس الممتدة على وترها بالضبط (أنصاف الدوائر) تُكتب بأنصاف أقطار أقل من نصف الوتر بشعرة، فيحسبها المتصفح نصف دائرة
@@ -248,7 +248,7 @@ components repeat the formula above in one line for a changed stroke, and a test
   so a stroke made heavier in CSS keeps its edge.
 - Measured over the set with `pnpm sheet --audit`, the median tightest gap between distinct elements is 1.56 px at
   24 px at the shown stroke 1.5, and about 1 px at the drawn stroke 2, so the lighter line is what opens it: at stroke 2
-  the tightest gap is under half a pixel in 62 icons, at 1.5 in none. So the icons read clearly from 20 px and look their
+  the tightest gap is under half a pixel in 60 icons, at 1.5 in none. So the icons read clearly from 20 px and look their
   best from 28 px. At 16 px use stroke 1.4.
 - Arcs that span their chord exactly (semicircles) are written with radii a hair under the chord, so renderers resolve
   them to the exact semicircle; rounding them up would visibly flatten them. Coordinates keep 4 decimals because
