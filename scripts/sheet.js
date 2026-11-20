@@ -1,4 +1,4 @@
-// Review sheet for drawing icons. Usage: pnpm sheet <name|file.svg>... [--with a,b,c] [--out file.png]
+// Review sheet for drawing icons. Usage: pnpm sheet <name|file.svg>... [--with a,b,c] [--out file.png] | --audit
 // One column per icon (several = a comparison): the art on the grid with keylines, centrelines and anchors, the shown
 // sizes on light and dark, measurements against the set, and each icon at shown size among its siblings.
 import {mkdirSync, readdirSync, readFileSync, writeFileSync} from 'node:fs'
@@ -8,7 +8,7 @@ import {Resvg} from '@resvg/resvg-js'
 
 import {DEFAULT_STROKE_WIDTH, frame_inner, parse_path, walk_path} from '../src/lib/frame.js'
 import {read_icon, to_inner} from '../src/lib/icon-file.js'
-import {icon_parts, measure_gaps} from './icon-measure.js'
+import {correlation, icon_parts, measure_gaps} from './icon-measure.js'
 
 const ROOT = path.resolve(import.meta.dirname, '..')
 const ICONS_DIR = path.join(ROOT, 'icons')
@@ -26,9 +26,13 @@ const ACCENT = '#e11d48'
 const FONT = 'Noto Sans, DejaVu Sans, Helvetica, Arial, sans-serif'
 
 function parse_args(argv) {
-    const options = {inputs: [], siblings: DEFAULT_SIBLINGS, out: null}
+    const options = {inputs: [], siblings: DEFAULT_SIBLINGS, out: null, audit: false}
     for (let i = 0; i < argv.length; i++) {
         const arg = argv[i]
+        if (arg === '--audit') {
+            options.audit = true
+            continue
+        }
         if (arg !== '--with' && arg !== '--out') {
             options.inputs.push(arg)
             continue
@@ -38,7 +42,7 @@ function parse_args(argv) {
         if (arg === '--with') options.siblings = value.split(',').filter(Boolean)
         else options.out = value
     }
-    return options
+    return options.audit && argv.length > 1 ? null : options
 }
 
 function load(input) {
@@ -93,21 +97,44 @@ const median = values => {
     return sorted[Math.floor(sorted.length / 2)]
 }
 
-function set_medians() {
+function small_alpha(inner, size) {
+    const pixels = new Resvg(framed_svg(inner, size), {font: {loadSystemFonts: false}}).render().pixels
+    return Float32Array.from({length: size * size}, (_, i) => pixels[i * 4 + 3] / 255)
+}
+
+function set_medians(audit) {
     const all = readdirSync(ICONS_DIR)
         .filter(file => file.endsWith('.svg'))
-        .map(file => ({metrics: measure(load(path.join(ICONS_DIR, file)))}))
+        .map(file => {
+            const icon = load(path.join(ICONS_DIR, file))
+            return {
+                ...icon,
+                metrics: measure(icon),
+                alpha_20: small_alpha(icon.inner, 20),
+                ...(audit && {alpha_16: small_alpha(icon.inner, 16)}),
+            }
+        })
     const master = all.flatMap(i => (i.metrics.master.tightest ? [i.metrics.master.tightest.drawn] : []))
     const shown_px = all.flatMap(i =>
         i.metrics.shown_20.tightest ? [(i.metrics.shown_20.tightest.shown * 20) / 24] : [],
     )
     return {
+        all,
         ink: median(all.map(i => i.metrics.ink)),
         drawn: median(master),
         drawn_count: master.length,
         shown: median(shown_px),
         shown_count: shown_px.length,
     }
+}
+
+function nearest(icon, set) {
+    const alpha_20 = small_alpha(icon.inner, 20)
+    return set.all
+        .filter(i => i.label !== icon.label)
+        .map(i => ({name: i.label, value: correlation(alpha_20, i.alpha_20)}))
+        .sort((a, b) => b.value - a.value)
+        .slice(0, 3)
 }
 
 function anchors(elements) {
@@ -241,6 +268,10 @@ function metric_rows(m, set, width) {
             ],
             opening.length ? ACCENT : undefined,
         ],
+        [
+            ['looks most like at 20 px:', ...m.nearest.map(p => `${p.name} ${p.value.toFixed(2)}`)],
+            m.nearest.some(p => p.value >= 0.8) ? ACCENT : undefined,
+        ],
         [['gaps between separate strokes,', 'from the geometry (±0.002);', 'not inside one stroke'], undefined, 11],
     ]
     return metrics.flatMap(([phrases, fill, size = 13]) => wrap(phrases, width, size).map(line => ({line, fill, size})))
@@ -296,9 +327,88 @@ function build_sheet(icons, siblings, set) {
     return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><rect width="100%" height="100%" fill="#fff"/>${body}</svg>`
 }
 
+const at_text = p => p.at.map(v => v.toFixed(3)).join(',')
+
+function gaps_section(set) {
+    const icons = set.all
+        .filter(i => i.metrics.shown_20.tightest)
+        .sort((a, b) => a.metrics.shown_20.tightest.shown - b.metrics.shown_20.tightest.shown)
+    const rows = icons.map(({label, metrics}) => {
+        const p = metrics.shown_20.tightest
+        const p_16 = metrics.shown_16.pairs.find(q => q.a === p.a && q.b === p.b)
+        return `${label}  ${p.drawn.toFixed(3)}  ${px(p, 20).toFixed(3)}  ${px(p_16, 16).toFixed(3)}  ${parts_label(p)}  ${at_text(p)}`
+    })
+    const under = [0.5, 0.6, 0.75].map(
+        limit => `${icons.filter(i => px(i.metrics.shown_20.tightest, 20) < limit).length} under ${limit}`,
+    )
+    const summary = `${under.join(', ')} px at 20; median ${set.shown.toFixed(3)} px over ${icons.length} icons`
+    return {
+        summary,
+        lines: [
+            'Tightest gap per icon — separate subpaths apart at stroke 2 (joins are the next section), geometry ±0.002; not inside one stroke',
+            'name  drawn  px@20  px@16  parts  at',
+            ...rows,
+            `${set.all.length - icons.length} icons without an open gap at 20 px`,
+        ],
+    }
+}
+
+function joins_section(set) {
+    const joining = set.all.filter(i => i.metrics.shown_20.opening.length)
+    const rows = joining.flatMap(({label, metrics}) =>
+        metrics.shown_20.opening.map(
+            p => `${label}  ${parts_label(p)}  ${p.drawn.toFixed(3)}  ${px(p, 20).toFixed(3)}  ${at_text(p)}`,
+        ),
+    )
+    return {
+        summary: `${rows.length} opening pairs over ${joining.length} icons`,
+        lines: [
+            'Joins that open when shown — touching at stroke 2 (drawn is the contact), open when framed at 1.5 (px@20 where it opens); information, not a verdict',
+            'name  parts  drawn  px@20  at',
+            ...rows,
+        ],
+    }
+}
+
+function alike_section(set) {
+    const values_20 = [],
+        values_16 = [],
+        rows = []
+    for (const [i, a] of set.all.entries())
+        for (const b of set.all.slice(i + 1)) {
+            const c_20 = correlation(a.alpha_20, b.alpha_20),
+                c_16 = correlation(a.alpha_16, b.alpha_16)
+            values_20.push(c_20)
+            values_16.push(c_16)
+            if (c_20 >= 0.8 || c_16 >= 0.8) rows.push(`${a.label}  ${b.label}  ${c_20.toFixed(3)}  ${c_16.toFixed(3)}`)
+        }
+    const calibration = (values, size) => {
+        values.sort((a, b) => a - b)
+        const at = share => values[Math.floor(values.length * share)].toFixed(3)
+        return `${size} px: median ${at(0.5)}, 99th percentile ${at(0.99)} over ${values.length} pairs`
+    }
+    return {
+        summary: `${rows.length} pairs ≥0.80; ${calibration(values_20, 20)}; ${calibration(values_16, 16)}`,
+        lines: [
+            'Most alike pairs — Pearson alpha correlation of framed art; ranks, not recognition',
+            'a  b  correlation@20  correlation@16',
+            ...rows,
+        ],
+    }
+}
+
+function audit_report(set) {
+    const sections = [gaps_section(set), joins_section(set), alike_section(set)]
+    const out = path.join(ROOT, 'tmp/sheets/audit.txt')
+    mkdirSync(path.dirname(out), {recursive: true})
+    writeFileSync(out, sections.map(({lines, summary}) => [...lines, summary].join('\n')).join('\n\n') + '\n')
+    console.log(path.relative(process.cwd(), out))
+    for (const {summary} of sections) console.log(summary)
+}
+
 const options = parse_args(process.argv.slice(2))
-if (!options?.inputs.length) {
-    console.error('usage: pnpm sheet <name|file.svg>... [--with a,b,c] [--out file.png]')
+if (!options || (!options.audit && !options.inputs.length)) {
+    console.error('usage: pnpm sheet <name|file.svg>... [--with a,b,c] [--out file.png] | --audit')
     process.exit(1)
 }
 let icons, siblings
@@ -309,8 +419,12 @@ try {
     console.error(error.code === 'ENOENT' ? `not found: ${error.path}` : error.message)
     process.exit(1)
 }
-const set = set_medians()
-for (const icon of icons) icon.metrics = measure(icon)
+const set = set_medians(options.audit)
+if (options.audit) {
+    audit_report(set)
+    process.exit(0)
+}
+for (const icon of icons) icon.metrics = {...measure(icon), nearest: nearest(icon, set)}
 
 const out = path.resolve(options.out ?? path.join(ROOT, 'tmp/sheets', `${icons.map(i => i.label).join('+')}.png`))
 mkdirSync(path.dirname(out), {recursive: true})
