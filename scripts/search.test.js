@@ -43,3 +43,15 @@ test('a seat typed without its hamza finds the icon', () => {
     assert.equal(first('بير'), 'zamzam')
     assert.equal(first('سوال'), 'fatwa')
 })
+
+test('the added tags find their icons', () => {
+    assert.equal(first('masajid'), 'mosque')
+    assert.ok(names('مساجد').includes('mosque'))
+    for (const query of ['أهلة', 'الأهلة', 'اهلة']) assert.equal(first(query), 'crescent')
+    for (const query of ['khimar', 'خمار']) assert.equal(first(query), 'hijab')
+    assert.deepEqual(names('modest'), ['hijab', 'niqab'])
+    for (const query of ['مصحف', 'quran']) {
+        const rank = names(query).indexOf('surah-book')
+        assert.ok(rank >= 0 && rank < 12, `${query}: ${rank}`)
+    }
+})
