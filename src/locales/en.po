@@ -330,16 +330,8 @@ msgid "البيانات"
 msgstr "Metadata"
 
 #: src/routes/Guide.svelte
-msgid "ملف json فيه title وtitle_en وtags، بعنوان عربي وعنوان إنجليزي وكلمات بحث غير فارغة وغير مكررة ولا مسافة في طرفيها، وكلمات البحث لا تكرر الاسم ولا العنوان العربي ولا العنوان الإنجليزي ولا بعضها، وعنوان النسخة هو عنوان أصلها مع ما يميزها بين قوسين وعنوان الأصل بلا أقواس في اللغتين، والعناوين لا تتكرر، وfilled وoff آخر كلمة في الاسم، واسم الأيقونة في قائمة تصنيفها في _categories.json مرة واحدة، وكل أيقونة يسميها الموقع في src موجودة."
-msgstr "A json file with title, title_en and tags: an Arabic title, an English title, and search tags that are non-empty, not repeated, and have no space at either end. Tags do not repeat the name, the Arabic title, the English title, or each other. A variant's title is its base title plus what sets it apart, in parentheses, and the base title has no parentheses, in both languages. Titles are never repeated. filled and off are the last word of the name. The icon's name appears once in its category list in _categories.json. Every icon the site names under src exists."
-
-#: src/routes/Guide.svelte
 msgid "الاسم البرمجي"
 msgstr "Programmatic name"
-
-#: src/routes/Guide.svelte
-msgid "يسمّي معنى الأيقونة لا طريقة رسمها. علامات المصحف باسمها كما يكتبه Unicode (end-of-ayah وornate-parenthesis-left)، وما ليس مصطلحاً إسلامياً بالإنجليزية الواضحة (mosque وfont-size وdictionary). والنسخة تضيف بعد اسم أصلها كلمة لكل فرق (quran-ornate-simple)، وتأتي filled آخر كلمة، وoff للشطب على الرسم آخر كلمة كذلك (adhan-off)، ودبوس الخريطة map-pin يتبعه ما يدل عليه (map-pin-kaaba)، والاتجاهات كما في الرسم (left وright). والاسم الذي يبدأ باسم أيقونة أخرى تتبعه شَرطة نسخةٌ منها."
-msgstr "It names the icon's meaning, not how it is drawn. Quran marks use the name Unicode writes (end-of-ayah and ornate-parenthesis-left), and anything that is not an Islamic term uses plain English (mosque, font-size and dictionary). A variant adds a word for each difference after its base name (quran-ornate-simple). filled comes last, and off, for a slash across the drawing, comes last too (adhan-off). A map pin is map-pin followed by what it marks (map-pin-kaaba), and directions are as drawn (left and right). A name that starts with another icon's name, followed by a hyphen, is a variant of it."
 
 #: src/routes/Guide.svelte
 msgid "التهجئة"
@@ -386,11 +378,6 @@ msgstr "Guide contents"
 #: src/routes/Guide.svelte
 msgid "محتويات الدليل <0/>"
 msgstr "Guide contents <0/>"
-
-#. 0: count_icons(icons.length)
-#: src/routes/Guide.svelte
-msgid "مكتبة الأيقونات الإسلامية مجموعة مفتوحة المصدر من {0} للمسجد والصلاة والقرآن والحج ورمضان وغيرها، رُسمت كلها بقواعد واحدة فتبدو كأنها من يد واحدة، وتعمل في أي صفحة ويب أو تطبيق يعرض SVG."
-msgstr "Islamicons is an open-source collection of {0} for the mosque, prayer, the Quran, Hajj, Ramadan and more. Drawn to one standard, they look like the work of one hand, and they work on any web page or app that shows SVG."
 
 #: src/routes/Guide.svelte
 msgid "افتح <0>صفحة الأيقونات</0>، وابحث عن الأيقونة أو تصفّح تصنيفاتها، ثم اضغط عليها لتفتح لوحتها."
@@ -833,3 +820,20 @@ msgstr "Other versions"
 #: src/routes/Guide.svelte
 msgid "وتحمل كل أيقونة الفئتين <0/> و<1/>، من الحزم الثلاث ومن النسخ والتنزيل في الموقع، فتنسّق الأيقونات كلها بقاعدة واحدة، أو أيقونة بعينها باسمها:"
 msgstr "Every icon carries the classes <0/> and <1/>, whether it comes from the three packages or is copied or downloaded from the site, so one rule styles them all, or one icon by its name:"
+
+#: src/routes/Guide.svelte
+msgid "ملف json فيه title وtitle_en وtags، وvariant_of في النسخة، بعنوان عربي وعنوان إنجليزي وكلمات بحث غير فارغة وغير مكررة ولا مسافة في طرفيها، وكلمات البحث لا تكرر الاسم ولا العنوان العربي ولا العنوان الإنجليزي ولا بعضها، وعنوان النسخة هو عنوان أصلها مع ما يميزها بين قوسين وعنوان الأصل بلا أقواس في اللغتين، والعناوين لا تتكرر، وfilled وoff آخر كلمة في الاسم، واسم الأيقونة في قائمة تصنيفها في _categories.json مرة واحدة، وكل أيقونة وكل تصنيف يسميه الموقع في src موجود."
+msgstr "A json file with title, title_en and tags, and variant_of on a variant: an Arabic title, an English title, and search tags that are non-empty, not repeated, and have no space at either end. Tags do not repeat the name, the Arabic title, the English title, or each other. A variant's title is its base title plus what sets it apart, in parentheses, and the base title has no parentheses, in both languages. Titles are never repeated. filled and off are the last word of the name. The icon's name appears once in its category list in _categories.json. Every icon and category the site names under src exists."
+
+#: src/routes/Guide.svelte
+msgid "يسمّي معنى الأيقونة لا طريقة رسمها. علامات المصحف باسمها كما يكتبه Unicode (end-of-ayah وornate-parenthesis-left)، وما ليس مصطلحاً إسلامياً بالإنجليزية الواضحة (mosque وfont-size وdictionary). والنسخة تضيف بعد اسم أصلها كلمة لكل فرق (quran-ornate-simple)، وتأتي filled آخر كلمة، وoff للشطب على الرسم آخر كلمة كذلك (adhan-off)، ودبوس الخريطة map-pin يتبعه ما يدل عليه (map-pin-kaaba)، والاتجاهات كما في الرسم (left وright). والنسخة تذكر أصلها في variant_of، واسمها يبدأ باسم أصلها تتبعه شَرطة."
+msgstr "It names the icon's meaning, not how it is drawn. Quran marks use the name Unicode writes (end-of-ayah and ornate-parenthesis-left), and anything that is not an Islamic term uses plain English (mosque, font-size and dictionary). A variant adds a word for each difference after its base name (quran-ornate-simple). filled comes last, and off, for a slash across the drawing, comes last too (adhan-off). A map pin is map-pin followed by what it marks (map-pin-kaaba), and directions are as drawn (left and right). A variant names its base in variant_of, and its name starts with the base's name followed by a hyphen."
+
+#: src/routes/Guide.svelte
+msgid "أسماء ثابتة: لا يُحذف اسم أيقونة ولا يتغيّر إلا في إصدار رئيسي جديد."
+msgstr "Stable names: an icon's name is removed or changed only in a new major version."
+
+#. 0: count_icons(icons.length); 1: count_icons(VERSIONS)
+#: src/routes/Guide.svelte
+msgid "مكتبة الأيقونات الإسلامية مجموعة مفتوحة المصدر من {0} للمسجد والصلاة والقرآن والحج ورمضان وغيرها، رُسمت كلها بقواعد واحدة فتبدو كأنها من يد واحدة، وتعمل في أي صفحة ويب أو تطبيق يعرض SVG. {1} منها نسخٌ من أيقونات أخرى بفرق يسير، كلحية أو تعبئة أو اتجاه."
+msgstr "Islamicons is an open-source collection of {0} for the mosque, prayer, the Quran, Hajj, Ramadan and more. Drawn to one standard, they look like the work of one hand, and they work on any web page or app that shows SVG. Of these, {1} are versions of other icons with a small difference, such as a beard, a fill or a direction."
