@@ -23,7 +23,7 @@ pre-commit:
       run: node scripts/check-icons.js
 
     test:
-      glob: '{scripts/*.js,src/lib/icon-file.js,src/lib/frame.js,src/lib/arabic.js,src/lib/locale.js,src/lib/format.js}'
+      glob: '{icons/*.json,scripts/*.js,src/lib/icon-file.js,src/lib/frame.js,src/lib/arabic.js,src/lib/search.js,src/lib/locale.js,src/lib/format.js}'
       run: pnpm test
 
     check-camel-case:

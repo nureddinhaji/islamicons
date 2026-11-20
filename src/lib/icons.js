@@ -1,9 +1,9 @@
 import category_list from '../../icons/_categories.json' with {type: 'json'}
-import {arabic_pattern} from './arabic.js'
 import {DEFAULT_STROKE_WIDTH, frame_inner, svg_document} from './frame.js'
 import {base_of, variant_difference} from './icon-family.js'
 import {icon_inner, to_pascal_case} from './icon-file.js'
 import {locale} from './locale.js'
+import {rank_icons, search_fields} from './search.js'
 
 const svg_files = import.meta.glob('/icons/*.svg', {query: '?raw', import: 'default', eager: true})
 const meta_files = import.meta.glob(['/icons/*.json', '!/icons/_categories.json'], {import: 'default', eager: true})
@@ -40,13 +40,12 @@ export const icons = Object.entries(svg_files)
             base,
             difference: base ? variant_difference(title, title_of(base)) : '',
             about: (locale === 'en' ? meta.about_en : meta.about) ?? '',
-            titles: [meta.title, meta.title_en],
             category,
             order,
             tags: meta.tags,
             inner: icon_inner(raw, file_path),
             component: to_pascal_case(name),
-            haystack: [name, meta.title, meta.title_en, ...meta.tags].join(' ').toLowerCase(),
+            ...search_fields(name, meta),
         }
     })
     .sort((a, b) => a.order - b.order)
@@ -69,52 +68,8 @@ export const categories = category_list.map(({icons: _names, ...category}) => ({
 
 export const category_by_id = new Map(categories.map(category => [category.id, category]))
 
-// Arabic is usually typed with the article: «المسجد» has to find «مسجد».
-const without_article = word => (/^ال[\u0621-\u064A]{2}/.test(word) ? word.slice(2) : '')
-
-// One query word as matchers from best to loosest: the whole title (after «ال» too), a whole tag or name, the start of
-// one, the start of a word inside one (after «ال» too), anywhere.
-function matchers(word) {
-    const source = arabic_pattern(word)
-    return {
-        // Titles carry the article («السجود») but tags must not, so «سجود» would otherwise rank a tag above the title.
-        title: RegExp(`^(?:ال)?(?:${source})$`, 'i'),
-        whole: RegExp(`^(?:${source})$`, 'i'),
-        start: RegExp(`^(?:${source})`, 'i'),
-        word: RegExp(`(?:^|[\\s-])(?:ال)?(?:${source})`, 'i'),
-        any: RegExp(source, 'i'),
-    }
-}
-
-function relevance(icon, m) {
-    const fields = [...icon.titles, ...icon.tags, icon.name]
-    if (icon.titles.some(title => m.title.test(title))) return 100
-    if (fields.some(field => m.whole.test(field))) return 90
-    if (fields.some(field => m.start.test(field))) return 70
-    if (fields.some(field => m.word.test(field))) return 50
-    return m.any.test(icon.haystack) ? 20 : 0
-}
-
-// Every word has to match, as before; the best matches come first, ties keep the catalogue order.
 export function search_icons(query, category = '') {
-    const in_scope = category ? icons.filter(icon => icon.category === category) : icons
-    const words = query.trim().toLowerCase().split(/\s+/).filter(Boolean)
-    if (!words.length) return in_scope
-    const per_word = words.map(word => [word, without_article(word)].filter(Boolean).map(matchers))
-    const scored = []
-    for (const icon of in_scope) {
-        let score = 0
-        for (const options of per_word) {
-            const best = Math.max(...options.map(m => relevance(icon, m)))
-            if (!best) {
-                score = 0
-                break
-            }
-            score += best
-        }
-        if (score) scored.push({icon, score})
-    }
-    return scored.sort((a, b) => b.score - a.score || a.icon.order - b.icon.order).map(item => item.icon)
+    return rank_icons(category ? icons.filter(icon => icon.category === category) : icons, query)
 }
 
 const framed_cache = new Map()
