@@ -1,6 +1,7 @@
 {
   "title": "تكبير الخط (سهم)",
   "title_en": "Increase font (arrow)",
+  "variant_of": "font-increase",
   "tags": [
     "font size",
     "increase",

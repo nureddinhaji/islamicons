@@ -23,7 +23,6 @@ const placement = new Map(
     ),
 )
 
-const names = Object.keys(metas)
 const has_about = name => Boolean(metas[name].about)
 const title_of = name => (locale === 'en' ? metas[name].title_en : metas[name].title)
 
@@ -33,7 +32,7 @@ export const icons = Object.entries(svg_files)
         const meta = metas[name]
         const {category = '', order = Infinity} = placement.get(name) ?? {}
         const title = title_of(name)
-        const base = base_of(name, names, has_about)
+        const base = base_of(name, other => metas[other].variant_of, has_about)
         return {
             name,
             title,

@@ -1,6 +1,7 @@
 {
   "title": "الزكاة (حاسبة)",
   "title_en": "Zakat (calculator)",
+  "variant_of": "zakat",
   "tags": [
     "zakah",
     "nisab",

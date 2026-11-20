@@ -1,6 +1,7 @@
 {
   "title": "صندوق صدقة (ورقة نقدية)",
   "title_en": "Sadaqah box (banknote)",
+  "variant_of": "sadaqah-box",
   "tags": [
     "charity",
     "box",

@@ -1,6 +1,7 @@
 {
   "title": "مصحف (موضع القراءة)",
   "title_en": "Quran (bookmark)",
+  "variant_of": "quran",
   "tags": [
     "mushaf",
     "book",

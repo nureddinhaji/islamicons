@@ -1,6 +1,7 @@
 {
   "title": "متابعة الصلوات (علامة صح)",
   "title_en": "Prayer tracker (check)",
+  "variant_of": "prayer-tracker",
   "tags": [
     "salah",
     "salat",

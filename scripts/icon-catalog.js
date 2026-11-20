@@ -27,7 +27,7 @@ export function read_catalog() {
             const framed = frame_inner(art)
             return {
                 name,
-                base: base_of(name, names, has_about),
+                base: base_of(name, other => metas.get(other).variant_of, has_about),
                 component: to_pascal_case(name),
                 title: icon_title,
                 title_en: icon_title_en,

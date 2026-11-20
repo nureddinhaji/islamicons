@@ -1,27 +1,29 @@
 import assert from 'node:assert/strict'
 import {test} from 'node:test'
 
-import {base_of, parent_of, variant_difference} from '../src/lib/icon-family.js'
+import {base_of, variant_difference} from '../src/lib/icon-family.js'
 import {icon_title, read_catalog} from './icon-catalog.js'
 
 const catalog = read_catalog()
-const names = catalog.map(icon => icon.name)
 const by_name = new Map(catalog.map(icon => [icon.name, icon]))
 
-test('parent_of picks the longest prefix', () => {
-    assert.equal(parent_of('ihram-wide-filled', names), 'ihram-wide')
-})
-
-test('a name exception has no parent', () => {
-    assert.equal(parent_of('dome-of-the-rock', names), undefined)
-})
+const variant_of = {
+    'ihram-wide-filled': 'ihram-wide',
+    'ihram-wide': 'ihram',
+    'quran-ornate-simple': 'quran-ornate',
+    'quran-ornate': 'quran',
+}
+const parent_of = name => variant_of[name]
+const has_about = name => ['ihram', 'quran', 'quran-ornate'].includes(name)
 
 test('a copy points to the nearest icon that has its own about text', () => {
-    const has_about = name => ['ihram', 'quran', 'quran-ornate'].includes(name)
-    assert.equal(base_of('ihram-wide-filled', names, has_about), 'ihram')
-    assert.equal(base_of('quran-ornate-simple', names, has_about), 'quran-ornate')
-    assert.equal(base_of('quran-ornate', names, has_about), '')
-    assert.equal(base_of('dome-of-the-rock', names, has_about), '')
+    assert.equal(base_of('ihram-wide-filled', parent_of, has_about), 'ihram')
+    assert.equal(base_of('quran-ornate-simple', parent_of, has_about), 'quran-ornate')
+    assert.equal(base_of('quran-ornate', parent_of, has_about), '')
+})
+
+test("an id that starts with another's is not a variant without variant_of", () => {
+    assert.equal(base_of('dome-of-the-rock', parent_of, has_about), '')
 })
 
 test('a variant with its own about text is not a copy', () => {

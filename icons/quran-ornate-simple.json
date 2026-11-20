@@ -1,6 +1,7 @@
 {
   "title": "مصحف (مزخرف، مبسّط)",
   "title_en": "Quran (ornate, simple)",
+  "variant_of": "quran-ornate",
   "tags": [
     "mushaf",
     "book",

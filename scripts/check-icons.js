@@ -4,7 +4,6 @@ import path from 'node:path'
 
 import {arabic_pattern} from '../src/lib/arabic.js'
 import {frame_inner, parse_path, walk_path} from '../src/lib/frame.js'
-import {parent_of} from '../src/lib/icon-family.js'
 import {read_icon, ROOT_ATTRS, to_inner} from '../src/lib/icon-file.js'
 
 const dir = process.argv[2] || 'icons'
@@ -188,13 +187,15 @@ function description_problems(meta) {
 }
 
 function meta_problems(name, meta) {
-    const found = key_problems(meta, ['title', 'title_en', 'tags'], ['about', 'about_en'])
+    const found = key_problems(meta, ['title', 'title_en', 'tags'], ['about', 'about_en', 'variant_of'])
     if (!is_object(meta)) return found
     found.push(...description_problems(meta))
     if (!is_clean_string(meta.title) || !/[\u0600-\u06FF]/.test(meta.title))
         found.push('metadata needs an Arabic title, without leading or trailing spaces')
     if (!is_english_title(meta.title_en))
         found.push('metadata needs an English title, starting with a capital and without Arabic letters')
+    if ('variant_of' in meta && !is_clean_string(meta.variant_of))
+        found.push('variant_of must be a non-empty trimmed string')
     if (!Array.isArray(meta.tags) || !meta.tags.length) return [...found, 'metadata needs search tags']
     for (const tag of meta.tags)
         if (!is_clean_string(tag)) found.push(`tag ${JSON.stringify(tag)} must be a non-empty trimmed string`)
@@ -276,14 +277,14 @@ for (const name of names) {
     if (is_object(meta) && is_clean_string(meta.title) && /[\u0600-\u06FF]/.test(meta.title)) metas.set(name, meta)
 }
 
-function variant_problems(name, title, base_title, {comma, filled_end, quote, label = ''}) {
+function variant_problems(name, parent, title, base_title, {comma, filled_end, quote, label = ''}) {
     const [open, close] = quote
     const prefix = label ? `${label}: ` : ''
     const found = []
     if (name.endsWith('-filled') !== title.endsWith(filled_end))
         found.push(`${prefix}-filled and ${open}(… ${filled_end}${close} go together`)
-    const parent = parent_of(name, names)
-    if (!parent) return title.includes('(') ? [...found, `${prefix}a base title has no parentheses`] : found
+    if (parent === undefined)
+        return title.includes('(') ? [...found, `${prefix}a base title has no parentheses`] : found
     if (base_title === undefined) return found
     const head = base_title.endsWith(')') ? `${base_title.slice(0, -1)}${comma}` : `${base_title} (`
     if (!title.startsWith(head) || !title.endsWith(')'))
@@ -302,11 +303,17 @@ function title_problems(name) {
     const meta = metas.get(name)
     const found = []
     if (/-(filled|off)-/.test(name)) found.push('filled and off must be the last words of the name')
-    const parent = parent_of(name, names)
-    const base = parent && metas.get(parent)
-    found.push(...variant_problems(name, meta.title, base?.title, ARABIC_TITLE))
-    if (is_english_title(meta.title_en) && (!parent || is_english_title(base?.title_en)))
-        found.push(...variant_problems(name, meta.title_en, base?.title_en, ENGLISH_TITLE))
+    const parent = meta.variant_of
+    let base
+    if (is_clean_string(parent)) {
+        if (!names.includes(parent)) found.push(`variant_of names no icon ${parent}`)
+        else if (!name.startsWith(`${parent}-`))
+            found.push(`a variant of ${parent} must have an id starting with ${parent}-`)
+        else base = metas.get(parent)
+    }
+    found.push(...variant_problems(name, parent, meta.title, base?.title, ARABIC_TITLE))
+    if (is_english_title(meta.title_en) && (parent === undefined || is_english_title(base?.title_en)))
+        found.push(...variant_problems(name, parent, meta.title_en, base?.title_en, ENGLISH_TITLE))
     return found
 }
 

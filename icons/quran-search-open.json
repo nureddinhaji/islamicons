@@ -1,6 +1,7 @@
 {
   "title": "مصحف (بحث، مفتوح)",
   "title_en": "Quran (search, open)",
+  "variant_of": "quran-search",
   "tags": [
     "mushaf",
     "open book",

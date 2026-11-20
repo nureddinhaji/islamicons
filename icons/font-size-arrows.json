@@ -1,6 +1,7 @@
 {
   "title": "تكبير وتصغير الخط (سهمان)",
   "title_en": "Font size (arrows)",
+  "variant_of": "font-size",
   "tags": [
     "font size",
     "zoom",

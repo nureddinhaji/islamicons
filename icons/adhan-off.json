@@ -1,6 +1,7 @@
 {
   "title": "الأذان (صامت)",
   "title_en": "Adhan (muted)",
+  "variant_of": "adhan",
   "tags": [
     "mute",
     "silent",

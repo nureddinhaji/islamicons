@@ -1,6 +1,7 @@
 {
   "title": "مواقيت الصلاة (محراب)",
   "title_en": "Prayer times (mihrab)",
+  "variant_of": "prayer-times",
   "tags": [
     "clock",
     "وقت",

@@ -1,6 +1,7 @@
 {
   "title": "مصحف (هلال)",
   "title_en": "Quran (crescent)",
+  "variant_of": "quran",
   "tags": [
     "mushaf",
     "book",

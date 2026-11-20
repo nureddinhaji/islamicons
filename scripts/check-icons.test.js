@@ -266,6 +266,33 @@ for (const [name, [victim, title_en, reason]] of Object.entries(bad_english_titl
         assert.ok(reported(result, victim, reason), result.stderr)
     })
 
+const meta_of = name => JSON.parse(readFileSync(path.join(icons_dir, `${name}.json`), 'utf8'))
+
+const bad_variant_of = {
+    'naming no icon': ['sujud-detailed', 'nope', /variant_of names no icon nope/],
+    'an id not starting with it': [
+        'quran-ornate-simple',
+        'ihram',
+        /a variant of ihram must have an id starting with ihram-/,
+    ],
+    'a non-string': ['sujud-detailed', 3, /variant_of must be a non-empty trimmed string/],
+}
+
+for (const [name, [victim, variant_of, reason]] of Object.entries(bad_variant_of))
+    test(`check-icons fails on variant_of: ${name}`, () => {
+        const result = check_with({name: victim, meta: {...meta_of(victim), variant_of}})
+        assert.equal(result.status, 1, result.stdout)
+        assert.ok(reported(result, victim, reason), result.stderr)
+        assert.match(result.stderr, /^1 problem\(s\)/m, 'the title rules must not repeat it')
+    })
+
+test('check-icons fails on a variant title whose variant_of was removed', () => {
+    const {variant_of: _variant_of, ...meta} = meta_of('sujud-detailed')
+    const result = check_with({name: 'sujud-detailed', meta})
+    assert.equal(result.status, 1, result.stdout)
+    assert.ok(reported(result, 'sujud-detailed', /a base title has no parentheses/), result.stderr)
+})
+
 test('check-icons fails when filled is not the last word of a name', () => {
     const result = check_with({
         name: 'mosque',
