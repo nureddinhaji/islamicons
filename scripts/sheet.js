@@ -8,6 +8,7 @@ import {Resvg} from '@resvg/resvg-js'
 
 import {DEFAULT_STROKE_WIDTH, frame_inner, parse_path, walk_path} from '../src/lib/frame.js'
 import {read_icon, to_inner} from '../src/lib/icon-file.js'
+import {icon_parts, measure_gaps} from './icon-measure.js'
 
 const ROOT = path.resolve(import.meta.dirname, '..')
 const ICONS_DIR = path.join(ROOT, 'icons')
@@ -49,46 +50,15 @@ function load(input) {
     return {label, elements, inner: to_inner(elements)}
 }
 
-const art_svg = (inner, size) =>
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="#000" color="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`
+const art_svg = (inner, size, stroke = 2) =>
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="#000" color="#000" stroke-width="${stroke}" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`
+const framed_svg = (inner, size) => art_svg(frame_inner(inner, stroke_at(size)), size, stroke_at(size))
 
 function alpha(inner) {
     const pixels = new Resvg(art_svg(inner, MASK), {font: {loadSystemFonts: false}}).render().pixels
     const out = new Float32Array(MASK * MASK)
     for (let i = 0; i < out.length; i++) out[i] = pixels[i * 4 + 3] / 255
     return out
-}
-
-// Two-pass chamfer distance (in pixels) from every pixel to the nearest inked one.
-function distance_field(mask) {
-    const field = new Float32Array(mask.length).map((_, i) => (mask[i] > 0.5 ? 0 : Infinity))
-    const step = (i, j, cost) => {
-        if (field[j] + cost < field[i]) field[i] = field[j] + cost
-    }
-    for (let y = 0; y < MASK; y++)
-        for (let x = 0; x < MASK; x++) {
-            const i = y * MASK + x
-            if (x > 0) step(i, i - 1, 1)
-            if (y > 0) step(i, i - MASK, 1)
-            if (x > 0 && y > 0) step(i, i - MASK - 1, Math.SQRT2)
-            if (x < MASK - 1 && y > 0) step(i, i - MASK + 1, Math.SQRT2)
-        }
-    for (let y = MASK - 1; y >= 0; y--)
-        for (let x = MASK - 1; x >= 0; x--) {
-            const i = y * MASK + x
-            if (x < MASK - 1) step(i, i + 1, 1)
-            if (y < MASK - 1) step(i, i + MASK, 1)
-            if (x < MASK - 1 && y < MASK - 1) step(i, i + MASK + 1, Math.SQRT2)
-            if (x > 0 && y < MASK - 1) step(i, i + MASK - 1, Math.SQRT2)
-        }
-    return field
-}
-
-// Edge-to-edge distance between the strokes of two elements, in grid units; 0 means they touch.
-function gap_between(field, mask) {
-    let best = Infinity
-    for (let i = 0; i < mask.length; i++) if (mask[i] > 0.5 && field[i] < best) best = field[i]
-    return Math.max(0, best - 1) / MEASURE
 }
 
 function measure({elements, inner}) {
@@ -104,16 +74,7 @@ function measure({elements, inner}) {
             sy += a * y
             if (a > 0.5) [x0, y0, x1, y1] = [Math.min(x0, x), Math.min(y0, y), Math.max(x1, x), Math.max(y1, y)]
         }
-    const parts = elements.map(element => alpha(to_inner([element])))
-    const fields = parts.map(distance_field)
-    let tightest = Infinity
-    let touching = 0
-    for (let i = 0; i < parts.length; i++)
-        for (let j = i + 1; j < parts.length; j++) {
-            const gap = gap_between(fields[i], parts[j])
-            if (gap === 0) touching++
-            else tightest = Math.min(tightest, gap)
-        }
+    const [master, shown_20, shown_16] = measure_gaps(icon_parts(elements), [2, DEFAULT_STROKE_WIDTH, stroke_at(16)])
     const unit = value => value / MEASURE
     return {
         ink: ink / mask.length,
@@ -121,8 +82,9 @@ function measure({elements, inner}) {
         centre: [unit(sx / ink + 0.5) - 12, unit(sy / ink + 0.5) - 12],
         // the ink box less half the drawn stroke: where the paths themselves reach
         bounds: [unit(x0) + 1, unit(y0) + 1, unit(x1 + 1) - 1, unit(y1 + 1) - 1],
-        tightest,
-        touching,
+        master,
+        shown_20,
+        shown_16,
     }
 }
 
@@ -134,8 +96,18 @@ const median = values => {
 function set_medians() {
     const all = readdirSync(ICONS_DIR)
         .filter(file => file.endsWith('.svg'))
-        .map(file => measure(load(path.join(ICONS_DIR, file))))
-    return {ink: median(all.map(m => m.ink)), tightest: median(all.map(m => m.tightest))}
+        .map(file => ({metrics: measure(load(path.join(ICONS_DIR, file)))}))
+    const master = all.flatMap(i => (i.metrics.master.tightest ? [i.metrics.master.tightest.drawn] : []))
+    const shown_px = all.flatMap(i =>
+        i.metrics.shown_20.tightest ? [(i.metrics.shown_20.tightest.shown * 20) / 24] : [],
+    )
+    return {
+        ink: median(all.map(i => i.metrics.ink)),
+        drawn: median(master),
+        drawn_count: master.length,
+        shown: median(shown_px),
+        shown_count: shown_px.length,
+    }
 }
 
 function anchors(elements) {
@@ -147,7 +119,7 @@ function anchors(elements) {
 const text = (x, y, value, {size = 13, fill = '#52525b', weight = 400} = {}) =>
     `<text x="${x}" y="${y}" font-family="${FONT}" font-size="${size}" font-weight="${weight}" fill="${fill}">${value}</text>`
 
-function grid_view({elements, inner}, x, y, zoom) {
+function grid_view({elements, inner, metrics}, x, y, zoom) {
     const hair = 1 / zoom
     const lines = Array.from({length: 25}, (_, i) => {
         const tone = i === 12 ? '#cbd5e1' : i % 4 ? '#eceff3' : '#dde2e8'
@@ -164,12 +136,18 @@ function grid_view({elements, inner}, x, y, zoom) {
     const dots = anchors(elements)
         .map(([ax, ay]) => `<circle cx="${ax}" cy="${ay}" r="${2.2 * hair}"/>`)
         .join('')
+    const ring = (pair, dashed = false) =>
+        `<circle cx="${pair.at[0]}" cy="${pair.at[1]}" r="0.6"${dashed ? ` stroke-dasharray="${3 * hair} ${2 * hair}"` : ''}/>`
+    const marks =
+        metrics.shown_20.opening.map(p => ring(p)).join('') +
+        (metrics.master.tightest ? ring(metrics.master.tightest, true) : '')
     return `<g transform="translate(${x} ${y}) scale(${zoom})">
         <rect width="24" height="24" fill="#fff"/>${lines}
         <g fill="none" stroke-width="${1.25 * hair}">${keylines}</g>
         <g fill="none" stroke="${INK}" stroke-opacity="0.8" color="${INK}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${inner}</g>
         <g fill="none" stroke="${ACCENT}" stroke-width="${hair}">${centreline}</g>
         <g fill="${ACCENT}">${dots}</g>
+        <g fill="none" stroke="${ACCENT}" stroke-width="${1.25 * hair}">${marks}</g>
     </g>`
 }
 
@@ -194,8 +172,7 @@ const PIXEL_SIZES = [24, 32]
 // Each pixel's coverage as a browser paints it, enlarged: a tip that renders lighter than a straight stroke beside it
 // shows here as it does on screen, which the smooth grid view hides.
 function pixel_view(inner, size, x, y, cell) {
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="#000" color="#000" stroke-width="${stroke_at(size)}" stroke-linecap="round" stroke-linejoin="round">${frame_inner(inner, stroke_at(size))}</svg>`
-    const pixels = new Resvg(svg, {font: {loadSystemFonts: false}}).render().pixels
+    const pixels = new Resvg(framed_svg(inner, size), {font: {loadSystemFonts: false}}).render().pixels
     const span = size * cell
     const lines = Array.from(
         {length: size - 1},
@@ -217,18 +194,56 @@ const fixed = (value, digits = 2) => {
     return (rounded >= 0 ? '+' : '') + rounded.toFixed(digits)
 }
 
-function metrics_lines(m, set) {
+const parts_label = p => `${p.a}–${p.b}`
+const px = (p, size) => (p.shown * size) / 24
+const gap_text = m =>
+    m.master.tightest ? `${m.master.tightest.drawn.toFixed(3)} drawn (${parts_label(m.master.tightest)})` : 'none drawn'
+const shown_text = (m, size) => {
+    const pair = size === 20 ? m.shown_20.tightest : m.shown_16.tightest
+    const previous = size === 20 ? m.master.tightest : m.shown_20.tightest
+    const label = pair && (!previous || parts_label(pair) !== parts_label(previous)) ? ` (${parts_label(pair)})` : ''
+    return `${pair ? px(pair, size).toFixed(2) : 'none'} px at ${size}${label}`
+}
+const LISTED_JOINS = 3
+
+// resvg does not wrap text, so phrases are packed into lines at about 0.5 em per character.
+function wrap(phrases, width, size) {
+    const lines = []
+    for (const phrase of phrases) {
+        const joined = `${lines.at(-1)} ${phrase}`
+        if (lines.length && joined.length * size * 0.5 <= width) lines[lines.length - 1] = joined
+        else lines.push(phrase)
+    }
+    return lines
+}
+
+function metric_rows(m, set, width) {
     const [bx0, by0, bx1, by1] = m.bounds.map(v => v.toFixed(1))
     const outside = m.bounds[0] < 1.9 || m.bounds[1] < 1.9 || m.bounds[2] > 22.1 || m.bounds[3] > 22.1
-    return [
-        [`ink ${(m.ink * 100).toFixed(1)}%  (set median ${(set.ink * 100).toFixed(1)}%)`],
-        [`centre of ink ${fixed(m.centre[0])}, ${fixed(m.centre[1])}`],
-        [`paths reach x ${bx0}–${bx1}, y ${by0}–${by1}`, outside ? ACCENT : undefined],
+    const opening = m.shown_20.opening
+    const listed = opening.slice(0, LISTED_JOINS).map(parts_label)
+    if (opening.length > LISTED_JOINS) listed.push(`+${opening.length - LISTED_JOINS} more`)
+    const metrics = [
+        [[`ink ${(m.ink * 100).toFixed(1)}%`, `(set median ${(set.ink * 100).toFixed(1)}%)`]],
+        [[`centre of ink ${fixed(m.centre[0])}, ${fixed(m.centre[1])}`]],
+        [[`paths reach x ${bx0}–${bx1},`, `y ${by0}–${by1}`], outside ? ACCENT : undefined],
+        [`tightest gap ${gap_text(m)}`.split(/ (?=\()/)],
         [
-            `tightest gap ${Number.isFinite(m.tightest) ? m.tightest.toFixed(2) : 'none'}  (set median ${set.tightest.toFixed(2)})`,
+            [`as shown ${shown_text(m, 20)}`, `· ${shown_text(m, 16)}`],
+            m.shown_20.tightest && px(m.shown_20.tightest, 20) < 0.5 ? ACCENT : undefined,
         ],
-        [`touching pairs ${m.touching}`],
+        [[`(set median ${set.shown.toFixed(2)} px at 20,`, `${set.shown_count} icons)`]],
+        [[`touching parts ${m.master.touching} at stroke 2`]],
+        [
+            [
+                `joins that open when shown: ${opening.length || 'none'}`,
+                ...(opening.length ? `(${listed.join(', ')})`.split(/(?<=,) /) : []),
+            ],
+            opening.length ? ACCENT : undefined,
+        ],
+        [['gaps between separate strokes,', 'from the geometry (±0.002);', 'not inside one stroke'], undefined, 11],
     ]
+    return metrics.flatMap(([phrases, fill, size = 13]) => wrap(phrases, width, size).map(line => ({line, fill, size})))
 }
 
 function build_sheet(icons, siblings, set) {
@@ -237,6 +252,8 @@ function build_sheet(icons, siblings, set) {
     const gutter = 40
     const cells = PIXEL_SIZES.map(size => Math.floor((column - 12) / 2 / size))
     const pixel_block = 22 + Math.max(...PIXEL_SIZES.map((size, i) => size * cells[i])) + 24
+    const rows = icons.map(icon => metric_rows(icon.metrics, set, column))
+    const metrics_height = Math.max(...rows.map(r => r.length)) * 19 + 10
     let body = ''
     const top = PAD + 20
     for (const [index, icon] of icons.entries()) {
@@ -249,9 +266,9 @@ function build_sheet(icons, siblings, set) {
         y += 78
         body += sizes_row(icon.inner, x + 10, y, PAPER, INK)
         y += 92
-        for (const [line_index, [line, fill]] of metrics_lines(icon.metrics, set).entries())
-            body += text(x, y + line_index * 19, line, fill ? {fill} : undefined)
-        y += 5 * 19 + 10
+        for (const [row_index, {line, fill, size}] of rows[index].entries())
+            body += text(x, y + row_index * 19, line, {size, ...(fill && {fill})})
+        y += metrics_height
         body += text(x, y, `pixels at ${PIXEL_SIZES.join(' and ')} px`, {size: 12})
         let px_x = x
         for (const [i, size] of PIXEL_SIZES.entries()) {
@@ -259,7 +276,7 @@ function build_sheet(icons, siblings, set) {
             px_x += size * cells[i] + 12
         }
     }
-    let y = top + 24 * zoom + 34 + 78 + 92 + 5 * 19 + 10 + pixel_block
+    let y = top + 24 * zoom + 34 + 78 + 92 + metrics_height + pixel_block
     body += text(PAD, y, 'among the set, as shown', {size: 13, fill: INK, weight: 600})
     y += 18
     for (const icon of icons) {
@@ -304,8 +321,10 @@ for (const icon of icons) {
     const m = icon.metrics
     console.log(
         `${icon.label}: ink ${(m.ink * 100).toFixed(1)}%, centre ${fixed(m.centre[0])},${fixed(m.centre[1])}, ` +
-            `reach ${m.bounds.map(v => v.toFixed(1)).join(' ')}, tightest gap ${Number.isFinite(m.tightest) ? m.tightest.toFixed(2) : 'none'}, touching ${m.touching}`,
+            `reach ${m.bounds.map(v => v.toFixed(1)).join(' ')}, tightest gap ${gap_text(m)}, as shown ${shown_text(m, 20)}, ${shown_text(m, 16)}, touching parts ${m.master.touching}, joins that open ${m.shown_20.opening.length}`,
     )
 }
-console.log(`set median: ink ${(set.ink * 100).toFixed(1)}%, tightest gap ${set.tightest.toFixed(2)}`)
+console.log(
+    `set median: ink ${(set.ink * 100).toFixed(1)}%, tightest gap ${set.drawn.toFixed(3)} drawn over ${set.drawn_count} icons, ${set.shown.toFixed(3)} px at 20 over ${set.shown_count} icons`,
+)
 console.log(path.relative(process.cwd(), out))
