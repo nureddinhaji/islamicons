@@ -1,0 +1,26 @@
+{
+  "title": "قضاء الصلاة",
+  "title_en": "Qada prayer",
+  "tags": [
+    "qadha",
+    "qaza",
+    "kaza",
+    "qaza namaz",
+    "salah",
+    "salat",
+    "namaz",
+    "الصلوات الفائتة",
+    "missed prayers",
+    "الفوائت",
+    "صلاة فائتة",
+    "missed prayer",
+    "قضاء الفوائت",
+    "make-up prayers",
+    "عداد القضاء",
+    "qada counter",
+    "محراب",
+    "mihrab"
+  ],
+  "about": "قضاء الصلاة أداء الصلاة المفروضة بعد خروج وقتها، كمن فاتته بنوم أو نسيان. ويدور حول المحراب سهم يرجع إلى الوراء، كأن الوقت الفائت يُستدرك. أما «متابعة الصلوات» فتناسب تسجيل صلوات اليوم في أوقاتها. يمكن استخدام الرمز لقائمة الصلوات الفائتة في تطبيق إسلامي، أو لعداد ما بقي من القضاء، أو لتذكير بقضاء صلاة فاتت.",
+  "about_en": "Qada is performing an obligatory prayer after its time has passed, as when it was missed through sleep or forgetfulness. An arrow turns back around the mihrab, as if the lost time were recovered. For logging the day’s prayers on time, choose Prayer tracker. The icon can list missed prayers in an Islamic app, count the make-up prayers still owed, or remind someone to make up a prayer."
+}
